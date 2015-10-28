@@ -15,6 +15,11 @@
 		0454092A1BE04E68004B9577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045409281BE04E68004B9577 /* LaunchScreen.storyboard */; };
 		045409351BE04E68004B9577 /* HawaiiHikersResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045409341BE04E68004B9577 /* HawaiiHikersResourceTests.swift */; };
 		045409401BE04E68004B9577 /* HawaiiHikersResourceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454093F1BE04E68004B9577 /* HawaiiHikersResourceUITests.swift */; };
+		045409511BE04E9E004B9577 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409501BE04E9E004B9577 /* MapKit.framework */; };
+		045409531BE04EB4004B9577 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409521BE04EB4004B9577 /* StoreKit.framework */; };
+		045409551BE05000004B9577 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409541BE05000004B9577 /* QuartzCore.framework */; };
+		045409571BE05011004B9577 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409561BE05011004B9577 /* CoreData.framework */; };
+		045409591BE0502E004B9577 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409581BE0502E004B9577 /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,12 @@
 		0454093B1BE04E68004B9577 /* HawaiiHikersResourceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HawaiiHikersResourceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0454093F1BE04E68004B9577 /* HawaiiHikersResourceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HawaiiHikersResourceUITests.swift; sourceTree = "<group>"; };
 		045409411BE04E68004B9577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0454094D1BE04E89004B9577 /* HawaiiHikersResource.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HawaiiHikersResource.entitlements; sourceTree = "<group>"; };
+		045409501BE04E9E004B9577 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		045409521BE04EB4004B9577 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		045409541BE05000004B9577 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		045409561BE05011004B9577 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		045409581BE0502E004B9577 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +67,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045409591BE0502E004B9577 /* libsqlite3.tbd in Frameworks */,
+				045409571BE05011004B9577 /* CoreData.framework in Frameworks */,
+				045409551BE05000004B9577 /* QuartzCore.framework in Frameworks */,
+				045409511BE04E9E004B9577 /* MapKit.framework in Frameworks */,
+				045409531BE04EB4004B9577 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +95,11 @@
 		045409101BE04E67004B9577 = {
 			isa = PBXGroup;
 			children = (
+				045409581BE0502E004B9577 /* libsqlite3.tbd */,
+				045409561BE05011004B9577 /* CoreData.framework */,
+				045409541BE05000004B9577 /* QuartzCore.framework */,
+				045409521BE04EB4004B9577 /* StoreKit.framework */,
+				045409501BE04E9E004B9577 /* MapKit.framework */,
 				0454091B1BE04E67004B9577 /* HawaiiHikersResource */,
 				045409331BE04E68004B9577 /* HawaiiHikersResourceTests */,
 				0454093E1BE04E68004B9577 /* HawaiiHikersResourceUITests */,
@@ -99,6 +120,7 @@
 		0454091B1BE04E67004B9577 /* HawaiiHikersResource */ = {
 			isa = PBXGroup;
 			children = (
+				0454094D1BE04E89004B9577 /* HawaiiHikersResource.entitlements */,
 				0454091C1BE04E67004B9577 /* AppDelegate.swift */,
 				0454091E1BE04E67004B9577 /* ViewController.swift */,
 				045409201BE04E67004B9577 /* Main.storyboard */,
@@ -196,6 +218,30 @@
 				TargetAttributes = {
 					045409181BE04E67004B9577 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = A99GH4QSGP;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.OMC = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					0454092F1BE04E68004B9577 = {
 						CreatedOnToolsVersion = 7.1;
@@ -401,10 +447,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HawaiiHikersResource/HawaiiHikersResource.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HawaiiHikersResource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResource;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -412,10 +462,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HawaiiHikersResource/HawaiiHikersResource.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HawaiiHikersResource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResource;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
