@@ -67,15 +67,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         
         
-        // Add annotation `point` for Akaka Falls
+        // Add annotation "point" for Akaka Falls
         menuMap.addAnnotation(point1)
-        // Add annotation `point` for Lava tree loop trail
+        // Add annotation "point" for Lava tree loop trail
         menuMap.addAnnotation(point2)
-        // Add annotation `point` for college hall
+        // Add annotation "point" for college hall
         menuMap.addAnnotation(point3)
-        // Add annotation `point` for kilauea iki trail
+        // Add annotation "point" for kilauea iki trail
         menuMap.addAnnotation(point4)
-        // Add annotation `point` for Ala Kahakai
+        // Add annotation "point" for Ala Kahakai
         menuMap.addAnnotation(point5)
     }
     
