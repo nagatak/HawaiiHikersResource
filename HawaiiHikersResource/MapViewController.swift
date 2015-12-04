@@ -12,16 +12,17 @@ import MapKit
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
-    @IBOutlet weak var menuMap: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set map view delegate
-        // self.menuMap.delegate = self
+        // self.mapView.delegate = self
         
         // Sets map type to hybrid
-        menuMap.mapType = MKMapType.Hybrid
+        mapView.mapType = MKMapType.Hybrid
         
         // Set initial location to The Big Island, Hawaii
         let initialLocation = CLLocation(latitude: 19.5667, longitude: -155)
@@ -29,17 +30,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let regionRadius: CLLocationDistance = 140000
         func centerMapOnLocation(location: CLLocation) {
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
-            menuMap.setRegion(coordinateRegion, animated: true)
+            mapView.setRegion(coordinateRegion, animated: true)
         }
         
         // Call helper method to zoom into initialLocation on startup
         centerMapOnLocation(initialLocation)
         
         // Pin for Akaka falls
-        let point1 = MKPointAnnotation()
-        point1.coordinate = CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115)
-        point1.title = "'Akaka Falls Loop Trail"
-        point1.subtitle = "'Akaka Falls State Park"
+//        let point1 = MKPointAnnotation()
+//        point1.coordinate = CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115)
+//        point1.title = "'Akaka Falls Loop Trail"
+//        point1.subtitle = "'Akaka Falls State Park"
         
         // Pin for lava tree loop trail
         let point2 = MKPointAnnotation()
@@ -65,18 +66,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         point5.title = "Ala Kahakai Trail"
         point5.subtitle = "Kings TRail"
         
+        let akaka = PinInfo(title: "Akaka Falls Loop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), subtitle: "Akaka Falls State Park")
         
+        mapView.addAnnotation(akaka)
         
         // Add annotation "point" for Akaka Falls
-        menuMap.addAnnotation(point1)
-        // Add annotation "point" for Lava tree loop trail
-        menuMap.addAnnotation(point2)
-        // Add annotation "point" for college hall
-        menuMap.addAnnotation(point3)
-        // Add annotation "point" for kilauea iki trail
-        menuMap.addAnnotation(point4)
-        // Add annotation "point" for Ala Kahakai
-        menuMap.addAnnotation(point5)
+//        mapView.addAnnotation(point1)
+//        // Add annotation "point" for Lava tree loop trail
+//        mapView.addAnnotation(point2)
+//        // Add annotation "point" for college hall
+//        mapView.addAnnotation(point3)
+//        // Add annotation "point" for kilauea iki trail
+//        mapView.addAnnotation(point4)
+//        // Add annotation "point" for Ala Kahakai
+//        mapView.addAnnotation(point5)
     }
     
     
@@ -84,7 +87,36 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        
+        let identifier = "PinInfo"
+        
+        if annotation.isKindOfClass(PinInfo.self)
+        {
+            
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+            
+            if annotationView == nil
+            {
+                
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView!.canShowCallout = true
+                
+                let btn = UIButton(type: .DetailDisclosure)
+                annotationView!.rightCalloutAccessoryView = btn
+            }
+            else
+            {
+                
+                annotationView!.annotation = annotation
+            }
+            
+            return annotationView
+        }
+        
+        return nil
+    }
 }
 
