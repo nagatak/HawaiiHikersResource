@@ -104,8 +104,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 annotationView!.canShowCallout = true
                 
-                let btn = UIButton(type: .DetailDisclosure)
-                annotationView!.rightCalloutAccessoryView = btn
+//                let btn = UIButton(type: .DetailDisclosure)
+//                annotationView!.rightCalloutAccessoryView = btn
             }
             else
             {
@@ -113,10 +113,38 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 annotationView!.annotation = annotation
             }
             
+            configureDetailView(annotationView!)
+            
             return annotationView
         }
         
         return nil
+    }
+    
+    func configureDetailView(annotationView: MKAnnotationView) {
+        let width = 300
+        let height = 200
+        
+        let snapshotView = UITableView()
+        let views = ["snapshotView": snapshotView]
+        snapshotView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[snapshotView(300)]", options: [], metrics: nil, views: views))
+        snapshotView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[snapshotView(200)]", options: [], metrics: nil, views: views))
+        
+        let options = MKMapSnapshotOptions()
+        options.size = CGSize(width: width, height: height)
+        options.mapType = .SatelliteFlyover
+        options.camera = MKMapCamera(lookingAtCenterCoordinate: annotationView.annotation!.coordinate, fromDistance: 250, pitch: 65, heading: 0)
+        
+        let snapshotter = MKMapSnapshotter(options: options)
+        snapshotter.startWithCompletionHandler { snapshot, error in
+            if snapshot != nil {
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+                imageView.image = snapshot!.image
+                snapshotView.addSubview(imageView)
+            }
+        }
+        
+        annotationView.detailCalloutAccessoryView = snapshotView
     }
 }
 
