@@ -36,50 +36,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Call helper method to zoom into initialLocation on startup
         centerMapOnLocation(initialLocation)
         
-        // Pin for Akaka falls
-//        let point1 = MKPointAnnotation()
-//        point1.coordinate = CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115)
-//        point1.title = "'Akaka Falls Loop Trail"
-//        point1.subtitle = "'Akaka Falls State Park"
-        
-        // Pin for lava tree loop trail
-        let point2 = MKPointAnnotation()
-        point2.coordinate = CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300)
-        point2.title = "Lava Tree Loop Trail"
-        point2.subtitle = "Lava Tree State Monument"
-        
-        // Pin for college hall
-        let point3 = MKPointAnnotation()
-        point3.coordinate = CLLocationCoordinate2D(latitude: 19.703202, longitude: -155.079654)
-        point3.title = "College Hall Trail"
-        point3.subtitle = "UH Hilo"
-        
-        // Pin for Kilauea Iki Trailhead
-        let point4 = MKPointAnnotation()
-        point4.coordinate = CLLocationCoordinate2D(latitude: 19.416333, longitude: -155.242804)
-        point4.title = "Kilauea Iki Trail"
-        point4.subtitle = "Hawaii Volcanoes National Park"
-        
-        // Pin for Ala Kahakai Trail
-        let point5 = MKPointAnnotation()
-        point5.coordinate = CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178)
-        point5.title = "Ala Kahakai Trail"
-        point5.subtitle = "Kings TRail"
-        
         let akaka = PinInfo(title: "Akaka Falls Loop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), subtitle: "Akaka Falls State Park")
+        let lava = PinInfo(title: "Lava Tree Troop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), subtitle: "Lava Treet State Monument")
+        let college = PinInfo(title: "College Hall Trail", coordinate: CLLocationCoordinate2D(latitude: 19.703202, longitude: -155.079654), subtitle: "UH Hilo")
+        let kilauea = PinInfo(title: "Kilauea Iki Trail", coordinate: CLLocationCoordinate2D(latitude: 19.416333, longitude: -155.242804), subtitle: "Hawaii Volcanoes National Park")
+        let kahakai = PinInfo(title: "Ala Kahakai Trail", coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), subtitle: "Kings Trail")
         
-        mapView.addAnnotation(akaka)
-        
-        // Add annotation "point" for Akaka Falls
-//        mapView.addAnnotation(point1)
-//        // Add annotation "point" for Lava tree loop trail
-//        mapView.addAnnotation(point2)
-//        // Add annotation "point" for college hall
-//        mapView.addAnnotation(point3)
-//        // Add annotation "point" for kilauea iki trail
-//        mapView.addAnnotation(point4)
-//        // Add annotation "point" for Ala Kahakai
-//        mapView.addAnnotation(point5)
+        mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
     }
     
     
