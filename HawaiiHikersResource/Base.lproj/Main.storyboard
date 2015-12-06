@@ -105,18 +105,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3NH-oP-sBB">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="03a-ud-T3B">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="628"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3NH-oP-sBB">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <animations/>
+                                    </mapView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="syW-HU-bgp">
+                                        <rect key="frame" x="0.0" y="600" width="600" height="29"/>
+                                        <animations/>
+                                        <segments>
+                                            <segment title="Standard"/>
+                                            <segment title="Hybrid"/>
+                                            <segment title="Satellite"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="mapTypeControl:" destination="zvs-Qq-kvD" eventType="valueChanged" id="Eps-Qe-t3i"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
                                 <animations/>
-                            </mapView>
+                                <constraints>
+                                    <constraint firstItem="3NH-oP-sBB" firstAttribute="leading" secondItem="03a-ud-T3B" secondAttribute="leading" id="60R-NG-Osf"/>
+                                    <constraint firstAttribute="trailing" secondItem="3NH-oP-sBB" secondAttribute="trailing" id="DDT-HG-0RW"/>
+                                    <constraint firstItem="3NH-oP-sBB" firstAttribute="top" secondItem="03a-ud-T3B" secondAttribute="top" id="dfw-dz-fT2"/>
+                                    <constraint firstAttribute="bottom" secondItem="3NH-oP-sBB" secondAttribute="bottom" constant="28" id="xNi-nx-PA5"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="mapType" destination="syW-HU-bgp" id="LnZ-tK-QIq"/>
+                        <outlet property="trailMapView" destination="3NH-oP-sBB" id="nNI-BA-R3T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOt-mA-OXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="432" y="1003"/>
+            <point key="canvasLocation" x="432" y="1022"/>
         </scene>
         <!--Trail Info Controller-->
         <scene sceneID="uNT-8i-Eha">
