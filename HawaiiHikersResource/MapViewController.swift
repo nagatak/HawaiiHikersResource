@@ -63,12 +63,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             if annotationView == nil
             {
-                
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 annotationView!.canShowCallout = true
                 
-//                let btn = UIButton(type: .DetailDisclosure)
-//                annotationView!.rightCalloutAccessoryView = btn
+                let btn = UIButton(type: .DetailDisclosure)
+                annotationView!.rightCalloutAccessoryView = btn
             }
             else
             {
@@ -76,12 +75,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 annotationView!.annotation = annotation
             }
             
-            configureDetailView(annotationView!)
+            //configureDetailView(annotationView!)
             
             return annotationView
         }
         
         return nil
+    }
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!,
+        calloutAccessoryControlTapped control: UIControl!) {
+            pinMenu()
     }
     
     func configureDetailView(annotationView: MKAnnotationView) {
@@ -108,6 +112,55 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         annotationView.detailCalloutAccessoryView = snapshotView
+    }
+    
+    func pinMenu() {
+        becomeFirstResponder()
+        
+        var menu = UIMenuController.sharedMenuController()
+        var parkInfo = UIMenuItem(title: "Park Info", action: Selector("infoPark"))
+        var trailInfo = UIMenuItem(title: "Trail Info", action: Selector("infoTrail"))
+        var directions = UIMenuItem(title: "Directions", action: Selector("directions"))
+        var weather = UIMenuItem(title: "Weather", action: Selector("weather"))
+        
+        menu.menuItems = [parkInfo, trailInfo, weather, directions]
+        menu.setTargetRect(CGRectMake(100, 80, 50, 50), inView: mapView)
+        menu.setMenuVisible(true, animated: true)
+    }
+    
+    func infoPark() {
+        //Do something here
+    }
+    func infoTrail() {
+        //Do something here
+    }
+    func weather() {
+        //Do something here
+    }
+    func directions() {
+        //Do something here
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        // You need to only return true for the actions you want, otherwise you get the whole range of
+        //  iOS actions. You can see this by just removing the if statement here.
+        if action == Selector("infoPark") {
+            return true
+        }
+        if action == Selector("infoTrail") {
+            return true
+        }
+        if action == Selector("directions") {
+            return true
+        }
+        if action == Selector("weather") {
+            return true
+        }
+        return false
     }
 }
 
