@@ -129,16 +129,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func infoPark() {
-        //Do something here
+        performSegueWithIdentifier("parkInfoIdentifier", sender: nil)
     }
     func infoTrail() {
-        //Do something here
+        performSegueWithIdentifier("trailInfoIdentifier", sender: nil)
     }
     func weather() {
-        //Do something here
+        performSegueWithIdentifier("weatherIdentifier", sender: nil)
     }
     func directions() {
-        //Do something here
+        performSegueWithIdentifier("directionsIdentifier", sender: nil)
     }
     
     override func canBecomeFirstResponder() -> Bool {
