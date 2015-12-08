@@ -26,6 +26,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         // Set initial location to The Big Island, Hawaii
         let initialLocation = CLLocation(latitude: 19.5667, longitude: -155)
+        
         // Rectangular region to display zoom level
         let regionRadius: CLLocationDistance = 140000
         func centerMapOnLocation(location: CLLocation) {
@@ -114,17 +115,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         annotationView.detailCalloutAccessoryView = snapshotView
     }
     
+    
+    //Pre: rightAccessoryCallout button pressed
+    //Post: a ui menu is displayed to select options
     func pinMenu() {
+        
+        //set pinMenu as first responder
         becomeFirstResponder()
         
+        //declarations
         var menu = UIMenuController.sharedMenuController()
         var parkInfo = UIMenuItem(title: "Park Info", action: Selector("infoPark"))
         var trailInfo = UIMenuItem(title: "Trail Info", action: Selector("infoTrail"))
         var directions = UIMenuItem(title: "Directions", action: Selector("directions"))
         var weather = UIMenuItem(title: "Weather", action: Selector("weather"))
         
+        //Place items in menu
         menu.menuItems = [parkInfo, trailInfo, weather, directions]
+        //Placements and specifies the size of menu
         menu.setTargetRect(CGRectMake(100, 80, 50, 50), inView: mapView)
+        //Lets users see the menu
         menu.setMenuVisible(true, animated: true)
     }
     
@@ -141,13 +151,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //Do something here
     }
     
+    //override to allow function to become first responder
     override func canBecomeFirstResponder() -> Bool {
         return true
     }
     
+    //override function called by pinMenu selector
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
-        // You need to only return true for the actions you want, otherwise you get the whole range of
-        //  iOS actions. You can see this by just removing the if statement here.
+        //  Only return true for the actions you want, otherwise you get the whole range of
+        //  iOS actions.
         if action == Selector("infoPark") {
             return true
         }
