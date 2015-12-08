@@ -31,9 +31,9 @@ class WeatherViewController: UIViewController {
         
         //Gets weather data from openweathermap.org, returns a json file.
         //Change Hilo,usa to locationManager.Lat, locationManager.Lon for weather data at current location.
-        getWeatherData("http://api.openweathermap.org/data/2.5/weather?q=Hilo,usa&appid=8ade0e3007865a732a6e6abec729fbd4")
+        //getWeatherData("http://api.openweathermap.org/data/2.5/weather?q=Hilo,usa&appid=8ade0e3007865a732a6e6abec729fbd4")
         
-        //getWeatherData("http://api.openweathermap.org/data/2.5/weather?q=\(city),usa&appid=\(openWeatherAppID)&units=imperial")
+        getWeatherData("http://api.openweathermap.org/data/2.5/weather?q=\(city),usa&appid=\(openWeatherAppID)&units=imperial")
     }
     
     func getWeatherData(urlString: String) {
