@@ -25,7 +25,7 @@ class ParkInfoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selection = 0
+        selection = 2
         
         if selection == 1{parkAkaka()}
         else if selection == 2{parkLavaTree()}
