@@ -55,7 +55,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c01-3E-3tN">
-                                <rect key="frame" x="70" y="86" width="161" height="164"/>
+                                <rect key="frame" x="60" y="100" width="161" height="168"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re6-wE-nyS">
                                         <rect key="frame" x="0.0" y="0.0" width="161" height="21"/>
@@ -72,42 +72,42 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDA-SV-9H0">
-                                        <rect key="frame" x="0.0" y="41" width="161" height="21"/>
+                                        <rect key="frame" x="0.0" y="42" width="161" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Temp ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnM-0k-N8M">
-                                        <rect key="frame" x="0.0" y="62" width="161" height="21"/>
+                                        <rect key="frame" x="0.0" y="63" width="161" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ4-zS-CMg">
-                                        <rect key="frame" x="0.0" y="82" width="161" height="21"/>
+                                        <rect key="frame" x="0.0" y="84" width="161" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Humidity ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKf-6k-QSg">
-                                        <rect key="frame" x="0.0" y="103" width="161" height="21"/>
+                                        <rect key="frame" x="0.0" y="105" width="161" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2V-Ed-kRU">
-                                        <rect key="frame" x="0.0" y="123" width="161" height="21"/>
+                                        <rect key="frame" x="0.0" y="126" width="161" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Pressure ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i74-hI-ICf">
-                                        <rect key="frame" x="0.0" y="144" width="161" height="21"/>
+                                        <rect key="frame" x="0.0" y="147" width="161" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,12 +120,8 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="c01-3E-3tN" firstAttribute="top" secondItem="BVU-ot-LZm" secondAttribute="bottom" constant="22" id="2eM-lA-0gY"/>
-                            <constraint firstItem="c01-3E-3tN" firstAttribute="leading" secondItem="Z0s-al-DfO" secondAttribute="leadingMargin" constant="50" id="9Eg-OA-XHh"/>
-                            <constraint firstItem="c01-3E-3tN" firstAttribute="centerY" secondItem="Z0s-al-DfO" secondAttribute="centerY" id="tar-Ni-8iX"/>
-                            <constraint firstItem="36A-1P-cjf" firstAttribute="top" secondItem="c01-3E-3tN" secondAttribute="bottom" constant="350" id="vNy-VP-lj0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="c01-3E-3tN" secondAttribute="trailing" constant="349" id="xYl-OJ-Qmy"/>
-                            <constraint firstItem="c01-3E-3tN" firstAttribute="centerX" secondItem="Z0s-al-DfO" secondAttribute="centerX" id="zgw-yb-ZZ9"/>
+                            <constraint firstItem="c01-3E-3tN" firstAttribute="leading" secondItem="Z0s-al-DfO" secondAttribute="leadingMargin" constant="40" id="qGZ-WI-r9c"/>
+                            <constraint firstItem="c01-3E-3tN" firstAttribute="top" secondItem="BVU-ot-LZm" secondAttribute="bottom" constant="36" id="uG2-oj-Ezj"/>
                         </constraints>
                     </view>
                     <connections>
@@ -271,10 +267,24 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-7c-jgt">
+                                <rect key="frame" x="20" y="518" width="71" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Trail Maps"/>
+                                <connections>
+                                    <segue destination="zvs-Qq-kvD" kind="show" id="5nY-0j-erI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VVX-aU-3tZ" firstAttribute="top" secondItem="F4g-7c-jgt" secondAttribute="bottom" constant="8" id="98n-nw-lFI"/>
+                            <constraint firstItem="F4g-7c-jgt" firstAttribute="leading" secondItem="mlF-eE-gZk" secondAttribute="leading" constant="20" id="dAG-AV-xoP"/>
+                        </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ztx-gF-1eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
