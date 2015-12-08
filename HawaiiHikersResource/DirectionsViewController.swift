@@ -8,13 +8,70 @@
 
 import MapKit
 
-class DirectionsViewController: UIViewController {
-
+class DirectionsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    
     // TODO: Figure out directions application
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!,
-        calloutAccessoryControlTapped control: UIControl!) {
-            let location = view.annotation as! PinInfo
-            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-            location.mapItem().openInMapsWithLaunchOptions(launchOptions)
+//    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!) {
+//            let location = view.annotation as! PinInfo
+//            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+//            location.mapItem().openInMapsWithLaunchOptions(launchOptions)
+//    }
+    
+    @IBOutlet weak var directDel: MKMapView!
+    
+    var locationManager: CLLocationManager!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        
+//        let dest = CLLocationCoordinate2D()
+        
+        let request = MKDirectionsRequest()
+        let source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))
+        
+        source.name = "Akaka Falls"
+        request.source = source
+        
+        let destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), addressDictionary: nil))
+        destination.name = "Lava Tree"
+        request.destination = destination
+        
+        request.transportType = MKDirectionsTransportType.Automobile
+        
+        var placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil)
+        var mapItem = destination
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+        mapItem.openInMapsWithLaunchOptions(launchOptions)
+    
+//        request.source = MKMapItem.mapItemForCurrentLocation()
+//        request.destination =
+//        request.requestsAlternateRoutes = false
+//        
+//        let directions = MKDirections(request: request)
+//        
+//        directions.calculateDirectionsWithCompletionHandler({(response:
+//            MKDirectionsResponse!, error: NSError!) in
+//            
+//            if error != nil {
+//                // Handle error
+//            } else {
+//                self.showRoute(response)
+//            }
+//            
+//        }
     }
+    
+//    func openInMapsAutomobile(coord:CLLocationCoordinate2D) {
+//        var placemark = MKPlacemark(coordinate: coord, addressDictionary: nil)
+//        var mapItem = MKMapItem(placemark: placemark)
+//        let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+//        mapItem.openInMapsWithLaunchOptions(launchOptions)
+//    }
 }
