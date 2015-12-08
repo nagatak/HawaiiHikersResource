@@ -35,7 +35,6 @@
                         <segue destination="6V8-cc-a8f" kind="show" identifier="weatherIdentifier" id="RLB-d1-eRY"/>
                         <segue destination="KCR-m0-1A7" kind="show" identifier="parkInfoIdentifier" id="hBO-We-6bc"/>
                         <segue destination="nml-Ro-Xhe" kind="show" identifier="trailInfoIdentifier" id="z9A-Gu-7g8"/>
-                        <segue destination="xlD-aU-vHr" kind="show" identifier="directionsIdentifier" id="Ik6-GA-HoW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

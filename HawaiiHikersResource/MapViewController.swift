@@ -14,6 +14,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var locationManager: CLLocationManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -143,7 +145,33 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         performSegueWithIdentifier("weatherIdentifier", sender: nil)
     }
     func directions() {
-        performSegueWithIdentifier("directionsIdentifier", sender: nil)
+        //performSegueWithIdentifier("directionsIdentifier", sender: nil)
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        
+        //        let dest = CLLocationCoordinate2D()
+        
+        let request = MKDirectionsRequest()
+        let source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))
+        
+        source.name = "Akaka Falls"
+        request.source = source
+        
+        let destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), addressDictionary: nil))
+        destination.name = "Lava Tree"
+        request.destination = destination
+        
+        request.transportType = MKDirectionsTransportType.Automobile
+        
+        var placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil)
+        var mapItem = destination
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+        mapItem.openInMapsWithLaunchOptions(launchOptions)
     }
     
     override func canBecomeFirstResponder() -> Bool {
