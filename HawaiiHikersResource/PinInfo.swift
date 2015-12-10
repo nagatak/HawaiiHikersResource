@@ -32,4 +32,11 @@ class PinInfo: NSObject, MKAnnotation {
         
         return mapItem
     }
+    
+    func pinLoc() -> CLLocationCoordinate2D
+    {
+        let pin = coordinate
+        
+        return pin
+    }
 }

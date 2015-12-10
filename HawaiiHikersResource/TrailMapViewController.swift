@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 //enum used by map type selector to switch maps
 enum MapType: Int {
@@ -26,6 +27,21 @@ class TrailMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         trailMapView.delegate = self
+        
+        
+        
+        // Rectangular region to display zoom level
+        let regionRadius: CLLocationDistance = 140000
+    
+        let pinLocation = CLLocation(latitude: 19.5667, longitude: -155)
+        
+        // Function to start the trail on the trail map overlay
+        func centerMapOnPinLocation(location: CLLocation) {
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+            trailMapView.setRegion(coordinateRegion, animated: true)
+        }
+        
+        centerMapOnPinLocation(pinLocation)
         
         //call functions to map overlays
         mapUH()
