@@ -18,20 +18,20 @@ class ParkInfoController: UIViewController {
     @IBOutlet weak var ammenitiesLabel: UILabel!
     @IBOutlet weak var feesLabel: UILabel!
     
-    //selection used to select correct park
-    var selection: Int = 0
+    var toPass: CLLocationCoordinate2D!
+    var passedCoord: CLLocationCoordinate2D!
     
-    //overrides function
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selection = 2
+        passedCoord = toPass
+        print(passedCoord)
         
-        if selection == 1{parkAkaka()}
-        else if selection == 2{parkLavaTree()}
-        else if selection == 3{parkUH()}
-        else if selection == 4{parkHavo()}
-        else if selection == 5{parkHapuna()}
+        if passedCoord.latitude == 19.865850{parkAkaka()}
+        else if passedCoord.latitude == 19.482842{parkLavaTree()}
+        else if passedCoord.latitude == 19.703202{parkUH()}
+        else if passedCoord.latitude == 19.416333{parkHavo()}
+        else if passedCoord.latitude == 19.670625{parkHapuna()}
         else {parkNone()}
     }
     

@@ -19,18 +19,20 @@ class TrailInfoController: UIViewController {
     @IBOutlet weak var trailTerrainLabel: UILabel!
     @IBOutlet weak var trailTypeLabel: UILabel!
     
-    var selection = 0
+    var toPass: CLLocationCoordinate2D!
+    var passedCoord: CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selection = 2
+        passedCoord = toPass
+        print(passedCoord)
         
-        if selection == 1{akakaTrail()}
-        else if selection == 2{lavaTreeTrail()}
-        else if selection == 3{uhTrail()}
-        else if selection == 4{kilaueaIkiTrail()}
-        else if selection == 5{alaKahakaiTrail()}
+        if passedCoord.latitude == 19.865850{akakaTrail()}
+        else if passedCoord.latitude == 19.482842{lavaTreeTrail()}
+        else if passedCoord.latitude == 19.703202{uhTrail()}
+        else if passedCoord.latitude == 19.416333{kilaueaIkiTrail()}
+        else if passedCoord.latitude == 19.670625{alaKahakaiTrail()}
         else {noTrailInfo()}
         
     }
@@ -106,5 +108,14 @@ class TrailInfoController: UIViewController {
         trailHazardsLabel.text = "Hazardous Cliffs"
         trailTerrainLabel.text = "Coastal, Lava Field"
         trailTypeLabel.text = "Natural"
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "trailMapViewIdentifier")
+        {
+            var svc = segue.destinationViewController as! TrailMapViewController
+            
+            svc.toPass = passedCoord
+        }
     }
 }

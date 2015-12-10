@@ -16,10 +16,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var locManager: CLLocationManager?
     
+    var pinCoordinate: CLLocationCoordinate2D!
+    
+    var destination: MKMapItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
         
         locManager = CLLocationManager()
         locManager?.delegate = self
@@ -97,7 +99,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl) {
             
-            print(view)
+            pinCoordinate = view.annotation?.coordinate
             pinMenu()
     }
     
@@ -158,18 +160,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //        let dest = CLLocationCoordinate2D()
         
         let request = MKDirectionsRequest()
-        let source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))
+//        let source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))
+//        
+//        source.name = "Akaka Falls"
+//        request.source = source
+//        
+//        let destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), addressDictionary: nil))
+//        destination.name = "Lava Tree"
+//        request.destination = destination
         
-        source.name = "Akaka Falls"
-        request.source = source
-        
-        let destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), addressDictionary: nil))
-        destination.name = "Lava Tree"
-        request.destination = destination
+        if pinCoordinate.latitude == 19.865850{destination = MKMapItem(placemark:  MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.482842{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.703202{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.703118, longitude: -155.079461), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.416333{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.416409, longitude: -155.242834), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.670625{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), addressDictionary: nil))}
+        else {destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.5667, longitude: -155), addressDictionary: nil))}
         
         request.transportType = MKDirectionsTransportType.Automobile
         
-        var placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil)
         var mapItem = destination
         let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
         mapItem.openInMapsWithLaunchOptions(launchOptions)
@@ -195,6 +203,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             return true
         }
         return false
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "trailInfoIdentifier")
+        {
+            var svc = segue.destinationViewController as! TrailInfoController
+            
+            svc.toPass = pinCoordinate
+        }
+        if(segue.identifier == "parkInfoIdentifier")
+        {
+            var svc = segue.destinationViewController as! ParkInfoController
+            
+            svc.toPass = pinCoordinate
+        }
     }
 }
 

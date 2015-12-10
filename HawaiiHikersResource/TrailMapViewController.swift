@@ -29,10 +29,20 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var myLocations: [CLLocation] = []
     
     
+    var toPass: CLLocationCoordinate2D!
+    var passedCoord: CLLocationCoordinate2D!
+    var lat: Double!
+    var lon: Double!
+    var pinLocation: CLLocation!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
+        passedCoord = toPass
+//        lat = passedCoord.latitude
+//        lon = passedCoord.longitude
+
+        print(passedCoord)
         
         // MARK: initializing the location manager
         manager = CLLocationManager()
@@ -50,6 +60,13 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Shows user location on map
         trailMapView.showsUserLocation = true
         
+        if passedCoord.latitude == 19.865850{pinLocation = CLLocation(latitude: 19.854144, longitude: -155.152367)}
+        else if passedCoord.latitude == 19.482842{pinLocation = CLLocation(latitude: 19.482842, longitude: -154.904300)}
+        else if passedCoord.latitude == 19.703202{pinLocation = CLLocation(latitude: 19.703118, longitude: -155.079461)}
+        else if passedCoord.latitude == 19.416333{pinLocation = CLLocation(latitude: 19.416409, longitude: -155.242834)}
+        else if passedCoord.latitude == 19.670625{pinLocation = CLLocation(latitude: 19.670625, longitude: -156.026178)}
+        else {pinLocation = CLLocation(latitude: 19.5667, longitude: -155)}
+        
         centerMapOnPinLocation(pinLocation)
         
         //call functions to map overlays
@@ -60,9 +77,9 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     // Rectangular region to display zoom level
-    let regionRadius: CLLocationDistance = 140000
+    let regionRadius: CLLocationDistance = 1000
     
-    let pinLocation = CLLocation(latitude: 19.5667, longitude: -155)
+    
     // Function to start the trail on the trail map overlay
     func centerMapOnPinLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
