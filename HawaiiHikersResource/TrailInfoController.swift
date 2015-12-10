@@ -19,12 +19,19 @@ class TrailInfoController: UIViewController {
     @IBOutlet weak var trailTerrainLabel: UILabel!
     @IBOutlet weak var trailTypeLabel: UILabel!
     
+    var selection = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lavaTreeTrail()
+        selection = 2
         
+        if selection == 1{akakaTrail()}
+        else if selection == 2{lavaTreeTrail()}
+        else if selection == 3{uhTrail()}
+        else if selection == 4{kilaueaIkiTrail()}
+        else if selection == 5{alaKahakaiTrail()}
+        else {noTrailInfo()}
         
     }
     

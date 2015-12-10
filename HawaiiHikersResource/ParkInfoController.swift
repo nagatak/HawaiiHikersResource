@@ -31,6 +31,7 @@ class ParkInfoController: UIViewController {
         else if selection == 2{parkLavaTree()}
         else if selection == 3{parkUH()}
         else if selection == 4{parkHavo()}
+        else if selection == 5{parkHapuna()}
         else {parkNone()}
     }
     
@@ -83,6 +84,15 @@ class ParkInfoController: UIViewController {
         regulationsLabel.text = "No alchohol, smoking"
         ammenitiesLabel.text = "Restrooms"
         feesLabel.text = "$15.00"
+    }
+    //FIXME: info not correct
+    func parkHapuna(){
+        parkNameLabel.text = "Hapuna"
+        locationLabel.text = "Westside"
+        activityLabel.text = "Hiking, Sightseeing"
+        regulationsLabel.text = "No alchohol, smoking"
+        ammenitiesLabel.text = "Restrooms"
+        feesLabel.text = "-"
     }
 
 }
