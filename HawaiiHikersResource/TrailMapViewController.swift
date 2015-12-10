@@ -41,8 +41,8 @@ class TrailMapViewController: UIViewController {
     //Map overlay for ch to parking lot
     func mapUH(){
         //array of gps coordinates
-        var points = [CLLocationCoordinate2DMake(19.703111, -155.079463), CLLocationCoordinate2DMake(19.702917, -155.079327), CLLocationCoordinate2DMake(19.7022811, -155.079489), CLLocationCoordinate2DMake(19.702709, -155.07952),
-            CLLocationCoordinate2DMake(19.702672, -155.079952)]
+        var points = [CLLocationCoordinate2DMake(19.703118, -155.079461), CLLocationCoordinate2DMake(19.702924, -155.079330), CLLocationCoordinate2DMake(19.702808, -155.079504), CLLocationCoordinate2DMake(19.702718, -155.079515),
+            CLLocationCoordinate2DMake(19.702678, -155.079586)]
         
         //declaration
         let trail = MKPolyline(coordinates: &points, count: points.count)
