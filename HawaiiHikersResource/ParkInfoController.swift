@@ -18,15 +18,18 @@ class ParkInfoController: UIViewController {
     @IBOutlet weak var ammenitiesLabel: UILabel!
     @IBOutlet weak var feesLabel: UILabel!
     
+    // Declaration of variables
     var toPass: CLLocationCoordinate2D!
     var passedCoord: CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Variable being passed in
         passedCoord = toPass
-        print(passedCoord)
+        //print(passedCoord)
         
+        // Selects correct park info according to latitude
         if passedCoord.latitude == 19.865850{parkAkaka()}
         else if passedCoord.latitude == 19.482842{parkLavaTree()}
         else if passedCoord.latitude == 19.703202{parkUH()}

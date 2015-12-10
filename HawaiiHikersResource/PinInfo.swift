@@ -11,10 +11,12 @@ import UIKit
 import Contacts
 
 class PinInfo: NSObject, MKAnnotation {
+    // Declaration of variables
     var title: String?
     var coordinate: CLLocationCoordinate2D
     var subtitle: String?
     
+    // Initializer
     init(title: String, coordinate: CLLocationCoordinate2D, subtitle: String) {
         self.title = title
         self.coordinate = coordinate
@@ -31,12 +33,5 @@ class PinInfo: NSObject, MKAnnotation {
         mapItem.name = title
         
         return mapItem
-    }
-    
-    func pinLoc() -> CLLocationCoordinate2D
-    {
-        let pin = coordinate
-        
-        return pin
     }
 }

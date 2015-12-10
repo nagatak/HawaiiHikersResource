@@ -10,8 +10,7 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    //outlets for labels in scene
-    
+    // Interface builder outlets
     @IBOutlet weak var locaton: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var temp: UILabel!
@@ -21,7 +20,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var pressure: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     
-    //apikey
+    // Apikey
     let openWeatherAppID = "c95098c4ab0d79ac8dafc441b786c5a4"
     //Change "Hilo"
     var city = "Hilo"
@@ -36,6 +35,7 @@ class WeatherViewController: UIViewController {
         getWeatherData("http://api.openweathermap.org/data/2.5/weather?q=\(city),usa&appid=\(openWeatherAppID)&units=imperial")
     }
     
+    // Gets weather data
     func getWeatherData(urlString: String) {
         
         // FIXME: will crash if passed a nil is unwrapped.
@@ -49,6 +49,7 @@ class WeatherViewController: UIViewController {
         
     }
     
+    // Sets data labels with retrieved weather information from JSON file
     func setLabels(weatherData: NSData) {
         var jsonError: NSError
         var names = [String]()

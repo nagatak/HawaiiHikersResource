@@ -11,17 +11,18 @@ import CoreLocation
 
 class CLController : NSObject, CLLocationManagerDelegate {
     
+    // Declaration of variables
     var locationManager:CLLocationManager = CLLocationManager()
     
     // Initialize the locationManager
     override init() {
         super.init()
         self.locationManager.delegate = self
-        //Request authorization for location services
+        // Request authorization for location services
         self.locationManager.requestAlwaysAuthorization()
-        //Must move at least 5000 meters or 5km for update
+        // Must move at least 5000 meters or 5km for update
         self.locationManager.distanceFilter = 5000
-        //Accuracy set to 1 km
+        // Accuracy set to 1 km
         self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         
         
@@ -51,6 +52,7 @@ class CLController : NSObject, CLLocationManagerDelegate {
         }
     }
     
+    // Reverse geocoding function
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last as CLLocation!
@@ -87,10 +89,5 @@ class CLController : NSObject, CLLocationManagerDelegate {
             }
             
         })
-        //_____________
-        
-        
-        
-        //_____________
     }
 }
