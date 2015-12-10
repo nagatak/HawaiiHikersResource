@@ -14,13 +14,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var locationManager: CLLocationManager!
+    var locManager: CLLocationManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set map view delegate
-        // self.mapView.delegate = self
+    
+        
+        locManager = CLLocationManager()
+        locManager?.delegate = self
+        locManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locManager?.requestAlwaysAuthorization()
+        locManager?.startUpdatingLocation()
         
         // Sets map type to hybrid
         mapView.mapType = MKMapType.Hybrid
@@ -71,7 +76,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 annotationView!.canShowCallout = true
-                
                 let btn = UIButton(type: .DetailDisclosure)
                 annotationView!.rightCalloutAccessoryView = btn
             }
@@ -79,6 +83,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             {
                 
                 annotationView!.annotation = annotation
+            
             }
             
             //configureDetailView(annotationView!)
@@ -91,6 +96,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl) {
+            
+            print(view)
             pinMenu()
     }
     
@@ -146,12 +153,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     func directions() {
         //performSegueWithIdentifier("directionsIdentifier", sender: nil)
-        
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
         
         
         //        let dest = CLLocationCoordinate2D()

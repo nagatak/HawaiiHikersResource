@@ -17,29 +17,38 @@ enum MapType: Int {
     case Satellite
 }
 
-class TrailMapViewController: UIViewController {
+class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
     //Interface builder outlet for trailMapView
     @IBOutlet weak var trailMapView: MKMapView!
     //Interface builder outlet for segemented control (select map type)
     @IBOutlet weak var mapType: UISegmentedControl!
     
+    
+    var manager:CLLocationManager!
+    var myLocations: [CLLocation] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        // MARK: initializing the location manager
+        manager = CLLocationManager()
+        manager.delegate = self
+        // Set accuracy to 10 meters. Change to AccuracyBest if more accuracy is needed.
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        // Always request aurorization from user for location services
+        manager.requestWhenInUseAuthorization()
+        // Starts updating the current gps position
+        //manager.startUpdatingLocation()
+        
         trailMapView.delegate = self
-        
-        
-        
-        // Rectangular region to display zoom level
-        let regionRadius: CLLocationDistance = 140000
-    
-        let pinLocation = CLLocation(latitude: 19.5667, longitude: -155)
-        
-        // Function to start the trail on the trail map overlay
-        func centerMapOnPinLocation(location: CLLocation) {
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
-            trailMapView.setRegion(coordinateRegion, animated: true)
-        }
+        // Sets map type to hybrid
+        trailMapView.mapType = MKMapType.Satellite
+        // Shows user location on map
+        trailMapView.showsUserLocation = true
         
         centerMapOnPinLocation(pinLocation)
         
@@ -49,11 +58,16 @@ class TrailMapViewController: UIViewController {
         mapKilaueaIki()
         
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    // Rectangular region to display zoom level
+    let regionRadius: CLLocationDistance = 140000
+    
+    let pinLocation = CLLocation(latitude: 19.5667, longitude: -155)
+    // Function to start the trail on the trail map overlay
+    func centerMapOnPinLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        trailMapView.setRegion(coordinateRegion, animated: true)
+    }
     //Map overlay for ch to parking lot
     func mapUH(){
         //array of gps coordinates
@@ -113,9 +127,43 @@ class TrailMapViewController: UIViewController {
         return nil
     }
     
+    @IBAction func startBtn(sender: UIBarButtonItem) {
+        //print("button pressed")
+        
+        manager.startUpdatingLocation()
+        trailMapView.showsUserLocation = true
+    }
     
+    @IBAction func stopBtn(sender: UIBarButtonItem) {
+        manager.stopUpdatingLocation()
+        trailMapView.showsUserLocation = false
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        myLocations.append(locations[0] as CLLocation)
+        
+        let spanX = 0.002
+        let spanY = 0.002
+        var newRegion = MKCoordinateRegion(center: trailMapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+        trailMapView.setRegion(newRegion, animated: true)
+        
+        //Uncomment to enable drawing overlay
+//        if (myLocations.count > 1){
+//            var sourceIndex = myLocations.count - 1
+//            var destinationIndex = myLocations.count - 2
+//            
+//            let c1 = myLocations[sourceIndex].coordinate
+//            let c2 = myLocations[destinationIndex].coordinate
+//            var a = [c1, c2]
+//            var polylineTrail = MKPolyline(coordinates: &a, count: a.count)
+//            trailMapView.addOverlay(polylineTrail)
+//        }
+        
+        
+        
+    }
 }
 
 //Extend the trailMapViewController as delegate
-extension TrailMapViewController: MKMapViewDelegate {
-}
+//extension TrailMapViewController: MKMapViewDelegate {
+//}

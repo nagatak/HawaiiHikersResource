@@ -15,11 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     //  Create instance of PushNotificationController
     var pushNotificationController:PushNotificationController?
-
+    
+    var cLController:CLController?
+    // Create instance weatherServices
+    //var weatherServices:WeatherServices?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.pushNotificationController = PushNotificationController()
+        
+        self.cLController = CLController()
         
         // BEGIN----------------------------------------------------------------------------------
         // Mark: - Parse function and
