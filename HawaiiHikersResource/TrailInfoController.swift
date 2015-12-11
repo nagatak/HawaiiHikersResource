@@ -31,7 +31,7 @@ class TrailInfoController: UIViewController {
         passedCoord = toPass
         print(passedCoord)
         
-        // Selects correct trail info according to latitude
+        // Selects correct trail info to display according to latitude
         if passedCoord.latitude == 19.865850{akakaTrail()}
         else if passedCoord.latitude == 19.482842{lavaTreeTrail()}
         else if passedCoord.latitude == 19.703202{uhTrail()}

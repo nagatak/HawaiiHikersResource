@@ -28,6 +28,7 @@ class CLController : NSObject, CLLocationManagerDelegate {
         
     }
     // Checks if user has authorized use of location services
+    // These location services will run in the background
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
         print("didChangeAuthorizationStatus")
@@ -60,7 +61,6 @@ class CLController : NSObject, CLLocationManagerDelegate {
         //Use for debugging prints lat and longitue to output
         //print("didUpdateLocations:  \(location.coordinate.latitude), \(location.coordinate.longitude)")
         
-        
         // Mark: Reverse Geocoding
         let geocoder = CLGeocoder()
         // Func returns city, state, country for weather api
@@ -72,14 +72,11 @@ class CLController : NSObject, CLLocationManagerDelegate {
                 print("Error:  \(e!.localizedDescription)")
             } else {
                 let placemark = placemarks!.last
-                
                 let userInfo = [
                     "city":     placemark!.locality ?? " ",
                     "state":    placemark!.administrativeArea ?? " ",
                     "country":  placemark!.country ?? " "
                     ] as! [NSString: NSString!]
-                
-                
                 
                 //Use for debugging
                 //print("Location:  \(userInfo)")

@@ -29,7 +29,7 @@ class ParkInfoController: UIViewController {
         passedCoord = toPass
         //print(passedCoord)
         
-        // Selects correct park info according to latitude
+        // Selects correct park info to be diasplayed according to latitude passed in
         if passedCoord.latitude == 19.865850{parkAkaka()}
         else if passedCoord.latitude == 19.482842{parkLavaTree()}
         else if passedCoord.latitude == 19.703202{parkUH()}
@@ -38,7 +38,7 @@ class ParkInfoController: UIViewController {
         else {parkNone()}
     }
     
-    //Can delete later probably not needed
+    //TODO: Can delete later probably not needed
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

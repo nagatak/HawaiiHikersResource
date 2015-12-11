@@ -151,25 +151,10 @@
 			children = (
 				04FBFC731BE2F9C700923F9F /* ApiKeys.plist */,
 				0454091B1BE04E67004B9577 /* HawaiiHikersResource */,
-				04FBFC6C1BE2EEF200923F9F /* Social.framework */,
-				04FBFC6A1BE2EEE600923F9F /* Accounts.framework */,
-				04FBFC681BE2EEDC00923F9F /* libz.tbd */,
-				04FBFC661BE2EEB000923F9F /* SystemConfiguration.framework */,
-				04FBFC641BE2EE8F00923F9F /* Security.framework */,
-				04FBFC621BE2EE7500923F9F /* CoreLocation.framework */,
-				04FBFC601BE2EE6400923F9F /* CoreGraphics.framework */,
-				04FBFC5E1BE2EE5600923F9F /* CFNetwork.framework */,
-				04FBFC5C1BE2EE4300923F9F /* AudioToolbox.framework */,
-				045409581BE0502E004B9577 /* libsqlite3.tbd */,
-				045409561BE05011004B9577 /* CoreData.framework */,
-				045409541BE05000004B9577 /* QuartzCore.framework */,
-				045409521BE04EB4004B9577 /* StoreKit.framework */,
-				045409501BE04E9E004B9577 /* MapKit.framework */,
+				048B25AE1C1A4A22009324FD /* Frameworks */,
 				045409331BE04E68004B9577 /* HawaiiHikersResourceTests */,
 				0454093E1BE04E68004B9577 /* HawaiiHikersResourceUITests */,
 				0454091A1BE04E67004B9577 /* Products */,
-				04FBFC5A1BE2EDDD00923F9F /* Parse.framework */,
-				04FBFC581BE2EC5B00923F9F /* Bolts.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,24 +171,15 @@
 		0454091B1BE04E67004B9577 /* HawaiiHikersResource */ = {
 			isa = PBXGroup;
 			children = (
-				04FBFC711BE2F99A00923F9F /* ApiKeys.swift */,
-				04FBFC6E1BE2F68100923F9F /* BridgingHeader.h */,
 				0454091C1BE04E67004B9577 /* AppDelegate.swift */,
-				0454091E1BE04E67004B9577 /* MapViewController.swift */,
 				045409201BE04E67004B9577 /* Main.storyboard */,
-				045409261BE04E68004B9577 /* Assets.xcassets */,
 				045409281BE04E68004B9577 /* LaunchScreen.storyboard */,
-				0454092B1BE04E68004B9577 /* Info.plist */,
+				048B25AA1C1A4649009324FD /* HeaderFiles */,
+				048B25AC1C1A4689009324FD /* viewControllers */,
+				048B25AD1C1A4993009324FD /* SupportFiles */,
+				045409261BE04E68004B9577 /* Assets.xcassets */,
 				0454094D1BE04E89004B9577 /* HawaiiHikersResource.entitlements */,
 				045409231BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld */,
-				04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */,
-				04DFD1B31C05B4D8000AF371 /* ParkInfoController.swift */,
-				04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */,
-				04DFD1B71C05B523000AF371 /* DirectionsViewController.swift */,
-				04DFD1B91C05B68D000AF371 /* TrailMapViewController.swift */,
-				04DFD1BB1C05B75C000AF371 /* WeatherViewController.swift */,
-				E7B882CB1C118B020003CA63 /* PinInfo.swift */,
-				04D70B9C1C19705000F82B68 /* CLController.swift */,
 			);
 			path = HawaiiHikersResource;
 			sourceTree = "<group>";
@@ -224,6 +200,62 @@
 				045409411BE04E68004B9577 /* Info.plist */,
 			);
 			path = HawaiiHikersResourceUITests;
+			sourceTree = "<group>";
+		};
+		048B25AA1C1A4649009324FD /* HeaderFiles */ = {
+			isa = PBXGroup;
+			children = (
+				04FBFC6E1BE2F68100923F9F /* BridgingHeader.h */,
+			);
+			name = HeaderFiles;
+			sourceTree = "<group>";
+		};
+		048B25AC1C1A4689009324FD /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				04DFD1B71C05B523000AF371 /* DirectionsViewController.swift */,
+				0454091E1BE04E67004B9577 /* MapViewController.swift */,
+				04DFD1B31C05B4D8000AF371 /* ParkInfoController.swift */,
+				04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */,
+				04DFD1B91C05B68D000AF371 /* TrailMapViewController.swift */,
+				04DFD1BB1C05B75C000AF371 /* WeatherViewController.swift */,
+			);
+			name = viewControllers;
+			sourceTree = "<group>";
+		};
+		048B25AD1C1A4993009324FD /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				04FBFC711BE2F99A00923F9F /* ApiKeys.swift */,
+				04D70B9C1C19705000F82B68 /* CLController.swift */,
+				0454092B1BE04E68004B9577 /* Info.plist */,
+				E7B882CB1C118B020003CA63 /* PinInfo.swift */,
+				04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */,
+			);
+			name = SupportFiles;
+			sourceTree = "<group>";
+		};
+		048B25AE1C1A4A22009324FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04FBFC6A1BE2EEE600923F9F /* Accounts.framework */,
+				04FBFC5C1BE2EE4300923F9F /* AudioToolbox.framework */,
+				04FBFC581BE2EC5B00923F9F /* Bolts.framework */,
+				04FBFC5E1BE2EE5600923F9F /* CFNetwork.framework */,
+				045409561BE05011004B9577 /* CoreData.framework */,
+				04FBFC601BE2EE6400923F9F /* CoreGraphics.framework */,
+				04FBFC621BE2EE7500923F9F /* CoreLocation.framework */,
+				045409581BE0502E004B9577 /* libsqlite3.tbd */,
+				04FBFC681BE2EEDC00923F9F /* libz.tbd */,
+				045409501BE04E9E004B9577 /* MapKit.framework */,
+				04FBFC5A1BE2EDDD00923F9F /* Parse.framework */,
+				045409541BE05000004B9577 /* QuartzCore.framework */,
+				04FBFC641BE2EE8F00923F9F /* Security.framework */,
+				04FBFC6C1BE2EEF200923F9F /* Social.framework */,
+				045409521BE04EB4004B9577 /* StoreKit.framework */,
+				04FBFC661BE2EEB000923F9F /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

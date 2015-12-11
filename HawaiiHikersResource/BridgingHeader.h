@@ -14,7 +14,8 @@
 //Bridging header for parse framework currently written in Objective-C 
 #import <Parse/Parse.h>
 
-
+//Header for Aeris weather API
+//Delete if another weather api is used
 //#import <Aeris/Aeris.h>
 //#import <AerisUI/AerisUI.h>
 //#import <AerisMap/AerisMap.h>

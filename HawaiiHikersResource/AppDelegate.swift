@@ -16,14 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //  Create instance of PushNotificationController
     var pushNotificationController:PushNotificationController?
     
+    // Declare new CLConrtoller
     var cLController:CLController?
-    // Create instance weatherServices
+    // Declare new weatherServices
     //var weatherServices:WeatherServices?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        //Initialze push notification controller
         self.pushNotificationController = PushNotificationController()
-        
+        //Initialize core location controller
         self.cLController = CLController()
         
         // BEGIN----------------------------------------------------------------------------------
@@ -44,18 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Register for Push Notifications before iOS 8
             //application.registerForRemoteNotificationTypes(UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound)
         }
-        
         //End--------------------------------------------------------------------------------------
-        
-        
-        
         return true
     }
     
     // MARK: - Parse didFailToRegister
     // Code for Parse.com SDK
     // BEGIN----------------------------------------------------------------------------------------
-    
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("didRegisterForRemoteNotificationsWithDeviceToken")

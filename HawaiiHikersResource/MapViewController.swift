@@ -71,7 +71,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // Overloaded function to place annotations on map
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
     {
-        
         let identifier = "PinInfo"
         
         if annotation.isKindOfClass(PinInfo.self)
@@ -95,10 +94,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 annotationView!.annotation = annotation
             
             }
-            
             return annotationView
         }
-        
         return nil
     }
     
@@ -165,7 +162,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapItem.openInMapsWithLaunchOptions(launchOptions)
     }
     
-    // Overrides the function allows a first responder to be declared
+    // Overrides the function allows a new first responder to be designated
     override func canBecomeFirstResponder() -> Bool {
         return true
     }

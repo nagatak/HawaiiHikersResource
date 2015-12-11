@@ -48,15 +48,16 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Always request aurorization from user for location services
         manager.requestWhenInUseAuthorization()
         // Starts updating the current gps position
+        // Uncomment if you want to start tacking as soon as the view loads
         //manager.startUpdatingLocation()
         
         trailMapView.delegate = self
-        // Sets map type to hybrid
+        // Sets default map type to hybrid
         trailMapView.mapType = MKMapType.Satellite
         // Shows user location on map
         trailMapView.showsUserLocation = true
         
-        // Selects correct trail info according to latitude
+        // Selects correct trail info according to latitude passed from MapViewController
         if passedCoord.latitude == 19.865850{pinLocation = CLLocation(latitude: 19.854144, longitude: -155.152367)}
         else if passedCoord.latitude == 19.482842{pinLocation = CLLocation(latitude: 19.482842, longitude: -154.904300)}
         else if passedCoord.latitude == 19.703202{pinLocation = CLLocation(latitude: 19.703118, longitude: -155.079461)}
@@ -67,7 +68,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Calls function to center map on pinLocation
         centerMapOnPinLocation(pinLocation)
         
-        // Call functions to map overlays
+        // Call functions to map trail overlays
         mapUH()
         mapAkaka()
         mapKilaueaIki()
@@ -76,7 +77,6 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     
     // Rectangular region to display zoom level
     let regionRadius: CLLocationDistance = 1000
-    
     
     // Function to start the trail on the trail map overlay
     func centerMapOnPinLocation(location: CLLocation) {
@@ -150,7 +150,9 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     @IBAction func startBtn(sender: UIBarButtonItem) {
         //print("button pressed")
         
+        //Starts updating users location.
         manager.startUpdatingLocation()
+        //Show user's current location, on map.
         trailMapView.showsUserLocation = true
     }
     
@@ -164,12 +166,15 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         myLocations.append(locations[0] as CLLocation)
         
+        //Sets span og viewable area
         let spanX = 0.002
         let spanY = 0.002
+        //Declare new reigon
         var newRegion = MKCoordinateRegion(center: trailMapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+        //Initialze values
         trailMapView.setRegion(newRegion, animated: true)
         
-        //Uncomment to enable drawing overlay
+//        //Uncomment to enable drawing overlay
 //        if (myLocations.count > 1){
 //            var sourceIndex = myLocations.count - 1
 //            var destinationIndex = myLocations.count - 2
@@ -180,12 +185,10 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
 //            var polylineTrail = MKPolyline(coordinates: &a, count: a.count)
 //            trailMapView.addOverlay(polylineTrail)
 //        }
-        
-        
-        
     }
 }
 
-//Extend the trailMapViewController as delegate
+//Extend the trailMapViewController to MKMapViewdelegate
+//Can delete later added to class def.
 //extension TrailMapViewController: MKMapViewDelegate {
 //}
