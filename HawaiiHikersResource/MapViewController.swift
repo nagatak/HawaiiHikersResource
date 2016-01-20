@@ -8,16 +8,17 @@
 
 import UIKit
 import CoreLocation
-import MapKit
+//import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+
+class MapViewController: UIViewController, CLLocationManagerDelegate { // MKMapViewDelegate
 
     // Interface builder for mapView
-    @IBOutlet weak var mapView: MKMapView!
+    //@IBOutlet weak var mapView: MKMapView!
     // Declaration of variables
     var locManager: CLLocationManager?
     var pinCoordinate: CLLocationCoordinate2D!
-    var destination: MKMapItem!
+    //var destination: MKMapItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locManager?.startUpdatingLocation()
         
         // Sets map type to hybrid
-        mapView.mapType = MKMapType.Hybrid
+        //mapView.mapType = MKMapType.Hybrid
         
         // Set initial location to The Big Island, Hawaii
         let initialLocation = CLLocation(latitude: 19.5667, longitude: -155)
@@ -43,9 +44,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Function to start the initial screen on the center of The Big Island, Hawaii
         func centerMapOnLocation(location: CLLocation) {
             // Rectangular region of map to be viewed
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+            //let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
             // Set the region to be viewed with animation
-            mapView.setRegion(coordinateRegion, animated: true)
+            //mapView.setRegion(coordinateRegion, animated: true)
         }
         
         // Call helper method to zoom into initialLocation on startup
@@ -59,7 +60,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let kahakai = PinInfo(title: "Ala Kahakai Trail", coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), subtitle: "Kings Trail")
         
         // Adds the datasets into the map as pin annotations
-        mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
+        //mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
     }
     
     
@@ -69,7 +70,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // Overloaded function to place annotations on map
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
+    /*func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
     {
         let identifier = "PinInfo"
         
@@ -97,16 +98,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             return annotationView
         }
         return nil
-    }
+    }*/
     
     // Overloaded function to tell what to do when right callout accessory button is pressed
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
+    /*func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl) {
             // Gets the current pin coordinates
             pinCoordinate = view.annotation?.coordinate
             // Calls the pinMenu function when pin is tapped
             pinMenu()
-    }
+    }*/
     
     // Creates a new UIMenuController
     func pinMenu() {
@@ -124,7 +125,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Adds the 4 buttons to the menu
         menu.menuItems = [parkInfo, trailInfo, weather, directions]
         // Menu size and location on screen
-        menu.setTargetRect(CGRectMake(100, 80, 50, 50), inView: mapView)
+        //menu.setTargetRect(CGRectMake(100, 80, 50, 50), inView: mapView)
         // Sets the menu to be visible
         menu.setMenuVisible(true, animated: true)
     }
@@ -141,7 +142,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     func directions() {
         // Creates an instance of MKDirectionsRequest
-        let request = MKDirectionsRequest()
+        /*let request = MKDirectionsRequest()
         
         // Determines the destination according to the current pin selected
         if pinCoordinate.latitude == 19.865850{destination = MKMapItem(placemark:  MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))}
@@ -159,7 +160,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Sets the launch options for the native navigation app
         let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
         // Launches the native navigation app
-        mapItem.openInMapsWithLaunchOptions(launchOptions)
+        mapItem.openInMapsWithLaunchOptions(launchOptions)*/
     }
     
     // Overrides the function allows a new first responder to be designated
