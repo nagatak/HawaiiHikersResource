@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var cLController:CLController?
     // Declare new weatherServices
     //var weatherServices:WeatherServices?
+    
+    //switch to google maps
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
