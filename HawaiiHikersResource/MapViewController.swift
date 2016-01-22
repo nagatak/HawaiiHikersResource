@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 //import MapKit
-
+import GoogleMaps
 
 class MapViewController: UIViewController, CLLocationManagerDelegate { // MKMapViewDelegate
 
@@ -33,8 +33,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate { // MKMapV
         // Start updating location
         locManager?.startUpdatingLocation()
         
+        let camera = GMSCameraPosition.cameraWithLatitude(19.5667, longitude: -155.45, zoom: 8.6)
+        let mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
+        
         // Sets map type to hybrid
         //mapView.mapType = MKMapType.Hybrid
+        mapView.mapType = kGMSTypeHybrid
         
         // Set initial location to The Big Island, Hawaii
         let initialLocation = CLLocation(latitude: 19.5667, longitude: -155)
@@ -50,17 +54,44 @@ class MapViewController: UIViewController, CLLocationManagerDelegate { // MKMapV
         }
         
         // Call helper method to zoom into initialLocation on startup
-        centerMapOnLocation(initialLocation)
+        //centerMapOnLocation(initialLocation)
         
         // Datasets for trail locations including trail name, GPS coordinates, & subtitle
-        let akaka = PinInfo(title: "Akaka Falls Loop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), subtitle: "Akaka Falls State Park")
-        let lava = PinInfo(title: "Lava Tree Troop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), subtitle: "Lava Tree State Monument")
-        let college = PinInfo(title: "College Hall Trail", coordinate: CLLocationCoordinate2D(latitude: 19.703202, longitude: -155.079654), subtitle: "UH Hilo")
-        let kilauea = PinInfo(title: "Kilauea Iki Trail", coordinate: CLLocationCoordinate2D(latitude: 19.416333, longitude: -155.242804), subtitle: "Hawaii Volcanoes National Park")
-        let kahakai = PinInfo(title: "Ala Kahakai Trail", coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), subtitle: "Kings Trail")
+        /*let akaka = PinInfo(title: "Akaka Falls Loop Trail", coordinate: CLLocationCoordinate2DMake(19.865850, -155.116115), subtitle: "Akaka Falls State Park")
+        let lava = PinInfo(title: "Lava Tree Troop Trail", coordinate: CLLocationCoordinate2DMake(19.482842, -154.904300), subtitle: "Lava Tree State Monument")
+        let college = PinInfo(title: "College Hall Trail", coordinate: CLLocationCoordinate2DMake(19.703202, -155.079654), subtitle: "UH Hilo")
+        let kilauea = PinInfo(title: "Kilauea Iki Trail", coordinate: CLLocationCoordinate2DMake(19.416333, -155.242804), subtitle: "Hawaii Volcanoes National Park")
+        let kahakai = PinInfo(title: "Ala Kahakai Trail", coordinate: CLLocationCoordinate2DMake(19.670625, -156.026178), subtitle: "Kings Trail")*/
+        let akaka = GMSMarker()
+        akaka.position = CLLocationCoordinate2DMake(19.865850, -155.116115)
+        akaka.snippet = "Akaka Falls Loop Trail"
+        akaka.appearAnimation = kGMSMarkerAnimationPop
+        let lava = GMSMarker()
+        lava.snippet = "Lava Tree Loop Trail"
+        lava.position = CLLocationCoordinate2DMake(19.482842, -154.904300)
+        lava.appearAnimation = kGMSMarkerAnimationPop
+        let college = GMSMarker()
+        college.snippet = "College Hall Trail"
+        college.position = CLLocationCoordinate2DMake(19.703202, -155.079654)
+        college.appearAnimation = kGMSMarkerAnimationPop
+        let kilauea = GMSMarker()
+        kilauea.snippet = "Kilauea Iki Trail"
+        kilauea.position = CLLocationCoordinate2DMake(19.416333, -155.242804)
+        kilauea.appearAnimation = kGMSMarkerAnimationPop
+        let kahakai = GMSMarker()
+        kahakai.snippet = "Ala Kahakai Trail"
+        kahakai.position = CLLocationCoordinate2DMake(19.670625, -156.026178)
+        kahakai.appearAnimation = kGMSMarkerAnimationPop
         
         // Adds the datasets into the map as pin annotations
         //mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
+        akaka.map = mapView
+        lava.map = mapView
+        college.map = mapView
+        kilauea.map = mapView
+        kahakai.map = mapView
+        
+        self.view = mapView
     }
     
     

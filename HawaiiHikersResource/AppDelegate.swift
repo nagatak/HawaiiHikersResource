@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import GoogleMaps
 
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,6 +24,9 @@ import CoreData
     //switch to google maps
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        // GoogleMaps API Key
+        GMSServices.provideAPIKey("AIzaSyD8cHMMRwXaa3gwlKpqOnjCqRA4ClvcYfo")
         
         //Initialze push notification controller
         self.pushNotificationController = PushNotificationController()
