@@ -20,6 +20,7 @@
 		045409551BE05000004B9577 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409541BE05000004B9577 /* QuartzCore.framework */; };
 		045409571BE05011004B9577 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409561BE05011004B9577 /* CoreData.framework */; };
 		045409591BE0502E004B9577 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409581BE0502E004B9577 /* libsqlite3.tbd */; };
+		04C31BF11C5BF49000C8964F /* trailInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 04C31BF01C5BF49000C8964F /* trailInfo.json */; };
 		04D70B9D1C19705000F82B68 /* CLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D70B9C1C19705000F82B68 /* CLController.swift */; };
 		04DFD1B41C05B4D8000AF371 /* ParkInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFD1B31C05B4D8000AF371 /* ParkInfoController.swift */; };
 		04DFD1B61C05B4FF000AF371 /* TrailInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */; };
@@ -81,6 +82,7 @@
 		045409541BE05000004B9577 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		045409561BE05011004B9577 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		045409581BE0502E004B9577 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		04C31BF01C5BF49000C8964F /* trailInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trailInfo.json; sourceTree = "<group>"; };
 		04D70B9C1C19705000F82B68 /* CLController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLController.swift; sourceTree = "<group>"; };
 		04DFD1B31C05B4D8000AF371 /* ParkInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkInfoController.swift; sourceTree = "<group>"; };
 		04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailInfoController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		048B25AD1C1A4993009324FD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				04C31BF01C5BF49000C8964F /* trailInfo.json */,
 				04FBFC711BE2F99A00923F9F /* ApiKeys.swift */,
 				04D70B9C1C19705000F82B68 /* CLController.swift */,
 				0454092B1BE04E68004B9577 /* Info.plist */,
@@ -390,6 +393,7 @@
 				04FBFC741BE2F9C700923F9F /* ApiKeys.plist in Resources */,
 				045409271BE04E68004B9577 /* Assets.xcassets in Resources */,
 				045409221BE04E67004B9577 /* Main.storyboard in Resources */,
+				04C31BF11C5BF49000C8964F /* trailInfo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
