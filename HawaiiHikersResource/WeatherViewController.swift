@@ -20,42 +20,22 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var pressure: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     
-    // Apikey
-    //let openWeatherAppID = "c95098c4ab0d79ac8dafc441b786c5a4"
-    //Change "Hilo"
-    //var city = "Hilo"
-    
     var lat : String!
     var lon : String!
-    
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         lat = "19.692437"
         lon = "-155.084503"
-        
-        
-        //Gets weather data from openweathermap.org, returns a json file.
-        //Change Hilo,usa to locationManager.Lat, locationManager.Lon for weather data at current location.
-        //getWeatherData("http://api.openweathermap.org/data/2.5/weather?q=Hilo,usa&appid=8ade0e3007865a732a6e6abec729fbd4")
-        //getWeatherData("http://api.openweathermap.org/data/2.5/weather?q=\(city),usa&appid=\(openWeatherAppID)&units=imperial")
-        
+
         getWeatherData("http://forecast.weather.gov/MapClick.php?lat=\(lat)&lon=\(lon)&FcstType=json")
         
     }
     
     // Gets weather data
     func getWeatherData(urlString: String) {
-        
-        
-        //let weatherURL: NSURL = NSURL(string:"http://forecast.weather.gov/MapClick.php?lat="+lat+"&lon="+lon+"&FcstType=json")!
-        //let data = NSData(contentsOfURL: weatherURL)!
-        
-        
-        // FIXME: will crash if passed a nil is unwrapped.
+
         var url : NSURL = NSURL(string: urlString)!
         let session = NSURLSession.sharedSession()
         var task = session.dataTaskWithURL(url, completionHandler: {
@@ -63,20 +43,16 @@ class WeatherViewController: UIViewController {
             self.setLabels(data!)
         })
         
-        
         task.resume()
 
     }
     
     // Sets data labels with retrieved weather information from JSON file
     func setLabels(weatherData: NSData) {
-        var jsonError: NSError
-        var names = [String]()
-        
+
         do {
 
             let json = try NSJSONSerialization.JSONObjectWithData(weatherData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
-            
             
             if let json = json{
                 if let currentObservations = json["currentobservation"] as? NSDictionary {
