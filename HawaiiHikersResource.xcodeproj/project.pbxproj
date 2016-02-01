@@ -41,6 +41,7 @@
 		04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBFC711BE2F99A00923F9F /* ApiKeys.swift */; };
 		04FBFC741BE2F9C700923F9F /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04FBFC731BE2F9C700923F9F /* ApiKeys.plist */; };
 		E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B882CB1C118B020003CA63 /* PinInfo.swift */; };
+		E7BAC6B41C5FEA740055AFC5 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAC6B31C5FEA740055AFC5 /* WeatherTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		04FBFC711BE2F99A00923F9F /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		04FBFC731BE2F9C700923F9F /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 		E7B882CB1C118B020003CA63 /* PinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
+		E7BAC6B31C5FEA740055AFC5 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 		048B25AC1C1A4689009324FD /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E7BAC6B31C5FEA740055AFC5 /* WeatherTableViewCell.swift */,
 				04DFD1B71C05B523000AF371 /* DirectionsViewController.swift */,
 				0454091E1BE04E67004B9577 /* MapViewController.swift */,
 				04DFD1B31C05B4D8000AF371 /* ParkInfoController.swift */,
@@ -425,6 +428,7 @@
 				04D70B9D1C19705000F82B68 /* CLController.swift in Sources */,
 				04DFD1B41C05B4D8000AF371 /* ParkInfoController.swift in Sources */,
 				04DFD1B61C05B4FF000AF371 /* TrailInfoController.swift in Sources */,
+				E7BAC6B41C5FEA740055AFC5 /* WeatherTableViewCell.swift in Sources */,
 				04DFD1BA1C05B68D000AF371 /* TrailMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
