@@ -25,7 +25,6 @@
 		04D70B9D1C19705000F82B68 /* CLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D70B9C1C19705000F82B68 /* CLController.swift */; };
 		04DFD1B41C05B4D8000AF371 /* ParkInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFD1B31C05B4D8000AF371 /* ParkInfoController.swift */; };
 		04DFD1B61C05B4FF000AF371 /* TrailInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */; };
-		04DFD1B81C05B523000AF371 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFD1B71C05B523000AF371 /* DirectionsViewController.swift */; };
 		04DFD1BA1C05B68D000AF371 /* TrailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFD1B91C05B68D000AF371 /* TrailMapViewController.swift */; };
 		04DFD1BC1C05B75C000AF371 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFD1BB1C05B75C000AF371 /* WeatherViewController.swift */; };
 		04FBFC591BE2EC5B00923F9F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC581BE2EC5B00923F9F /* Bolts.framework */; };
@@ -88,7 +87,6 @@
 		04D70B9C1C19705000F82B68 /* CLController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLController.swift; sourceTree = "<group>"; };
 		04DFD1B31C05B4D8000AF371 /* ParkInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkInfoController.swift; sourceTree = "<group>"; };
 		04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailInfoController.swift; sourceTree = "<group>"; };
-		04DFD1B71C05B523000AF371 /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		04DFD1B91C05B68D000AF371 /* TrailMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapViewController.swift; sourceTree = "<group>"; };
 		04DFD1BB1C05B75C000AF371 /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		04FBFC581BE2EC5B00923F9F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Frameworks/Bolts.framework; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 		048B25AC1C1A4689009324FD /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				04DFD1B71C05B523000AF371 /* DirectionsViewController.swift */,
 				0454091E1BE04E67004B9577 /* MapViewController.swift */,
 				04DFD1B31C05B4D8000AF371 /* ParkInfoController.swift */,
 				04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */,
@@ -428,7 +425,6 @@
 				045409251BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld in Sources */,
 				0454091F1BE04E67004B9577 /* MapViewController.swift in Sources */,
 				0454091D1BE04E67004B9577 /* AppDelegate.swift in Sources */,
-				04DFD1B81C05B523000AF371 /* DirectionsViewController.swift in Sources */,
 				04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */,
 				04D70B9D1C19705000F82B68 /* CLController.swift in Sources */,
 				04DFD1B41C05B4D8000AF371 /* ParkInfoController.swift in Sources */,
