@@ -32,12 +32,12 @@ class TrailInfoController: UIViewController {
         print(passedCoord)
         
         // Selects correct trail info to display according to latitude
-        if passedCoord.latitude == 19.865850{akakaTrail()}
-        else if passedCoord.latitude == 19.482842{lavaTreeTrail()}
-        else if passedCoord.latitude == 19.703202{uhTrail()}
-        else if passedCoord.latitude == 19.416333{kilaueaIkiTrail()}
-        else if passedCoord.latitude == 19.670625{alaKahakaiTrail()}
-        else {noTrailInfo()}
+        if passedCoord.latitude == 19.865850{loadTrailInfo("akaka001")}
+        else if passedCoord.latitude == 19.482842{loadTrailInfo("lavatree001")}
+        else if passedCoord.latitude == 19.703202{loadTrailInfo("uh")}
+        else if passedCoord.latitude == 19.416333{loadTrailInfo("havo001")}
+        else if passedCoord.latitude == 19.670625{loadTrailInfo("king001")}
+        else {loadTrailInfo("trailid")}
         
     }
     
@@ -46,74 +46,6 @@ class TrailInfoController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    // Sets information for labels
-    func noTrailInfo(){
-        trailNameLabel.text = ""
-        difficultyLabel.text = ""
-        distanceLabel.text = ""
-        trailActivityLabel.text = ""
-        trailRegulationsLabel.text = ""
-        trailHazardsLabel.text = ""
-        trailTerrainLabel.text = ""
-        trailTypeLabel.text = ""
-    }
-    // Sets information for labels
-    func akakaTrail(){
-        trailNameLabel.text = "'Akaka Falls Loop Trail"
-        difficultyLabel.text = "Easy"
-        distanceLabel.text = "0.4 Miles"
-        trailActivityLabel.text = "Hiking, Sightseeing"
-        trailRegulationsLabel.text = "No Bicycles, pets, smoking"
-        trailHazardsLabel.text = "-"
-        trailTerrainLabel.text = "Forested"
-        trailTypeLabel.text = "Paved"
-    }
-    // Sets information for labels
-    func lavaTreeTrail(){
-        trailNameLabel.text = "Lava Trees Loop Trail"
-        difficultyLabel.text = "Easy"
-        distanceLabel.text = "0.7 Miles"
-        trailActivityLabel.text = "Hiking, Sightseeing"
-        trailRegulationsLabel.text = "No Bicycles, pets, smoking"
-        trailHazardsLabel.text = "Hazardous Cliffs"
-        trailTerrainLabel.text = "Cool, Forested"
-        trailTypeLabel.text = "Semi-Paved"
-    }
-    // Sets information for labels
-    func kilaueaIkiTrail(){
-        
-        trailNameLabel.text = "Kilauea Iki"
-        difficultyLabel.text = "Moderate"
-        distanceLabel.text = "4 miles"
-        trailActivityLabel.text = "Hiking, Sightseeing"
-        trailRegulationsLabel.text = "Do not disturb Ahu"
-        trailHazardsLabel.text = "-"
-        trailTerrainLabel.text = "Lava Rock Field"
-        trailTypeLabel.text = "Natural"
-    }
-    // Sets information for labels
-    func uhTrail(){
-        trailNameLabel.text = "Test Trail"
-        difficultyLabel.text = "Easy"
-        distanceLabel.text = "0.1 Miles"
-        trailActivityLabel.text = "-"
-        trailRegulationsLabel.text = "-"
-        trailHazardsLabel.text = "-"
-        trailTerrainLabel.text = ""
-        trailTypeLabel.text = "Paved"
-    }
-    // Sets information for labels
-    func alaKahakaiTrail(){
-        trailNameLabel.text = "Ala Kahakai Trail"
-        difficultyLabel.text = "Moderate"
-        distanceLabel.text = "15.4 Miles"
-        trailActivityLabel.text = "Hiking, Sightseeing"
-        trailRegulationsLabel.text = "No motorized vehicles, bicycles, camping"
-        trailHazardsLabel.text = "Hazardous Cliffs"
-        trailTerrainLabel.text = "Coastal, Lava Field"
-        trailTypeLabel.text = "Natural"
-    }
-    
     // Override function to allow passing variables between scenes
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "trailMapViewIdentifier")
@@ -125,4 +57,43 @@ class TrailInfoController: UIViewController {
             svc.toPass = passedCoord
         }
     }
-}
+    
+    func loadTrailInfo(trailId: String){
+        
+        let parksURL: NSURL = [#FileReference(fileReferenceLiteral: "trailInfo.json")#]
+        let parkData = NSData(contentsOfURL: parksURL)!
+        
+        do{
+            let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
+            
+            if let trails = json![trailId]{
+                
+                if let trailName = trails["trailName"] as? String{
+                    trailNameLabel.text = trailName
+                }
+                if let difficulty = trails["difficulty"] as? String{
+                    difficultyLabel.text = difficulty
+                }
+                if let distance = trails["length"] as? String{
+                    distanceLabel.text = distance
+                }
+                if let activity = trails["activities"] as? String{
+                    trailActivityLabel.text = activity
+                }
+                if let regulations = trails["regulations"] as? String{
+                    trailRegulationsLabel.text = regulations
+                }
+                if let other = trails["other"] as? String{
+                    trailHazardsLabel.text = other
+                }
+                if let terrain = trails["terrain"] as? String{
+                    trailTerrainLabel.text = terrain
+                }
+                if let type = trails["trailType"] as? String{
+                    trailTypeLabel.text = type
+                }
+            }
+        } catch {
+            print("error serializing JSON: \(error)")
+        }
+    }}

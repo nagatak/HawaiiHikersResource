@@ -86,9 +86,7 @@ class WeatherViewController: UIViewController {
                         print(forecast[0])
                     }
                 }
- 
             }
-            
         } catch {
             //Throw an error if not a json or no file
             print("error serializing JSON: \(error)")

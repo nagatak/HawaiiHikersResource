@@ -1,0 +1,44 @@
+
+{
+    "id": [
+         {
+            "trailName": "",
+            "parkName": "",
+            "lat": "",
+            "lon":"",
+            "activities":"",
+            "regulations":"",
+            "trailType":"",
+            "difficulty":"",
+            "terrain":"",
+            "location":"",
+            "length":"",
+            "contact":"",
+            "services":"",
+            "ammenities":"",
+            "fees":"",
+            "other":""
+         }
+        ],
+    "001":
+            {
+           "trailName":"'Akaka Falls Loop Trail",
+           "parkName":"'Akaka Falls State Park",
+           "lat":"19.865850",
+           "lon":"-155.116115",
+           "activities":"Hiking, Sightseeing",
+           "regulations":"No Bicycles, No Pets, No Smoking, No Open Fires, No Alcohol",
+           "trailType":"Paved Loop",
+           "difficulty":"*",
+           "terrain":"Forested",
+           "location":"‘Akaka Falls Road (Highway 220)",
+           "length":"0.4",
+           "contact":"Division of State Parks: (808) 961-9540",
+           "services":"",
+           "ammenities":"Restroom, Trash Cans, Water Fountain",
+           "fees":"5.00",
+           "other":""
+            }
+          ,
+
+}

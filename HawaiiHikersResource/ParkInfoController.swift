@@ -25,13 +25,32 @@ class ParkInfoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var parkId: String!
+        parkId = "001"
+        
+//        let parksURL: NSURL = [#FileReference(fileReferenceLiteral: "trailInfo.json")#]
+//        let parkData = NSData(contentsOfURL: parksURL)!
+//
+//        do{
+//            let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
+//            
+//                        if let parks = json![parkId]{
+//                            
+//                            if let parkName = parks["parkName"] as? String{
+//                                print(parkName)
+//                            }
+////print(parks)
+//                        }
+//        } catch {
+//                print("error serializing JSON: \(error)")
+//        }
         // Variable being passed in
         passedCoord = toPass
         //print(passedCoord)
         
         // Selects correct park info to be diasplayed according to latitude passed in
-        if passedCoord.latitude == 19.865850{parkAkaka()}
-        else if passedCoord.latitude == 19.482842{parkLavaTree()}
+        if passedCoord.latitude == 19.865850{loadParkInfo("001")}
+        else if passedCoord.latitude == 19.482842{loadParkInfo(parkId)}
         else if passedCoord.latitude == 19.703202{parkUH()}
         else if passedCoord.latitude == 19.416333{parkHavo()}
         else if passedCoord.latitude == 19.670625{parkHapuna()}
@@ -97,5 +116,47 @@ class ParkInfoController: UIViewController {
         ammenitiesLabel.text = "Restrooms"
         feesLabel.text = "-"
     }
-
+    
+    func loadParkInfo(parkId: String){
+        
+        let parksURL: NSURL = [#FileReference(fileReferenceLiteral: "parkInfo.json")#]
+        let parkData = NSData(contentsOfURL: parksURL)!
+        
+        do{
+            let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
+            
+            if let parks = json![parkId]{
+                
+                if let parkName = parks["parkName"] as? String{
+                    print(parkName)
+                    parkNameLabel.text = parkName
+                }
+                if let activities = parks["activities"] as? String{
+                    print(activities)
+                    activityLabel.text = activities
+                }
+                if let regulations = parks["regulations"] as? String{
+                    print(regulations)
+                    regulationsLabel.text = regulations
+                }
+                if let parkLocation = parks["location"] as? String{
+                    print(parkLocation)
+                    locationLabel.text = parkLocation
+                }
+                if let ammenities = parks["ammenities"] as? String{
+                    print(ammenities)
+                    ammenitiesLabel.text = ammenities
+                }
+                if let fees = parks["fees"] as? String{
+                    print(fees)
+                    feesLabel.text = fees
+                }
+                if let contact = parks["contact"] as? String{
+                    print(contact)
+                }
+            }
+        } catch {
+            print("error serializing JSON: \(error)")
+        }
+    }
 }
