@@ -206,6 +206,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             // Variable to be passed
             svc.toPass = pinCoordinate
         }
+        // Checks for weatherIdentifier segue
+        if(segue.identifier == "weatherIdentifier")
+        {
+            // Creates link from current ViewController to TrailInfoController
+            var svc = segue.destinationViewController as! WeatherViewController
+            
+            // Variable to be passed
+            svc.toPass = pinCoordinate
+        }
     }
 }
 
