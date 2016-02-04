@@ -32,7 +32,7 @@
                         <outlet property="mapView" destination="N9k-lO-gvD" id="G1W-K9-V5I"/>
                         <segue destination="6V8-cc-a8f" kind="show" identifier="weatherIdentifier" id="RLB-d1-eRY"/>
                         <segue destination="KCR-m0-1A7" kind="show" identifier="parkInfoIdentifier" id="hBO-We-6bc"/>
-                        <segue destination="nml-Ro-Xhe" kind="presentation" identifier="trailInfoIdentifier" id="z9A-Gu-7g8"/>
+                        <segue destination="nml-Ro-Xhe" kind="show" identifier="trailInfoIdentifier" id="z9A-Gu-7g8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -399,13 +399,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIk-Bz-1Fa">
-                                <rect key="frame" x="20" y="28" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="close:" destination="nml-Ro-Xhe" eventType="touchUpInside" id="z7x-28-PYc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
