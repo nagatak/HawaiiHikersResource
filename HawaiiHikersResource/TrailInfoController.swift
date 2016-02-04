@@ -19,6 +19,9 @@ class TrailInfoController: UIViewController {
     @IBOutlet weak var trailHazardsLabel: UILabel!
     @IBOutlet weak var trailTerrainLabel: UILabel!
     @IBOutlet weak var trailTypeLabel: UILabel!
+    @IBAction func close(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: {});
+    }
     
     // Declaration of variables
     var toPass: CLLocationCoordinate2D!

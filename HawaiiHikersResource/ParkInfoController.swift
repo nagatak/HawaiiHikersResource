@@ -34,10 +34,10 @@ class ParkInfoController: UIViewController {
         
         // Selects correct park info to be diasplayed according to latitude passed in
         if passedCoord.latitude == 19.865850{loadParkInfo("001")}
-        else if passedCoord.latitude == 19.482842{loadParkInfo(parkId)}
-        else if passedCoord.latitude == 19.703202{loadParkInfo(parkId)}
-        else if passedCoord.latitude == 19.416333{loadParkInfo(parkId)}
-        else if passedCoord.latitude == 19.670625{loadParkInfo(parkId)}
+        else if passedCoord.latitude == 19.482842{loadParkInfo("002")}
+        else if passedCoord.latitude == 19.703202{loadParkInfo("uh")}
+        else if passedCoord.latitude == 19.416333{loadParkInfo("003")}
+        else if passedCoord.latitude == 19.670625{loadParkInfo("004")}
         else {loadParkInfo(parkId)}
     }
     
