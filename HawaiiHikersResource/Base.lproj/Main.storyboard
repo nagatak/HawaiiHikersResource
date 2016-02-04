@@ -32,7 +32,7 @@
                         <outlet property="mapView" destination="N9k-lO-gvD" id="G1W-K9-V5I"/>
                         <segue destination="6V8-cc-a8f" kind="show" identifier="weatherIdentifier" id="RLB-d1-eRY"/>
                         <segue destination="KCR-m0-1A7" kind="show" identifier="parkInfoIdentifier" id="hBO-We-6bc"/>
-                        <segue destination="nml-Ro-Xhe" kind="show" identifier="trailInfoIdentifier" id="z9A-Gu-7g8"/>
+                        <segue destination="nml-Ro-Xhe" kind="presentation" identifier="trailInfoIdentifier" modalPresentationStyle="overFullScreen" id="z9A-Gu-7g8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -62,35 +62,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJW-vY-YdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1963" y="-420"/>
-        </scene>
-        <!--Directions View Controller-->
-        <scene sceneID="8W4-UU-4EV">
-            <objects>
-                <viewController id="xlD-aU-vHr" customClass="DirectionsViewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KKp-SH-8wi"/>
-                        <viewControllerLayoutGuide type="bottom" id="clJ-ny-MUq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WIm-1W-3Us">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yqS-cd-Ptn">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <outlet property="delegate" destination="xlD-aU-vHr" id="8g4-Hz-9W1"/>
-                                </connections>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="directDel" destination="yqS-cd-Ptn" id="wzY-Oy-G9h"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gkh-NU-V7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1151" y="289"/>
         </scene>
         <!--Park Info Controller-->
         <scene sceneID="ZrG-EZ-Ka8">
@@ -248,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOt-mA-OXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="396" y="1018"/>
+            <point key="canvasLocation" x="1244" y="1210"/>
         </scene>
         <!--Trail Info Controller-->
         <scene sceneID="uNT-8i-Eha">
@@ -365,6 +336,22 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WGS-dY-jLe">
+                                <rect key="frame" x="20" y="28" width="100" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Close" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKS-xO-2pw">
+                                        <rect key="frame" x="28" y="1" width="44" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="iib-Wa-Gwb" appends="YES" id="944-8R-1sQ"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -375,6 +362,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="closeTap" destination="WGS-dY-jLe" id="rSK-S5-wvo"/>
                         <outlet property="difficultyLabel" destination="XIF-Q9-nJg" id="Ww3-C5-pFA"/>
                         <outlet property="distanceLabel" destination="dRQ-co-Md8" id="ZJu-TK-my0"/>
                         <outlet property="trailActivityLabel" destination="Saq-AM-yyC" id="j8c-vx-g3Y"/>
@@ -386,8 +374,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ztx-gF-1eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iib-Wa-Gwb">
+                    <connections>
+                        <action selector="tapRec:" destination="nml-Ro-Xhe" id="dXv-Pd-J65"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="432" y="289"/>
+            <point key="canvasLocation" x="1244" y="393"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Oh6-c5-QB3">

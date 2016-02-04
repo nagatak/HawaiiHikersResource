@@ -20,6 +20,16 @@ class TrailInfoController: UIViewController {
     @IBOutlet weak var trailTerrainLabel: UILabel!
     @IBOutlet weak var trailTypeLabel: UILabel!
     
+    @IBOutlet weak var closeTap: UIView!
+    
+    @IBAction func tapRec(sender: AnyObject) {
+        tappedView()
+    }
+    
+    @IBAction func closeBtn(sender: UIButton) {
+               self.dismissViewControllerAnimated(true, completion: {});
+    }
+    
     // Declaration of variables
     var toPass: CLLocationCoordinate2D!
     var passedCoord: CLLocationCoordinate2D!
@@ -27,6 +37,32 @@ class TrailInfoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //always fill the view
+            blurEffectView.frame = self.view.bounds
+            blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            
+            self.view.addSubview(blurEffectView)
+            
+            //if you have more UIViews, use an insertSubview API to place it where needed
+            
+            trailNameLabel.textColor = UIColor(white: 1.0, alpha: 0.7)
+        }
+        else {
+            self.view.backgroundColor = UIColor.blackColor()
+        }
+        
+
+        self.view.addSubview(closeTap)
+        
+        //view?.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
         // Variable being passed in
         passedCoord = toPass
         print(passedCoord)
@@ -57,7 +93,13 @@ class TrailInfoController: UIViewController {
             svc.toPass = passedCoord
         }
     }
-    
+    func tappedView(){
+//        let tapAlert = UIAlertController(title: "Tapped", message: "You just tapped the tap view", preferredStyle: UIAlertControllerStyle.Alert)
+//        tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
+//        self.presentViewController(tapAlert, animated: true, completion: nil)
+        
+        self.dismissViewControllerAnimated(true, completion: {});
+    }
     func loadTrailInfo(trailId: String){
         
         let parksURL: NSURL = [#FileReference(fileReferenceLiteral: "trailInfo.json")#]
@@ -70,9 +112,11 @@ class TrailInfoController: UIViewController {
                 
                 if let trailName = trails["trailName"] as? String{
                     trailNameLabel.text = trailName
+                    self.view.addSubview(trailNameLabel)
                 }
                 if let difficulty = trails["difficulty"] as? String{
                     difficultyLabel.text = difficulty
+                    self.view.addSubview(difficultyLabel)
                 }
                 if let distance = trails["length"] as? String{
                     distanceLabel.text = distance
@@ -92,8 +136,11 @@ class TrailInfoController: UIViewController {
                 if let type = trails["trailType"] as? String{
                     trailTypeLabel.text = type
                 }
+            
             }
         } catch {
             print("error serializing JSON: \(error)")
         }
-    }}
+    }
+
+}

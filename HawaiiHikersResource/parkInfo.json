@@ -1,7 +1,7 @@
 
 {
-    "id": [
-         {
+    "id":
+        {
             "trailName": "",
             "parkName": "",
             "lat": "",
@@ -18,8 +18,7 @@
             "ammenities":"",
             "fees":"",
             "other":""
-         }
-        ],
+         },
     "001":
             {
            "trailName":"'Akaka Falls Loop Trail",
@@ -36,9 +35,140 @@
            "contact":"Division of State Parks: (808) 961-9540",
            "services":"",
            "ammenities":"Restroom, Trash Cans, Water Fountain",
-           "fees":"5.00",
+           "fees":"$5.00 per car, $1.00 per person.",
            "other":""
-            }
-          ,
-
+            },
+    "002":
+    {
+        "trailName": "Lava Trees Loop Trail",
+        "parkName": "Lava Trees State Monument",
+        "lat": "",
+        "lon":"",
+        "activities":"Hiking, Sightseeing",
+        "regulations":"No Bicycles, No Pets, No Smoking, No Open Fires, No Alcohol",
+        "trailType":"",
+        "difficulty":"",
+        "terrain":"",
+        "location":"HI-132, Pāhoa, HI 96778",
+        "length":"",
+        "contact":"",
+        "services":"",
+        "ammenities":"Restroom, Picnic Table",
+        "fees":"-",
+        "other":"Hazardous Cliffs"
+    },
+    "003":
+    {
+        "trailName": "Kilauea Iki",
+        "parkName": "Hawaii Volcanoes National Park",
+        "lat": "",
+        "lon": "",
+        "activities":"Hiking, Sightseeing",
+        "regulations":"Do not disturb Ahu, National Park Regulations",
+        "trailType":"Natural Path",
+        "difficulty":"",
+        "terrain":"",
+        "location":"Hawaii Volcanoes National Park, HI 96718",
+        "length":"",
+        "contact":"(808) 985-6000",
+        "services":"",
+        "ammenities":"Varies by location.",
+        "fees":"$15.00 per vehicle (7 Days), $8.00 per individual or bicycle (7 Days), $10.00 per motorcycle (7 Days).",
+        "other":""
+    },
+    "uh":
+    {
+        "trailName": "College Hall Test Trail",
+        "parkName": "University of Hawaii at Hilo",
+        "lat": "",
+        "lon":"",
+        "activities":"-",
+        "regulations":"-",
+        "trailType":"paved",
+        "difficulty":"*",
+        "terrain":"-",
+        "location":"University of Hawaii at Hilo",
+        "length":".01",
+        "contact":"-",
+        "services":"-",
+        "ammenities":"Restrooms, Water Fountain",
+        "fees":"-",
+        "other":"-"
+    },
+    "004":
+    {
+        "trailName": "Ala Kahakai Trail",
+        "parkName": "Hāpuna Beach State Recreation Area",
+        "lat": "",
+        "lon":"",
+        "activities":"Beachgoing, fishing, snorkeling, swimming",
+        "regulations":"No Motorized Vehicles/ATV's, No Animals/Pets, No Alcholic Beverages, No Camping, No Smoking, No Driving on Beach.",
+        "trailType":"",
+        "difficulty":"",
+        "terrain":"",
+        "location":"Hāpuna Beach State Recreation Area",
+        "length":"",
+        "contact":"",
+        "services":"",
+        "ammenities":"Lodging, Picnic Table, Showers, Water Fountain, Food Concession, Picnic Pavilion, Restrooms, Trash Cans.",
+        "fees":"$5.00 per visitor vehicle parking fee",
+        "other":""
+    },
+    "005":
+    {
+        "trailName": "Kalopa Nature Trail",
+        "parkName": "Kalōpā State Recreation Area",
+        "lat": "",
+        "lon": "",
+        "activities":"Hiking, Sightseeing, Camping",
+        "regulations":"No Bicycles, No Motorized Vehicles/ATV's, No Open Fires, No Animals/Pets, No Littering, No Smoking.",
+        "trailType":"",
+        "difficulty":"",
+        "terrain":"Native ‘Ohi’a Rainforest",
+        "location":"",
+        "length":"",
+        "contact":"",
+        "services":"",
+        "ammenities":"Picnic Table, Restroom, Trash Cans, Water Fountain",
+        "fees":"-",
+        "other":""
+    },
+    "006":
+    {
+        "trailName": "Lapakahi Village Interpretive Trail",
+        "parkName": "Lapakahi State Historical Park",
+        "lat": "",
+        "lon":"",
+        "activities":"Hiking, Sightseeing",
+        "regulations":"No Motorized Vehicles/ATV's, No Alcoholic Beverages, No Smoking, No Animals/Pets, No Fishing, No Commercial Activites",
+        "trailType":"",
+        "difficulty":"",
+        "terrain":"Dry, Open Coast",
+        "location":"Lapakahi State Historical Park",
+        "length":"",
+        "contact":"",
+        "services":"",
+        "ammenities":"Restroom, Trash Cans",
+        "fees":"-",
+        "other":"Dangerous Shorebreak, Strong Current"
+    },
+    "007":
+    {
+        "trailName": "Manuka Nature Trail",
+        "parkName": "Manukā State Wayside",
+        "lat": "",
+        "lon":"",
+        "activities":"Hiking, Sightseeing",
+        "regulations":"No Bicycles, No Open Fires, No Littering, No Smoking",
+        "trailType":"Semi-Paved",
+        "difficulty":"",
+        "terrain":"Cool, Forested",
+        "location":"Mamalahoa Highway (Highway 11), 19.3 miles west of Na’alehu.",
+        "length":"",
+        "contact":"",
+        "services":"",
+        "ammenities":"Picnic Table, Restroom, Trash Cans",
+        "fees":"-",
+        "other":""
+    },
 }
