@@ -10,7 +10,6 @@ import UIKit
 
 class WeatherViewController: UITableViewController {
     
-    @IBOutlet weak var weatherView: UIView!
     
     @IBOutlet var locationCell: UITableView!
     @IBOutlet var weatherTable: UITableView!
@@ -18,6 +17,7 @@ class WeatherViewController: UITableViewController {
     @IBAction func swipeClose(sender: AnyObject) {
         closeSwipe()
     }
+
     // Declaration of variables
     var lat : Double!
     var lon : Double!
@@ -27,10 +27,8 @@ class WeatherViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         if !UIAccessibilityIsReduceTransparencyEnabled() {
-            //self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
             
             let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -41,13 +39,10 @@ class WeatherViewController: UITableViewController {
             self.tableView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
             self.tableView.opaque = false
             self.tableView.backgroundView = blurEffectView
-            //self.view.addSubview(blurEffectView)
         }
         else {
-            self.view.backgroundColor = UIColor.blackColor()
+            self.tableView.backgroundColor = UIColor.blackColor()
         }
-        
-
         
         // Variable being passed in
         passedCoord = toPass
@@ -58,11 +53,6 @@ class WeatherViewController: UITableViewController {
         //getWeatherData("http://forecast.weather.gov/MapClick.php?lat=\(lat)&lon=\(lon)&FcstType=json")
         
         getWeather(String(lat), lon: String(lon))
-        //print(String(lat), String(lon))
-        
-        self.weatherView.backgroundColor = UIColor.clearColor()
-        
-        self.view.addSubview(weatherView)
     
     
     }
@@ -79,6 +69,9 @@ class WeatherViewController: UITableViewController {
             let json = try NSJSONSerialization.JSONObjectWithData(weatherData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
             
             if let json = json{
+                
+                tableData.addObject(" ")
+                
                 if let currentObservations = json["currentobservation"] as? NSDictionary {
                     if let Temp = currentObservations["Temp"] as? String{
                         //tempLabel.text = Temp
@@ -133,6 +126,8 @@ class WeatherViewController: UITableViewController {
     
     func closeSwipe() {
         self.dismissViewControllerAnimated(true, completion: {})
+        
+        print("swiped")
     }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -173,4 +168,6 @@ class WeatherViewController: UITableViewController {
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+
 }

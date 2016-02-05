@@ -15,8 +15,28 @@ class ParkInfoController: UITableViewController {
     var passedCoord: CLLocationCoordinate2D!
     var tableData : NSMutableArray = []
     
+    @IBAction func swipeClose(sender: AnyObject) {
+        closeSwipe()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            //self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //always fill the view
+            blurEffectView.frame = self.view.bounds
+            blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            
+            self.tableView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+            self.tableView.opaque = false
+            self.tableView.backgroundView = blurEffectView
+        }
+        else {
+            self.view.backgroundColor = UIColor.blackColor()
+        }
         
         var parkId: String!
         parkId = "001"
@@ -50,6 +70,8 @@ class ParkInfoController: UITableViewController {
             let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
             
             if let parks = json![parkId]{
+                
+                tableData.addObject(" ")
                 
                 if let parkName = parks["parkName"] as? String{
                     print(parkName)
@@ -109,6 +131,17 @@ class ParkInfoController: UITableViewController {
         //cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         //cell.textLabel?.sizeToFit()
         
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //always fill the view
+        blurEffectView.frame = self.view.bounds
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        
+        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundView = blurEffectView
+        cell.opaque = false
+        cell.textLabel?.textColor = UIColor(white:0.8, alpha: 1.0)
+        
         return cell
     }
     
@@ -119,4 +152,8 @@ class ParkInfoController: UITableViewController {
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    func closeSwipe() {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+
 }

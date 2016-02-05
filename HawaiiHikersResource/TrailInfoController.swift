@@ -9,26 +9,10 @@
 
 class TrailInfoController: UITableViewController {
 
-    // Interface builder outlets
-//    @IBOutlet weak var trailNameLabel: UILabel!
-//    @IBOutlet weak var difficultyLabel: UILabel!
-//    @IBOutlet weak var distanceLabel: UILabel!
-//    @IBOutlet weak var trailActivityLabel: UILabel!
-//    @IBOutlet weak var trailRegulationsLabel: UILabel!
-//    @IBOutlet weak var trailHazardsLabel: UILabel!
-//    @IBOutlet weak var trailTerrainLabel: UILabel!
-//    @IBOutlet weak var trailTypeLabel: UILabel!
     
-    @IBOutlet weak var closeTap: UIView!
-    
-    @IBAction func tapRec(sender: AnyObject) {
-        tappedView()
+    @IBAction func swipeClose(sender: AnyObject) {
+        closeSwipe()
     }
-    
-    @IBAction func closeBtn(sender: UIButton) {
-               self.dismissViewControllerAnimated(true, completion: {});
-    }
-    
     // Declaration of variables
     var toPass: CLLocationCoordinate2D!
     var passedCoord: CLLocationCoordinate2D!
@@ -46,26 +30,15 @@ class TrailInfoController: UITableViewController {
             blurEffectView.frame = self.view.bounds
             blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             
-            //self.view.addSubview(blurEffectView)
-            
-            //if you have more UIViews, use an insertSubview API to place it where needed
-            
-//            trailNameLabel.textColor = UIColor(white: 1.0, alpha: 0.7)
-            
-            //self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
             
             self.tableView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
             self.tableView.opaque = false
             self.tableView.backgroundView = blurEffectView
-            //self.view.addSubview(blurEffectView)
         }
         else {
             self.view.backgroundColor = UIColor.blackColor()
         }
-        
-        //self.view.addSubview(closeTap)
-        
-        //view?.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
+ 
         // Variable being passed in
         passedCoord = toPass
         print(passedCoord)
@@ -96,13 +69,13 @@ class TrailInfoController: UITableViewController {
             svc.toPass = passedCoord
         }
     }
-    func tappedView(){
-//        let tapAlert = UIAlertController(title: "Tapped", message: "You just tapped the tap view", preferredStyle: UIAlertControllerStyle.Alert)
-//        tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
-//        self.presentViewController(tapAlert, animated: true, completion: nil)
-        
-        self.dismissViewControllerAnimated(true, completion: {});
-    }
+//    func tappedView(){
+////        let tapAlert = UIAlertController(title: "Tapped", message: "You just tapped the tap view", preferredStyle: UIAlertControllerStyle.Alert)
+////        tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
+////        self.presentViewController(tapAlert, animated: true, completion: nil)
+//        
+//        self.dismissViewControllerAnimated(true, completion: {});
+//    }
     func loadTrailInfo(trailId: String){
         
         let parksURL: NSURL = [#FileReference(fileReferenceLiteral: "trailInfo.json")#]
@@ -111,7 +84,10 @@ class TrailInfoController: UITableViewController {
         do{
             let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
             
+            
             if let trails = json![trailId]{
+                
+                tableData.addObject(" ")
                 
                 if let trailName = trails["trailName"] as? String{
 //                    trailNameLabel.text = trailName
@@ -193,4 +169,7 @@ class TrailInfoController: UITableViewController {
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-}
+    
+    func closeSwipe() {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }}
