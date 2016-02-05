@@ -7,18 +7,17 @@
 //
 
 
-
-class TrailInfoController: UIViewController {
+class TrailInfoController: UITableViewController {
 
     // Interface builder outlets
-    @IBOutlet weak var trailNameLabel: UILabel!
-    @IBOutlet weak var difficultyLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var trailActivityLabel: UILabel!
-    @IBOutlet weak var trailRegulationsLabel: UILabel!
-    @IBOutlet weak var trailHazardsLabel: UILabel!
-    @IBOutlet weak var trailTerrainLabel: UILabel!
-    @IBOutlet weak var trailTypeLabel: UILabel!
+//    @IBOutlet weak var trailNameLabel: UILabel!
+//    @IBOutlet weak var difficultyLabel: UILabel!
+//    @IBOutlet weak var distanceLabel: UILabel!
+//    @IBOutlet weak var trailActivityLabel: UILabel!
+//    @IBOutlet weak var trailRegulationsLabel: UILabel!
+//    @IBOutlet weak var trailHazardsLabel: UILabel!
+//    @IBOutlet weak var trailTerrainLabel: UILabel!
+//    @IBOutlet weak var trailTypeLabel: UILabel!
     
     @IBOutlet weak var closeTap: UIView!
     
@@ -33,12 +32,10 @@ class TrailInfoController: UIViewController {
     // Declaration of variables
     var toPass: CLLocationCoordinate2D!
     var passedCoord: CLLocationCoordinate2D!
+    var tableData: NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         
         if !UIAccessibilityIsReduceTransparencyEnabled() {
             self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
@@ -53,14 +50,13 @@ class TrailInfoController: UIViewController {
             
             //if you have more UIViews, use an insertSubview API to place it where needed
             
-            trailNameLabel.textColor = UIColor(white: 1.0, alpha: 0.7)
+//            trailNameLabel.textColor = UIColor(white: 1.0, alpha: 0.7)
         }
         else {
             self.view.backgroundColor = UIColor.blackColor()
         }
         
-
-        self.view.addSubview(closeTap)
+        //self.view.addSubview(closeTap)
         
         //view?.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
         // Variable being passed in
@@ -111,30 +107,38 @@ class TrailInfoController: UIViewController {
             if let trails = json![trailId]{
                 
                 if let trailName = trails["trailName"] as? String{
-                    trailNameLabel.text = trailName
-                    self.view.addSubview(trailNameLabel)
+//                    trailNameLabel.text = trailName
+//                    self.view.addSubview(trailNameLabel)
+                    tableData.addObject("Trail Name: \(trailName)")
                 }
                 if let difficulty = trails["difficulty"] as? String{
-                    difficultyLabel.text = difficulty
-                    self.view.addSubview(difficultyLabel)
+//                    difficultyLabel.text = difficulty
+//                    self.view.addSubview(difficultyLabel)
+                    tableData.addObject("Difficulty: \(difficulty)")
                 }
                 if let distance = trails["length"] as? String{
-                    distanceLabel.text = distance
+//                    distanceLabel.text = distance
+                    tableData.addObject("Distance: \(distance)")
                 }
                 if let activity = trails["activities"] as? String{
-                    trailActivityLabel.text = activity
+//                    trailActivityLabel.text = activity
+                    tableData.addObject("Activity: \(activity)")
                 }
                 if let regulations = trails["regulations"] as? String{
-                    trailRegulationsLabel.text = regulations
+//                    trailRegulationsLabel.text = regulations
+                    tableData.addObject("Regulations: \(regulations)")
                 }
                 if let other = trails["other"] as? String{
-                    trailHazardsLabel.text = other
+//                    trailHazardsLabel.text = other
+                    tableData.addObject("Other: \(other)")
                 }
                 if let terrain = trails["terrain"] as? String{
-                    trailTerrainLabel.text = terrain
+//                    trailTerrainLabel.text = terrain
+                    tableData.addObject("Terrain: \(terrain)")
                 }
                 if let type = trails["trailType"] as? String{
-                    trailTypeLabel.text = type
+//                    trailTypeLabel.text = type
+                    tableData.addObject("Trail Type: \(type)")
                 }
             
             }
@@ -142,5 +146,33 @@ class TrailInfoController: UIViewController {
             print("error serializing JSON: \(error)")
         }
     }
-
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        cell.textLabel?.text = tableData[indexPath.row] as? String
+        cell.textLabel?.numberOfLines = 0
+        //cell.textLabel?.textAlignment = NSTextAlignment.Center
+        //cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        //cell.textLabel?.sizeToFit()
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 }
