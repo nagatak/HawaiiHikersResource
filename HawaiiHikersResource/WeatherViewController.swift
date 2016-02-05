@@ -69,6 +69,9 @@ class WeatherViewController: UITableViewController {
             let json = try NSJSONSerialization.JSONObjectWithData(weatherData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
             
             if let json = json{
+                
+                tableData.addObject(" ")
+                
                 if let currentObservations = json["currentobservation"] as? NSDictionary {
                     if let Temp = currentObservations["Temp"] as? String{
                         //tempLabel.text = Temp

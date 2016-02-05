@@ -71,6 +71,8 @@ class ParkInfoController: UITableViewController {
             
             if let parks = json![parkId]{
                 
+                tableData.addObject(" ")
+                
                 if let parkName = parks["parkName"] as? String{
                     print(parkName)
                     //parkNameLabel.text = parkName
