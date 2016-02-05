@@ -10,17 +10,9 @@ import UIKit
 
 class WeatherViewController: UITableViewController {
     
-    // Interface builder outlets
-    /*@IBOutlet weak var locaton: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var temp: UILabel!
-    @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var humidity: UILabel!
-    @IBOutlet weak var humidityLabel: UILabel!
-    @IBOutlet weak var pressure: UILabel!
-    @IBOutlet weak var pressureLabel: UILabel!*/
     
     @IBOutlet var locationCell: UITableView!
+    @IBOutlet var weatherTable: UITableView!
     
     // Declaration of variables
     var lat : Double!
@@ -31,6 +23,27 @@ class WeatherViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            //self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //always fill the view
+            blurEffectView.frame = self.view.bounds
+            blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            
+            self.tableView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+            self.tableView.opaque = false
+            self.tableView.backgroundView = blurEffectView
+            //self.view.addSubview(blurEffectView)
+        }
+        else {
+            self.view.backgroundColor = UIColor.blackColor()
+        }
+        
+
         
         // Variable being passed in
         passedCoord = toPass
@@ -45,21 +58,12 @@ class WeatherViewController: UITableViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //self.view.addSubview(tableView)
+    
+    
     }
     
-    // Gets weather data
-//    func getWeatherData(urlString: String) {
-//
-//        var url : NSURL = NSURL(string: urlString)!
-//        let session = NSURLSession.sharedSession()
-//        var task = session.dataTaskWithURL(url, completionHandler: {
-//            (data, response, error) -> Void in
-//            self.setLabels(data!)
-//        })
-//        
-//        task.resume()
-//
-//    }
     
     // Sets data labels with retrieved weather information from JSON file
     func getWeather(lat: String, lon: String){
@@ -143,6 +147,17 @@ class WeatherViewController: UITableViewController {
         //cell.textLabel?.textAlignment = NSTextAlignment.Center
         //cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         //cell.textLabel?.sizeToFit()
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //always fill the view
+        blurEffectView.frame = self.view.bounds
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        
+        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundView = blurEffectView
+        cell.opaque = false
+        cell.textLabel?.textColor = UIColor(white:0.8, alpha: 1.0)
         
         return cell
     }
