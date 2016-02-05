@@ -58,7 +58,7 @@ class WeatherViewController: UITableViewController {
         //getWeatherData("http://forecast.weather.gov/MapClick.php?lat=\(lat)&lon=\(lon)&FcstType=json")
         
         getWeather(String(lat), lon: String(lon))
-        print(String(lat), String(lon))
+        //print(String(lat), String(lon))
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -148,8 +148,6 @@ class WeatherViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-    
-        //print(tableData)
         
         cell.textLabel?.text = tableData[indexPath.row] as? String
         cell.textLabel?.numberOfLines = 0

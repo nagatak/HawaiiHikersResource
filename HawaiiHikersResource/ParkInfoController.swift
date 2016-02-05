@@ -8,19 +8,12 @@
 
 
 
-class ParkInfoController: UIViewController {
-    
-    //Interface builder outlet references
-    @IBOutlet weak var parkNameLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var activityLabel: UILabel!
-    @IBOutlet weak var regulationsLabel: UILabel!
-    @IBOutlet weak var ammenitiesLabel: UILabel!
-    @IBOutlet weak var feesLabel: UILabel!
+class ParkInfoController: UITableViewController {
     
     // Declaration of variables
     var toPass: CLLocationCoordinate2D!
     var passedCoord: CLLocationCoordinate2D!
+    var tableData : NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,34 +53,70 @@ class ParkInfoController: UIViewController {
                 
                 if let parkName = parks["parkName"] as? String{
                     print(parkName)
-                    parkNameLabel.text = parkName
+                    //parkNameLabel.text = parkName
+                    tableData.addObject("Name: \(parkName)")
                 }
                 if let activities = parks["activities"] as? String{
                     print(activities)
-                    activityLabel.text = activities
+                    //activityLabel.text = activities
+                    tableData.addObject("Activities: \(activities)")
                 }
                 if let regulations = parks["regulations"] as? String{
                     print(regulations)
-                    regulationsLabel.text = regulations
+                    //regulationsLabel.text = regulations
+                    tableData.addObject("Regulations: \(regulations)")
                 }
                 if let parkLocation = parks["location"] as? String{
                     print(parkLocation)
-                    locationLabel.text = parkLocation
+                    //locationLabel.text = parkLocation
+                    tableData.addObject("Location: \(parkLocation)")
                 }
                 if let ammenities = parks["ammenities"] as? String{
                     print(ammenities)
-                    ammenitiesLabel.text = ammenities
+                    //ammenitiesLabel.text = ammenities
+                    tableData.addObject("Ammenities: \(ammenities)")
                 }
                 if let fees = parks["fees"] as? String{
                     print(fees)
-                    feesLabel.text = fees
+                    //feesLabel.text = fees
+                    tableData.addObject("Fees: \(fees)")
                 }
                 if let contact = parks["contact"] as? String{
                     print(contact)
+                    tableData.addObject("Contact: \(contact)")
                 }
             }
         } catch {
             print("error serializing JSON: \(error)")
         }
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        cell.textLabel?.text = tableData[indexPath.row] as? String
+        cell.textLabel?.numberOfLines = 0
+        //cell.textLabel?.textAlignment = NSTextAlignment.Center
+        //cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        //cell.textLabel?.sizeToFit()
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }
