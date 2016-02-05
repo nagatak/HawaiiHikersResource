@@ -27,7 +27,8 @@ class WeatherViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //Set up design and color for tableview
         if !UIAccessibilityIsReduceTransparencyEnabled() {
             
             let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
@@ -54,23 +55,21 @@ class WeatherViewController: UITableViewController {
         
         getWeather(String(lat), lon: String(lon))
     
-    
     }
-    
     
     // Sets data labels with retrieved weather information from JSON file
     func getWeather(lat: String, lon: String){
-        
+        //specify url for weather api
         let weatherURL: NSURL = NSURL(string:"http://forecast.weather.gov/MapClick.php?lat=\(lat)&lon=\(lon)&FcstType=json")!
         let weatherData = NSData(contentsOfURL: weatherURL)!
         
         do {
-
             let json = try NSJSONSerialization.JSONObjectWithData(weatherData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
             
             if let json = json{
                 
                 tableData.addObject(" ")
+                
                 if let weatherLoc = json ["location"] as? NSDictionary {
                     if let areaDescription = weatherLoc["areaDescription"]{
                         tableData.addObject("Location: \(areaDescription)")
@@ -132,7 +131,7 @@ class WeatherViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
-    
+    //Set up cell design
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
