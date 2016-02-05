@@ -10,7 +10,6 @@ import UIKit
 
 class WeatherViewController: UITableViewController {
     
-    @IBOutlet weak var weatherView: UIView!
     
     @IBOutlet var locationCell: UITableView!
     @IBOutlet var weatherTable: UITableView!
@@ -18,9 +17,7 @@ class WeatherViewController: UITableViewController {
     @IBAction func swipeClose(sender: AnyObject) {
         closeSwipe()
     }
-    @IBAction func tableSwipe(sender: AnyObject) {
-        closeSwipe()
-    }
+
     // Declaration of variables
     var lat : Double!
     var lon : Double!
@@ -32,7 +29,6 @@ class WeatherViewController: UITableViewController {
         super.viewDidLoad()
 
         if !UIAccessibilityIsReduceTransparencyEnabled() {
-            //self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
             
             let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -43,13 +39,10 @@ class WeatherViewController: UITableViewController {
             self.tableView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
             self.tableView.opaque = false
             self.tableView.backgroundView = blurEffectView
-            //self.view.addSubview(blurEffectView)
         }
         else {
-            self.view.backgroundColor = UIColor.blackColor()
+            self.tableView.backgroundColor = UIColor.blackColor()
         }
-        
-
         
         // Variable being passed in
         passedCoord = toPass
@@ -60,15 +53,6 @@ class WeatherViewController: UITableViewController {
         //getWeatherData("http://forecast.weather.gov/MapClick.php?lat=\(lat)&lon=\(lon)&FcstType=json")
         
         getWeather(String(lat), lon: String(lon))
-        //print(String(lat), String(lon))
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        
-        self.weatherView.backgroundColor = UIColor.clearColor()
-        
-        self.view.addSubview(weatherView)
     
     
     }
@@ -139,6 +123,8 @@ class WeatherViewController: UITableViewController {
     
     func closeSwipe() {
         self.dismissViewControllerAnimated(true, completion: {})
+        
+        print("swiped")
     }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

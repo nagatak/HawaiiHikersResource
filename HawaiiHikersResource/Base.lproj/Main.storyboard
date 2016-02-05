@@ -31,7 +31,7 @@
                     <connections>
                         <outlet property="mapView" destination="N9k-lO-gvD" id="G1W-K9-V5I"/>
                         <segue destination="6V8-cc-a8f" kind="presentation" identifier="weatherIdentifier" modalPresentationStyle="overFullScreen" id="RLB-d1-eRY"/>
-                        <segue destination="KCR-m0-1A7" kind="show" identifier="parkInfoIdentifier" id="hBO-We-6bc"/>
+                        <segue destination="KCR-m0-1A7" kind="presentation" identifier="parkInfoIdentifier" modalPresentationStyle="overFullScreen" id="hBO-We-6bc"/>
                         <segue destination="nml-Ro-Xhe" kind="presentation" identifier="trailInfoIdentifier" modalPresentationStyle="overFullScreen" id="z9A-Gu-7g8"/>
                     </connections>
                 </viewController>
@@ -48,15 +48,6 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="TA9-km-GdP">
-                            <rect key="frame" x="0.0" y="72" width="600" height="617"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <gestureRecognizers/>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="6NS-UX-FIn" appends="YES" id="MOS-5b-wDi"/>
-                            </connections>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="gQc-vy-LiY">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
@@ -67,28 +58,22 @@
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="xiF-EK-BhH" appends="YES" id="Ww4-ld-RlR"/>
+                                    <outletCollection property="gestureRecognizers" destination="dhH-vs-quj" appends="YES" id="ViQ-qY-PSl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="6NS-UX-FIn" appends="YES" id="YaU-DU-272"/>
+                            <outletCollection property="gestureRecognizers" destination="dhH-vs-quj" appends="YES" id="Y1R-GI-8u2"/>
                         </connections>
                     </tableView>
                     <connections>
                         <outlet property="weatherTable" destination="CC8-NN-Bln" id="ypb-sK-Y56"/>
-                        <outlet property="weatherView" destination="TA9-km-GdP" id="Bni-Kk-ytS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJW-vY-YdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="6NS-UX-FIn">
+                <swipeGestureRecognizer direction="right" id="dhH-vs-quj">
                     <connections>
-                        <action selector="swipeClose:" destination="6V8-cc-a8f" id="kl3-1b-tT8"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="xiF-EK-BhH">
-                    <connections>
-                        <action selector="tableSwipe:" destination="6V8-cc-a8f" id="0i6-Cf-O0z"/>
+                        <action selector="swipeClose:" destination="6V8-cc-a8f" id="mzZ-Nz-gav"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -102,19 +87,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="6EK-fs-7ah">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6EK-fs-7ah" id="t0Q-tf-QGQ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gWD-KN-fiZ" appends="YES" id="ky3-vR-DUn"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="gWD-KN-fiZ" appends="YES" id="XQi-7k-ocf"/>
+                        </connections>
                     </tableView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYE-3I-AoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="gWD-KN-fiZ">
+                    <connections>
+                        <action selector="swipeClose:" destination="KCR-m0-1A7" id="BuI-8g-FxR"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-234" y="289"/>
         </scene>
