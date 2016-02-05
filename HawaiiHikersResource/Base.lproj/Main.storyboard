@@ -47,6 +47,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="TA9-km-GdP">
+                            <rect key="frame" x="0.0" y="72" width="600" height="617"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="6NS-UX-FIn" appends="YES" id="MOS-5b-wDi"/>
+                            </connections>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="gQc-vy-LiY">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
@@ -57,12 +67,21 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6NS-UX-FIn" appends="YES" id="YaU-DU-272"/>
+                        </connections>
                     </tableView>
                     <connections>
                         <outlet property="weatherTable" destination="CC8-NN-Bln" id="ypb-sK-Y56"/>
+                        <outlet property="weatherView" destination="TA9-km-GdP" id="Bni-Kk-ytS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJW-vY-YdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="6NS-UX-FIn">
+                    <connections>
+                        <action selector="swipeClose:" destination="6V8-cc-a8f" id="kl3-1b-tT8"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1963" y="-420"/>
         </scene>

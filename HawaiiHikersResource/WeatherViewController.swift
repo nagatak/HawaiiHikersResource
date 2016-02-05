@@ -10,10 +10,14 @@ import UIKit
 
 class WeatherViewController: UITableViewController {
     
+    @IBOutlet weak var weatherView: UIView!
     
     @IBOutlet var locationCell: UITableView!
     @IBOutlet var weatherTable: UITableView!
     
+    @IBAction func swipeClose(sender: AnyObject) {
+        closeSwipe()
+    }
     // Declaration of variables
     var lat : Double!
     var lon : Double!
@@ -59,7 +63,9 @@ class WeatherViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        //self.view.addSubview(tableView)
+        self.weatherView.backgroundColor = UIColor.clearColor()
+        
+        self.view.addSubview(weatherView)
     
     
     }
@@ -128,6 +134,9 @@ class WeatherViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func closeSwipe() {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
