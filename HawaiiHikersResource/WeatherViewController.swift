@@ -140,7 +140,7 @@ class WeatherViewController: UITableViewController {
         
         cell.textLabel?.text = tableData[indexPath.row] as? String
         cell.textLabel?.numberOfLines = 0
-        //cell.textLabel?.textAlignment = NSTextAlignment.Center
+        cell.textLabel?.textAlignment = NSTextAlignment.Center
         //cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         //cell.textLabel?.sizeToFit()
         

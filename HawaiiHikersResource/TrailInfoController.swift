@@ -46,11 +46,18 @@ class TrailInfoController: UITableViewController {
             blurEffectView.frame = self.view.bounds
             blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             
-            self.view.addSubview(blurEffectView)
+            //self.view.addSubview(blurEffectView)
             
             //if you have more UIViews, use an insertSubview API to place it where needed
             
 //            trailNameLabel.textColor = UIColor(white: 1.0, alpha: 0.7)
+            
+            //self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
+            
+            self.tableView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+            self.tableView.opaque = false
+            self.tableView.backgroundView = blurEffectView
+            //self.view.addSubview(blurEffectView)
         }
         else {
             self.view.backgroundColor = UIColor.blackColor()
@@ -161,9 +168,20 @@ class TrailInfoController: UITableViewController {
         
         cell.textLabel?.text = tableData[indexPath.row] as? String
         cell.textLabel?.numberOfLines = 0
-        //cell.textLabel?.textAlignment = NSTextAlignment.Center
+        cell.textLabel?.textAlignment = NSTextAlignment.Center
         //cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         //cell.textLabel?.sizeToFit()
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //always fill the view
+        blurEffectView.frame = self.view.bounds
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        
+        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundView = blurEffectView
+        cell.opaque = false
+        cell.textLabel?.textColor = UIColor(white:0.8, alpha: 1.0)
         
         return cell
     }
