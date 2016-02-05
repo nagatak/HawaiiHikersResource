@@ -72,7 +72,6 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         mapUH()
         mapAkaka()
         mapKilaueaIki()
-        
     }
     
     // Rectangular region to display zoom level
@@ -85,6 +84,9 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Set the region to be viewed with animation
         trailMapView.setRegion(coordinateRegion, animated: true)
     }
+    
+    
+    
     
     // Map overlay for ch to parking lot
     func mapUH(){
@@ -144,6 +146,11 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             return polylineRenderer
         }
         return nil
+    }
+    
+    
+    @IBAction func closeBtn(sender: UIButton, forEvent event: UIEvent) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     // Start button starts updating users location and shows location

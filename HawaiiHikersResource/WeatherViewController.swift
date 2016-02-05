@@ -60,9 +60,6 @@ class WeatherViewController: UITableViewController {
         getWeather(String(lat), lon: String(lon))
         //print(String(lat), String(lon))
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         self.weatherView.backgroundColor = UIColor.clearColor()
         
         self.view.addSubview(weatherView)
@@ -151,7 +148,7 @@ class WeatherViewController: UITableViewController {
         
         cell.textLabel?.text = tableData[indexPath.row] as? String
         cell.textLabel?.numberOfLines = 0
-        //cell.textLabel?.textAlignment = NSTextAlignment.Center
+        cell.textLabel?.textAlignment = NSTextAlignment.Center
         //cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         //cell.textLabel?.sizeToFit()
         
