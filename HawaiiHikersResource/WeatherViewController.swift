@@ -18,6 +18,9 @@ class WeatherViewController: UITableViewController {
     @IBAction func swipeClose(sender: AnyObject) {
         closeSwipe()
     }
+    @IBAction func tableSwipe(sender: AnyObject) {
+        closeSwipe()
+    }
     // Declaration of variables
     var lat : Double!
     var lon : Double!
@@ -27,8 +30,7 @@ class WeatherViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         if !UIAccessibilityIsReduceTransparencyEnabled() {
             //self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
             
@@ -62,6 +64,7 @@ class WeatherViewController: UITableViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
         
         self.weatherView.backgroundColor = UIColor.clearColor()
         
@@ -176,4 +179,6 @@ class WeatherViewController: UITableViewController {
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+
 }
