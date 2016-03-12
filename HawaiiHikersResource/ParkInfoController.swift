@@ -15,14 +15,15 @@ class ParkInfoController: UITableViewController {
     var passedCoord: CLLocationCoordinate2D!
     var tableData : NSMutableArray = []
     
+    //interface builder swipe gesture recognizer
     @IBAction func swipeClose(sender: AnyObject) {
         closeSwipe()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //if user allows tranparency sets blur and transparency
         if !UIAccessibilityIsReduceTransparencyEnabled() {
-            //self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
             
             let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -30,6 +31,7 @@ class ParkInfoController: UITableViewController {
             blurEffectView.frame = self.view.bounds
             blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             
+            //set tableview color and background
             self.tableView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
             self.tableView.opaque = false
             self.tableView.backgroundView = blurEffectView
@@ -43,7 +45,6 @@ class ParkInfoController: UITableViewController {
 
         // Variable being passed in
         passedCoord = toPass
-        //print(passedCoord)
         
         // Selects correct park info to be diasplayed according to latitude passed in
         if passedCoord.latitude == 19.865850{loadParkInfo("001")}
@@ -63,9 +64,11 @@ class ParkInfoController: UITableViewController {
     
     func loadParkInfo(parkId: String){
         
+        //select json file to load data
         let parksURL: NSURL = [#FileReference(fileReferenceLiteral: "parkInfo.json")#]
         let parkData = NSData(contentsOfURL: parksURL)!
         
+        //Add data from json to table
         do{
             let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
             
@@ -74,37 +77,24 @@ class ParkInfoController: UITableViewController {
                 tableData.addObject(" ")
                 
                 if let parkName = parks["parkName"] as? String{
-                    print(parkName)
-                    //parkNameLabel.text = parkName
                     tableData.addObject("Name: \(parkName)")
                 }
                 if let activities = parks["activities"] as? String{
-                    print(activities)
-                    //activityLabel.text = activities
                     tableData.addObject("Activities: \(activities)")
                 }
                 if let regulations = parks["regulations"] as? String{
-                    print(regulations)
-                    //regulationsLabel.text = regulations
                     tableData.addObject("Regulations: \(regulations)")
                 }
                 if let parkLocation = parks["location"] as? String{
-                    print(parkLocation)
-                    //locationLabel.text = parkLocation
                     tableData.addObject("Location: \(parkLocation)")
                 }
                 if let ammenities = parks["ammenities"] as? String{
-                    print(ammenities)
-                    //ammenitiesLabel.text = ammenities
                     tableData.addObject("Ammenities: \(ammenities)")
                 }
                 if let fees = parks["fees"] as? String{
-                    print(fees)
-                    //feesLabel.text = fees
                     tableData.addObject("Fees: \(fees)")
                 }
                 if let contact = parks["contact"] as? String{
-                    print(contact)
                     tableData.addObject("Contact: \(contact)")
                 }
             }
@@ -121,6 +111,7 @@ class ParkInfoController: UITableViewController {
         return tableData.count
     }
     
+    //create cells for table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
@@ -128,15 +119,14 @@ class ParkInfoController: UITableViewController {
         cell.textLabel?.text = tableData[indexPath.row] as? String
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.textAlignment = NSTextAlignment.Center
-        //cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        //cell.textLabel?.sizeToFit()
-        
+ 
+        //add blur effect for cell background
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         //always fill the view
         blurEffectView.frame = self.view.bounds
         blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        
+        //set cell colors
         cell.backgroundColor = UIColor.clearColor()
         cell.backgroundView = blurEffectView
         cell.opaque = false
@@ -152,6 +142,7 @@ class ParkInfoController: UITableViewController {
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    //close view controller when swiped
     func closeSwipe() {
         self.dismissViewControllerAnimated(true, completion: {})
     }

@@ -217,7 +217,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Checks for weatherIdentifier segue
         if(segue.identifier == "weatherIdentifier")
         {
-            // Creates link from current ViewController to TrailInfoController
+            // Creates link from current ViewController to WeatherViewController
             var svc = segue.destinationViewController as! WeatherViewController
             
             // Variable to be passed
