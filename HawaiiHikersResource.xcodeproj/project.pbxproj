@@ -41,6 +41,9 @@
 		04FBFC701BE2F7E800923F9F /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */; };
 		04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBFC711BE2F99A00923F9F /* ApiKeys.swift */; };
 		04FBFC741BE2F9C700923F9F /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04FBFC731BE2F9C700923F9F /* ApiKeys.plist */; };
+		E75DA0941C7D28A0006997BA /* uh logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E75DA0931C7D28A0006997BA /* uh logo.jpg */; };
+		E75DA09D1C7D414D006997BA /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75DA09C1C7D414D006997BA /* MenuTableViewController.swift */; };
+		E77E99F31C92AA8600D48C31 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E99F21C92AA8600D48C31 /* SettingsViewController.swift */; };
 		E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B882CB1C118B020003CA63 /* PinInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +107,9 @@
 		04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		04FBFC711BE2F99A00923F9F /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		04FBFC731BE2F9C700923F9F /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		E75DA0931C7D28A0006997BA /* uh logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "uh logo.jpg"; sourceTree = "<group>"; };
+		E75DA09C1C7D414D006997BA /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		E77E99F21C92AA8600D48C31 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E7B882CB1C118B020003CA63 /* PinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,6 +226,8 @@
 				04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */,
 				04DFD1B91C05B68D000AF371 /* TrailMapViewController.swift */,
 				04DFD1BB1C05B75C000AF371 /* WeatherViewController.swift */,
+				E75DA09C1C7D414D006997BA /* MenuTableViewController.swift */,
+				E77E99F21C92AA8600D48C31 /* SettingsViewController.swift */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -227,6 +235,7 @@
 		048B25AD1C1A4993009324FD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E75DA0931C7D28A0006997BA /* uh logo.jpg */,
 				043C70451C61D22F002598B1 /* trailInfo.json */,
 				04C31BF01C5BF49000C8964F /* parkInfo.json */,
 				04FBFC711BE2F99A00923F9F /* ApiKeys.swift */,
@@ -389,6 +398,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E75DA0941C7D28A0006997BA /* uh logo.jpg in Resources */,
 				043C70461C61D22F002598B1 /* trailInfo.json in Resources */,
 				0454092A1BE04E68004B9577 /* LaunchScreen.storyboard in Resources */,
 				04FBFC741BE2F9C700923F9F /* ApiKeys.plist in Resources */,
@@ -423,9 +433,11 @@
 				04DFD1BC1C05B75C000AF371 /* WeatherViewController.swift in Sources */,
 				E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */,
 				045409251BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld in Sources */,
+				E75DA09D1C7D414D006997BA /* MenuTableViewController.swift in Sources */,
 				0454091F1BE04E67004B9577 /* MapViewController.swift in Sources */,
 				0454091D1BE04E67004B9577 /* AppDelegate.swift in Sources */,
 				04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */,
+				E77E99F31C92AA8600D48C31 /* SettingsViewController.swift in Sources */,
 				04D70B9D1C19705000F82B68 /* CLController.swift in Sources */,
 				04DFD1B41C05B4D8000AF371 /* ParkInfoController.swift in Sources */,
 				04DFD1B61C05B4FF000AF371 /* TrailInfoController.swift in Sources */,
