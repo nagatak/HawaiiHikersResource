@@ -106,7 +106,7 @@
 		04FBFC6E1BE2F68100923F9F /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		04FBFC711BE2F99A00923F9F /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
-		04FBFC731BE2F9C700923F9F /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		04FBFC731BE2F9C700923F9F /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ApiKeys.plist; path = ../ApiKeys.plist; sourceTree = "<group>"; };
 		E75DA0931C7D28A0006997BA /* uh logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "uh logo.jpg"; sourceTree = "<group>"; };
 		E75DA09C1C7D414D006997BA /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		E77E99F21C92AA8600D48C31 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +157,6 @@
 		045409101BE04E67004B9577 = {
 			isa = PBXGroup;
 			children = (
-				04FBFC731BE2F9C700923F9F /* ApiKeys.plist */,
 				0454091B1BE04E67004B9577 /* HawaiiHikersResource */,
 				048B25AE1C1A4A22009324FD /* Frameworks */,
 				045409331BE04E68004B9577 /* HawaiiHikersResourceTests */,
@@ -182,8 +181,8 @@
 				0454091C1BE04E67004B9577 /* AppDelegate.swift */,
 				045409201BE04E67004B9577 /* Main.storyboard */,
 				045409281BE04E68004B9577 /* LaunchScreen.storyboard */,
-				048B25AA1C1A4649009324FD /* HeaderFiles */,
 				048B25AC1C1A4689009324FD /* viewControllers */,
+				048B25AA1C1A4649009324FD /* HeaderFiles */,
 				048B25AD1C1A4993009324FD /* SupportFiles */,
 				045409261BE04E68004B9577 /* Assets.xcassets */,
 				0454094D1BE04E89004B9577 /* HawaiiHikersResource.entitlements */,
@@ -235,6 +234,7 @@
 		048B25AD1C1A4993009324FD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				04FBFC731BE2F9C700923F9F /* ApiKeys.plist */,
 				E75DA0931C7D28A0006997BA /* uh logo.jpg */,
 				043C70451C61D22F002598B1 /* trailInfo.json */,
 				04C31BF01C5BF49000C8964F /* parkInfo.json */,

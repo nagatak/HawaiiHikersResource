@@ -11,6 +11,7 @@ import UIKit
 class MenuTableViewController: UITableViewController {
 
     var menuTableData: NSMutableArray = []
+    var pinCoordinate: CLLocationCoordinate2D!
     
     @IBOutlet weak var itemTest: UIBarButtonItem!
     /*@IBAction func mapSwipe(sender: UISwipeGestureRecognizer) {
@@ -36,12 +37,28 @@ class MenuTableViewController: UITableViewController {
         loadTrailName("havo001")
         loadTrailName("king001")
         
+        
+        // Datasets for trail locations including trail name, GPS coordinates, & subtitle
+        let akaka = PinInfo(title: "Akaka Falls Loop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), subtitle: "Akaka Falls State Park")
+        let lava = PinInfo(title: "Lava Tree Troop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), subtitle: "Lava Tree State Monument")
+        let college = PinInfo(title: "College Hall Trail", coordinate: CLLocationCoordinate2D(latitude: 19.703202, longitude: -155.079654), subtitle: "UH Hilo")
+        let kilauea = PinInfo(title: "Kilauea Iki Trail", coordinate: CLLocationCoordinate2D(latitude: 19.416333, longitude: -155.242804), subtitle: "Hawaii Volcanoes National Park")
+        let kahakai = PinInfo(title: "Ala Kahakai Trail", coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), subtitle: "Kings Trail")
+        
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
         
         leftSwipe.direction = .Left
         
         view.addGestureRecognizer(leftSwipe)
+        
+        //pin()
     }
+    
+    /*func pin() {
+        
+        if menuTableData == "akaka001" {
+            performSegueWithIdentifier("mapSwipeSegue", sender: self)
+    }*/
     
     func handleSwipes(sender: UISwipeGestureRecognizer) {
         
@@ -88,6 +105,7 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath)
+        let test = indexPath.row
 
         cell.textLabel?.text = menuTableData[indexPath.row] as? String
         
@@ -102,7 +120,15 @@ class MenuTableViewController: UITableViewController {
         return cell
     }
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let cell = sender as? UITableViewCell {
+            if segue.identifier == "menuTrailSegue" {
+                var svc = segue.destinationViewController as! TrailInfoController
+            
+                svc.toPass = pinCoordinate
+            }
+        }
+    }
 
 
     /*
