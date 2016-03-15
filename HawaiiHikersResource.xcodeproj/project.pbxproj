@@ -10,7 +10,6 @@
 		043C70461C61D22F002598B1 /* trailInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 043C70451C61D22F002598B1 /* trailInfo.json */; };
 		0454091D1BE04E67004B9577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454091C1BE04E67004B9577 /* AppDelegate.swift */; };
 		0454091F1BE04E67004B9577 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454091E1BE04E67004B9577 /* MapViewController.swift */; };
-		045409221BE04E67004B9577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045409201BE04E67004B9577 /* Main.storyboard */; };
 		045409251BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 045409231BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld */; };
 		045409271BE04E68004B9577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045409261BE04E68004B9577 /* Assets.xcassets */; };
 		0454092A1BE04E68004B9577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045409281BE04E68004B9577 /* LaunchScreen.storyboard */; };
@@ -69,7 +68,6 @@
 		045409191BE04E67004B9577 /* HawaiiHikersResource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HawaiiHikersResource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0454091C1BE04E67004B9577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0454091E1BE04E67004B9577 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		045409211BE04E67004B9577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		045409241BE04E67004B9577 /* HawaiiHikersResource.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HawaiiHikersResource.xcdatamodel; sourceTree = "<group>"; };
 		045409261BE04E68004B9577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		045409291BE04E68004B9577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -179,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				0454091C1BE04E67004B9577 /* AppDelegate.swift */,
-				045409201BE04E67004B9577 /* Main.storyboard */,
 				045409281BE04E68004B9577 /* LaunchScreen.storyboard */,
 				048B25AC1C1A4689009324FD /* viewControllers */,
 				048B25AA1C1A4649009324FD /* HeaderFiles */,
@@ -403,7 +400,6 @@
 				0454092A1BE04E68004B9577 /* LaunchScreen.storyboard in Resources */,
 				04FBFC741BE2F9C700923F9F /* ApiKeys.plist in Resources */,
 				045409271BE04E68004B9577 /* Assets.xcassets in Resources */,
-				045409221BE04E67004B9577 /* Main.storyboard in Resources */,
 				04C31BF11C5BF49000C8964F /* parkInfo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,14 +473,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		045409201BE04E67004B9577 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				045409211BE04E67004B9577 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		045409281BE04E68004B9577 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

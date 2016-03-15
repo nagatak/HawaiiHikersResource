@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import MapKit
 
-class MenuTableViewController: UITableViewController, MKMapViewDelegate {
+class MenuTableViewController: UITableViewController {
 
     var menuTableData: NSMutableArray = []
-    var pinCoordinate: CLLocationCoordinate2D!
-    var destination: MKMapItem!
     
     @IBOutlet weak var itemTest: UIBarButtonItem!
     /*@IBAction func mapSwipe(sender: UISwipeGestureRecognizer) {
@@ -91,7 +88,6 @@ class MenuTableViewController: UITableViewController, MKMapViewDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath)
-        let test = indexPath.row
 
         cell.textLabel?.text = menuTableData[indexPath.row] as? String
         
@@ -103,23 +99,8 @@ class MenuTableViewController: UITableViewController, MKMapViewDelegate {
             cell.textLabel?.font = UIFont.boldSystemFontOfSize(18)
         }
         
-        if indexPath.row == 1 {
-            destination = MKMapItem(placemark:  MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))
-        }
-        
         return cell
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let cell = sender as? UITableViewCell {
-            if segue.identifier == "menuTrailSegue" {
-                var svc = segue.destinationViewController as! TrailInfoController
-            
-                svc.toPass = pinCoordinate
-            }
-        }
-    }
-
 
     /*
     // Override to support conditional editing of the table view.
