@@ -11,6 +11,7 @@ import UIKit
 class MenuTableViewController: UITableViewController {
 
     var menuTableData: NSMutableArray = []
+    var chosenCellIndex = 0
     
     @IBOutlet weak var itemTest: UIBarButtonItem!
     /*@IBAction func mapSwipe(sender: UISwipeGestureRecognizer) {
@@ -99,7 +100,16 @@ class MenuTableViewController: UITableViewController {
             cell.textLabel?.font = UIFont.boldSystemFontOfSize(18)
         }
         
+        chosenCellIndex = indexPath.row
+        self.performSegueWithIdentifier("menuTrailIdentifier", sender: self)
+        
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let menuTrailController = segue.destinationViewController as! MenuTrailInfoController
+        
+        menuTrailController
     }
 
     /*
