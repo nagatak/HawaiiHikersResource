@@ -42,7 +42,7 @@ class TrailInfoController: UITableViewController {
  
         // Variable being passed in
         passedCoord = toPass
-        print(passedCoord)
+        //print(passedCoord)
         
         // Selects correct trail info to display according to latitude
         if passedCoord.latitude == 19.865850{loadTrailInfo("akaka001")}

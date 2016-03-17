@@ -10,8 +10,10 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
 
+    var chosenCellIndex = 1
     var menuTableData: NSMutableArray = []
-    var chosenCellIndex = 0
+    var passedCoord: CLLocationCoordinate2D!
+    var pinCoordinate: CLLocationCoordinate2D!
     
     @IBOutlet weak var itemTest: UIBarButtonItem!
     /*@IBAction func mapSwipe(sender: UISwipeGestureRecognizer) {
@@ -32,6 +34,7 @@ class MenuTableViewController: UITableViewController {
         
         menuTableData.addObject("Trails")
         loadTrailName("akaka001")
+        passedCoord = CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115)
         loadTrailName("lavatree001")
         loadTrailName("uh")
         loadTrailName("havo001")
@@ -100,16 +103,33 @@ class MenuTableViewController: UITableViewController {
             cell.textLabel?.font = UIFont.boldSystemFontOfSize(18)
         }
         
-        chosenCellIndex = indexPath.row
-        self.performSegueWithIdentifier("menuTrailIdentifier", sender: self)
-        
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let menuTrailController = segue.destinationViewController as! MenuTrailInfoController
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //chosenCellIndex = indexPath.row
         
-        menuTrailController
+        var cellnumber = menuTableData[indexPath.row]
+        
+        performSegueWithIdentifier("menuTrailIdentifier", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        /*if segue.identifier == "menuTrailIdentifier", let destination = segue.destinationViewController as? MenuTrailInfoController {
+            
+            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
+                
+                var menuTrail = menuTableData[indexPath.row]
+                
+                destination.toPass = passedCoord
+            }
+        }*/
+        
+        if segue.identifier == "menuTrailIdentifier" {
+            var svc = segue.destinationViewController as! MenuTrailInfoController
+            
+            svc.toPass = passedCoord
+        }
     }
 
     /*
