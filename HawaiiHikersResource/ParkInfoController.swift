@@ -72,29 +72,29 @@ class ParkInfoController: UITableViewController {
         do{
             let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
             
-            if let parks = json![parkId]{
+            if let parks = json?.objectForKey(parkId){
                 
                 tableData.addObject(" ")
                 
-                if let parkName = parks["parkName"] as? String{
+                if let parkName = parks.objectForKey("parkName") as? String{
                     tableData.addObject("Name: \(parkName)")
                 }
-                if let activities = parks["activities"] as? String{
+                if let activities = parks.objectForKey("activities") as? String{
                     tableData.addObject("Activities: \(activities)")
                 }
-                if let regulations = parks["regulations"] as? String{
+                if let regulations = parks.objectForKey("regulations") as? String{
                     tableData.addObject("Regulations: \(regulations)")
                 }
-                if let parkLocation = parks["location"] as? String{
+                if let parkLocation = parks.objectForKey("location") as? String{
                     tableData.addObject("Location: \(parkLocation)")
                 }
-                if let ammenities = parks["ammenities"] as? String{
+                if let ammenities = parks.objectForKey("ammenities") as? String{
                     tableData.addObject("Ammenities: \(ammenities)")
                 }
-                if let fees = parks["fees"] as? String{
+                if let fees = parks.objectForKey("fees") as? String{
                     tableData.addObject("Fees: \(fees)")
                 }
-                if let contact = parks["contact"] as? String{
+                if let contact = parks.objectForKey("contact") as? String{
                     tableData.addObject("Contact: \(contact)")
                 }
             }

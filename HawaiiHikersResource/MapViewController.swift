@@ -113,12 +113,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         becomeFirstResponder()
         
         // Creating the menu
-        var menu = UIMenuController.sharedMenuController()
+        let menu = UIMenuController.sharedMenuController()
         // Declares 4 buttons
-        var parkInfo = UIMenuItem(title: "Park Info", action: Selector("infoPark"))
-        var trailInfo = UIMenuItem(title: "Trail Info", action: Selector("infoTrail"))
-        var directions = UIMenuItem(title: "Directions", action: Selector("directions"))
-        var weather = UIMenuItem(title: "Weather", action: Selector("weather"))
+        let parkInfo = UIMenuItem(title: "Park Info", action: #selector(MapViewController.infoPark))
+        let trailInfo = UIMenuItem(title: "Trail Info", action: #selector(MapViewController.infoTrail))
+        let directions = UIMenuItem(title: "Directions", action: #selector(MapViewController.directions))
+        let weather = UIMenuItem(title: "Weather", action: #selector(MapViewController.weather))
         
         // Adds the 4 buttons to the menu
         menu.menuItems = [parkInfo, trailInfo, weather, directions]
@@ -154,7 +154,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         request.transportType = MKDirectionsTransportType.Automobile
         
         // Sets the destination
-        var mapItem = destination
+        let mapItem = destination
         // Sets the launch options for the native navigation app
         let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
         // Launches the native navigation app
@@ -170,16 +170,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
         // You need to only return true for the actions you want, otherwise you get the whole range of
         //  iOS actions. You can see this by just removing the if statement here.
-        if action == Selector("infoPark") {
+        if action == #selector(MapViewController.infoPark) {
             return true
         }
-        if action == Selector("infoTrail") {
+        if action == #selector(MapViewController.infoTrail) {
             return true
         }
-        if action == Selector("directions") {
+        if action == #selector(MapViewController.directions) {
             return true
         }
-        if action == Selector("weather") {
+        if action == #selector(MapViewController.weather) {
             return true
         }
         return false
@@ -191,7 +191,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if(segue.identifier == "trailInfoIdentifier")
         {
             // Creates link from current ViewController to TrailInfoController
-            var svc = segue.destinationViewController as! TrailInfoController
+            let svc = segue.destinationViewController as! TrailInfoController
             
             // Variable to be passed
             svc.toPass = pinCoordinate
@@ -200,7 +200,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if(segue.identifier == "parkInfoIdentifier")
         {
             // Creates link from current ViewController to TrailInfoController
-            var svc = segue.destinationViewController as! ParkInfoController
+            let svc = segue.destinationViewController as! ParkInfoController
             
             // Variable to be passed
             svc.toPass = pinCoordinate
@@ -209,7 +209,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if(segue.identifier == "weatherIdentifier")
         {
             // Creates link from current ViewController to WeatherViewController
-            var svc = segue.destinationViewController as! WeatherViewController
+            let svc = segue.destinationViewController as! WeatherViewController
             
             // Variable to be passed
             svc.toPass = pinCoordinate

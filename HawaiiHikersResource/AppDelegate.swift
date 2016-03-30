@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     //  Create instance of PushNotificationController
-    var pushNotificationController:PushNotificationController?
+    //var pushNotificationController:PushNotificationController?
     
     // Declare new CLConrtoller
     var cLController:CLController?
@@ -23,8 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        // Mark: - Parse push notification server needs to be migrated
         //Initialze push notification controller
-        self.pushNotificationController = PushNotificationController()
+        //self.pushNotificationController = PushNotificationController()
+        
         //Initialize core location controller
         self.cLController = CLController()
         
@@ -33,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Code for Parse.com SDK
         // Register for Push Notitications, if running iOS 8 and 9
         //
-        if application.respondsToSelector("registerUserNotificationSettings:") {
+        if application.respondsToSelector(#selector(UIApplication.registerUserNotificationSettings(_:))) {
             
             let types:UIUserNotificationType = (UIUserNotificationType.Alert.union(UIUserNotificationType.Badge).union(UIUserNotificationType.Sound))
             let settings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)

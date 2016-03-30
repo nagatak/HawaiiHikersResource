@@ -136,16 +136,17 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     // Draws the overlay, takes an array of gps coorditates and draws a line between each coordinate.
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
-            var polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
             // Change stroke color
             polylineRenderer.strokeColor = UIColor.grayColor()
             // Change number to alter line width
             polylineRenderer.lineWidth = 6
             return polylineRenderer
         }
-        return nil
+        
+        return MKPolylineRenderer()
     }
     
     
@@ -177,7 +178,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         let spanX = 0.002
         let spanY = 0.002
         //Declare new reigon
-        var newRegion = MKCoordinateRegion(center: trailMapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+        let newRegion = MKCoordinateRegion(center: trailMapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
         //Initialze values
         trailMapView.setRegion(newRegion, animated: true)
         

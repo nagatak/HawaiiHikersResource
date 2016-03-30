@@ -42,7 +42,7 @@ class TrailInfoController: UITableViewController {
  
         // Variable being passed in
         passedCoord = toPass
-        print(passedCoord)
+        //print(passedCoord)
         
         // Selects correct trail info to display according to latitude
         if passedCoord.latitude == 19.865850{loadTrailInfo("akaka001")}
@@ -64,7 +64,7 @@ class TrailInfoController: UITableViewController {
         if(segue.identifier == "trailMapViewIdentifier")
         {
             // Creates link from current ViewController to TrailMapViewController
-            var svc = segue.destinationViewController as! TrailMapViewController
+            let svc = segue.destinationViewController as! TrailMapViewController
             
             // Variable to be passed
             svc.toPass = passedCoord
@@ -87,32 +87,32 @@ class TrailInfoController: UITableViewController {
         do{
             let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
             
-            if let trails = json![trailId]{
+            if let trails = json?.objectForKey(trailId){
                 
                 tableData.addObject(" ")
                 
-                if let trailName = trails["trailName"] as? String{
+                if let trailName = trails.objectForKey("trailName") as? String{
                     tableData.addObject("Trail Name: \(trailName)")
                 }
-                if let difficulty = trails["difficulty"] as? String{
+                if let difficulty = trails.objectForKey("difficulty") as? String{
                     tableData.addObject("Difficulty: \(difficulty)")
                 }
-                if let distance = trails["length"] as? String{
+                if let distance = trails.objectForKey("length") as? String{
                     tableData.addObject("Distance: \(distance)")
                 }
-                if let activity = trails["activities"] as? String{
+                if let activity = trails.objectForKey("activities") as? String{
                     tableData.addObject("Activity: \(activity)")
                 }
-                if let regulations = trails["regulations"] as? String{
+                if let regulations = trails.objectForKey("regulations") as? String{
                     tableData.addObject("Regulations: \(regulations)")
                 }
-                if let other = trails["other"] as? String{
+                if let other = trails.objectForKey("other") as? String{
                     tableData.addObject("Other: \(other)")
                 }
-                if let terrain = trails["terrain"] as? String{
+                if let terrain = trails.objectForKey("terrain") as? String{
                     tableData.addObject("Terrain: \(terrain)")
                 }
-                if let type = trails["trailType"] as? String{
+                if let type = trails.objectForKey("trailType") as? String{
                     tableData.addObject("Trail Type: \(type)")
                 }
             }

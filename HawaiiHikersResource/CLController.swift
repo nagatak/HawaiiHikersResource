@@ -68,7 +68,7 @@ class CLController : NSObject, CLLocationManagerDelegate {
         // MUST have error case as geocoding requests are rate limited and may be denied (see documentation)
         // Ken
         geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, e) -> Void in
-            if let error = e {
+            if e != nil {
                 print("Error:  \(e!.localizedDescription)")
             } else {
                 let placemark = placemarks!.last
@@ -76,7 +76,7 @@ class CLController : NSObject, CLLocationManagerDelegate {
                     "city":     placemark!.locality ?? " ",
                     "state":    placemark!.administrativeArea ?? " ",
                     "country":  placemark!.country ?? " "
-                    ] as! [NSString: NSString!]
+                    ] 
                 
                 //Use for debugging
                 //print("Location:  \(userInfo)")

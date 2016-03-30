@@ -1,20 +1,20 @@
 {
     
     "trailid":{
-              "trailName": "",
-              "parkName": "",
-              "lat": "",
-              "lon":"",
-              "activities":"",
-              "regulations":"",
-              "trailType":"",
-              "difficulty":"",
+                "trailName": "",
+                "parkName": "",
+                "lat": "",
+                "lon":"",
+                "activities":"",
+                "regulations":"",
+                "trailType":"",
+                "difficulty":"",
                 "terrain":"",
-              "location":"",
-              "length":"",
-              "ammenities":"",
-              "fees":"",
-              "other":""
+                "location":"",
+                "length":"",
+                "ammenities":"",
+                "fees":"",
+                "other":""
               },
     "akaka001":{
         "trailName": "'Akaka Falls Loop Trail",

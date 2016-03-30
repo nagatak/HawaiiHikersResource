@@ -8,6 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		043C70461C61D22F002598B1 /* trailInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 043C70451C61D22F002598B1 /* trailInfo.json */; };
+		044B1CA31C92B21200BDA15B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC6A1BE2EEE600923F9F /* Accounts.framework */; };
+		044B1CA41C92B21C00BDA15B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC5C1BE2EE4300923F9F /* AudioToolbox.framework */; };
+		044B1CA51C92B21F00BDA15B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC581BE2EC5B00923F9F /* Bolts.framework */; };
+		044B1CA61C92B22800BDA15B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC5E1BE2EE5600923F9F /* CFNetwork.framework */; };
+		044B1CA71C92B22C00BDA15B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409561BE05011004B9577 /* CoreData.framework */; };
+		044B1CA81C92B23100BDA15B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC601BE2EE6400923F9F /* CoreGraphics.framework */; };
+		044B1CA91C92B23200BDA15B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC621BE2EE7500923F9F /* CoreLocation.framework */; };
+		044B1CAA1C92B23500BDA15B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409581BE0502E004B9577 /* libsqlite3.tbd */; };
+		044B1CAB1C92B23700BDA15B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC681BE2EEDC00923F9F /* libz.tbd */; };
+		044B1CAC1C92B23800BDA15B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409501BE04E9E004B9577 /* MapKit.framework */; };
+		044B1CAD1C92B23900BDA15B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC5A1BE2EDDD00923F9F /* Parse.framework */; };
+		044B1CAE1C92B23A00BDA15B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409541BE05000004B9577 /* QuartzCore.framework */; };
+		044B1CAF1C92B23B00BDA15B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC641BE2EE8F00923F9F /* Security.framework */; };
+		044B1CB01C92B23C00BDA15B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC6C1BE2EEF200923F9F /* Social.framework */; };
+		044B1CB11C92B23D00BDA15B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409521BE04EB4004B9577 /* StoreKit.framework */; };
+		044B1CB21C92B23E00BDA15B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC661BE2EEB000923F9F /* SystemConfiguration.framework */; };
 		0454091D1BE04E67004B9577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454091C1BE04E67004B9577 /* AppDelegate.swift */; };
 		0454091F1BE04E67004B9577 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454091E1BE04E67004B9577 /* MapViewController.swift */; };
 		045409221BE04E67004B9577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045409201BE04E67004B9577 /* Main.storyboard */; };
@@ -41,6 +57,7 @@
 		04FBFC701BE2F7E800923F9F /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */; };
 		04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBFC711BE2F99A00923F9F /* ApiKeys.swift */; };
 		04FBFC741BE2F9C700923F9F /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04FBFC731BE2F9C700923F9F /* ApiKeys.plist */; };
+		A61D32CA1CAB056C00022462 /* trailMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D32C91CAB056C00022462 /* trailMap.swift */; };
 		E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B882CB1C118B020003CA63 /* PinInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +121,7 @@
 		04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		04FBFC711BE2F99A00923F9F /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		04FBFC731BE2F9C700923F9F /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		A61D32C91CAB056C00022462 /* trailMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trailMap.swift; sourceTree = "<group>"; };
 		E7B882CB1C118B020003CA63 /* PinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +153,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044B1CAA1C92B23500BDA15B /* libsqlite3.tbd in Frameworks */,
+				044B1CA61C92B22800BDA15B /* CFNetwork.framework in Frameworks */,
+				044B1CA41C92B21C00BDA15B /* AudioToolbox.framework in Frameworks */,
+				044B1CA31C92B21200BDA15B /* Accounts.framework in Frameworks */,
+				044B1CA81C92B23100BDA15B /* CoreGraphics.framework in Frameworks */,
+				044B1CA91C92B23200BDA15B /* CoreLocation.framework in Frameworks */,
+				044B1CB01C92B23C00BDA15B /* Social.framework in Frameworks */,
+				044B1CAD1C92B23900BDA15B /* Parse.framework in Frameworks */,
+				044B1CB21C92B23E00BDA15B /* SystemConfiguration.framework in Frameworks */,
+				044B1CB11C92B23D00BDA15B /* StoreKit.framework in Frameworks */,
+				044B1CAF1C92B23B00BDA15B /* Security.framework in Frameworks */,
+				044B1CAE1C92B23A00BDA15B /* QuartzCore.framework in Frameworks */,
+				044B1CAC1C92B23800BDA15B /* MapKit.framework in Frameworks */,
+				044B1CAB1C92B23700BDA15B /* libz.tbd in Frameworks */,
+				044B1CA71C92B22C00BDA15B /* CoreData.framework in Frameworks */,
+				044B1CA51C92B21F00BDA15B /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +268,7 @@
 				0454092B1BE04E68004B9577 /* Info.plist */,
 				E7B882CB1C118B020003CA63 /* PinInfo.swift */,
 				04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */,
+				A61D32C91CAB056C00022462 /* trailMap.swift */,
 			);
 			name = SupportFiles;
 			sourceTree = "<group>";
@@ -430,6 +465,7 @@
 				04DFD1B41C05B4D8000AF371 /* ParkInfoController.swift in Sources */,
 				04DFD1B61C05B4FF000AF371 /* TrailInfoController.swift in Sources */,
 				04DFD1BA1C05B68D000AF371 /* TrailMapViewController.swift in Sources */,
+				A61D32CA1CAB056C00022462 /* trailMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,7 +537,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -520,9 +557,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "fbee8292-d783-4f6a-929a-336120a96e3a";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -545,7 +583,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -558,8 +597,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "fbee8292-d783-4f6a-929a-336120a96e3a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -570,18 +610,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HawaiiHikersResource/HawaiiHikersResource.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/HawaiiHikersResourceUITests",
 				);
 				INFOPLIST_FILE = HawaiiHikersResource/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResource;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "fbee8292-d783-4f6a-929a-336120a96e3a";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
 			};
 			name = Debug;
@@ -591,18 +632,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HawaiiHikersResource/HawaiiHikersResource.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/HawaiiHikersResourceUITests",
 				);
 				INFOPLIST_FILE = HawaiiHikersResource/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResource;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "fbee8292-d783-4f6a-929a-336120a96e3a";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
 			};
 			name = Release;
@@ -611,6 +653,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/HawaiiHikersResourceUITests",
+				);
 				INFOPLIST_FILE = HawaiiHikersResourceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResourceTests;
@@ -623,6 +670,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/HawaiiHikersResourceUITests",
+				);
 				INFOPLIST_FILE = HawaiiHikersResourceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResourceTests;
