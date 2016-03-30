@@ -26,7 +26,6 @@
 		044B1CB21C92B23E00BDA15B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FBFC661BE2EEB000923F9F /* SystemConfiguration.framework */; };
 		0454091D1BE04E67004B9577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454091C1BE04E67004B9577 /* AppDelegate.swift */; };
 		0454091F1BE04E67004B9577 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454091E1BE04E67004B9577 /* MapViewController.swift */; };
-		045409221BE04E67004B9577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045409201BE04E67004B9577 /* Main.storyboard */; };
 		045409251BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 045409231BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld */; };
 		045409271BE04E68004B9577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045409261BE04E68004B9577 /* Assets.xcassets */; };
 		0454092A1BE04E68004B9577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045409281BE04E68004B9577 /* LaunchScreen.storyboard */; };
@@ -83,7 +82,6 @@
 		045409191BE04E67004B9577 /* HawaiiHikersResource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HawaiiHikersResource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0454091C1BE04E67004B9577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0454091E1BE04E67004B9577 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		045409211BE04E67004B9577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		045409241BE04E67004B9577 /* HawaiiHikersResource.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HawaiiHikersResource.xcdatamodel; sourceTree = "<group>"; };
 		045409261BE04E68004B9577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		045409291BE04E68004B9577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 		045409101BE04E67004B9577 = {
 			isa = PBXGroup;
 			children = (
-				04FBFC731BE2F9C700923F9F /* ApiKeys.plist */,
 				0454091B1BE04E67004B9577 /* HawaiiHikersResource */,
 				048B25AE1C1A4A22009324FD /* Frameworks */,
 				045409331BE04E68004B9577 /* HawaiiHikersResourceTests */,
@@ -207,11 +204,11 @@
 		0454091B1BE04E67004B9577 /* HawaiiHikersResource */ = {
 			isa = PBXGroup;
 			children = (
+				E797857B1C98F60600E2B2B4 /* Main.storyboard */,
 				0454091C1BE04E67004B9577 /* AppDelegate.swift */,
-				045409201BE04E67004B9577 /* Main.storyboard */,
 				045409281BE04E68004B9577 /* LaunchScreen.storyboard */,
-				048B25AA1C1A4649009324FD /* HeaderFiles */,
 				048B25AC1C1A4689009324FD /* viewControllers */,
+				048B25AA1C1A4649009324FD /* HeaderFiles */,
 				048B25AD1C1A4993009324FD /* SupportFiles */,
 				045409261BE04E68004B9577 /* Assets.xcassets */,
 				0454094D1BE04E89004B9577 /* HawaiiHikersResource.entitlements */,
@@ -254,6 +251,9 @@
 				04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */,
 				04DFD1B91C05B68D000AF371 /* TrailMapViewController.swift */,
 				04DFD1BB1C05B75C000AF371 /* WeatherViewController.swift */,
+				E75DA09C1C7D414D006997BA /* MenuTableViewController.swift */,
+				E77E99F21C92AA8600D48C31 /* SettingsViewController.swift */,
+				E797857E1C98F93200E2B2B4 /* MenuTrailInfoController.swift */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -261,6 +261,8 @@
 		048B25AD1C1A4993009324FD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				04FBFC731BE2F9C700923F9F /* ApiKeys.plist */,
+				E75DA0931C7D28A0006997BA /* uh logo.jpg */,
 				043C70451C61D22F002598B1 /* trailInfo.json */,
 				04C31BF01C5BF49000C8964F /* parkInfo.json */,
 				04FBFC711BE2F99A00923F9F /* ApiKeys.swift */,
@@ -424,11 +426,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E797857D1C98F60600E2B2B4 /* Main.storyboard in Resources */,
+				E75DA0941C7D28A0006997BA /* uh logo.jpg in Resources */,
 				043C70461C61D22F002598B1 /* trailInfo.json in Resources */,
 				0454092A1BE04E68004B9577 /* LaunchScreen.storyboard in Resources */,
 				04FBFC741BE2F9C700923F9F /* ApiKeys.plist in Resources */,
 				045409271BE04E68004B9577 /* Assets.xcassets in Resources */,
-				045409221BE04E67004B9577 /* Main.storyboard in Resources */,
 				04C31BF11C5BF49000C8964F /* parkInfo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,11 +461,14 @@
 				04DFD1BC1C05B75C000AF371 /* WeatherViewController.swift in Sources */,
 				E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */,
 				045409251BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld in Sources */,
+				E75DA09D1C7D414D006997BA /* MenuTableViewController.swift in Sources */,
 				0454091F1BE04E67004B9577 /* MapViewController.swift in Sources */,
 				0454091D1BE04E67004B9577 /* AppDelegate.swift in Sources */,
 				04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */,
+				E77E99F31C92AA8600D48C31 /* SettingsViewController.swift in Sources */,
 				04D70B9D1C19705000F82B68 /* CLController.swift in Sources */,
 				04DFD1B41C05B4D8000AF371 /* ParkInfoController.swift in Sources */,
+				E797857F1C98F93200E2B2B4 /* MenuTrailInfoController.swift in Sources */,
 				04DFD1B61C05B4FF000AF371 /* TrailInfoController.swift in Sources */,
 				04DFD1BA1C05B68D000AF371 /* TrailMapViewController.swift in Sources */,
 				A61D32CA1CAB056C00022462 /* trailMap.swift in Sources */,
@@ -501,20 +507,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		045409201BE04E67004B9577 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				045409211BE04E67004B9577 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		045409281BE04E68004B9577 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				045409291BE04E68004B9577 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E797857B1C98F60600E2B2B4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E797857C1C98F60600E2B2B4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

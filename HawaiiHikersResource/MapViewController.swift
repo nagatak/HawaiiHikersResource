@@ -60,8 +60,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         // Adds the datasets into the map as pin annotations
         mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        
+        rightSwipe.direction = .Right
+        
+        view.addGestureRecognizer(rightSwipe)
     }
     
+    func handleSwipes(sender: UISwipeGestureRecognizer) {
+        if (sender.direction == .Right){
+            performSegueWithIdentifier("menuSwipeSegue", sender: self)
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

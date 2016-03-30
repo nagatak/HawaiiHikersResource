@@ -126,12 +126,12 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     @IBAction func mapTypeControl(sender: AnyObject) {
         let mapTypeC = MapType(rawValue: mapType.selectedSegmentIndex)
         switch (mapTypeC!) {
+        case .Satellite:
+            trailMapView.mapType = MKMapType.Satellite
         case .Standard:
             trailMapView.mapType = MKMapType.Standard
         case .Hybrid:
             trailMapView.mapType = MKMapType.Hybrid
-        case .Satellite:
-            trailMapView.mapType = MKMapType.Satellite
         }
     }
     

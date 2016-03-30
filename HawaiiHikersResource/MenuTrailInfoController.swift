@@ -1,14 +1,14 @@
 //
-//  TrailInfoController.swift
+//  MenuTrailInfoController.swift
 //  HawaiiHikersResource
 //
-//  Created by Kenneth Nagata on 11/24/15.
-//  Copyright © 2015 Kenneth Nagata. All rights reserved.
+//  Created by Ray Manzano on 3/15/16.
+//  Copyright © 2016 Kenneth Nagata. All rights reserved.
 //
 
+import UIKit
 
-class TrailInfoController: UITableViewController {
-
+class MenuTrailInfoController: UITableViewController {
     
     @IBAction func swipeClose(sender: AnyObject) {
         closeSwipe()
@@ -39,10 +39,10 @@ class TrailInfoController: UITableViewController {
         else {
             self.view.backgroundColor = UIColor.blackColor()
         }
- 
+        
         // Variable being passed in
         passedCoord = toPass
-        //print(passedCoord)
+        print(passedCoord)
         
         // Selects correct trail info to display according to latitude
         if passedCoord.latitude == 19.865850{loadTrailInfo("akaka001")}
@@ -61,24 +61,24 @@ class TrailInfoController: UITableViewController {
     }
     // Override function to allow passing variables between scenes
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "trailMapViewIdentifier")
+        if(segue.identifier == "menuTrailIdentifier")
         {
             // Creates link from current ViewController to TrailMapViewController
-            let svc = segue.destinationViewController as! TrailMapViewController
+            var svc = segue.destinationViewController as! TrailMapViewController
             
             // Variable to be passed
             svc.toPass = passedCoord
         }
     }
     
-// Not used but keep to testing gestures
-//    func tappedView(){
-//        let tapAlert = UIAlertController(title: "Tapped", message: "You just tapped the tap view", preferredStyle: UIAlertControllerStyle.Alert)
-//        tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
-//        self.presentViewController(tapAlert, animated: true, completion: nil)
-//        
-//        self.dismissViewControllerAnimated(true, completion: {});
-//    }
+    // Not used but keep to testing gestures
+    //    func tappedView(){
+    //        let tapAlert = UIAlertController(title: "Tapped", message: "You just tapped the tap view", preferredStyle: UIAlertControllerStyle.Alert)
+    //        tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
+    //        self.presentViewController(tapAlert, animated: true, completion: nil)
+    //
+    //        self.dismissViewControllerAnimated(true, completion: {});
+    //    }
     func loadTrailInfo(trailId: String){
         //select json file to retrieve data from
         let parksURL: NSURL = [#FileReference(fileReferenceLiteral: "trailInfo.json")#]
@@ -87,32 +87,32 @@ class TrailInfoController: UITableViewController {
         do{
             let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
             
-            if let trails = json?.objectForKey(trailId){
+            if let trails = json![trailId]{
                 
                 tableData.addObject(" ")
                 
-                if let trailName = trails.objectForKey("trailName") as? String{
+                if let trailName = trails["trailName"] as? String{
                     tableData.addObject("Trail Name: \(trailName)")
                 }
-                if let difficulty = trails.objectForKey("difficulty") as? String{
+                if let difficulty = trails["difficulty"] as? String{
                     tableData.addObject("Difficulty: \(difficulty)")
                 }
-                if let distance = trails.objectForKey("length") as? String{
+                if let distance = trails["length"] as? String{
                     tableData.addObject("Distance: \(distance)")
                 }
-                if let activity = trails.objectForKey("activities") as? String{
+                if let activity = trails["activities"] as? String{
                     tableData.addObject("Activity: \(activity)")
                 }
-                if let regulations = trails.objectForKey("regulations") as? String{
+                if let regulations = trails["regulations"] as? String{
                     tableData.addObject("Regulations: \(regulations)")
                 }
-                if let other = trails.objectForKey("other") as? String{
+                if let other = trails["other"] as? String{
                     tableData.addObject("Other: \(other)")
                 }
-                if let terrain = trails.objectForKey("terrain") as? String{
+                if let terrain = trails["terrain"] as? String{
                     tableData.addObject("Terrain: \(terrain)")
                 }
-                if let type = trails.objectForKey("trailType") as? String{
+                if let type = trails["trailType"] as? String{
                     tableData.addObject("Trail Type: \(type)")
                 }
             }
@@ -128,6 +128,7 @@ class TrailInfoController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
+    
     //specify design of table cells(background and color)
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
@@ -161,4 +162,5 @@ class TrailInfoController: UITableViewController {
     //dismiss view controller when swiped
     func closeSwipe() {
         self.dismissViewControllerAnimated(true, completion: nil)
-    }}
+    }
+}
