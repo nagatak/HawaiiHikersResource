@@ -61,7 +61,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Adds the datasets into the map as pin annotations
         mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
         
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(MapViewController.handleSwipes(_:)))
         
         rightSwipe.direction = .Right
         
