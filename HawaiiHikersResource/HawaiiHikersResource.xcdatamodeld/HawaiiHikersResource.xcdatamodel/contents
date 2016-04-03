@@ -9,13 +9,12 @@
     </entity>
     <entity name="UserInfo" syncable="YES">
         <attribute name="experience" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="facebook" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="mileage" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="UserInfo" positionX="-56" positionY="-120" width="128" height="120"/>
         <element name="CustomTrails" positionX="-54" positionY="27" width="128" height="120"/>
+        <element name="UserInfo" positionX="-56" positionY="-120" width="128" height="103"/>
     </elements>
 </model>

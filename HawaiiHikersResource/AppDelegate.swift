@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //var pushNotificationController:PushNotificationController?
     
     // Declare new CLConrtoller
-    var cLController:CLController?
+    //var cLController:CLController?
     // Declare new weatherServices
     //var weatherServices:WeatherServices?
 
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.pushNotificationController = PushNotificationController()
         
         //Initialize core location controller
-        self.cLController = CLController()
+        //self.cLController = CLController()
         
         // BEGIN----------------------------------------------------------------------------------
         // Mark: - Parse function and
