@@ -56,6 +56,7 @@
 		04FBFC701BE2F7E800923F9F /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */; };
 		04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBFC711BE2F99A00923F9F /* ApiKeys.swift */; };
 		A6376DC31CB0F60F00A7BCF3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6376DC21CB0F60F00A7BCF3 /* UserInfo.swift */; };
+		A6376DC51CB138ED00A7BCF3 /* CustomTrailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6376DC41CB138ED00A7BCF3 /* CustomTrailMapViewController.swift */; };
 		A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F51CAB713800486E73 /* ApiKeys.plist */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
 		E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B882CB1C118B020003CA63 /* PinInfo.swift */; };
@@ -120,6 +121,7 @@
 		04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		04FBFC711BE2F99A00923F9F /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		A6376DC21CB0F60F00A7BCF3 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		A6376DC41CB138ED00A7BCF3 /* CustomTrailMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTrailMapViewController.swift; sourceTree = "<group>"; };
 		A6BF26F51CAB713800486E73 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = SOURCE_ROOT; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E7B882CB1C118B020003CA63 /* PinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				0454091E1BE04E67004B9577 /* MapViewController.swift */,
+				A6376DC41CB138ED00A7BCF3 /* CustomTrailMapViewController.swift */,
 				04DFD1B31C05B4D8000AF371 /* ParkInfoController.swift */,
 				04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */,
 				04DFD1B91C05B68D000AF371 /* TrailMapViewController.swift */,
@@ -460,6 +463,7 @@
 				045409251BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld in Sources */,
 				A6376DC31CB0F60F00A7BCF3 /* UserInfo.swift in Sources */,
 				0454091F1BE04E67004B9577 /* MapViewController.swift in Sources */,
+				A6376DC51CB138ED00A7BCF3 /* CustomTrailMapViewController.swift in Sources */,
 				0454091D1BE04E67004B9577 /* AppDelegate.swift in Sources */,
 				04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */,
 				04D70B9D1C19705000F82B68 /* CLController.swift in Sources */,
