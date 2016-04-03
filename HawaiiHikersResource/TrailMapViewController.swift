@@ -241,7 +241,13 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         //Initialze values
         trailMapView.setRegion(newRegion, animated: true)
         
+        
+        if(startFound == true){
         checkTrailProgress(latValue,lon: lonValue)
+        }
+        else{
+            checkStartingPosition(latValue, lon: lonValue)
+        }
         //print(myLocations)
         
     }
