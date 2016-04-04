@@ -215,9 +215,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 self.startedTrail = false
                 self.isReverse = false
                 self.startFound = false
-                self.checkPoints = []
-                
-                print(self.startFound, self.startedTrail, self.isReverse, self.checkPoints)
+
             }))
             trialInProgressAlert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
             self.presentViewController(trialInProgressAlert, animated: true, completion: nil)
