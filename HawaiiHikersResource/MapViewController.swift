@@ -51,6 +51,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Call helper method to zoom into initialLocation on startup
         centerMapOnLocation(initialLocation)
         
+        //
+        
         // Datasets for trail locations including trail name, GPS coordinates, & subtitle
         let akaka = PinInfo(title: "Akaka Falls Loop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), subtitle: "Akaka Falls State Park")
         let lava = PinInfo(title: "Lava Tree Troop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), subtitle: "Lava Tree State Monument")
@@ -94,10 +96,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             {
                 // Set style of pin
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView!.canShowCallout = true
+                annotationView!.canShowCallout = false
                 // Creats info button in pin annotation
                 let btn = UIButton(type: .DetailDisclosure)
-                // Set buttin as right callout accessory
+                // Set button as right callout accessory
                 annotationView!.rightCalloutAccessoryView = btn
             }
             else
@@ -108,7 +110,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         return nil
     }
-    
+    // Calls uialertmenu instead of annotation callout
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+
+        if !(view.annotation!.isKindOfClass(MKUserLocation)) {
+            pinCoordinate = view.annotation?.coordinate
+            alertMenu(view.annotation!.title!!)
+            //print(view.annotation!.title)
+        }
+        
+    }
     // Overloaded function to tell what to do when right callout accessory button is pressed
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl) {
@@ -116,11 +127,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             pinCoordinate = view.annotation?.coordinate
             // Calls the pinMenu function when pin is tapped
             //pinMenu()
-            alertMenu()
+            //alertMenu()
     }
     // 
-    func alertMenu(){
-        let attributedStringTitle = NSAttributedString(string: "Select an Option", attributes: [
+    func alertMenu(trailName: String){
+        let attributedStringTitle = NSAttributedString(string: trailName, attributes: [
             NSFontAttributeName : UIFont.systemFontOfSize(22),
             NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
             ])
@@ -134,10 +145,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //menuAlert.setValue(attributedStringMessage, forKey: "attributedMessage")
         
         menuAlert.view.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1);
-        
-//        menuAlert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-//            textField.text = "Some default text."
-//        })
         
         menuAlert.addAction(UIAlertAction(title: "Trail Info", style: .Default , handler: { (action) -> Void in
             print("Trail Info")
@@ -177,7 +184,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             // Launches the native navigation app
             mapItem.openInMapsWithLaunchOptions(launchOptions)
         }))
-
+        
+        menuAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
         
         let subview = menuAlert.view.subviews.first! as UIView
         let alertContentView = subview.subviews.first! as UIView

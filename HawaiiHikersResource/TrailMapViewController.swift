@@ -42,6 +42,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var isReverse: Bool?
     var startFound: Bool? = false
     var i = 0;
+    var hasCheckPoints: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,6 +121,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         
         trailProgress = points
         checkPointIndex = [0, 2, 4]
+        hasCheckPoints = true
         
     }
     
@@ -240,7 +242,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         if(startFound == true){
             checkTrailProgress(latValue,lon: lonValue)
         }
-        else{
+        else if(hasCheckPoints){
             checkStartingPosition(latValue, lon: lonValue)
         }
         
