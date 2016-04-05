@@ -28,7 +28,20 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
     
     @IBAction func saveTrail(sender: AnyObject) {
         
-        let saveAlert = UIAlertController(title: "Save Trail Map", message: "Enter the trail's name.", preferredStyle: .Alert)
+        let attributedStringTitle = NSAttributedString(string: "Save Custom Trail", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(22),
+            NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            ])
+        let attributedStringMessage = NSAttributedString(string: "Enter the name of the trail.", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(15),
+            NSForegroundColorAttributeName : UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
+            ])
+        let saveAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        
+        saveAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
+        saveAlert.setValue(attributedStringMessage, forKey: "attributedMessage")
+        
+        saveAlert.view.tintColor = UIColor.whiteColor();
         
         saveAlert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
             textField.text = "Some default text."
@@ -40,7 +53,14 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
         }))
         saveAlert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
         
+        let subview = saveAlert.view.subviews.first! as UIView
+        let alertContentView = subview.subviews.first! as UIView
+        alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
+        
         self.presentViewController(saveAlert, animated: true, completion: nil)
+        
+        alertContentView.layer.cornerRadius = 12;
+    
     }
     
     override func viewDidLoad() {

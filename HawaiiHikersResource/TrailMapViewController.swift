@@ -91,9 +91,6 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Calls function to center map on pinLocation
         centerMapOnPinLocation(pinLocation)
         
-        // Call functions to map trail overlays
-        
-       print(startFound, startedTrail, isReverse, checkPoints)
     }
     
     // Rectangular region to display zoom level
@@ -241,12 +238,11 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         
         
         if(startFound == true){
-        checkTrailProgress(latValue,lon: lonValue)
+            checkTrailProgress(latValue,lon: lonValue)
         }
         else{
             checkStartingPosition(latValue, lon: lonValue)
         }
-        //print(myLocations)
         
     }
     
@@ -273,11 +269,13 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             ((lon >= (checkPoints[0].longitude - 0.00006)) && (lon <= (checkPoints[0].longitude + 0.00006))){
             isReverse = false
             i = 0;
+            startFound = true
         }
-        else if((lat >= (checkPoints[0].latitude - 0.00006)) && (lat <= (checkPoints[0].latitude + 0.00006))) &&
-            ((lon >= (checkPoints[0].longitude - 0.00006)) && (lon <= (checkPoints[0].longitude + 0.00006))){
+        else if((lat >= (checkPoints[checkPoints.count-1].latitude - 0.00006)) && (lat <= (checkPoints[checkPoints.count-1].latitude + 0.00006))) &&
+            ((lon >= (checkPoints[checkPoints.count-1].longitude - 0.00006)) && (lon <= (checkPoints[checkPoints.count-1].longitude + 0.00006))){
             isReverse = true
             i = checkPoints.count - 1;
+            startFound = true
         }
     }
     
@@ -320,17 +318,27 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         let trialCompleteAlert = UIAlertController(title: "Trail Completed", message: "Blah Blah Blah", preferredStyle: UIAlertControllerStyle.Alert)
         trialCompleteAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
         trialCompleteAlert.addAction(UIAlertAction(title: "Share", style: .Default, handler: { (action: UIAlertAction!) in
-            print("Handle Cancel Logic here")
+            print("Handle share Logic here")
         }))
+        self.startedTrail = false
+        self.isReverse = false
+        self.startFound = false
         self.presentViewController(trialCompleteAlert, animated: true, completion: nil)
-        //self.dismissViewControllerAnimated(true, completion: {});
+        
     }
     // Updates the progress on the trail
     func updateProgress(){
         var temp: [CLLocationCoordinate2D] = []
         
-        for index in 0 ... checkPointIndex[i]{
-            temp.append(trailProgress[index])
+        if(!isReverse!){
+            for index in 0 ... checkPointIndex[i]{
+                temp.append(trailProgress[index])
+            }
+        }
+        else if(isReverse!){
+            for (var index = checkPointIndex.count - 1; index >= 0; i -= 1) {
+                temp.append(trailProgress[index])
+            }
         }
         
         // Declaration

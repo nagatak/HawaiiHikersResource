@@ -86,7 +86,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="Rxq-8J-pSa">
-                                <rect key="frame" x="0.0" y="49.5" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="113.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rxq-8J-pSa" id="bdj-Ay-4ar">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -380,19 +380,20 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem systemItem="play" id="5m9-OF-JHr">
-                                        <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <color key="tintColor" red="0.057249147048700211" green="1" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="startMappingTrail:" destination="bXo-oH-Ef8" id="xmi-4y-bqN"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="stop" id="xFC-UV-MVU">
+                                        <color key="tintColor" red="0.73564299738219896" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="stopMappingTrail:" destination="bXo-oH-Ef8" id="BwW-UI-1su"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wnE-sW-u2e"/>
                                     <barButtonItem systemItem="save" id="QXP-Ws-Igh">
-                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="saveTrail:" destination="bXo-oH-Ef8" id="YkS-Zk-o66"/>
                                         </connections>
@@ -426,7 +427,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWZ-JI-zHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1496" y="-763.01333333333332"/>
+            <point key="canvasLocation" x="1360" y="-788"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qGo-6r-3OE">
@@ -489,11 +490,11 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="10.133333333333333" y="-15.146666666666667"/>
+            <point key="canvasLocation" x="4" y="-16"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="z0U-jL-4O9"/>
+        <segue reference="PXh-hq-kf4"/>
         <segue reference="4t8-3Z-tgh"/>
     </inferredMetricsTieBreakers>
 </document>

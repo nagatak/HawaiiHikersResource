@@ -115,7 +115,77 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             // Gets the current pin coordinates
             pinCoordinate = view.annotation?.coordinate
             // Calls the pinMenu function when pin is tapped
-            pinMenu()
+            //pinMenu()
+            alertMenu()
+    }
+    // 
+    func alertMenu(){
+        let attributedStringTitle = NSAttributedString(string: "Select an Option", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(22),
+            NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+            ])
+//        let attributedStringMessage = NSAttributedString(string: "Enter the name of the trail.", attributes: [
+//            NSFontAttributeName : UIFont.systemFontOfSize(15),
+//            NSForegroundColorAttributeName : UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
+//            ])
+        let menuAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        
+        menuAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
+        //menuAlert.setValue(attributedStringMessage, forKey: "attributedMessage")
+        
+        menuAlert.view.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1);
+        
+//        menuAlert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+//            textField.text = "Some default text."
+//        })
+        
+        menuAlert.addAction(UIAlertAction(title: "Trail Info", style: .Default , handler: { (action) -> Void in
+            print("Trail Info")
+            self.performSegueWithIdentifier("trailInfoIdentifier", sender: nil)
+        }))
+        menuAlert.addAction(UIAlertAction(title: "Park Info", style: .Default , handler: { (action) -> Void in
+            print("Park Info")
+            self.performSegueWithIdentifier("parkInfoIdentifier", sender: nil)
+        }))
+        menuAlert.addAction(UIAlertAction(title: "Weather", style: .Default , handler: { (action) -> Void in
+            print("Weather")
+            self.performSegueWithIdentifier("weatherIdentifier", sender: nil)
+        }))
+        menuAlert.addAction(UIAlertAction(title: "360 Degree Preview", style: .Default , handler: { (action) -> Void in
+            print("Preview")
+        }))
+        menuAlert.addAction(UIAlertAction(title: "Directions", style: .Default , handler: { (action) -> Void in
+            print("Directions")
+            // Creates an instance of MKDirectionsRequest
+            let request = MKDirectionsRequest()
+            
+            // Determines the destination according to the current pin selected
+            if self.pinCoordinate.latitude == 19.865850{self.destination = MKMapItem(placemark:  MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))}
+            else if self.pinCoordinate.latitude == 19.482842{self.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), addressDictionary: nil))}
+            else if self.pinCoordinate.latitude == 19.703202{self.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.703118, longitude: -155.079461), addressDictionary: nil))}
+            else if self.pinCoordinate.latitude == 19.416333{self.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.416409, longitude: -155.242834), addressDictionary: nil))}
+            else if self.pinCoordinate.latitude == 19.670625{self.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), addressDictionary: nil))}
+            else {self.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.5667, longitude: -155), addressDictionary: nil))}
+            
+            // Defaults the transportation type as an automobile
+            request.transportType = MKDirectionsTransportType.Automobile
+            
+            // Sets the destination
+            let mapItem = self.destination
+            // Sets the launch options for the native navigation app
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+            // Launches the native navigation app
+            mapItem.openInMapsWithLaunchOptions(launchOptions)
+        }))
+
+        
+        let subview = menuAlert.view.subviews.first! as UIView
+        let alertContentView = subview.subviews.first! as UIView
+        alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
+        
+        self.presentViewController(menuAlert, animated: true, completion: nil)
+        
+        alertContentView.layer.cornerRadius = 12;
     }
     
     // Creates a new UIMenuController
