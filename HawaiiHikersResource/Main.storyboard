@@ -30,6 +30,7 @@
                         <segue destination="KCR-m0-1A7" kind="modal" identifier="parkInfoIdentifier" modalPresentationStyle="overFullScreen" id="hBO-We-6bc"/>
                         <segue destination="nml-Ro-Xhe" kind="modal" identifier="trailInfoIdentifier" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="z9A-Gu-7g8"/>
                         <segue destination="PM8-VZ-NEe" kind="modal" identifier="menuSwipeSegue" modalTransitionStyle="flipHorizontal" id="4t8-3Z-tgh"/>
+                        <segue destination="98d-Mf-sVQ" kind="modal" identifier="previewIdentifier" id="hC3-T5-h7W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -50,7 +51,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gQc-vy-LiY" id="e6V-5q-Opi">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -86,10 +87,10 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="Rxq-8J-pSa">
-                                <rect key="frame" x="0.0" y="113.5" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rxq-8J-pSa" id="bdj-Ay-4ar">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -134,7 +135,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6EK-fs-7ah" id="t0Q-tf-QGQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -244,7 +245,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R7w-Ur-aMj" id="wRe-R4-V37">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -353,6 +354,70 @@
             </objects>
             <point key="canvasLocation" x="363.73333333333335" y="-15.146666666666667"/>
         </scene>
+        <!--Preview Controller-->
+        <scene sceneID="T9s-J8-Nh6">
+            <objects>
+                <viewController id="98d-Mf-sVQ" customClass="PreviewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1mB-Kw-EPf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="aea-rf-6bb">
+                                <rect key="frame" x="0.0" y="44" width="320" height="478"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="98d-Mf-sVQ" id="Gel-ed-Rb6"/>
+                                </connections>
+                            </sceneKitView>
+                            <navigationBar contentMode="scaleToFill" id="D95-xy-ui3">
+                                <rect key="frame" x="0.0" y="-5" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="360 Degree Preview" id="rbr-8g-pFP"/>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="tst-6o-2re">
+                                <rect key="frame" x="0.0" y="522" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem systemItem="play" id="MU0-jE-v6F">
+                                        <connections>
+                                            <action selector="playPausePlayer" destination="98d-Mf-sVQ" id="fcC-Jc-FBd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="fgP-rW-l2y">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="0t1-IH-SV1">
+                                            <rect key="frame" x="43" y="6.5" width="269" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <connections>
+                                                <action selector="sliderChangeProgression:" destination="98d-Mf-sVQ" eventType="valueChanged" id="TKp-Bi-lio"/>
+                                                <action selector="sliderStartSliding:" destination="98d-Mf-sVQ" eventType="touchDown" id="0Z1-ja-ObF"/>
+                                            </connections>
+                                        </slider>
+                                    </barButtonItem>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="98d-Mf-sVQ" id="zpJ-Mp-GRp"/>
+                                </connections>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="SceneView" destination="aea-rf-6bb" id="FTw-8M-Ck1"/>
+                        <outlet property="playButton" destination="MU0-jE-v6F" id="2hQ-S6-ZUR"/>
+                        <outlet property="playerSlideBar" destination="0t1-IH-SV1" id="3Je-5W-Iqj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WZp-sF-cZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1104" y="21"/>
+        </scene>
         <!--Custom Trail Map View Controller-->
         <scene sceneID="6uj-bf-KGj">
             <objects>
@@ -409,7 +474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thA-J4-pL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="-323"/>
+            <point key="canvasLocation" x="742" y="512"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Oh6-c5-QB3">
@@ -427,7 +492,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWZ-JI-zHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1360" y="-788"/>
+            <point key="canvasLocation" x="1381" y="-764"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qGo-6r-3OE">
@@ -467,7 +532,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6XQ-d3-PuI" id="zcV-1m-gpl">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -494,7 +559,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PXh-hq-kf4"/>
         <segue reference="4t8-3Z-tgh"/>
+        <segue reference="z0U-jL-4O9"/>
     </inferredMetricsTieBreakers>
 </document>

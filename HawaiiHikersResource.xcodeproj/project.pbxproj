@@ -57,6 +57,14 @@
 		04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBFC711BE2F99A00923F9F /* ApiKeys.swift */; };
 		A6376DC31CB0F60F00A7BCF3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6376DC21CB0F60F00A7BCF3 /* UserInfo.swift */; };
 		A6376DC51CB138ED00A7BCF3 /* CustomTrailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6376DC41CB138ED00A7BCF3 /* CustomTrailMapViewController.swift */; };
+		A6376DF01CB3E6D800A7BCF3 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DEF1CB3E6D800A7BCF3 /* SceneKit.framework */; };
+		A6376DF21CB3E6E300A7BCF3 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF11CB3E6E300A7BCF3 /* CoreVideo.framework */; };
+		A6376DF41CB3E6EC00A7BCF3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF31CB3E6EC00A7BCF3 /* AVFoundation.framework */; };
+		A6376DF71CB3E6FD00A7BCF3 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF51CB3E6FD00A7BCF3 /* CoreAudio.framework */; };
+		A6376DF81CB3E6FD00A7BCF3 /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF61CB3E6FD00A7BCF3 /* CoreAudioKit.framework */; };
+		A6376DFA1CB3E71400A7BCF3 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */; };
+		A6376DFC1CB3E92D00A7BCF3 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */; };
+		A6376DFE1CB3EB6B00A7BCF3 /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A6376DFD1CB3EB6B00A7BCF3 /* get.mp4 */; };
 		A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F51CAB713800486E73 /* ApiKeys.plist */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
 		E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B882CB1C118B020003CA63 /* PinInfo.swift */; };
@@ -122,6 +130,14 @@
 		04FBFC711BE2F99A00923F9F /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		A6376DC21CB0F60F00A7BCF3 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		A6376DC41CB138ED00A7BCF3 /* CustomTrailMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTrailMapViewController.swift; sourceTree = "<group>"; };
+		A6376DEF1CB3E6D800A7BCF3 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		A6376DF11CB3E6E300A7BCF3 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		A6376DF31CB3E6EC00A7BCF3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A6376DF51CB3E6FD00A7BCF3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		A6376DF61CB3E6FD00A7BCF3 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
+		A6376DFD1CB3EB6B00A7BCF3 /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
 		A6BF26F51CAB713800486E73 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = SOURCE_ROOT; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E7B882CB1C118B020003CA63 /* PinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
@@ -132,6 +148,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6376DFA1CB3E71400A7BCF3 /* CoreMotion.framework in Frameworks */,
+				04FBFC611BE2EE6400923F9F /* CoreGraphics.framework in Frameworks */,
+				A6376DF71CB3E6FD00A7BCF3 /* CoreAudio.framework in Frameworks */,
+				A6376DF81CB3E6FD00A7BCF3 /* CoreAudioKit.framework in Frameworks */,
+				A6376DF41CB3E6EC00A7BCF3 /* AVFoundation.framework in Frameworks */,
+				A6376DF21CB3E6E300A7BCF3 /* CoreVideo.framework in Frameworks */,
+				A6376DF01CB3E6D800A7BCF3 /* SceneKit.framework in Frameworks */,
 				04FBFC6D1BE2EEF200923F9F /* Social.framework in Frameworks */,
 				04FBFC6B1BE2EEE600923F9F /* Accounts.framework in Frameworks */,
 				04FBFC691BE2EEDC00923F9F /* libz.tbd in Frameworks */,
@@ -139,7 +162,6 @@
 				04FBFC671BE2EEB000923F9F /* SystemConfiguration.framework in Frameworks */,
 				04FBFC651BE2EE8F00923F9F /* Security.framework in Frameworks */,
 				04FBFC631BE2EE7500923F9F /* CoreLocation.framework in Frameworks */,
-				04FBFC611BE2EE6400923F9F /* CoreGraphics.framework in Frameworks */,
 				04FBFC5F1BE2EE5600923F9F /* CFNetwork.framework in Frameworks */,
 				04FBFC5D1BE2EE4300923F9F /* AudioToolbox.framework in Frameworks */,
 				045409591BE0502E004B9577 /* libsqlite3.tbd in Frameworks */,
@@ -256,6 +278,7 @@
 				04DFD1B51C05B4FF000AF371 /* TrailInfoController.swift */,
 				04DFD1B91C05B68D000AF371 /* TrailMapViewController.swift */,
 				04DFD1BB1C05B75C000AF371 /* WeatherViewController.swift */,
+				A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -263,6 +286,7 @@
 		048B25AD1C1A4993009324FD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				A6376DFD1CB3EB6B00A7BCF3 /* get.mp4 */,
 				A6BF26F51CAB713800486E73 /* ApiKeys.plist */,
 				043C70451C61D22F002598B1 /* trailInfo.json */,
 				04C31BF01C5BF49000C8964F /* parkInfo.json */,
@@ -279,6 +303,12 @@
 		048B25AE1C1A4A22009324FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */,
+				A6376DF51CB3E6FD00A7BCF3 /* CoreAudio.framework */,
+				A6376DF61CB3E6FD00A7BCF3 /* CoreAudioKit.framework */,
+				A6376DF31CB3E6EC00A7BCF3 /* AVFoundation.framework */,
+				A6376DF11CB3E6E300A7BCF3 /* CoreVideo.framework */,
+				A6376DEF1CB3E6D800A7BCF3 /* SceneKit.framework */,
 				04FBFC6A1BE2EEE600923F9F /* Accounts.framework */,
 				04FBFC5C1BE2EE4300923F9F /* AudioToolbox.framework */,
 				04FBFC581BE2EC5B00923F9F /* Bolts.framework */,
@@ -433,6 +463,7 @@
 				A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */,
 				04C31BF11C5BF49000C8964F /* parkInfo.json in Resources */,
 				A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */,
+				A6376DFE1CB3EB6B00A7BCF3 /* get.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6376DFC1CB3E92D00A7BCF3 /* PreviewController.swift in Sources */,
 				04FBFC701BE2F7E800923F9F /* PushNotificationController.swift in Sources */,
 				04DFD1BC1C05B75C000AF371 /* WeatherViewController.swift in Sources */,
 				E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */,

@@ -159,7 +159,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.performSegueWithIdentifier("weatherIdentifier", sender: nil)
         }))
         menuAlert.addAction(UIAlertAction(title: "360 Degree Preview", style: .Default , handler: { (action) -> Void in
-            print("Preview")
+            self.performSegueWithIdentifier("previewIdentifier", sender: nil)
         }))
         menuAlert.addAction(UIAlertAction(title: "Directions", style: .Default , handler: { (action) -> Void in
             print("Directions")
