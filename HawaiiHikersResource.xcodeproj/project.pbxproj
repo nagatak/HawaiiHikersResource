@@ -64,9 +64,10 @@
 		A6376DF81CB3E6FD00A7BCF3 /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF61CB3E6FD00A7BCF3 /* CoreAudioKit.framework */; };
 		A6376DFA1CB3E71400A7BCF3 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */; };
 		A6376DFC1CB3E92D00A7BCF3 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */; };
-		A6376DFE1CB3EB6B00A7BCF3 /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A6376DFD1CB3EB6B00A7BCF3 /* get.mp4 */; };
 		A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F51CAB713800486E73 /* ApiKeys.plist */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
+		E734EB461CB5A31B007D4CF2 /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E734EB451CB5A31B007D4CF2 /* get.mp4 */; };
+		E734EB481CB5A73C007D4CF2 /* MenuTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */; };
 		E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B882CB1C118B020003CA63 /* PinInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -137,9 +138,10 @@
 		A6376DF61CB3E6FD00A7BCF3 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
-		A6376DFD1CB3EB6B00A7BCF3 /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
 		A6BF26F51CAB713800486E73 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = SOURCE_ROOT; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E734EB451CB5A31B007D4CF2 /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
+		E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableController.swift; sourceTree = "<group>"; };
 		E7B882CB1C118B020003CA63 /* PinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -279,6 +281,7 @@
 				04DFD1B91C05B68D000AF371 /* TrailMapViewController.swift */,
 				04DFD1BB1C05B75C000AF371 /* WeatherViewController.swift */,
 				A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */,
+				E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -286,7 +289,7 @@
 		048B25AD1C1A4993009324FD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				A6376DFD1CB3EB6B00A7BCF3 /* get.mp4 */,
+				E734EB451CB5A31B007D4CF2 /* get.mp4 */,
 				A6BF26F51CAB713800486E73 /* ApiKeys.plist */,
 				043C70451C61D22F002598B1 /* trailInfo.json */,
 				04C31BF01C5BF49000C8964F /* parkInfo.json */,
@@ -463,7 +466,7 @@
 				A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */,
 				04C31BF11C5BF49000C8964F /* parkInfo.json in Resources */,
 				A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */,
-				A6376DFE1CB3EB6B00A7BCF3 /* get.mp4 in Resources */,
+				E734EB461CB5A31B007D4CF2 /* get.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +495,7 @@
 				04FBFC701BE2F7E800923F9F /* PushNotificationController.swift in Sources */,
 				04DFD1BC1C05B75C000AF371 /* WeatherViewController.swift in Sources */,
 				E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */,
+				E734EB481CB5A73C007D4CF2 /* MenuTableController.swift in Sources */,
 				045409251BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld in Sources */,
 				A6376DC31CB0F60F00A7BCF3 /* UserInfo.swift in Sources */,
 				0454091F1BE04E67004B9577 /* MapViewController.swift in Sources */,
@@ -644,6 +648,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/HawaiiHikersResourceUITests",
+					"$(PROJECT_DIR)/HawaiiHikersResource/HawaiiHikersResource/Frameworks",
+					"$(PROJECT_DIR)/HawaiiHikersResource/HawaiiHikersResource/HawaiiHikersResourceUITests",
 				);
 				INFOPLIST_FILE = HawaiiHikersResource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -666,6 +672,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/HawaiiHikersResourceUITests",
+					"$(PROJECT_DIR)/HawaiiHikersResource/HawaiiHikersResource/Frameworks",
+					"$(PROJECT_DIR)/HawaiiHikersResource/HawaiiHikersResource/HawaiiHikersResourceUITests",
 				);
 				INFOPLIST_FILE = HawaiiHikersResource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
