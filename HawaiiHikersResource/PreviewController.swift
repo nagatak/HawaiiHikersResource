@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  simple360player
-//
-//  Created by Arthur Swiniarski on 04/01/16.
-//  Copyright © 2016 Arthur Swiniarski. All rights reserved.
-//
+
 
 import UIKit
 import SceneKit
@@ -31,6 +25,9 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
     @IBOutlet weak var playButton: UIBarButtonItem!
     @IBOutlet weak var playerSlideBar: UISlider!
    
+    @IBAction func closePreview(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     var scene : SCNScene?
     

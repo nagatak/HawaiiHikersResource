@@ -14,7 +14,8 @@ import MapKit
 class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var manager:CLLocationManager!
-    var trailcoordinates: [CLLocationCoordinate2D] = []
+    var trailcoordinates: [CLLocation] = []
+    var customTrail = [NSManagedObject]()
     
     @IBOutlet weak var customMapView: MKMapView!
     
@@ -49,7 +50,16 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
         
         saveAlert.addAction(UIAlertAction(title: "Save", style: .Default , handler: { (action) -> Void in
             let textField = saveAlert.textFields![0] as UITextField
+            self.saveNewTrail(textField.text!, trailCoordinates: self.trailcoordinates)
             print("Text field: \(textField.text)")
+            let newTrail = self.customTrail[0]
+            print(newTrail.valueForKey("trailName"))
+            print(newTrail.valueForKey("trailNum"))
+            print(newTrail.valueForKey("overlay"))
+            self.customTrail = []
+            self.trailcoordinates = []
+            print(self.customTrail)
+            print(self.trailcoordinates)
         }))
         saveAlert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
         
@@ -82,11 +92,12 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
         customMapView.showsUserLocation = true
         
         
+        
     }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //trailcoordinates.append(locations[0] as CLLocation)
+        trailcoordinates.append(locations[0] as CLLocation)
 
-        trailcoordinates.append(manager.location!.coordinate)
+        //trailcoordinates.append(manager.location!.coordinate)
         
         //Sets span og viewable area
         let spanX = 0.002
@@ -100,8 +111,8 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
             var sourceIndex = trailcoordinates.count - 1
             var destinationIndex = trailcoordinates.count - 2
 
-            let s = trailcoordinates[sourceIndex]
-            let d = trailcoordinates[destinationIndex]
+            let s = trailcoordinates[sourceIndex].coordinate
+            let d = trailcoordinates[destinationIndex].coordinate
             var a = [s, d]
             var polyline = MKPolyline(coordinates: &a, count: a.count)
             customMapView.addOverlay(polyline)
@@ -118,5 +129,25 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
             return polylineRenderer
         }
         return MKPolylineRenderer()
-   }
+    }
+    
+    func saveNewTrail(name: String, trailCoordinates: [CLLocation]){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity =  NSEntityDescription.entityForName("CustomTrails", inManagedObjectContext:managedContext)
+        let newTrail = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        newTrail.setValue(name, forKey: "trailName")
+        newTrail.setValue(1, forKey: "trailNum")
+        newTrail.setValue(trailCoordinates, forKeyPath: "overlay")
+        
+        do {
+            try managedContext.save()
+            customTrail.append(newTrail)
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
 }

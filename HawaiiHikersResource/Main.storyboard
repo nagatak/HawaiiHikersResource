@@ -51,7 +51,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gQc-vy-LiY" id="e6V-5q-Opi">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -87,10 +87,10 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="Rxq-8J-pSa">
-                                <rect key="frame" x="0.0" y="50" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="113.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rxq-8J-pSa" id="bdj-Ay-4ar">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -135,7 +135,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6EK-fs-7ah" id="t0Q-tf-QGQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -245,7 +245,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R7w-Ur-aMj" id="wRe-R4-V37">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -363,13 +363,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="aea-rf-6bb">
-                                <rect key="frame" x="0.0" y="44" width="320" height="478"/>
+                                <rect key="frame" x="0.0" y="39" width="320" height="485"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="98d-Mf-sVQ" id="Gel-ed-Rb6"/>
                                 </connections>
                             </sceneKitView>
-                            <navigationBar contentMode="scaleToFill" id="D95-xy-ui3">
+                            <navigationBar clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" id="D95-xy-ui3">
                                 <rect key="frame" x="0.0" y="-5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -377,22 +377,23 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="360 Degree Preview" id="rbr-8g-pFP"/>
+                                    <navigationItem title="VR Preview" id="rbr-8g-pFP"/>
                                 </items>
                             </navigationBar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="tst-6o-2re">
-                                <rect key="frame" x="0.0" y="522" width="320" height="44"/>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="tst-6o-2re">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <barButtonItem systemItem="play" id="MU0-jE-v6F">
+                                        <color key="tintColor" red="0.057249147049999997" green="1" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="playPausePlayer" destination="98d-Mf-sVQ" id="fcC-Jc-FBd"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="fgP-rW-l2y">
                                         <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="0t1-IH-SV1">
-                                            <rect key="frame" x="43" y="6.5" width="269" height="31"/>
+                                            <rect key="frame" x="43" y="6.5" width="237" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <connections>
                                                 <action selector="sliderChangeProgression:" destination="98d-Mf-sVQ" eventType="valueChanged" id="TKp-Bi-lio"/>
@@ -400,7 +401,14 @@
                                             </connections>
                                         </slider>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="stop" id="lhQ-so-Ppw">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.01026766514" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="closePreview:" destination="98d-Mf-sVQ" id="HM2-aB-bII"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
+                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="98d-Mf-sVQ" id="zpJ-Mp-GRp"/>
                                 </connections>
@@ -433,13 +441,6 @@
                                     <navigationItem title="Custom Trail" id="VCb-bN-GWO"/>
                                 </items>
                             </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsUserLocation="YES" id="UI2-Xe-AnN">
-                                <rect key="frame" x="0.0" y="59" width="320" height="465"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="bXo-oH-Ef8" id="5pP-hu-Ulp"/>
-                                </connections>
-                            </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" barStyle="black" id="492-ne-KXP">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -465,6 +466,13 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsUserLocation="YES" id="UI2-Xe-AnN">
+                                <rect key="frame" x="0.0" y="59" width="320" height="465"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="bXo-oH-Ef8" id="5pP-hu-Ulp"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -532,7 +540,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6XQ-d3-PuI" id="zcV-1m-gpl">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -559,7 +567,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="PXh-hq-kf4"/>
         <segue reference="4t8-3Z-tgh"/>
-        <segue reference="z0U-jL-4O9"/>
     </inferredMetricsTieBreakers>
 </document>
