@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ECQ-eu-4UZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="D0M-Gr-R3T">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -29,7 +29,6 @@
                         <segue destination="6V8-cc-a8f" kind="modal" identifier="weatherIdentifier" modalPresentationStyle="overFullScreen" id="RLB-d1-eRY"/>
                         <segue destination="KCR-m0-1A7" kind="modal" identifier="parkInfoIdentifier" modalPresentationStyle="overFullScreen" id="hBO-We-6bc"/>
                         <segue destination="nml-Ro-Xhe" kind="modal" identifier="trailInfoIdentifier" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="z9A-Gu-7g8"/>
-                        <segue destination="PM8-VZ-NEe" kind="modal" identifier="menuSwipeSegue" modalTransitionStyle="flipHorizontal" id="4t8-3Z-tgh"/>
                         <segue destination="98d-Mf-sVQ" kind="modal" identifier="previewIdentifier" id="hC3-T5-h7W"/>
                     </connections>
                 </viewController>
@@ -76,50 +75,6 @@
                 </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2214.4000000000001" y="-763.01333333333332"/>
-        </scene>
-        <!--Menu Table View Controller-->
-        <scene sceneID="foQ-34-EHT">
-            <objects>
-                <tableViewController modalPresentationStyle="overCurrentContext" id="PM8-VZ-NEe" userLabel="Menu Table View Controller" customClass="MenuTableViewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="CD1-Yg-7kj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="Rxq-8J-pSa">
-                                <rect key="frame" x="0.0" y="49.5" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rxq-8J-pSa" id="bdj-Ay-4ar">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <gestureRecognizers/>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="PM8-VZ-NEe" id="CaK-zj-2JG"/>
-                            <outlet property="delegate" destination="PM8-VZ-NEe" id="aX2-ih-fOq"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems>
-                        <barButtonItem systemItem="action" id="Hfs-Ii-cP6">
-                            <connections>
-                                <segue destination="P8Y-WS-fFC" kind="modal" modalTransitionStyle="coverVertical" id="vr8-UD-rAG"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="8Nn-hU-PmF"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="itemTest" destination="Hfs-Ii-cP6" id="HNC-Bd-qKH"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" identifier="mapSwipeSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="flipHorizontal" id="PXh-hq-kf4"/>
-                        <segue destination="cIw-6Y-BOp" kind="modal" identifier="menuTrailIdentifier" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="zb2-R9-ldE"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="09a-8q-Ved" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="10.133333333333333" y="-728.93333333333328"/>
         </scene>
         <!--Park Info Controller-->
         <scene sceneID="ZrG-EZ-Ka8">
@@ -270,6 +225,48 @@
             </objects>
             <point key="canvasLocation" x="1848.5333333333333" y="21.773333333333333"/>
         </scene>
+        <!--Menu Table View Controller-->
+        <scene sceneID="wHq-Qy-FEw">
+            <objects>
+                <tableViewController id="D0M-Gr-R3T" userLabel="Menu Table View Controller" customClass="MenuTableController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SOk-k6-0ng">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="zqi-Xq-BjS">
+                            <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem systemItem="action" id="S4d-Y0-Cix">
+                                    <connections>
+                                        <action selector="menuTable:" destination="D0M-Gr-R3T" id="ntK-ot-c7W"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="mYG-49-zeP" userLabel="menuCell">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mYG-49-zeP" id="LlW-Z5-Gv3">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="D0M-Gr-R3T" id="YQO-aq-dFa"/>
+                            <outlet property="delegate" destination="D0M-Gr-R3T" id="z73-wy-cqQ"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="OHV-ct-dtz" kind="modal" identifier="userInfoIdentifier" id="JpI-lm-bBc"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vop-eB-8Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48" y="-729"/>
+        </scene>
         <!--Settings View Controller-->
         <scene sceneID="hSa-GB-tO0">
             <objects>
@@ -292,7 +289,7 @@
                                 <items>
                                     <barButtonItem systemItem="action" id="ukJ-V2-qaQ">
                                         <connections>
-                                            <segue destination="rUU-8o-cJX" kind="unwind" unwindAction="unwindToMenuTable:" id="H62-Du-6Cb"/>
+                                            <segue destination="rUU-8o-cJX" kind="unwind" unwindAction="unwindToViewController:" id="MKx-Rt-BRl"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -310,7 +307,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySu-Wc-489" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rUU-8o-cJX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="363.73333333333335" y="-728.93333333333328"/>
+            <point key="canvasLocation" x="497" y="-729"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="pgE-Z2-gab">
@@ -352,7 +349,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzk-Gw-wze" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="d3N-mN-Ku4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="363.73333333333335" y="-15.146666666666667"/>
+            <point key="canvasLocation" x="497" y="-15"/>
         </scene>
         <!--Preview Controller-->
         <scene sceneID="T9s-J8-Nh6">
@@ -482,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thA-J4-pL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742" y="512"/>
+            <point key="canvasLocation" x="788" y="693"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Oh6-c5-QB3">
@@ -501,24 +498,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWZ-JI-zHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1381" y="-764"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="qGo-6r-3OE">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="saC-mS-rPz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yfX-Re-Gs0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="PM8-VZ-NEe" kind="relationship" relationship="rootViewController" id="KBk-gO-TPr"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="88N-Ew-pwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-354.66666666666669" y="-728.93333333333328"/>
         </scene>
         <!--Menu Trail Info Controller-->
         <scene sceneID="JlT-V7-pdE">
@@ -540,7 +519,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6XQ-d3-PuI" id="zcV-1m-gpl">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -563,11 +542,10 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4" y="-16"/>
+            <point key="canvasLocation" x="48" y="-15"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="z0U-jL-4O9"/>
-        <segue reference="4t8-3Z-tgh"/>
+        <segue reference="JpI-lm-bBc"/>
     </inferredMetricsTieBreakers>
 </document>

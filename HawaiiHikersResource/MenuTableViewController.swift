@@ -16,16 +16,28 @@ class MenuTableViewController: UITableViewController {
     var pinCoordinate: CLLocationCoordinate2D!
     
     @IBOutlet weak var itemTest: UIBarButtonItem!
-    /*@IBAction func mapSwipe(sender: UISwipeGestureRecognizer) {
-        performSegueWithIdentifier("mapSegue", sender: nil)
-    }*/    
     
-    @IBAction func unwindToMenuTable (sender: UIStoryboardSegue){
+    @IBAction func unwindToViewController (sender: UIStoryboardSegue){
         
     }
+    
     /*@IBAction func mapSwipe(sender: UIScreenEdgePanGestureRecognizer) {
     
     }*/
+    @IBAction func menuOptions(sender: AnyObject) {
+        let attributedStringTitle = NSAttributedString(string: "Select an Option", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(22),
+            NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            ])
+        
+        let menuAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        
+        menuAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
+        
+        menuAlert.view.tintColor = UIColor.whiteColor()
+        
+        menuAlert.addAction(UIAlertAction(title: "User Info", style: .Default, handler: { (action) -> Void in }))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +52,7 @@ class MenuTableViewController: UITableViewController {
         loadTrailName("havo001")
         loadTrailName("king001")
         
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(MenuTableViewController.handleSwipes(_:)))
         
         leftSwipe.direction = .Left
         
@@ -62,8 +74,8 @@ class MenuTableViewController: UITableViewController {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
             
-            if let trails = json![trailId] {
-                if let trailName = trails["trailName"] as? String{
+            if let trails = json?.objectForKey(trailId) {
+                if let trailName = trails.objectForKey("trailName") as? String{
                     menuTableData.addObject("\(trailName)")
                 }
             }
@@ -106,15 +118,15 @@ class MenuTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    /*override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //chosenCellIndex = indexPath.row
         
         var cellnumber = menuTableData[indexPath.row]
         
         performSegueWithIdentifier("menuTrailIdentifier", sender: self)
-    }
+    }*/
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         /*if segue.identifier == "menuTrailIdentifier", let destination = segue.destinationViewController as? MenuTrailInfoController {
             
             if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
@@ -130,7 +142,7 @@ class MenuTableViewController: UITableViewController {
             
             svc.toPass = passedCoord
         }
-    }
+    }*/
 
     /*
     // Override to support conditional editing of the table view.
