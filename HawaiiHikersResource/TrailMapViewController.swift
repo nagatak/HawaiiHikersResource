@@ -106,7 +106,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     
-    // Map overlay for ch to parking lot
+    // Map overlay for ch to parking lot//
     func mapUH(){
         // Array of gps coordinates
         var points = [CLLocationCoordinate2DMake(19.703118, -155.079461), CLLocationCoordinate2DMake(19.702924, -155.079330), CLLocationCoordinate2DMake(19.702808, -155.079504), CLLocationCoordinate2DMake(19.702718, -155.079515),

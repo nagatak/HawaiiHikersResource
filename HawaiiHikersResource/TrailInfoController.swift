@@ -158,7 +158,7 @@ class TrailInfoController: UITableViewController {
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    //dismiss view controller when swiped
+    //dismiss view controller when swiped//
     func closeSwipe() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }}
