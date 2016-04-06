@@ -1,4 +1,4 @@
-
+//HawaiiHikersResource
 
 import UIKit
 import SceneKit
