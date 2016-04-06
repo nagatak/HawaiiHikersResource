@@ -29,7 +29,9 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var myLocations: [CLLocation] = []
     var currentLocation: [CLLocation] = []
     var trailProgress: [CLLocationCoordinate2D] = []
+    var trailProgressReverse: [CLLocationCoordinate2D] = []
     var checkPoints: [CLLocationCoordinate2D!] = []
+    var checkPointsReverse: [CLLocationCoordinate2D!] = []
     var checkPointIndex: [Int] = []
     var toPass: CLLocationCoordinate2D!
     var passedCoord: CLLocationCoordinate2D!
@@ -121,8 +123,9 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         
         trailProgress = points
         checkPointIndex = [0, 2, 4]
+        generateReverseCourse(points)
         hasCheckPoints = true
-        
+        print(trailProgress)
     }
     
     // Map overlay for akaka falls
@@ -148,7 +151,18 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Draws the overlay
             trailMapView.addOverlay(trail!)
     }
-    
+    func generateReverseCourse(forwardArray: [CLLocationCoordinate2D]){
+        let count  = forwardArray.count - 1
+        trailProgressReverse = forwardArray
+        checkPointsReverse = checkPoints
+        for index in 0 ... count{
+            trailProgressReverse[index] = forwardArray[count - index]
+        }
+        
+        for index in 0 ... checkPointIndex.count - 1 {
+            checkPointsReverse[index] = trailProgressReverse[checkPointIndex[index]]
+        }
+    }
     // Interface Builder action, switches map type according to segmented control selection
     @IBAction func mapTypeControl(sender: AnyObject) {
         let mapTypeC = MapType(rawValue: mapType.selectedSegmentIndex)
@@ -252,12 +266,18 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     func checkLatLon(lat: Double, lon: Double) -> Bool {
         
         var result  = false
-        
-        if ((lat >= (checkPoints[i].latitude - 0.00006)) && (lat <= (checkPoints[i].latitude + 0.00006))) &&
-        ((lon >= (checkPoints[i].longitude - 0.00006)) && (lon <= (checkPoints[i].longitude + 0.00006))){
-            result = true
+        if(!isReverse!){
+            if ((lat >= (checkPoints[i].latitude - 0.00006)) && (lat <= (checkPoints[i].latitude + 0.00006))) &&
+            ((lon >= (checkPoints[i].longitude - 0.00006)) && (lon <= (checkPoints[i].longitude + 0.00006))){
+                result = true
+            }
         }
-        
+        else if(isReverse!){
+            if ((lat >= (checkPointsReverse[i].latitude - 0.00006)) && (lat <= (checkPointsReverse[i].latitude + 0.00006))) &&
+                ((lon >= (checkPointsReverse[i].longitude - 0.00006)) && (lon <= (checkPointsReverse[i].longitude + 0.00006))){
+                result = true
+            }
+        }
         return result
     }
     // Check the progress on the trail
@@ -270,13 +290,13 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         if ((lat >= (checkPoints[0].latitude - 0.00006)) && (lat <= (checkPoints[0].latitude + 0.00006))) &&
             ((lon >= (checkPoints[0].longitude - 0.00006)) && (lon <= (checkPoints[0].longitude + 0.00006))){
             isReverse = false
-            i = 0;
+            i = 0
             startFound = true
         }
         else if((lat >= (checkPoints[checkPoints.count-1].latitude - 0.00006)) && (lat <= (checkPoints[checkPoints.count-1].latitude + 0.00006))) &&
             ((lon >= (checkPoints[checkPoints.count-1].longitude - 0.00006)) && (lon <= (checkPoints[checkPoints.count-1].longitude + 0.00006))){
             isReverse = true
-            i = checkPoints.count - 1;
+            i = 0
             startFound = true
         }
     }
@@ -300,11 +320,11 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             }
         }
         // User Starting point reverse, array count down.
-        else if i > 0 && isReverse!{
+        else if i < checkPointsReverse.count && isReverse!{
             if checkLatLon(lat, lon: lon){
                 updateProgress()
-                i -= 1;
-                if i < 1 {
+                i += 1;
+                if i >= checkPointsReverse.count {
                     manager.stopUpdatingLocation()
                     trailComplete()
                 }
@@ -338,8 +358,8 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             }
         }
         else if(isReverse!){
-            for (var index = checkPointIndex.count - 1; index >= 0; i -= 1) {
-                temp.append(trailProgress[index])
+            for index in 0 ... checkPointIndex[i]{
+                temp.append(trailProgressReverse[index])
             }
         }
         

@@ -25,6 +25,7 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
     
     @IBAction func stopMappingTrail(sender: AnyObject) {
         manager.stopUpdatingLocation()
+        trailcoordinates = []
     }
     
     @IBAction func saveTrail(sender: AnyObject) {
@@ -45,23 +46,26 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
         saveAlert.view.tintColor = UIColor.whiteColor();
         
         saveAlert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Some default text."
+            textField.text = "Trail Name"
         })
         
         saveAlert.addAction(UIAlertAction(title: "Save", style: .Default , handler: { (action) -> Void in
             let textField = saveAlert.textFields![0] as UITextField
             self.saveNewTrail(textField.text!, trailCoordinates: self.trailcoordinates)
-            print("Text field: \(textField.text)")
-            let newTrail = self.customTrail[0]
-            print(newTrail.valueForKey("trailName"))
-            print(newTrail.valueForKey("trailNum"))
-            print(newTrail.valueForKey("overlay"))
+            //print("Text field: \(textField.text)")
+            //let newTrail = self.customTrail[0]
+            //print(newTrail.valueForKey("trailName"))
+            //print(newTrail.valueForKey("trailNum"))
+            //print(newTrail.valueForKey("overlay"))
             self.customTrail = []
             self.trailcoordinates = []
-            print(self.customTrail)
-            print(self.trailcoordinates)
+            //print(self.customTrail)
+            //print(self.trailcoordinates)
         }))
-        saveAlert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
+        saveAlert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler:{ (action) -> Void in
+            self.customTrail = []
+            self.trailcoordinates = []
+        }))
         
         let subview = saveAlert.view.subviews.first! as UIView
         let alertContentView = subview.subviews.first! as UIView
@@ -108,13 +112,13 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
         customMapView.setRegion(newRegion, animated: true)
         
         if (trailcoordinates.count > 1){
-            var sourceIndex = trailcoordinates.count - 1
-            var destinationIndex = trailcoordinates.count - 2
+            let sourceIndex = trailcoordinates.count - 1
+            let destinationIndex = trailcoordinates.count - 2
 
             let s = trailcoordinates[sourceIndex].coordinate
             let d = trailcoordinates[destinationIndex].coordinate
             var a = [s, d]
-            var polyline = MKPolyline(coordinates: &a, count: a.count)
+            let polyline = MKPolyline(coordinates: &a, count: a.count)
             customMapView.addOverlay(polyline)
         }
     }
