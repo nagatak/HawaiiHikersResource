@@ -161,4 +161,5 @@ class TrailInfoController: UITableViewController {
     //dismiss view controller when swiped//
     func closeSwipe() {
         self.dismissViewControllerAnimated(true, completion: nil)
-    }}
+    }
+}
