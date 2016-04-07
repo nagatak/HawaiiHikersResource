@@ -116,7 +116,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if !(view.annotation!.isKindOfClass(MKUserLocation)) {
             pinCoordinate = view.annotation?.coordinate
             alertMenu(view.annotation!.title!!)
-            //print(view.annotation!.title)
+            print(view.annotation!.title)
+            mapView.deselectAnnotation(view.annotation, animated: false)
         }
         
     }
@@ -189,8 +190,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let subview = menuAlert.view.subviews.first! as UIView
         let alertContentView = subview.subviews.first! as UIView
-        alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
-        
+        alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.3)
         self.presentViewController(menuAlert, animated: true, completion: nil)
         
         alertContentView.layer.cornerRadius = 12;

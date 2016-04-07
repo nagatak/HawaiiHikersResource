@@ -64,6 +64,9 @@
 		A6376DF81CB3E6FD00A7BCF3 /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF61CB3E6FD00A7BCF3 /* CoreAudioKit.framework */; };
 		A6376DFA1CB3E71400A7BCF3 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */; };
 		A6376DFC1CB3E92D00A7BCF3 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */; };
+		A63A829F1CB5E19800A6C225 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63A829E1CB5E19800A6C225 /* FBSDKCoreKit.framework */; };
+		A63A82A11CB5E40200A6C225 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */; };
+		A63A82A31CB5E44B00A6C225 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */; };
 		A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F51CAB713800486E73 /* ApiKeys.plist */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
 		E734EB461CB5A31B007D4CF2 /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E734EB451CB5A31B007D4CF2 /* get.mp4 */; };
@@ -138,6 +141,9 @@
 		A6376DF61CB3E6FD00A7BCF3 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
+		A63A829E1CB5E19800A6C225 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		A6BF26F51CAB713800486E73 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = SOURCE_ROOT; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E734EB451CB5A31B007D4CF2 /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
@@ -164,12 +170,14 @@
 				04FBFC671BE2EEB000923F9F /* SystemConfiguration.framework in Frameworks */,
 				04FBFC651BE2EE8F00923F9F /* Security.framework in Frameworks */,
 				04FBFC631BE2EE7500923F9F /* CoreLocation.framework in Frameworks */,
+				A63A82A11CB5E40200A6C225 /* FBSDKLoginKit.framework in Frameworks */,
 				04FBFC5F1BE2EE5600923F9F /* CFNetwork.framework in Frameworks */,
 				04FBFC5D1BE2EE4300923F9F /* AudioToolbox.framework in Frameworks */,
 				045409591BE0502E004B9577 /* libsqlite3.tbd in Frameworks */,
 				045409571BE05011004B9577 /* CoreData.framework in Frameworks */,
 				045409551BE05000004B9577 /* QuartzCore.framework in Frameworks */,
 				04FBFC5B1BE2EDDD00923F9F /* Parse.framework in Frameworks */,
+				A63A829F1CB5E19800A6C225 /* FBSDKCoreKit.framework in Frameworks */,
 				04FBFC591BE2EC5B00923F9F /* Bolts.framework in Frameworks */,
 				045409511BE04E9E004B9577 /* MapKit.framework in Frameworks */,
 			);
@@ -282,6 +290,7 @@
 				04DFD1BB1C05B75C000AF371 /* WeatherViewController.swift */,
 				A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */,
 				E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */,
+				A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -306,6 +315,8 @@
 		048B25AE1C1A4A22009324FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */,
+				A63A829E1CB5E19800A6C225 /* FBSDKCoreKit.framework */,
 				A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */,
 				A6376DF51CB3E6FD00A7BCF3 /* CoreAudio.framework */,
 				A6376DF61CB3E6FD00A7BCF3 /* CoreAudioKit.framework */,
@@ -492,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6376DFC1CB3E92D00A7BCF3 /* PreviewController.swift in Sources */,
+				A63A82A31CB5E44B00A6C225 /* FacebookLogin.swift in Sources */,
 				04FBFC701BE2F7E800923F9F /* PushNotificationController.swift in Sources */,
 				04DFD1BC1C05B75C000AF371 /* WeatherViewController.swift in Sources */,
 				E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */,
@@ -650,6 +662,7 @@
 					"$(PROJECT_DIR)/HawaiiHikersResourceUITests",
 					"$(PROJECT_DIR)/HawaiiHikersResource/HawaiiHikersResource/Frameworks",
 					"$(PROJECT_DIR)/HawaiiHikersResource/HawaiiHikersResource/HawaiiHikersResourceUITests",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = HawaiiHikersResource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -674,6 +687,7 @@
 					"$(PROJECT_DIR)/HawaiiHikersResourceUITests",
 					"$(PROJECT_DIR)/HawaiiHikersResource/HawaiiHikersResource/Frameworks",
 					"$(PROJECT_DIR)/HawaiiHikersResource/HawaiiHikersResource/HawaiiHikersResourceUITests",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = HawaiiHikersResource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
