@@ -67,9 +67,9 @@
 		A63A829F1CB5E19800A6C225 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63A829E1CB5E19800A6C225 /* FBSDKCoreKit.framework */; };
 		A63A82A11CB5E40200A6C225 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */; };
 		A63A82A31CB5E44B00A6C225 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */; };
-		A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F51CAB713800486E73 /* ApiKeys.plist */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
-		E734EB461CB5A31B007D4CF2 /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E734EB451CB5A31B007D4CF2 /* get.mp4 */; };
+		B9FDE4951CB6525600BA8FDA /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */; };
+		B9FDE4971CB6544700BA8FDA /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B9FDE4961CB6544700BA8FDA /* get.mp4 */; };
 		E734EB481CB5A73C007D4CF2 /* MenuTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */; };
 		E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B882CB1C118B020003CA63 /* PinInfo.swift */; };
 /* End PBXBuildFile section */
@@ -144,9 +144,9 @@
 		A63A829E1CB5E19800A6C225 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
-		A6BF26F51CAB713800486E73 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = SOURCE_ROOT; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E734EB451CB5A31B007D4CF2 /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
+		B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		B9FDE4961CB6544700BA8FDA /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
 		E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableController.swift; sourceTree = "<group>"; };
 		E7B882CB1C118B020003CA63 /* PinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -298,8 +298,8 @@
 		048B25AD1C1A4993009324FD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				E734EB451CB5A31B007D4CF2 /* get.mp4 */,
-				A6BF26F51CAB713800486E73 /* ApiKeys.plist */,
+				B9FDE4961CB6544700BA8FDA /* get.mp4 */,
+				B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */,
 				043C70451C61D22F002598B1 /* trailInfo.json */,
 				04C31BF01C5BF49000C8964F /* parkInfo.json */,
 				04FBFC711BE2F99A00923F9F /* ApiKeys.swift */,
@@ -411,7 +411,6 @@
 				TargetAttributes = {
 					045409181BE04E67004B9577 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = A99GH4QSGP;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -476,8 +475,8 @@
 				045409271BE04E68004B9577 /* Assets.xcassets in Resources */,
 				A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */,
 				04C31BF11C5BF49000C8964F /* parkInfo.json in Resources */,
-				A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */,
-				E734EB461CB5A31B007D4CF2 /* get.mp4 in Resources */,
+				B9FDE4951CB6525600BA8FDA /* ApiKeys.plist in Resources */,
+				B9FDE4971CB6544700BA8FDA /* get.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,8 +653,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HawaiiHikersResource/HawaiiHikersResource.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -669,7 +668,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResource;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fbee8292-d783-4f6a-929a-336120a96e3a";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
 			};
 			name = Debug;
@@ -679,8 +678,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HawaiiHikersResource/HawaiiHikersResource.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kenneth Nagata (5545H6VTPE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -694,7 +693,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResource;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fbee8292-d783-4f6a-929a-336120a96e3a";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
 			};
 			name = Release;

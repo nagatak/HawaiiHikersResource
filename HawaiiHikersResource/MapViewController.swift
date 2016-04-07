@@ -51,8 +51,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Call helper method to zoom into initialLocation on startup
         centerMapOnLocation(initialLocation)
         
-        //
-        
         // Datasets for trail locations including trail name, GPS coordinates, & subtitle
         let akaka = PinInfo(title: "Akaka Falls Loop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), subtitle: "Akaka Falls State Park")
         let lava = PinInfo(title: "Lava Tree Troop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), subtitle: "Lava Tree State Monument")
@@ -63,7 +61,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Adds the datasets into the map as pin annotations
         mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
         
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(MapViewController.handleSwipes(_:)))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
         
         rightSwipe.direction = .Right
         
@@ -110,6 +108,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         return nil
     }
+    
     // Calls uialertmenu instead of annotation callout
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
 
@@ -121,6 +120,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
     }
+    
     // Overloaded function to tell what to do when right callout accessory button is pressed
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl) {
@@ -130,6 +130,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             //pinMenu()
             //alertMenu()
     }
+    
     // 
     func alertMenu(trailName: String){
         let attributedStringTitle = NSAttributedString(string: trailName, attributes: [

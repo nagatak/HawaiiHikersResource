@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ECQ-eu-4UZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="D0M-Gr-R3T">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -20,6 +20,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Y1q-gy-ldJ"/>
                                 </connections>
                             </mapView>
+                            <navigationBar contentMode="scaleToFill" id="LEW-zo-39o">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="bv1-GF-svz"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -30,6 +37,7 @@
                         <segue destination="KCR-m0-1A7" kind="modal" identifier="parkInfoIdentifier" modalPresentationStyle="overFullScreen" id="hBO-We-6bc"/>
                         <segue destination="nml-Ro-Xhe" kind="modal" identifier="trailInfoIdentifier" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="z9A-Gu-7g8"/>
                         <segue destination="98d-Mf-sVQ" kind="modal" identifier="previewIdentifier" id="hC3-T5-h7W"/>
+                        <segue destination="D0M-Gr-R3T" kind="modal" identifier="menuSwipeSegue" modalTransitionStyle="crossDissolve" id="1Ih-Z3-SVS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -50,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gQc-vy-LiY" id="e6V-5q-Opi">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -74,7 +82,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2214.4000000000001" y="-763.01333333333332"/>
+            <point key="canvasLocation" x="2252" y="-770"/>
         </scene>
         <!--Park Info Controller-->
         <scene sceneID="ZrG-EZ-Ka8">
@@ -90,7 +98,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6EK-fs-7ah" id="t0Q-tf-QGQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -200,7 +208,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R7w-Ur-aMj" id="wRe-R4-V37">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -229,27 +237,27 @@
         <scene sceneID="wHq-Qy-FEw">
             <objects>
                 <tableViewController id="D0M-Gr-R3T" userLabel="Menu Table View Controller" customClass="MenuTableController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SOk-k6-0ng">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="50" sectionFooterHeight="28" id="SOk-k6-0ng">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="zqi-Xq-BjS">
-                            <rect key="frame" x="0.0" y="72" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="JzO-7Q-ykt">
+                            <rect key="frame" x="0.0" y="94" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                             <items>
-                                <barButtonItem systemItem="action" id="S4d-Y0-Cix">
+                                <barButtonItem systemItem="action" id="ZK0-X7-Lbi">
                                     <connections>
-                                        <action selector="menuTable:" destination="D0M-Gr-R3T" id="ntK-ot-c7W"/>
+                                        <action selector="menuTable:" destination="D0M-Gr-R3T" id="PCd-D2-Dxx"/>
                                     </connections>
                                 </barButtonItem>
                             </items>
                         </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="mYG-49-zeP" userLabel="menuCell">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mYG-49-zeP" id="LlW-Z5-Gv3">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -259,55 +267,20 @@
                             <outlet property="delegate" destination="D0M-Gr-R3T" id="z73-wy-cqQ"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="OHV-ct-dtz" kind="modal" identifier="userInfoIdentifier" id="JpI-lm-bBc"/>
+                        <segue destination="OHV-ct-dtz" kind="modal" identifier="userInfoSegue" modalTransitionStyle="crossDissolve" id="JpI-lm-bBc"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="mapSwipeSegue" modalTransitionStyle="crossDissolve" id="Ikt-YP-sQ7"/>
+                        <segue destination="nml-Ro-Xhe" kind="modal" identifier="menuTrailInfoSegue" modalTransitionStyle="crossDissolve" id="uCc-01-jjA"/>
+                        <segue destination="KCR-m0-1A7" kind="modal" identifier="menuParkInfoSegue" modalTransitionStyle="crossDissolve" id="GsV-tZ-Rng"/>
+                        <segue destination="98d-Mf-sVQ" kind="modal" identifier="menuVRSegue" modalTransitionStyle="crossDissolve" id="UzW-62-lB9"/>
+                        <segue destination="6V8-cc-a8f" kind="modal" identifier="menuWeatherSegue" modalTransitionStyle="crossDissolve" id="6sb-4y-QuR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vop-eB-8Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="-729"/>
-        </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="hSa-GB-tO0">
-            <objects>
-                <viewController id="P8Y-WS-fFC" userLabel="Settings View Controller" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="J00-Pr-2RP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SGE-3c-vst">
-                                <rect key="frame" x="129" y="269" width="63" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="User Info"/>
-                                <connections>
-                                    <segue destination="OHV-ct-dtz" kind="modal" identifier="userInfo" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="kcj-Zu-eRB"/>
-                                </connections>
-                            </button>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Nbf-y6-hCX">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <barButtonItem systemItem="action" id="ukJ-V2-qaQ">
-                                        <connections>
-                                            <segue destination="rUU-8o-cJX" kind="unwind" unwindAction="unwindToViewController:" id="MKx-Rt-BRl"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jJU-o4-Z99">
-                                <rect key="frame" x="132" y="307" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ySu-Wc-489" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="rUU-8o-cJX" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="497" y="-729"/>
+            <point key="canvasLocation" x="95" y="-770"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="pgE-Z2-gab">
@@ -317,22 +290,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="VLg-g9-ydx">
-                                <rect key="frame" x="-4" y="524" width="328" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <barButtonItem systemItem="action" id="E7v-uz-uXB">
-                                        <connections>
-                                            <segue destination="d3N-mN-Ku4" kind="unwind" unwindAction="unwindToMenuTable:" id="ZKE-b4-dQ5"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="cgo-O6-PNy">
                                 <rect key="frame" x="10" y="269" width="300" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Le-Rf-b7p">
                                 <rect key="frame" x="96" y="240" width="129" height="21"/>
@@ -341,15 +303,21 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uFJ-pX-uMJ">
+                                <rect key="frame" x="10" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="D0M-Gr-R3T" kind="modal" identifier="backMenuSegue" modalTransitionStyle="crossDissolve" id="sUl-7x-Jq7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="drv-V4-Sva"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzk-Gw-wze" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="d3N-mN-Ku4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="497" y="-15"/>
+            <point key="canvasLocation" x="95" y="21"/>
         </scene>
         <!--Preview Controller-->
         <scene sceneID="T9s-J8-Nh6">
@@ -390,7 +358,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="fgP-rW-l2y">
                                         <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="0t1-IH-SV1">
-                                            <rect key="frame" x="43" y="6.5" width="237" height="31"/>
+                                            <rect key="frame" x="43" y="7" width="237" height="31"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <connections>
                                                 <action selector="sliderChangeProgression:" destination="98d-Mf-sVQ" eventType="valueChanged" id="TKp-Bi-lio"/>
@@ -497,7 +465,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWZ-JI-zHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1381" y="-764"/>
+            <point key="canvasLocation" x="1381" y="-770"/>
         </scene>
         <!--Menu Trail Info Controller-->
         <scene sceneID="JlT-V7-pdE">
@@ -519,7 +487,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6XQ-d3-PuI" id="zcV-1m-gpl">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -542,10 +510,15 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="48" y="-15"/>
+            <point key="canvasLocation" x="497" y="21"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JpI-lm-bBc"/>
+        <segue reference="Ikt-YP-sQ7"/>
+        <segue reference="1Ih-Z3-SVS"/>
+        <segue reference="6sb-4y-QuR"/>
+        <segue reference="uCc-01-jjA"/>
+        <segue reference="GsV-tZ-Rng"/>
+        <segue reference="UzW-62-lB9"/>
     </inferredMetricsTieBreakers>
 </document>
