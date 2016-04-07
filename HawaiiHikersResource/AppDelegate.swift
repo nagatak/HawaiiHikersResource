@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: Facebook
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        return true
+        //return true
     }
     
     // MARK: - Parse didFailToRegister

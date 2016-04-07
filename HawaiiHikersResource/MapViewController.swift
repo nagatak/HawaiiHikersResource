@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -18,6 +19,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var locManager: CLLocationManager?
     var pinCoordinate: CLLocationCoordinate2D!
     var destination: MKMapItem!
+    var customTrailMaps = [NSManagedObject]()
+    var cstmTrailArray = [PinInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +63,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let kilauea = PinInfo(title: "Kilauea Iki Trail", coordinate: CLLocationCoordinate2D(latitude: 19.416333, longitude: -155.242804), subtitle: "Hawaii Volcanoes National Park")
         let kahakai = PinInfo(title: "Ala Kahakai Trail", coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), subtitle: "Kings Trail")
         
+        
+        
         // Adds the datasets into the map as pin annotations
         mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
         
@@ -69,11 +74,48 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         view.addGestureRecognizer(rightSwipe)
     }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+        addCustomTrails()
+    }
+    
     
     func handleSwipes(sender: UISwipeGestureRecognizer) {
         if (sender.direction == .Right){
             performSegueWithIdentifier("menuSwipeSegue", sender: self)
         }
+    }
+    
+    func addCustomTrails(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "CustomTrails")
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            customTrailMaps = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        if (customTrailMaps.count > 0){
+            
+            for (index,element) in customTrailMaps.enumerate(){
+                let tempName = element.valueForKey("trailName")
+                let tempOver = element.valueForKey("overlay")
+                
+                if tempOver?.count > 0{
+                    cstmTrailArray.append(PinInfo(title: tempName! as! String,
+                                              coordinate: tempOver![0].coordinate, subtitle: " "))
+                }
+                
+                print(cstmTrailArray)
+            }
+            for num in 0 ... cstmTrailArray.count - 1{
+                mapView.addAnnotations([cstmTrailArray[num]])
+            }
+        }
+       
     }
     
     override func didReceiveMemoryWarning() {

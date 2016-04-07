@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 //enum used by map type selector to switch maps
 enum MapType: Int {
@@ -45,6 +46,8 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var startFound: Bool? = false
     var i = 0;
     var hasCheckPoints: Bool = false
+    var customTrailMaps = [NSManagedObject]()
+    var cstmTrailArray = [PinInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +91,8 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             pinLocation = CLLocation(latitude: 19.670625, longitude: -156.026178)
         }
         else {
-            pinLocation = CLLocation(latitude: 19.5667, longitude: -155)
+            addCustomTrailOverlay(passedCoord.latitude, lon: passedCoord.longitude)
+            pinLocation = CLLocation(latitude: passedCoord.latitude, longitude: passedCoord.longitude)
         }
         
         // Calls function to center map on pinLocation
@@ -107,6 +111,39 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         trailMapView.setRegion(coordinateRegion, animated: true)
     }
     
+    func addCustomTrailOverlay(lat: Double, lon: Double){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "CustomTrails")
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            customTrailMaps = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        if (customTrailMaps.count > 0){
+            
+            for (index,element) in customTrailMaps.enumerate(){
+                let tempName = element.valueForKey("trailName")
+                let tempOver = element.valueForKey("overlay")
+                var temp: [CLLocationCoordinate2D] = []
+                if tempOver?.count > 0{
+                    //cstmTrailArray.append(PinInfo(title: tempName! as! String, coordinate: tempOver![0].coordinate, subtitle: " "))
+                    if tempOver![0].coordinate.latitude == lat && tempOver![0].coordinate.longitude == lon{
+                        
+                        for num in 0 ... tempOver!.count - 1{
+                            temp.append(tempOver![num].coordinate)
+                        }
+                        trail = MKPolyline(coordinates: &temp, count: temp.count)
+                        // Draws the overlay
+                        trailMapView.addOverlay(trail!)
+                    }
+                }
+            }
+        }
+    }
     
     // Map overlay for ch to parking lot//
     func mapUH(){
