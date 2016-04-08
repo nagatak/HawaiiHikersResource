@@ -61,10 +61,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let kilauea = PinInfo(title: "Kilauea Iki Trail", coordinate: CLLocationCoordinate2D(latitude: 19.416333, longitude: -155.242804), subtitle: "Hawaii Volcanoes National Park")
         let kahakai = PinInfo(title: "Ala Kahakai Trail", coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), subtitle: "Kings Trail")
         
-        
-        
         // Adds the datasets into the map as pin annotations
         mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
+        
+        addCustomTrails()
         
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
         
@@ -81,7 +81,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBAction func listTrailsBtn(sender: UIBarButtonItem) {
         
-        print("pressed")
+        //print("pressed")
         
         let attributedStringTitle = NSAttributedString(string: "Select a Trail", attributes: [
             NSFontAttributeName : UIFont.systemFontOfSize(22),
@@ -152,7 +152,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         menuAlert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (action) -> Void in
         }))
         
-        menuAlert.addAction(UIAlertAction(title: "Create Custom Trail", style: .Default, handler: { (action) -> Void in self.performSegueWithIdentifier("ctmIdentifier", sender: nil)
+        menuAlert.addAction(UIAlertAction(title: "Edit Custom Trail", style: .Default, handler: { (action) -> Void in self.performSegueWithIdentifier("ctmIdentifier", sender: nil)
         }))
         
         menuAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
@@ -179,6 +179,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         if (customTrailMaps.count > 0){
+            
             for (index,element) in customTrailMaps.enumerate(){
                 let tempName = element.valueForKey("trailName")
                 let tempOver = element.valueForKey("overlay")
