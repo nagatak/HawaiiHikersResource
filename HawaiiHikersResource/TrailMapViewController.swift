@@ -84,7 +84,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             mapUH()
             pinLocation = CLLocation(latitude: 19.703118, longitude: -155.079461)
         }
-        else if passedCoord.latitude == 19.416333 && passedCoord.longitude == -155.242834{
+        else if passedCoord.latitude == 19.416333 && passedCoord.longitude == -155.242804{
             mapKilaueaIki()
             pinLocation = CLLocation(latitude: 19.416409, longitude: -155.242834)
         }

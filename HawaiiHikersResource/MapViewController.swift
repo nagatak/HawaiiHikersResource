@@ -73,6 +73,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         view.addGestureRecognizer(rightSwipe)
         
         self.navigationController?.navigationBarHidden = true
+        
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
