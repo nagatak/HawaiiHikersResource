@@ -68,6 +68,7 @@
 		A63A82A11CB5E40200A6C225 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */; };
 		A63A82A31CB5E44B00A6C225 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */; };
 		A63A82A51CB6B04600A6C225 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A63A82A41CB6B04600A6C225 /* ApiKeys.plist */; };
+		A6B101981CB7342D00F6813A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B101971CB7342D00F6813A /* FBSDKShareKit.framework */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
 		B9FDE4951CB6525600BA8FDA /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */; };
 		B9FDE4971CB6544700BA8FDA /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B9FDE4961CB6544700BA8FDA /* get.mp4 */; };
@@ -146,6 +147,8 @@
 		A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		A63A82A41CB6B04600A6C225 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		A6B101971CB7342D00F6813A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		A6B101991CB737A600F6813A /* HawaiiHikersResource2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HawaiiHikersResource2.xcdatamodel; sourceTree = "<group>"; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 		B9FDE4961CB6544700BA8FDA /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
@@ -170,6 +173,7 @@
 				04FBFC691BE2EEDC00923F9F /* libz.tbd in Frameworks */,
 				045409531BE04EB4004B9577 /* StoreKit.framework in Frameworks */,
 				04FBFC671BE2EEB000923F9F /* SystemConfiguration.framework in Frameworks */,
+				A6B101981CB7342D00F6813A /* FBSDKShareKit.framework in Frameworks */,
 				04FBFC651BE2EE8F00923F9F /* Security.framework in Frameworks */,
 				04FBFC631BE2EE7500923F9F /* CoreLocation.framework in Frameworks */,
 				A63A82A11CB5E40200A6C225 /* FBSDKLoginKit.framework in Frameworks */,
@@ -318,6 +322,7 @@
 		048B25AE1C1A4A22009324FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6B101971CB7342D00F6813A /* FBSDKShareKit.framework */,
 				A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */,
 				A63A829E1CB5E19800A6C225 /* FBSDKCoreKit.framework */,
 				A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */,
@@ -805,6 +810,7 @@
 		045409231BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A6B101991CB737A600F6813A /* HawaiiHikersResource2.xcdatamodel */,
 				045409241BE04E67004B9577 /* HawaiiHikersResource.xcdatamodel */,
 			);
 			currentVersion = 045409241BE04E67004B9577 /* HawaiiHikersResource.xcdatamodel */;

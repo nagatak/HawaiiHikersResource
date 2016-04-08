@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import CoreData
+import Social
 
 //enum used by map type selector to switch maps
 enum MapType: Int {
@@ -379,7 +380,15 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         let trialCompleteAlert = UIAlertController(title: "Trail Completed", message: "Blah Blah Blah", preferredStyle: UIAlertControllerStyle.Alert)
         trialCompleteAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
         trialCompleteAlert.addAction(UIAlertAction(title: "Share", style: .Default, handler: { (action: UIAlertAction!) in
-            print("Handle share Logic here")
+            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+                var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                facebookSheet.setInitialText("Fished the beta test trail")
+                self.presentViewController(facebookSheet, animated: true, completion: nil)
+            } else {
+                var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
         }))
         self.startedTrail = false
         self.isReverse = false
