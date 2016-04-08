@@ -36,6 +36,7 @@
                                             <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
                                             <connections>
                                                 <action selector="menuBtn:" destination="BYZ-38-t0r" id="3vv-NG-xMN"/>
+                                                <segue destination="OHV-ct-dtz" kind="modal" identifier="mapUserSegue" modalTransitionStyle="crossDissolve" id="STm-mj-8oP"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -57,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865" y="-684"/>
+            <point key="canvasLocation" x="1848" y="-770"/>
         </scene>
         <!--Weather View Controller-->
         <scene sceneID="Gcr-Eh-btg">
@@ -74,7 +75,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gQc-vy-LiY" id="e6V-5q-Opi">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -114,7 +115,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6EK-fs-7ah" id="t0Q-tf-QGQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -224,7 +225,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R7w-Ur-aMj" id="wRe-R4-V37">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -273,7 +274,7 @@
                                 <rect key="frame" x="0.0" y="50" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mYG-49-zeP" id="LlW-Z5-Gv3">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -307,29 +308,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="cgo-O6-PNy">
-                                <rect key="frame" x="10" y="269" width="300" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Le-Rf-b7p">
-                                <rect key="frame" x="96" y="240" width="129" height="21"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uFJ-pX-uMJ">
                                 <rect key="frame" x="10" y="20" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="D0M-Gr-R3T" kind="modal" identifier="backMenuSegue" modalTransitionStyle="crossDissolve" id="sUl-7x-Jq7"/>
+                                    <segue destination="BYZ-38-t0r" kind="modal" identifier="backInfoSegue" modalTransitionStyle="crossDissolve" id="Scv-jv-sXR"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzk-Gw-wze" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -490,16 +478,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWZ-JI-zHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1393" y="-776"/>
+            <point key="canvasLocation" x="1393" y="-770"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1Ih-Z3-SVS"/>
-        <segue reference="z0U-jL-4O9"/>
         <segue reference="hBO-We-6bc"/>
-        <segue reference="hbw-rd-TN0"/>
+        <segue reference="Scv-jv-sXR"/>
+        <segue reference="STm-mj-8oP"/>
         <segue reference="RLB-d1-eRY"/>
-        <segue reference="z9A-Gu-7g8"/>
         <segue reference="hC3-T5-h7W"/>
+        <segue reference="hbw-rd-TN0"/>
+        <segue reference="z9A-Gu-7g8"/>
     </inferredMetricsTieBreakers>
 </document>

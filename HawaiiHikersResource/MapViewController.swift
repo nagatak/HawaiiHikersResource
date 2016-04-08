@@ -39,9 +39,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.mapType = MKMapType.Hybrid
         
         // Set initial location to The Big Island, Hawaii
-        let initialLocation = CLLocation(latitude: 19.5667, longitude: -155)
+        let initialLocation = CLLocation(latitude: 19.619305, longitude: -155.478945)
         // Rectangular region to display zoom level
-        let regionRadius: CLLocationDistance = 140000
+        let regionRadius: CLLocationDistance = 80000
         
         // Function to start the initial screen on the center of The Big Island, Hawaii
         func centerMapOnLocation(location: CLLocation) {
@@ -71,6 +71,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         rightSwipe.direction = .Right
         
         view.addGestureRecognizer(rightSwipe)
+        
+        self.navigationController?.navigationBarHidden = true
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
@@ -113,6 +115,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178)
             self.alertMenu("Ala Kahakai Trail")
         }))
+        trailListAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
         
         
         let subview = trailListAlert.view.subviews.first! as UIView
@@ -120,6 +123,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
         
         self.presentViewController(trailListAlert, animated: true, completion: nil)
+        
+        alertContentView.layer.cornerRadius = 12
     }
     
     func handleSwipes(sender: UISwipeGestureRecognizer) {
@@ -140,7 +145,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         menuAlert.view.tintColor = UIColor.whiteColor()
         
         menuAlert.addAction(UIAlertAction(title: "User Info", style: .Default, handler: { (action) -> Void in
-            self.performSegueWithIdentifier("userInfoSegue", sender: nil)
+            self.performSegueWithIdentifier("mapInfoSegue", sender: nil)
         }))
         
         menuAlert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (action) -> Void in
