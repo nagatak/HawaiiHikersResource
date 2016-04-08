@@ -66,6 +66,7 @@ class FacebookLogin: UIViewController, FBSDKLoginButtonDelegate{
             
             if ((error) != nil)
             {
+                
                 // Process error
                 print("Error: \(error)")
             }

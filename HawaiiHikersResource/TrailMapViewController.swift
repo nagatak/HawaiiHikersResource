@@ -80,7 +80,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         else if passedCoord.latitude == 19.482842 && passedCoord.longitude == -154.904300{
             pinLocation = CLLocation(latitude: 19.482842, longitude: -154.904300)
         }
-        else if passedCoord.latitude == 19.703202 && passedCoord.longitude == -155.079461{
+        else if passedCoord.latitude == 19.703202 && passedCoord.longitude == -155.079654{
             mapUH()
             pinLocation = CLLocation(latitude: 19.703118, longitude: -155.079461)
         }
