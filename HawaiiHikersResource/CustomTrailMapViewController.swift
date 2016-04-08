@@ -25,59 +25,134 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
     
     @IBAction func stopMappingTrail(sender: AnyObject) {
         manager.stopUpdatingLocation()
-        trailcoordinates = []
+        //trailcoordinates = []
     }
     
     @IBAction func closeBtn(sender: UIBarButtonItem) {
-                self.dismissViewControllerAnimated(true, completion: {})
+            trailcoordinates = []
+            self.dismissViewControllerAnimated(true, completion: {})
     }
     @IBAction func saveTrail(sender: AnyObject) {
         
-        let attributedStringTitle = NSAttributedString(string: "Save Custom Trail", attributes: [
-            NSFontAttributeName : UIFont.systemFontOfSize(22),
-            NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-            ])
-        let attributedStringMessage = NSAttributedString(string: "Enter the name of the trail.", attributes: [
-            NSFontAttributeName : UIFont.systemFontOfSize(15),
-            NSForegroundColorAttributeName : UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
-            ])
-        let saveAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        let ctmMenu = UIAlertController(title: "Edit Menu", message: "", preferredStyle: .Alert)
         
-        saveAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
-        saveAlert.setValue(attributedStringMessage, forKey: "attributedMessage")
+        ctmMenu.view.tintColor = UIColor.whiteColor();
         
-        saveAlert.view.tintColor = UIColor.whiteColor();
+        ctmMenu.addAction(UIAlertAction(title: "Save", style: .Default , handler: { (action) -> Void in
         
-        saveAlert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Trail Name"
-        })
-        
-        saveAlert.addAction(UIAlertAction(title: "Save", style: .Default , handler: { (action) -> Void in
-            let textField = saveAlert.textFields![0] as UITextField
-            self.saveNewTrail(textField.text!, trailCoordinates: self.trailcoordinates)
-            //print("Text field: \(textField.text)")
-            //let newTrail = self.customTrail[0]
-            //print(newTrail.valueForKey("trailName"))
-            //print(newTrail.valueForKey("trailNum"))
-            //print(newTrail.valueForKey("overlay"))
-            self.customTrail = []
-            self.trailcoordinates = []
-            //print(self.customTrail)
-            //print(self.trailcoordinates)
+            let attributedStringTitle = NSAttributedString(string: "Save Custom Trail", attributes: [
+                NSFontAttributeName : UIFont.systemFontOfSize(22),
+                NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+                ])
+            let attributedStringMessage = NSAttributedString(string: "Enter the name of the trail.", attributes: [
+                NSFontAttributeName : UIFont.systemFontOfSize(15),
+                NSForegroundColorAttributeName : UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
+                ])
+            let saveAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+            
+            saveAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
+            saveAlert.setValue(attributedStringMessage, forKey: "attributedMessage")
+            
+            saveAlert.view.tintColor = UIColor.whiteColor();
+            
+            saveAlert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+                textField.text = "Trail Name"
+            })
+            
+            saveAlert.addAction(UIAlertAction(title: "Save", style: .Default , handler: { (action) -> Void in
+                let textField = saveAlert.textFields![0] as UITextField
+                self.saveNewTrail(textField.text!, trailCoordinates: self.trailcoordinates)
+                //print("Text field: \(textField.text)")
+                //let newTrail = self.customTrail[0]
+                //print(newTrail.valueForKey("trailName"))
+               // print(newTrail.valueForKey("trailNum"))
+               // print(newTrail.valueForKey("overlay"))
+                self.customTrail = []
+                self.trailcoordinates = []
+                //print(self.customTrail)
+                //print(self.trailcoordinates)
+            }))
+            saveAlert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler:{ (action) -> Void in
+                self.customTrail = []
+                self.trailcoordinates = []
+            }))
+            
+            let subview = saveAlert.view.subviews.first! as UIView
+            let alertContentView = subview.subviews.first! as UIView
+            alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
+            
+            self.presentViewController(saveAlert, animated: true, completion: nil)
+            
+            alertContentView.layer.cornerRadius = 12;
         }))
-        saveAlert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler:{ (action) -> Void in
-            self.customTrail = []
-            self.trailcoordinates = []
-        }))
         
-        let subview = saveAlert.view.subviews.first! as UIView
+        ctmMenu.addAction(UIAlertAction(title: "Delete", style: .Default , handler: { (action) -> Void in
+            
+            let attributedStringTitle = NSAttributedString(string: "Delete Custom Trail", attributes: [
+                NSFontAttributeName : UIFont.systemFontOfSize(22),
+                NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+                ])
+            let attributedStringMessage = NSAttributedString(string: "Enter the name of the trail.", attributes: [
+                NSFontAttributeName : UIFont.systemFontOfSize(15),
+                NSForegroundColorAttributeName : UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
+                ])
+            let deleteAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+            
+            deleteAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
+            deleteAlert.setValue(attributedStringMessage, forKey: "attributedMessage")
+            
+            deleteAlert.view.tintColor = UIColor.whiteColor();
+            
+            deleteAlert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+                textField.text = "Trail Name"
+            })
+            deleteAlert.addAction(UIAlertAction(title: "Delete", style: .Default , handler: { (action) -> Void in
+                
+                //let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                //let context:NSManagedObjectContext = appDel.managedObjectContext
+                
+                let textField = deleteAlert.textFields![0] as UITextField
+                
+                let appDel  = UIApplication.sharedApplication().delegate as! AppDelegate
+                let context = appDel.managedObjectContext
+                
+                
+                let fetchPredicate = NSPredicate(format: "trailName == %@", textField.text!)
+                
+                let fetchTrails                     = NSFetchRequest(entityName: "CustomTrails")
+                fetchTrails.predicate                = fetchPredicate
+                fetchTrails.returnsObjectsAsFaults   = false
+                
+                do {
+                    let fetchedTrails = try context.executeFetchRequest(fetchTrails) as! [NSManagedObject]
+                
+                    for fetchedTrail in fetchedTrails{
+                    
+                        context.deleteObject(fetchedTrail)
+                        try context.save()
+                    }
+                } catch {
+                    print ("error")
+                }
+
+            }))
+            deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
+            
+            let subview = deleteAlert.view.subviews.first! as UIView
+            let alertContentView = subview.subviews.first! as UIView
+            alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
+            
+            self.presentViewController(deleteAlert, animated: true, completion: nil)
+            
+            alertContentView.layer.cornerRadius = 12;
+        }))
+        ctmMenu.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
+        
+        let subview = ctmMenu.view.subviews.first! as UIView
         let alertContentView = subview.subviews.first! as UIView
         alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
-        
-        self.presentViewController(saveAlert, animated: true, completion: nil)
-        
+        self.presentViewController(ctmMenu, animated: true, completion: nil)
         alertContentView.layer.cornerRadius = 12;
-    
     }
     
     override func viewDidLoad() {
@@ -162,11 +237,11 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
         
         let entity =  NSEntityDescription.entityForName("CustomTrails", inManagedObjectContext:managedContext)
         let newTrail = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        
+        //print(trailCoordinates)
         newTrail.setValue(name, forKey: "trailName")
         newTrail.setValue(1, forKey: "trailNum")
         newTrail.setValue(trailCoordinates, forKeyPath: "overlay")
-        
+        //print(newTrail.valueForKey("overlay"))
         do {
             try managedContext.save()
             customTrail.append(newTrail)
