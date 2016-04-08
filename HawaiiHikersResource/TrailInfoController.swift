@@ -45,11 +45,11 @@ class TrailInfoController: UITableViewController {
         //print(passedCoord)
         
         // Selects correct trail info to display according to latitude
-        if passedCoord.latitude == 19.865850{loadTrailInfo("akaka001")}
-        else if passedCoord.latitude == 19.482842{loadTrailInfo("lavatree001")}
-        else if passedCoord.latitude == 19.703202{loadTrailInfo("uh")}
-        else if passedCoord.latitude == 19.416333{loadTrailInfo("havo001")}
-        else if passedCoord.latitude == 19.670625{loadTrailInfo("king001")}
+        if passedCoord.latitude == 19.865850 && passedCoord.longitude == -155.116115{loadTrailInfo("akaka001")}
+        else if passedCoord.latitude == 19.482842 && passedCoord.longitude == -154.904300{loadTrailInfo("lavatree001")}
+        else if passedCoord.latitude == 19.703202 && passedCoord.longitude == -155.079461{loadTrailInfo("uh")}
+        else if passedCoord.latitude == 19.416333 && passedCoord.longitude == -155.242804{loadTrailInfo("havo001")}
+        else if passedCoord.latitude == 19.670625 && passedCoord.longitude == -156.026178{loadTrailInfo("king001")}
         else {loadTrailInfo("trailid")}
         
     }

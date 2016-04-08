@@ -72,22 +72,22 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         trailMapView.showsUserLocation = true
         
         // Selects correct trail info according to latitude passed from MapViewController
-        if passedCoord.latitude == 19.865850{
+        if passedCoord.latitude == 19.865850 && passedCoord.longitude == -155.116115{
              mapAkaka()
             pinLocation = CLLocation(latitude: 19.854144, longitude: -155.152367)
         }
-        else if passedCoord.latitude == 19.482842{
+        else if passedCoord.latitude == 19.482842 && passedCoord.longitude == -154.904300{
             pinLocation = CLLocation(latitude: 19.482842, longitude: -154.904300)
         }
-        else if passedCoord.latitude == 19.703202{
+        else if passedCoord.latitude == 19.703202 && passedCoord.longitude == -155.079461{
             mapUH()
             pinLocation = CLLocation(latitude: 19.703118, longitude: -155.079461)
         }
-        else if passedCoord.latitude == 19.416333{
+        else if passedCoord.latitude == 19.416333 && passedCoord.longitude == -155.242834{
             mapKilaueaIki()
             pinLocation = CLLocation(latitude: 19.416409, longitude: -155.242834)
         }
-        else if passedCoord.latitude == 19.670625{
+        else if passedCoord.latitude == 19.670625 && passedCoord.longitude == -156.026178{
             pinLocation = CLLocation(latitude: 19.670625, longitude: -156.026178)
         }
         else {
@@ -155,14 +155,16 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         trail = MKPolyline(coordinates: &points, count: points.count)
         // Draws the overlay
         trailMapView.addOverlay(trail!)
-        
+        //create checkpoints
         checkPoints = [CLLocationCoordinate2DMake(19.703118, -155.079461),CLLocationCoordinate2DMake(19.702808, -155.079504), CLLocationCoordinate2DMake(19.702678, -155.079586)]
-        
+        // array used for updating progress
         trailProgress = points
+        // index of checkpoint in array
         checkPointIndex = [0, 2, 4]
+        // create a reverse course
         generateReverseCourse(points)
+        // set to true
         hasCheckPoints = true
-        print(trailProgress)
     }
     
     // Map overlay for akaka falls

@@ -97,17 +97,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         if (customTrailMaps.count > 0){
-            
             for (index,element) in customTrailMaps.enumerate(){
                 let tempName = element.valueForKey("trailName")
                 let tempOver = element.valueForKey("overlay")
-                
                 if tempOver?.count > 0{
                     cstmTrailArray.append(PinInfo(title: tempName! as! String,
                                               coordinate: tempOver![0].coordinate, subtitle: " "))
                 }
-                
-                print(cstmTrailArray)
             }
             for num in 0 ... cstmTrailArray.count - 1{
                 mapView.addAnnotations([cstmTrailArray[num]])
@@ -157,7 +153,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if !(view.annotation!.isKindOfClass(MKUserLocation)) {
             pinCoordinate = view.annotation?.coordinate
             alertMenu(view.annotation!.title!!)
-            print(view.annotation!.title)
             mapView.deselectAnnotation(view.annotation, animated: false)
         }
         
@@ -191,22 +186,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         menuAlert.view.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1);
         
         menuAlert.addAction(UIAlertAction(title: "Trail Info", style: .Default , handler: { (action) -> Void in
-            print("Trail Info")
             self.performSegueWithIdentifier("trailInfoIdentifier", sender: nil)
         }))
         menuAlert.addAction(UIAlertAction(title: "Park Info", style: .Default , handler: { (action) -> Void in
-            print("Park Info")
             self.performSegueWithIdentifier("parkInfoIdentifier", sender: nil)
         }))
         menuAlert.addAction(UIAlertAction(title: "Weather", style: .Default , handler: { (action) -> Void in
-            print("Weather")
             self.performSegueWithIdentifier("weatherIdentifier", sender: nil)
         }))
         menuAlert.addAction(UIAlertAction(title: "VR Preview", style: .Default , handler: { (action) -> Void in
             self.performSegueWithIdentifier("previewIdentifier", sender: nil)
         }))
         menuAlert.addAction(UIAlertAction(title: "Directions", style: .Default , handler: { (action) -> Void in
-            print("Directions")
             // Creates an instance of MKDirectionsRequest
             let request = MKDirectionsRequest()
             
@@ -275,11 +266,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let request = MKDirectionsRequest()
         
         // Determines the destination according to the current pin selected
-        if pinCoordinate.latitude == 19.865850{destination = MKMapItem(placemark:  MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))}
-        else if pinCoordinate.latitude == 19.482842{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), addressDictionary: nil))}
-        else if pinCoordinate.latitude == 19.703202{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.703118, longitude: -155.079461), addressDictionary: nil))}
-        else if pinCoordinate.latitude == 19.416333{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.416409, longitude: -155.242834), addressDictionary: nil))}
-        else if pinCoordinate.latitude == 19.670625{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), addressDictionary: nil))}
+        if pinCoordinate.latitude == 19.865850 && pinCoordinate.longitude == -155.116115{destination = MKMapItem(placemark:  MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.482842 && pinCoordinate.longitude == -154.904300{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.703202 && pinCoordinate.longitude == -155.079461{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.703118, longitude: -155.079461), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.416333 && pinCoordinate.longitude == -155.242834{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.416409, longitude: -155.242834), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.670625 && pinCoordinate.longitude == -156.026178{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), addressDictionary: nil))}
         else {destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.5667, longitude: -155), addressDictionary: nil))}
         
         // Defaults the transportation type as an automobile

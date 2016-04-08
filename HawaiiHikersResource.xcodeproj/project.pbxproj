@@ -67,6 +67,7 @@
 		A63A829F1CB5E19800A6C225 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63A829E1CB5E19800A6C225 /* FBSDKCoreKit.framework */; };
 		A63A82A11CB5E40200A6C225 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */; };
 		A63A82A31CB5E44B00A6C225 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */; };
+		A63A82A51CB6B04600A6C225 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A63A82A41CB6B04600A6C225 /* ApiKeys.plist */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
 		B9FDE4951CB6525600BA8FDA /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */; };
 		B9FDE4971CB6544700BA8FDA /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B9FDE4961CB6544700BA8FDA /* get.mp4 */; };
@@ -144,6 +145,7 @@
 		A63A829E1CB5E19800A6C225 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
+		A63A82A41CB6B04600A6C225 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 		B9FDE4961CB6544700BA8FDA /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			children = (
 				B9FDE4961CB6544700BA8FDA /* get.mp4 */,
 				B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */,
+				A63A82A41CB6B04600A6C225 /* ApiKeys.plist */,
 				043C70451C61D22F002598B1 /* trailInfo.json */,
 				04C31BF01C5BF49000C8964F /* parkInfo.json */,
 				04FBFC711BE2F99A00923F9F /* ApiKeys.swift */,
@@ -475,6 +478,7 @@
 				045409271BE04E68004B9577 /* Assets.xcassets in Resources */,
 				A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */,
 				04C31BF11C5BF49000C8964F /* parkInfo.json in Resources */,
+				A63A82A51CB6B04600A6C225 /* ApiKeys.plist in Resources */,
 				B9FDE4951CB6525600BA8FDA /* ApiKeys.plist in Resources */,
 				B9FDE4971CB6544700BA8FDA /* get.mp4 in Resources */,
 			);

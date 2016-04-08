@@ -330,7 +330,8 @@ class MenuTableController: UITableViewController {
             
             self.presentViewController(menuAlert, animated: true, completion: nil)
             
-            alertContentView.layer.cornerRadius = 12        }
+            alertContentView.layer.cornerRadius = 12
+        }
         else if indexPath.row == 5 {
             pinCoordinate = CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178)
             
