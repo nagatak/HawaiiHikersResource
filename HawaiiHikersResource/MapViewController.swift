@@ -77,11 +77,87 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         addCustomTrails()
     }
     
+    @IBAction func listTrailsBtn(sender: UIBarButtonItem) {
+        
+        print("pressed")
+        
+        let attributedStringTitle = NSAttributedString(string: "Select a Trail", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(22),
+            NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            ])
+        
+        let trailListAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        
+        
+        trailListAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
+        
+        trailListAlert.view.tintColor = UIColor.whiteColor()
+        
+        trailListAlert.addAction(UIAlertAction(title: "'Akaka Falls Loop Trail", style: .Default, handler: { (action) -> Void in
+            self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115)
+            self.alertMenu("'Akaka Falls Loop Trail")
+        }))
+        trailListAlert.addAction(UIAlertAction(title: "Lava Trees Loop Trail", style: .Default, handler: { (action) -> Void in
+            self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300)
+            self.alertMenu("Lava Trees Loop Trail")
+        }))
+        trailListAlert.addAction(UIAlertAction(title: "College Hall Trail", style: .Default, handler: { (action) -> Void in
+            self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.703202, longitude: -155.079654)
+            self.alertMenu("College Hall Trail")
+        }))
+        trailListAlert.addAction(UIAlertAction(title: "Kilauea Iki", style: .Default, handler: { (action) -> Void in
+            self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.416333, longitude: -155.242804)
+            self.alertMenu("Kilauea Iki")
+        }))    
+        trailListAlert.addAction(UIAlertAction(title: "Ala Kahakai Trail", style: .Default, handler: { (action) -> Void in
+            self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178)
+            self.alertMenu("Ala Kahakai Trail")
+        }))
+        
+        
+        let subview = trailListAlert.view.subviews.first! as UIView
+        let alertContentView = subview.subviews.first! as UIView
+        alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
+        
+        self.presentViewController(trailListAlert, animated: true, completion: nil)
+    }
     
     func handleSwipes(sender: UISwipeGestureRecognizer) {
         if (sender.direction == .Right){
-            performSegueWithIdentifier("menuSwipeSegue", sender: self)
+            //performSegueWithIdentifier("menuSwipeSegue", sender: self)
         }
+    }
+    @IBAction func menuBtn(sender: UIBarButtonItem) {
+        let attributedStringTitle = NSAttributedString(string: "Select an Option", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(22),
+            NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            ])
+        
+        let menuAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        
+        menuAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
+        
+        menuAlert.view.tintColor = UIColor.whiteColor()
+        
+        menuAlert.addAction(UIAlertAction(title: "User Info", style: .Default, handler: { (action) -> Void in
+            self.performSegueWithIdentifier("userInfoSegue", sender: nil)
+        }))
+        
+        menuAlert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (action) -> Void in
+        }))
+        
+        menuAlert.addAction(UIAlertAction(title: "Create Custom Trail", style: .Default, handler: { (action) -> Void in self.performSegueWithIdentifier("ctmIdentifier", sender: nil)
+        }))
+        
+        menuAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
+        
+        let subview = menuAlert.view.subviews.first! as UIView
+        let alertContentView = subview.subviews.first! as UIView
+        alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
+        
+        self.presentViewController(menuAlert, animated: true, completion: nil)
+        
+        alertContentView.layer.cornerRadius = 12
     }
     
     func addCustomTrails(){
@@ -101,12 +177,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 let tempName = element.valueForKey("trailName")
                 let tempOver = element.valueForKey("overlay")
                 if tempOver?.count > 0{
-                    cstmTrailArray.append(PinInfo(title: tempName! as! String,
-                                              coordinate: tempOver![0].coordinate, subtitle: " "))
+                    cstmTrailArray.append(PinInfo(title: tempName! as! String, coordinate: tempOver![0].coordinate, subtitle: " "))
                 }
             }
-            for num in 0 ... cstmTrailArray.count - 1{
-                mapView.addAnnotations([cstmTrailArray[num]])
+            if(cstmTrailArray.count - 1 >= 0){
+                for num in 0 ... cstmTrailArray.count - 1{
+                    mapView.addAnnotations([cstmTrailArray[num]])
+                }
             }
         }
        

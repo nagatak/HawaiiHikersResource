@@ -33,6 +33,8 @@ class MenuTableController: UITableViewController {
         
         menuAlert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (action) -> Void in
         }))
+        menuAlert.addAction(UIAlertAction(title: "Create Custom Trail", style: .Default, handler: { (action) -> Void in self.performSegueWithIdentifier("ctmMenu", sender: nil)
+        }))
         
         menuAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
         

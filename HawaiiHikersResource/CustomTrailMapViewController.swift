@@ -28,6 +28,9 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
         trailcoordinates = []
     }
     
+    @IBAction func closeBtn(sender: UIBarButtonItem) {
+                self.dismissViewControllerAnimated(true, completion: {})
+    }
     @IBAction func saveTrail(sender: AnyObject) {
         
         let attributedStringTitle = NSAttributedString(string: "Save Custom Trail", attributes: [
@@ -95,9 +98,26 @@ class CustomTrailMapViewController: UIViewController, CLLocationManagerDelegate,
         // Shows user location on map
         customMapView.showsUserLocation = true
         
+        // Set initial location to The Big Island, Hawaii
+        let initialLocation = CLLocation(latitude: 19.703202, longitude: -155.079654 )
+        // Rectangular region to display zoom level
+        let regionRadius: CLLocationDistance = 11000
+        
+        // Function to start the initial screen on the center of The Big Island, Hawaii
+        func centerMapOnLocation(location: CLLocation) {
+            // Rectangular region of map to be viewed
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+            // Set the region to be viewed with animation
+            customMapView.setRegion(coordinateRegion, animated: true)
+        }
+        
+        // Call helper method to zoom into initialLocation on startup
+        centerMapOnLocation(initialLocation)
         
         
     }
+    
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         trailcoordinates.append(locations[0] as CLLocation)
 
