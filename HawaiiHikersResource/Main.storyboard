@@ -281,7 +281,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vop-eB-8Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="95" y="-770"/>
+            <point key="canvasLocation" x="-2" y="-770"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="pgE-Z2-gab">
@@ -319,20 +319,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzk-Gw-wze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2" y="21"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="PPy-SC-95y">
-            <objects>
-                <viewController id="pHf-ZL-P0t" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zpr-aN-Q6I">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="58S-EW-LZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="38" y="665"/>
         </scene>
         <!--Preview Controller-->
         <scene sceneID="T9s-J8-Nh6">
@@ -463,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thA-J4-pL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="12"/>
+            <point key="canvasLocation" x="744" y="21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Oh6-c5-QB3">
@@ -481,60 +467,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWZ-JI-zHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1381" y="-770"/>
-        </scene>
-        <!--Menu Trail Info Controller-->
-        <scene sceneID="JlT-V7-pdE">
-            <objects>
-                <viewController id="cIw-6Y-BOp" userLabel="Menu Trail Info Controller" customClass="TrailInfoController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Frk-bw-m8z">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lYE-Tx-Zoe">
-                            <rect key="frame" x="0.0" y="72" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <gestureRecognizers/>
-                            <state key="normal" title="Trail Maps"/>
-                        </button>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="6XQ-d3-PuI">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6XQ-d3-PuI" id="zcV-1m-gpl">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="dPT-oI-eL7" appends="YES" id="daa-qj-met"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="dPT-oI-eL7" appends="YES" id="1ks-0M-Drb"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hlc-k2-CZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="dPT-oI-eL7">
-                    <connections>
-                        <action selector="swipeClose:" destination="cIw-6Y-BOp" id="3S0-Dh-E6Q"/>
-                    </connections>
-                </swipeGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="386" y="21"/>
+            <point key="canvasLocation" x="1483" y="-770"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Ikt-YP-sQ7"/>
         <segue reference="sUl-7x-Jq7"/>
-        <segue reference="hBO-We-6bc"/>
-        <segue reference="z9A-Gu-7g8"/>
-        <segue reference="RLB-d1-eRY"/>
-        <segue reference="hC3-T5-h7W"/>
+        <segue reference="uCc-01-jjA"/>
+        <segue reference="6sb-4y-QuR"/>
+        <segue reference="GsV-tZ-Rng"/>
+        <segue reference="UzW-62-lB9"/>
     </inferredMetricsTieBreakers>
 </document>
