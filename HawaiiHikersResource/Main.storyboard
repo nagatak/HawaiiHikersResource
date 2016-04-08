@@ -36,7 +36,6 @@
                                             <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
                                             <connections>
                                                 <action selector="menuBtn:" destination="BYZ-38-t0r" id="3vv-NG-xMN"/>
-                                                <segue destination="OHV-ct-dtz" kind="modal" identifier="mapUserSegue" modalTransitionStyle="crossDissolve" id="STm-mj-8oP"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -54,6 +53,7 @@
                         <segue destination="98d-Mf-sVQ" kind="modal" identifier="previewIdentifier" id="hC3-T5-h7W"/>
                         <segue destination="D0M-Gr-R3T" kind="modal" identifier="menuSwipeSegue" modalTransitionStyle="crossDissolve" id="1Ih-Z3-SVS"/>
                         <segue destination="bXo-oH-Ef8" kind="modal" identifier="ctmIdentifier" modalTransitionStyle="crossDissolve" id="hbw-rd-TN0"/>
+                        <segue destination="OHV-ct-dtz" kind="modal" identifier="mapUserSegue" modalTransitionStyle="crossDissolve" id="U36-JW-h57"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -484,7 +484,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="hBO-We-6bc"/>
         <segue reference="Scv-jv-sXR"/>
-        <segue reference="STm-mj-8oP"/>
+        <segue reference="U36-JW-h57"/>
         <segue reference="RLB-d1-eRY"/>
         <segue reference="hC3-T5-h7W"/>
         <segue reference="hbw-rd-TN0"/>

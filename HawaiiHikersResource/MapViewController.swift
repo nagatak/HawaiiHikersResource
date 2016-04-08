@@ -132,6 +132,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             //performSegueWithIdentifier("menuSwipeSegue", sender: self)
         }
     }
+    
     @IBAction func menuBtn(sender: UIBarButtonItem) {
         let attributedStringTitle = NSAttributedString(string: "Select an Option", attributes: [
             NSFontAttributeName : UIFont.systemFontOfSize(22),
@@ -145,7 +146,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         menuAlert.view.tintColor = UIColor.whiteColor()
         
         menuAlert.addAction(UIAlertAction(title: "User Info", style: .Default, handler: { (action) -> Void in
-            self.performSegueWithIdentifier("mapInfoSegue", sender: nil)
+            self.performSegueWithIdentifier("mapUserSegue", sender: nil)
         }))
         
         menuAlert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (action) -> Void in
