@@ -67,12 +67,12 @@
 		A63A829F1CB5E19800A6C225 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63A829E1CB5E19800A6C225 /* FBSDKCoreKit.framework */; };
 		A63A82A11CB5E40200A6C225 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */; };
 		A63A82A31CB5E44B00A6C225 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */; };
-		A63A82A51CB6B04600A6C225 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A63A82A41CB6B04600A6C225 /* ApiKeys.plist */; };
 		A6B101981CB7342D00F6813A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B101971CB7342D00F6813A /* FBSDKShareKit.framework */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
-		B9FDE4951CB6525600BA8FDA /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */; };
-		B9FDE4971CB6544700BA8FDA /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B9FDE4961CB6544700BA8FDA /* get.mp4 */; };
 		E734EB481CB5A73C007D4CF2 /* MenuTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */; };
+		E738566D1CB7453F000DF779 /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E738566C1CB7453F000DF779 /* get.mp4 */; };
+		E738566F1CB74582000DF779 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E738566E1CB74582000DF779 /* ApiKeys.plist */; };
+		E73856711CB74C74000DF779 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E73856701CB74C74000DF779 /* AppIcon.png */; };
 		E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B882CB1C118B020003CA63 /* PinInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -146,13 +146,13 @@
 		A63A829E1CB5E19800A6C225 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		A63A82A01CB5E40200A6C225 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
-		A63A82A41CB6B04600A6C225 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 		A6B101971CB7342D00F6813A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		A6B101991CB737A600F6813A /* HawaiiHikersResource2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HawaiiHikersResource2.xcdatamodel; sourceTree = "<group>"; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
-		B9FDE4961CB6544700BA8FDA /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
 		E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableController.swift; sourceTree = "<group>"; };
+		E738566C1CB7453F000DF779 /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
+		E738566E1CB74582000DF779 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		E73856701CB74C74000DF779 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		E7B882CB1C118B020003CA63 /* PinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,9 +304,9 @@
 		048B25AD1C1A4993009324FD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				B9FDE4961CB6544700BA8FDA /* get.mp4 */,
-				B9FDE4941CB6525600BA8FDA /* ApiKeys.plist */,
-				A63A82A41CB6B04600A6C225 /* ApiKeys.plist */,
+				E73856701CB74C74000DF779 /* AppIcon.png */,
+				E738566E1CB74582000DF779 /* ApiKeys.plist */,
+				E738566C1CB7453F000DF779 /* get.mp4 */,
 				043C70451C61D22F002598B1 /* trailInfo.json */,
 				04C31BF01C5BF49000C8964F /* parkInfo.json */,
 				04FBFC711BE2F99A00923F9F /* ApiKeys.swift */,
@@ -419,6 +419,7 @@
 				TargetAttributes = {
 					045409181BE04E67004B9577 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = D2TS9BE6C7;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -478,14 +479,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E738566F1CB74582000DF779 /* ApiKeys.plist in Resources */,
+				E73856711CB74C74000DF779 /* AppIcon.png in Resources */,
+				E738566D1CB7453F000DF779 /* get.mp4 in Resources */,
 				043C70461C61D22F002598B1 /* trailInfo.json in Resources */,
 				0454092A1BE04E68004B9577 /* LaunchScreen.storyboard in Resources */,
 				045409271BE04E68004B9577 /* Assets.xcassets in Resources */,
 				A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */,
 				04C31BF11C5BF49000C8964F /* parkInfo.json in Resources */,
-				A63A82A51CB6B04600A6C225 /* ApiKeys.plist in Resources */,
-				B9FDE4951CB6525600BA8FDA /* ApiKeys.plist in Resources */,
-				B9FDE4971CB6544700BA8FDA /* get.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
