@@ -17,8 +17,14 @@ class MapVC: UIViewController {
     @IBOutlet weak var menuBtn: UIBarButtonItem!
     @IBOutlet weak var listBtn: UIBarButtonItem!
     
+    var slideDownManager = SlideDownManager()
     
-
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+        let sourceController = segue.sourceViewController as! MenuVC
+        //self.title = sourceController.currentItem
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +45,13 @@ class MapVC: UIViewController {
     }
     
 
+    // MARK: Prepare for Segue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let menuVC = segue.destinationViewController as! MenuVC
+        //menuVC.currentItem = self.title!
+        menuVC.transitioningDelegate = self.slideDownManager
+    }
     /*
     // MARK: - Navigation
 

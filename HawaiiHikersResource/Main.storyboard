@@ -89,7 +89,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1sS-Ti-tdO">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="CNT-BM-Vxn"/>
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="CNT-BM-Vxn">
+                            <connections>
+                                <segue destination="w5F-gJ-R1e" kind="presentation" id="zGq-Ok-gou"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="listBtn" destination="5p8-sr-Uff" id="2Xn-ck-Ch4"/>
@@ -100,6 +104,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQZ-U1-dwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1589" y="-78"/>
+        </scene>
+        <!--MenuVC-->
+        <scene sceneID="SmZ-0C-mTF">
+            <objects>
+                <tableViewController id="w5F-gJ-R1e" customClass="MenuVC" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="D0I-FO-Uwu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="zhx-XT-0z8">
+                            <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="Close" id="pIw-38-Bwa">
+                                    <connections>
+                                        <segue destination="AUj-eT-EOH" kind="unwind" unwindAction="unwindToHome:" id="sQm-1D-2OM"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HfV-nW-5Rm">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HfV-nW-5Rm" id="lpq-jP-bHt">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="AUj-eT-EOH" kind="unwind" unwindAction="unwindToHome:" id="uBm-9x-CpW"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="w5F-gJ-R1e" id="E6f-TP-1fN"/>
+                            <outlet property="delegate" destination="w5F-gJ-R1e" id="Mg4-GQ-eG2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fg3-Xl-EcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="AUj-eT-EOH" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1589" y="-744"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aEq-Vh-YOK">
