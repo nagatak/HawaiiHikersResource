@@ -1,5 +1,5 @@
 //
-//  MenuVC.swift
+//  QuickViewMenuVC.swift
 //  HawaiiHikersResource
 //
 //  Created by Kenneth Nagata on 4/12/16.
@@ -8,22 +8,11 @@
 
 import UIKit
 
-class MenuVC: UITableViewController {
+class QuickViewMenuVC: UITableViewController, UIPopoverPresentationControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let menuVC = MenuVC()
-//        menuVC.modalPresentationStyle = .Popover
-//        menuVC.preferredContentSize = CGSizeMake(50, 100)
-//        
-//        let popoverMenuViewController = menuVC.popoverPresentationController
-//        popoverMenuViewController?.permittedArrowDirections = .Any
-//        popoverMenuViewController?.delegate = self
-//        popoverMenuViewController?.sourceView = sender.frame
-//        popoverMenuViewController?.sourceRect = CGRect(x: location.x, y: location.y, width: 1, height: 1)
-//        presentViewController(menuVC, animated: true, completion: nil)
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -40,33 +29,47 @@ class MenuVC: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 5
     }
+
     
-    // MARK: Prepare for Segue
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let menuVC = segue.sourceViewController as! MenuVC
-//        if let selectedRow = menuVC.tableView.indexPathForSelectedRow()?.row {
-//            currentItem = menuItems[selectedRow]
-//        }
-//    }
-    
-    
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+       if indexPath.row == 0{
+            //let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "weatherCell") as! QVMWeatherCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell", forIndexPath: indexPath) as! QVMWeatherCell
+            let image = UIImage(named: "sunny.png")
+            
+            cell.weatherImage.image = image
+            cell.currentTempLabel.text = "84° f"
+            cell.locationLabel.text = "Hilo"
+            
+            return cell
+        } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("trailCell", forIndexPath: indexPath) as! QMTrailCell
+        
+            cell.lengthLabel.text = "2 Miles"
+            cell.difficultyLabel.text = "* * * * *"
+            
+            return cell
+        } else if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("parkCell", forIndexPath: indexPath) as! QMParkCell
+        
+            cell.parkNameLabel.text = "Park Name Place Holder"
+        
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("parkCell", forIndexPath: indexPath) as! QMParkCell
+        
+            cell.parkNameLabel.text = "Place Holder"
+            return cell
+        }
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
