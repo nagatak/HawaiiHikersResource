@@ -13,70 +13,12 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    //  Create instance of PushNotificationController
-    //var pushNotificationController:PushNotificationController?
-    
-    // Declare new CLConrtoller
-    //var cLController:CLController?
-    // Declare new weatherServices
-    //var weatherServices:WeatherServices?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        // Mark: - Parse push notification server needs to be migrated
-        //Initialze push notification controller
-        //self.pushNotificationController = PushNotificationController()
-        
-        //Initialize core location controller
-        //self.cLController = CLController()
-        
-        // BEGIN----------------------------------------------------------------------------------
-        // Mark: - Parse function and
-        // Code for Parse.com SDK
-        // Register for Push Notitications, if running iOS 8 and 9
-        //
-        if application.respondsToSelector(#selector(UIApplication.registerUserNotificationSettings(_:))) {
-            
-            let types:UIUserNotificationType = (UIUserNotificationType.Alert.union(UIUserNotificationType.Badge).union(UIUserNotificationType.Sound))
-            let settings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
-            
-            application.registerUserNotificationSettings(settings)
-            application.registerForRemoteNotifications()
-            
-        } else {
-            // TODO: add support for iOS 7 and below
-            // Register for Push Notifications before iOS 8
-            //application.registerForRemoteNotificationTypes(UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound)
-        }
-        //End--------------------------------------------------------------------------------------
+
         return true
     }
     
-    // MARK: - Parse didFailToRegister
-    // Code for Parse.com SDK
-    // BEGIN----------------------------------------------------------------------------------------
-    
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        print("didRegisterForRemoteNotificationsWithDeviceToken")
-        
-        let currentInstallation = PFInstallation.currentInstallation()
-        
-        currentInstallation.setDeviceTokenFromData(deviceToken)
-        currentInstallation.saveInBackgroundWithBlock { (succeeded, e) -> Void in
-            //code
-        }
-    }
-    
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print("failed to register for remote notifications:  (error)")
-    }
-    
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        print("didReceiveRemoteNotification")
-        PFPush.handlePush(userInfo)
-    }
-    
-    // END -------------------------------------------------------------------------------------------
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

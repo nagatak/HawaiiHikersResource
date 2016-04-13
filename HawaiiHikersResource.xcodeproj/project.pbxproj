@@ -64,7 +64,9 @@
 		A6376DF81CB3E6FD00A7BCF3 /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF61CB3E6FD00A7BCF3 /* CoreAudioKit.framework */; };
 		A6376DFA1CB3E71400A7BCF3 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */; };
 		A6376DFC1CB3E92D00A7BCF3 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */; };
-		A6376DFE1CB3EB6B00A7BCF3 /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A6376DFD1CB3EB6B00A7BCF3 /* get.mp4 */; };
+		A69600A71CBDCEC5003F858C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69600A61CBDCEC5003F858C /* SWRevealViewController.m */; };
+		A69600AA1CBDCF38003F858C /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69600A91CBDCF38003F858C /* MapVC.swift */; };
+		A69600AC1CBDCF60003F858C /* TrailListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69600AB1CBDCF60003F858C /* TrailListVC.swift */; };
 		A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F51CAB713800486E73 /* ApiKeys.plist */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
 		E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B882CB1C118B020003CA63 /* PinInfo.swift */; };
@@ -137,7 +139,10 @@
 		A6376DF61CB3E6FD00A7BCF3 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		A6376DF91CB3E71400A7BCF3 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
-		A6376DFD1CB3EB6B00A7BCF3 /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
+		A69600A51CBDCEC5003F858C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		A69600A61CBDCEC5003F858C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		A69600A91CBDCF38003F858C /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		A69600AB1CBDCF60003F858C /* TrailListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailListVC.swift; sourceTree = "<group>"; };
 		A6BF26F51CAB713800486E73 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = SOURCE_ROOT; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E7B882CB1C118B020003CA63 /* PinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
@@ -231,6 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				A6BF26F71CAB72BF00486E73 /* Main.storyboard */,
+				A69600AD1CBDCF6E003F858C /* TrailList */,
+				A69600A81CBDCF07003F858C /* MapVC */,
+				A69600A41CBDCEAC003F858C /* SWReveal */,
 				0454091C1BE04E67004B9577 /* AppDelegate.swift */,
 				045409281BE04E68004B9577 /* LaunchScreen.storyboard */,
 				048B25AC1C1A4689009324FD /* viewControllers */,
@@ -286,7 +294,6 @@
 		048B25AD1C1A4993009324FD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				A6376DFD1CB3EB6B00A7BCF3 /* get.mp4 */,
 				A6BF26F51CAB713800486E73 /* ApiKeys.plist */,
 				043C70451C61D22F002598B1 /* trailInfo.json */,
 				04C31BF01C5BF49000C8964F /* parkInfo.json */,
@@ -327,6 +334,31 @@
 				04FBFC661BE2EEB000923F9F /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A69600A41CBDCEAC003F858C /* SWReveal */ = {
+			isa = PBXGroup;
+			children = (
+				A69600A51CBDCEC5003F858C /* SWRevealViewController.h */,
+				A69600A61CBDCEC5003F858C /* SWRevealViewController.m */,
+			);
+			name = SWReveal;
+			sourceTree = "<group>";
+		};
+		A69600A81CBDCF07003F858C /* MapVC */ = {
+			isa = PBXGroup;
+			children = (
+				A69600A91CBDCF38003F858C /* MapVC.swift */,
+			);
+			name = MapVC;
+			sourceTree = "<group>";
+		};
+		A69600AD1CBDCF6E003F858C /* TrailList */ = {
+			isa = PBXGroup;
+			children = (
+				A69600AB1CBDCF60003F858C /* TrailListVC.swift */,
+			);
+			name = TrailList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,7 +495,6 @@
 				A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */,
 				04C31BF11C5BF49000C8964F /* parkInfo.json in Resources */,
 				A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */,
-				A6376DFE1CB3EB6B00A7BCF3 /* get.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,8 +521,10 @@
 			files = (
 				A6376DFC1CB3E92D00A7BCF3 /* PreviewController.swift in Sources */,
 				04FBFC701BE2F7E800923F9F /* PushNotificationController.swift in Sources */,
+				A69600A71CBDCEC5003F858C /* SWRevealViewController.m in Sources */,
 				04DFD1BC1C05B75C000AF371 /* WeatherViewController.swift in Sources */,
 				E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */,
+				A69600AC1CBDCF60003F858C /* TrailListVC.swift in Sources */,
 				045409251BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld in Sources */,
 				A6376DC31CB0F60F00A7BCF3 /* UserInfo.swift in Sources */,
 				0454091F1BE04E67004B9577 /* MapViewController.swift in Sources */,
@@ -500,6 +533,7 @@
 				04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */,
 				04D70B9D1C19705000F82B68 /* CLController.swift in Sources */,
 				04DFD1B41C05B4D8000AF371 /* ParkInfoController.swift in Sources */,
+				A69600AA1CBDCF38003F858C /* MapVC.swift in Sources */,
 				04DFD1B61C05B4FF000AF371 /* TrailInfoController.swift in Sources */,
 				04DFD1BA1C05B68D000AF371 /* TrailMapViewController.swift in Sources */,
 			);
