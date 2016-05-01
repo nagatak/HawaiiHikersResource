@@ -35,8 +35,8 @@
     "lavatree001":{
         "trailName": "Lava Trees Loop Trail",
         "parkName": "Lava Trees State Park",
-        "lat": "",
-        "lon": "",
+        "lat": "19.482842",
+        "lon": "-154.904300",
         "activities":"Hiking, Sightseeing",
         "regulations":"No Bicycles, No Pets, No Smoking, No Open Fires, No Alcohol",
         "trailType":"Semi-paved",
@@ -51,8 +51,8 @@
     "havo001":{
         "trailName": "Kilauea Iki",
         "parkName": "Hawaii Volcanoes National Park",
-        "lat": "",
-        "lon": "",
+        "lat": "19.416333",
+        "lon": "-155.242804",
         "activities": "Hiking, Sightseeing",
         "regulations": "Do not disturb Ahu",
         "trailType": "Natural Path",
@@ -67,8 +67,8 @@
     "uh":{
         "trailName": "College Hall Trail",
         "parkName": "-",
-        "lat": "",
-        "lon":"",
+        "lat": "19.703202",
+        "lon": "-155.079654",
         "activities": "-",
         "regulations": "-",
         "trailType":"paved",
@@ -83,8 +83,8 @@
     "king001":{
         "trailName": "Ala Kahakai Trail",
         "parkName": "-",
-        "lat": "",
-        "lon":"",
+        "lat": "19.670625",
+        "lon": "-156.026178",
         "activities":"Hiking, Sightseeing",
         "regulations":"No motorized vehicles, No Bicycles, No Camping, No Open Fires, No littering, No Smoking",
         "trailType": "Natural",

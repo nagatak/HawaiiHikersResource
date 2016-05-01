@@ -1,39 +1,35 @@
 //
-//  QuickViewMenuVC.swift
+//  WeatherTableViewController.swift
 //  HawaiiHikersResource
 //
-//  Created by Kenneth Nagata on 4/12/16.
+//  Created by Kenneth Nagata on 4/22/16.
 //  Copyright © 2016 Kenneth Nagata. All rights reserved.
 //
 
 import UIKit
-import CoreLocation
 
+class WeatherTableViewController: UITableViewController {
 
-
-
-class QuickViewMenuVC: UITableViewController, UIPopoverPresentationControllerDelegate{
-
+    @IBAction func closeBtn(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
     var weather: NSDictionary = [:]
     var currentLocation: String = ""
     var currentTemp: String = ""
     var currentDate: String = ""
+    var threeDayForecast: NSArray = []
+    var forecastTime: [String] = []
     var weatherImg: String = ""
     var weatherCur: String = ""
-    var toPass: CLLocationCoordinate2D!
-    var passedCoord: CLLocationCoordinate2D!
-    
+    var iconLink: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //let passedLat = String(toPass.latitude)
-        //let passedLon = String(toPass.longitude)
 
+        weather = WeatherDataController().getWeather("19.7297", lon: "-155.0900")
         
-        //weather = WeatherDataController().getWeather(passedLat, lon: passedLon)
-        
-        //getCurrentWeather(weather)
+        setWeatherData(weather)
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -48,6 +44,7 @@ class QuickViewMenuVC: UITableViewController, UIPopoverPresentationControllerDel
         // Dispose of any resources that can be recreated.
     }
     
+
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -57,54 +54,77 @@ class QuickViewMenuVC: UITableViewController, UIPopoverPresentationControllerDel
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return 7
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       if indexPath.row == 0{
-            let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell", forIndexPath: indexPath) as! QVMWeatherCell
-        
+        // Configure the cell...
+     
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCellWithIdentifier("currentWeatherCell", forIndexPath: indexPath) as! WVCurrentWeatherCell
             var image:UIImage?
-        
+            
             if let url = NSURL(string: "http://forecast.weather.gov/newimages/medium/\(weatherImg)") {
+                if let data = NSData(contentsOfURL: url) {
+                    image = UIImage(data: data)
+                }        
+            }
+            
+            cell.currentWeatherImage?.image = image
+            cell.currentWeatherTempLabel?.text = currentTemp
+            cell.currentWeatherLocationLabel?.text = currentLocation
+            cell.currentWeatherLabel?.text = weatherCur
+             
+            return cell
+         }
+        if indexPath.row > 0 || indexPath.row < 7{
+            let cell = tableView.dequeueReusableCellWithIdentifier("forecastWeatherCell", forIndexPath: indexPath) as! WVForecastWeatherCell
+            var image:UIImage?
+            
+            if let url = NSURL(string: iconLink[indexPath.row-1]) {
                 if let data = NSData(contentsOfURL: url) {
                     image = UIImage(data: data)
                 }
             }
-        
-            cell.weatherImage.image = image
-            cell.currentTempLabel.text = currentTemp + "° f"
-            cell.locationLabel.text = currentLocation
             
-            return cell
-        } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("trailCell", forIndexPath: indexPath) as! QMTrailCell
-        
-            cell.lengthLabel.text = "2 Miles"
-            cell.difficultyLabel.text = "* * * * *"
-            
-            return cell
-        } else if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("parkCell", forIndexPath: indexPath) as! QMParkCell
-        
-            cell.parkNameLabel.text = "Park Name Place Holder"
-        
+            cell.forecastImageView?.image = image
+            cell.forecastDateLabel?.text = forecastTime[indexPath.row - 1]
+            cell.forecastLabel?.text = threeDayForecast[indexPath.row - 1] as? String
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("parkCell", forIndexPath: indexPath) as! QMParkCell
-        
+            
             cell.parkNameLabel.text = "Place Holder"
             return cell
         }
     }
+
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    */
+ 
     
-    func getCurrentWeather(data: NSDictionary){
+    func setWeatherData(data: NSDictionary){
         
         do {
+
             if let weatherLoc = data ["location"] as? NSDictionary {
                 if let areaDescription = weatherLoc["areaDescription"] as? String{
                     currentLocation = areaDescription
+                }
+            }
+            if let weatherTime = data ["time"] as? NSDictionary {
+                if let dayTime = weatherTime["startPeriodName"] as? NSArray{
+                    for index in 0 ... dayTime.count - 1{
+                        forecastTime.append(dayTime[index] as! String)
+                    }
                 }
             }
             if let currentObservations = data["currentobservation"] as? NSDictionary {
@@ -122,18 +142,19 @@ class QuickViewMenuVC: UITableViewController, UIPopoverPresentationControllerDel
                     weatherCur = Curr
                 }
             }
+            if let currentForecast = data["data"] as? NSDictionary {
+                if let forecast = currentForecast["text"] as? NSArray{
+                    threeDayForecast = forecast
+                }
+                if let icon = currentForecast["iconLink"] as? NSArray{
+                    iconLink = icon as! [String]
+                }
+            }
         } catch {
             //Throw an error if not a json or no file
             print("error serializing JSON: \(error)")
-        }   
+        }
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     /*
     // Override to support editing the table view.
@@ -173,7 +194,3 @@ class QuickViewMenuVC: UITableViewController, UIPopoverPresentationControllerDel
     */
 
 }
-
-
-
-

@@ -9,21 +9,10 @@
 import UIKit
 
 class MenuVC: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let menuVC = MenuVC()
-//        menuVC.modalPresentationStyle = .Popover
-//        menuVC.preferredContentSize = CGSizeMake(50, 100)
-//        
-//        let popoverMenuViewController = menuVC.popoverPresentationController
-//        popoverMenuViewController?.permittedArrowDirections = .Any
-//        popoverMenuViewController?.delegate = self
-//        popoverMenuViewController?.sourceView = sender.frame
-//        popoverMenuViewController?.sourceRect = CGRect(x: location.x, y: location.y, width: 1, height: 1)
-//        presentViewController(menuVC, animated: true, completion: nil)
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
