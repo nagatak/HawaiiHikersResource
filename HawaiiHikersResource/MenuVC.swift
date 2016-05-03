@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MenuVC: UITableViewController {
     
+    var toPass: CLLocationCoordinate2D!
+    var passedCoord: CLLocationCoordinate2D!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(toPass)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

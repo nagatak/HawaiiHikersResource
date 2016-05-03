@@ -21,6 +21,8 @@ class MapVC: UIViewController, UIPopoverPresentationControllerDelegate, CLLocati
     var pinCoordinate: CLLocationCoordinate2D!
     var destination: MKMapItem!
     
+    let shareData = ShareData.sharedInstance
+    
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var menuBtn: UIBarButtonItem!
@@ -29,15 +31,15 @@ class MapVC: UIViewController, UIPopoverPresentationControllerDelegate, CLLocati
     
     @IBAction func qVMBtn(sender: UIBarButtonItem) {
 
-        //performSegueWithIdentifier("QVMSegueIdentifier", sender: nil)
+        performSegueWithIdentifier("menuBtnSegue", sender: nil)
         
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("QVMenuVC")
-        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
-        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
-        popover.barButtonItem = sender
-        popover.delegate = self
-        presentViewController(vc, animated: true, completion:nil)
+//        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewControllerWithIdentifier("QVMenuVC")
+//        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+//        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+//        popover.barButtonItem = sender
+//        popover.delegate = self
+//        presentViewController(vc, animated: true, completion:nil)
     }
     
     
@@ -74,6 +76,8 @@ class MapVC: UIViewController, UIPopoverPresentationControllerDelegate, CLLocati
             listBtn.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        self.shareData.passedCoordinate = CLLocationCoordinate2D(latitude: 19.5667, longitude: -155)
         
         // Creating instance of CLManager
         locManager = CLLocationManager()
@@ -160,6 +164,8 @@ class MapVC: UIViewController, UIPopoverPresentationControllerDelegate, CLLocati
         let kilauea = PinInfo(title: "Kilauea Iki Trail", coordinate: CLLocationCoordinate2D(latitude: 19.416333, longitude: -155.242804), subtitle: "Hawaii Volcanoes National Park")
         let kahakai = PinInfo(title: "Ala Kahakai Trail", coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), subtitle: "Kings Trail")
 
+        pinCoordinate = akaka.coordinate
+        
         pinLoc = [akaka, lava, college, kilauea, kahakai]
         
         // Adds the datasets into the map as pin annotations
@@ -239,11 +245,10 @@ class MapVC: UIViewController, UIPopoverPresentationControllerDelegate, CLLocati
         if(segue.identifier == "menuSegueIdentifier"){
             let menuVC = segue.destinationViewController as! MenuVC
             menuVC.transitioningDelegate = self.slideDownManager
+            menuVC.toPass = pinCoordinate
         }
-        if(segue.identifier == "QVMSegueIdentifier"){
+        if(segue.identifier == "menuBtnSegue"){
             if let destination = segue.destinationViewController as? QuickViewMenuVC{
-                destination.popoverPresentationController!.delegate = self
-                destination.preferredContentSize = CGSize(width: 320, height: 186)
                 destination.toPass = pinCoordinate
             }
       }

@@ -22,18 +22,21 @@ class QuickViewMenuVC: UITableViewController, UIPopoverPresentationControllerDel
     var weatherCur: String = ""
     var toPass: CLLocationCoordinate2D!
     var passedCoord: CLLocationCoordinate2D!
-    
+    let shareData = ShareData.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //let passedLat = String(toPass.latitude)
-        //let passedLon = String(toPass.longitude)
-
+        passedCoord = shareData.passedCoordinate
         
-        //weather = WeatherDataController().getWeather(passedLat, lon: passedLon)
+        var passedLat = String(passedCoord.latitude)
+        var passedLon = String(passedCoord.longitude)
         
-        //getCurrentWeather(weather)
+        weather = WeatherDataController().getWeather(passedLat, lon: passedLon)
+        
+        getCurrentWeather(weather)
+        
+        
         
         
         // Uncomment the following line to preserve selection between presentations

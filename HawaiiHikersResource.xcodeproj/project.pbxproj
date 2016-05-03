@@ -77,6 +77,7 @@
 		A6BF26F61CAB713800486E73 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F51CAB713800486E73 /* ApiKeys.plist */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
 		A6DFDC081CD5578C00D8EB3D /* WVForecastWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DFDC071CD5578C00D8EB3D /* WVForecastWeatherCell.swift */; };
+		A6DFDC0A1CD6355400D8EB3D /* ShareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DFDC091CD6355400D8EB3D /* ShareData.swift */; };
 		A6F859441CCAAFFF0014268A /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F859431CCAAFFF0014268A /* WeatherTableViewController.swift */; };
 		A6F859461CCAB37D0014268A /* WVCurrentWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F859451CCAB37D0014268A /* WVCurrentWeatherCell.swift */; };
 		A6F859481CCAB6300014268A /* WeatherDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F859471CCAB6300014268A /* WeatherDataController.swift */; };
@@ -164,6 +165,7 @@
 		A6BF26F51CAB713800486E73 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = SOURCE_ROOT; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A6DFDC071CD5578C00D8EB3D /* WVForecastWeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WVForecastWeatherCell.swift; sourceTree = "<group>"; };
+		A6DFDC091CD6355400D8EB3D /* ShareData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareData.swift; sourceTree = "<group>"; };
 		A6F859431CCAAFFF0014268A /* WeatherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
 		A6F859451CCAB37D0014268A /* WVCurrentWeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WVCurrentWeatherCell.swift; sourceTree = "<group>"; };
 		A6F859471CCAB6300014268A /* WeatherDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDataController.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				E7B882CB1C118B020003CA63 /* PinInfo.swift */,
 				04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */,
 				A6376DC21CB0F60F00A7BCF3 /* UserInfo.swift */,
+				A6DFDC091CD6355400D8EB3D /* ShareData.swift */,
 			);
 			name = SupportFiles;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				04DFD1BC1C05B75C000AF371 /* WeatherViewController.swift in Sources */,
 				E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */,
 				A69600BB1CBE54C0003F858C /* QMTrailCell.swift in Sources */,
+				A6DFDC0A1CD6355400D8EB3D /* ShareData.swift in Sources */,
 				A69600B01CBDD31A003F858C /* MenuVC.swift in Sources */,
 				A69600AC1CBDCF60003F858C /* TrailListVC.swift in Sources */,
 				045409251BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld in Sources */,
