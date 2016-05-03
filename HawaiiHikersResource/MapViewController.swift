@@ -4,11 +4,12 @@
 //
 //  Created by Kenneth Nagata on 10/27/15.
 //  Copyright © 2015 Kenneth Nagata. All rights reserved.
-//
+///
 
 import UIKit
 import CoreLocation
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -18,6 +19,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var locManager: CLLocationManager?
     var pinCoordinate: CLLocationCoordinate2D!
     var destination: MKMapItem!
+    var customTrailMaps = [NSManagedObject]()
+    var cstmTrailArray = [PinInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +39,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.mapType = MKMapType.Hybrid
         
         // Set initial location to The Big Island, Hawaii
-        let initialLocation = CLLocation(latitude: 19.5667, longitude: -155)
+        let initialLocation = CLLocation(latitude: 19.619305, longitude: -155.478945)
         // Rectangular region to display zoom level
-        let regionRadius: CLLocationDistance = 140000
+        let regionRadius: CLLocationDistance = 80000
         
         // Function to start the initial screen on the center of The Big Island, Hawaii
         func centerMapOnLocation(location: CLLocation) {
@@ -51,8 +54,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Call helper method to zoom into initialLocation on startup
         centerMapOnLocation(initialLocation)
         
-        //
-        
         // Datasets for trail locations including trail name, GPS coordinates, & subtitle
         let akaka = PinInfo(title: "Akaka Falls Loop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), subtitle: "Akaka Falls State Park")
         let lava = PinInfo(title: "Lava Tree Troop Trail", coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), subtitle: "Lava Tree State Monument")
@@ -63,17 +64,137 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Adds the datasets into the map as pin annotations
         mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
         
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(MapViewController.handleSwipes(_:)))
+        addCustomTrails()
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
         
         rightSwipe.direction = .Right
         
         view.addGestureRecognizer(rightSwipe)
+        
+        self.navigationController?.navigationBarHidden = true
+        
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+        addCustomTrails()
+    }
+    
+    @IBAction func listTrailsBtn(sender: UIBarButtonItem) {
+        
+        //print("pressed")
+        
+        let attributedStringTitle = NSAttributedString(string: "Select a Trail", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(22),
+            NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            ])
+        
+        let trailListAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        
+        
+        trailListAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
+        
+        trailListAlert.view.tintColor = UIColor.whiteColor()
+        
+        trailListAlert.addAction(UIAlertAction(title: "'Akaka Falls Loop Trail", style: .Default, handler: { (action) -> Void in
+            self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115)
+            self.alertMenu("'Akaka Falls Loop Trail")
+        }))
+        trailListAlert.addAction(UIAlertAction(title: "Lava Trees Loop Trail", style: .Default, handler: { (action) -> Void in
+            self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300)
+            self.alertMenu("Lava Trees Loop Trail")
+        }))
+        trailListAlert.addAction(UIAlertAction(title: "College Hall Trail", style: .Default, handler: { (action) -> Void in
+            self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.703202, longitude: -155.079654)
+            self.alertMenu("College Hall Trail")
+        }))
+        trailListAlert.addAction(UIAlertAction(title: "Kilauea Iki", style: .Default, handler: { (action) -> Void in
+            self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.416333, longitude: -155.242804)
+            self.alertMenu("Kilauea Iki")
+        }))    
+        trailListAlert.addAction(UIAlertAction(title: "Ala Kahakai Trail", style: .Default, handler: { (action) -> Void in
+            self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178)
+            self.alertMenu("Ala Kahakai Trail")
+        }))
+        trailListAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
+        
+        
+        let subview = trailListAlert.view.subviews.first! as UIView
+        let alertContentView = subview.subviews.first! as UIView
+        alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
+        
+        self.presentViewController(trailListAlert, animated: true, completion: nil)
+        
+        alertContentView.layer.cornerRadius = 12
     }
     
     func handleSwipes(sender: UISwipeGestureRecognizer) {
         if (sender.direction == .Right){
-            performSegueWithIdentifier("menuSwipeSegue", sender: self)
+            //performSegueWithIdentifier("menuSwipeSegue", sender: self)
         }
+    }
+    
+    @IBAction func menuBtn(sender: UIBarButtonItem) {
+        let attributedStringTitle = NSAttributedString(string: "Select an Option", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(22),
+            NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            ])
+        
+        let menuAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        
+        menuAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
+        
+        menuAlert.view.tintColor = UIColor.whiteColor()
+        
+        menuAlert.addAction(UIAlertAction(title: "User Info", style: .Default, handler: { (action) -> Void in
+            self.performSegueWithIdentifier("mapUserSegue", sender: nil)
+        }))
+        
+        menuAlert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (action) -> Void in
+        }))
+        
+        menuAlert.addAction(UIAlertAction(title: "Edit Custom Trail", style: .Default, handler: { (action) -> Void in self.performSegueWithIdentifier("ctmIdentifier", sender: nil)
+        }))
+        
+        menuAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
+        
+        let subview = menuAlert.view.subviews.first! as UIView
+        let alertContentView = subview.subviews.first! as UIView
+        alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
+        
+        self.presentViewController(menuAlert, animated: true, completion: nil)
+        
+        alertContentView.layer.cornerRadius = 12
+    }
+    
+    func addCustomTrails(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "CustomTrails")
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            customTrailMaps = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        if (customTrailMaps.count > 0){
+            
+            for (index,element) in customTrailMaps.enumerate(){
+                let tempName = element.valueForKey("trailName")
+                let tempOver = element.valueForKey("overlay")
+                if tempOver?.count > 0{
+                    cstmTrailArray.append(PinInfo(title: tempName! as! String, coordinate: tempOver![0].coordinate, subtitle: " "))
+                }
+            }
+            if(cstmTrailArray.count - 1 >= 0){
+                for num in 0 ... cstmTrailArray.count - 1{
+                    mapView.addAnnotations([cstmTrailArray[num]])
+                }
+            }
+        }
+       
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,16 +231,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         return nil
     }
+    
     // Calls uialertmenu instead of annotation callout
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
 
         if !(view.annotation!.isKindOfClass(MKUserLocation)) {
             pinCoordinate = view.annotation?.coordinate
             alertMenu(view.annotation!.title!!)
-            //print(view.annotation!.title)
+            mapView.deselectAnnotation(view.annotation, animated: false)
         }
         
     }
+    
     // Overloaded function to tell what to do when right callout accessory button is pressed
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl) {
@@ -129,6 +252,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             //pinMenu()
             //alertMenu()
     }
+    
     // 
     func alertMenu(trailName: String){
         let attributedStringTitle = NSAttributedString(string: trailName, attributes: [
@@ -147,22 +271,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         menuAlert.view.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1);
         
         menuAlert.addAction(UIAlertAction(title: "Trail Info", style: .Default , handler: { (action) -> Void in
-            print("Trail Info")
             self.performSegueWithIdentifier("trailInfoIdentifier", sender: nil)
         }))
         menuAlert.addAction(UIAlertAction(title: "Park Info", style: .Default , handler: { (action) -> Void in
-            print("Park Info")
             self.performSegueWithIdentifier("parkInfoIdentifier", sender: nil)
         }))
         menuAlert.addAction(UIAlertAction(title: "Weather", style: .Default , handler: { (action) -> Void in
-            print("Weather")
             self.performSegueWithIdentifier("weatherIdentifier", sender: nil)
         }))
         menuAlert.addAction(UIAlertAction(title: "VR Preview", style: .Default , handler: { (action) -> Void in
             self.performSegueWithIdentifier("previewIdentifier", sender: nil)
         }))
         menuAlert.addAction(UIAlertAction(title: "Directions", style: .Default , handler: { (action) -> Void in
-            print("Directions")
             // Creates an instance of MKDirectionsRequest
             let request = MKDirectionsRequest()
             
@@ -189,8 +309,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let subview = menuAlert.view.subviews.first! as UIView
         let alertContentView = subview.subviews.first! as UIView
-        alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
-        
+        alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.3)
         self.presentViewController(menuAlert, animated: true, completion: nil)
         
         alertContentView.layer.cornerRadius = 12;
@@ -232,11 +351,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let request = MKDirectionsRequest()
         
         // Determines the destination according to the current pin selected
-        if pinCoordinate.latitude == 19.865850{destination = MKMapItem(placemark:  MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))}
-        else if pinCoordinate.latitude == 19.482842{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), addressDictionary: nil))}
-        else if pinCoordinate.latitude == 19.703202{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.703118, longitude: -155.079461), addressDictionary: nil))}
-        else if pinCoordinate.latitude == 19.416333{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.416409, longitude: -155.242834), addressDictionary: nil))}
-        else if pinCoordinate.latitude == 19.670625{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), addressDictionary: nil))}
+        if pinCoordinate.latitude == 19.865850 && pinCoordinate.longitude == -155.116115{destination = MKMapItem(placemark:  MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.482842 && pinCoordinate.longitude == -154.904300{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.703202 && pinCoordinate.longitude == -155.079461{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.703118, longitude: -155.079461), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.416333 && pinCoordinate.longitude == -155.242834{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.416409, longitude: -155.242834), addressDictionary: nil))}
+        else if pinCoordinate.latitude == 19.670625 && pinCoordinate.longitude == -156.026178{destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178), addressDictionary: nil))}
         else {destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.5667, longitude: -155), addressDictionary: nil))}
         
         // Defaults the transportation type as an automobile

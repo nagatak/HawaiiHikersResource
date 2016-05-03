@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
+import Social
 
 //enum used by map type selector to switch maps
 enum MapType: Int {
@@ -29,7 +31,9 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var myLocations: [CLLocation] = []
     var currentLocation: [CLLocation] = []
     var trailProgress: [CLLocationCoordinate2D] = []
+    var trailProgressReverse: [CLLocationCoordinate2D] = []
     var checkPoints: [CLLocationCoordinate2D!] = []
+    var checkPointsReverse: [CLLocationCoordinate2D!] = []
     var checkPointIndex: [Int] = []
     var toPass: CLLocationCoordinate2D!
     var passedCoord: CLLocationCoordinate2D!
@@ -43,6 +47,8 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var startFound: Bool? = false
     var i = 0;
     var hasCheckPoints: Bool = false
+    var customTrailMaps = [NSManagedObject]()
+    var cstmTrailArray = [PinInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,26 +73,27 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         trailMapView.showsUserLocation = true
         
         // Selects correct trail info according to latitude passed from MapViewController
-        if passedCoord.latitude == 19.865850{
+        if passedCoord.latitude == 19.865850 && passedCoord.longitude == -155.116115{
              mapAkaka()
             pinLocation = CLLocation(latitude: 19.854144, longitude: -155.152367)
         }
-        else if passedCoord.latitude == 19.482842{
+        else if passedCoord.latitude == 19.482842 && passedCoord.longitude == -154.904300{
             pinLocation = CLLocation(latitude: 19.482842, longitude: -154.904300)
         }
-        else if passedCoord.latitude == 19.703202{
+        else if passedCoord.latitude == 19.703202 && passedCoord.longitude == -155.079654{
             mapUH()
             pinLocation = CLLocation(latitude: 19.703118, longitude: -155.079461)
         }
-        else if passedCoord.latitude == 19.416333{
+        else if passedCoord.latitude == 19.416333 && passedCoord.longitude == -155.242804{
             mapKilaueaIki()
             pinLocation = CLLocation(latitude: 19.416409, longitude: -155.242834)
         }
-        else if passedCoord.latitude == 19.670625{
+        else if passedCoord.latitude == 19.670625 && passedCoord.longitude == -156.026178{
             pinLocation = CLLocation(latitude: 19.670625, longitude: -156.026178)
         }
         else {
-            pinLocation = CLLocation(latitude: 19.5667, longitude: -155)
+            addCustomTrailOverlay(passedCoord.latitude, lon: passedCoord.longitude)
+            pinLocation = CLLocation(latitude: passedCoord.latitude, longitude: passedCoord.longitude)
         }
         
         // Calls function to center map on pinLocation
@@ -105,8 +112,41 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         trailMapView.setRegion(coordinateRegion, animated: true)
     }
     
+    func addCustomTrailOverlay(lat: Double, lon: Double){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "CustomTrails")
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            customTrailMaps = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        if (customTrailMaps.count > 0){
+            
+            for (index,element) in customTrailMaps.enumerate(){
+                let tempName = element.valueForKey("trailName")
+                let tempOver = element.valueForKey("overlay")
+                var temp: [CLLocationCoordinate2D] = []
+                if tempOver?.count > 0{
+                    //cstmTrailArray.append(PinInfo(title: tempName! as! String, coordinate: tempOver![0].coordinate, subtitle: " "))
+                    if tempOver![0].coordinate.latitude == lat && tempOver![0].coordinate.longitude == lon{
+                        
+                        for num in 0 ... tempOver!.count - 1{
+                            temp.append(tempOver![num].coordinate)
+                        }
+                        trail = MKPolyline(coordinates: &temp, count: temp.count)
+                        // Draws the overlay
+                        trailMapView.addOverlay(trail!)
+                    }
+                }
+            }
+        }
+    }
     
-    // Map overlay for ch to parking lot
+    // Map overlay for ch to parking lot//
     func mapUH(){
         // Array of gps coordinates
         var points = [CLLocationCoordinate2DMake(19.703118, -155.079461), CLLocationCoordinate2DMake(19.702924, -155.079330), CLLocationCoordinate2DMake(19.702808, -155.079504), CLLocationCoordinate2DMake(19.702718, -155.079515),
@@ -116,13 +156,16 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         trail = MKPolyline(coordinates: &points, count: points.count)
         // Draws the overlay
         trailMapView.addOverlay(trail!)
-        
+        //create checkpoints
         checkPoints = [CLLocationCoordinate2DMake(19.703118, -155.079461),CLLocationCoordinate2DMake(19.702808, -155.079504), CLLocationCoordinate2DMake(19.702678, -155.079586)]
-        
+        // array used for updating progress
         trailProgress = points
+        // index of checkpoint in array
         checkPointIndex = [0, 2, 4]
+        // create a reverse course
+        generateReverseCourse(points)
+        // set to true
         hasCheckPoints = true
-        
     }
     
     // Map overlay for akaka falls
@@ -148,7 +191,18 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Draws the overlay
             trailMapView.addOverlay(trail!)
     }
-    
+    func generateReverseCourse(forwardArray: [CLLocationCoordinate2D]){
+        let count  = forwardArray.count - 1
+        trailProgressReverse = forwardArray
+        checkPointsReverse = checkPoints
+        for index in 0 ... count{
+            trailProgressReverse[index] = forwardArray[count - index]
+        }
+        
+        for index in 0 ... checkPointIndex.count - 1 {
+            checkPointsReverse[index] = trailProgressReverse[checkPointIndex[index]]
+        }
+    }
     // Interface Builder action, switches map type according to segmented control selection
     @IBAction func mapTypeControl(sender: AnyObject) {
         let mapTypeC = MapType(rawValue: mapType.selectedSegmentIndex)
@@ -252,12 +306,18 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     func checkLatLon(lat: Double, lon: Double) -> Bool {
         
         var result  = false
-        
-        if ((lat >= (checkPoints[i].latitude - 0.00006)) && (lat <= (checkPoints[i].latitude + 0.00006))) &&
-        ((lon >= (checkPoints[i].longitude - 0.00006)) && (lon <= (checkPoints[i].longitude + 0.00006))){
-            result = true
+        if(!isReverse!){
+            if ((lat >= (checkPoints[i].latitude - 0.00006)) && (lat <= (checkPoints[i].latitude + 0.00006))) &&
+            ((lon >= (checkPoints[i].longitude - 0.00006)) && (lon <= (checkPoints[i].longitude + 0.00006))){
+                result = true
+            }
         }
-        
+        else if(isReverse!){
+            if ((lat >= (checkPointsReverse[i].latitude - 0.00006)) && (lat <= (checkPointsReverse[i].latitude + 0.00006))) &&
+                ((lon >= (checkPointsReverse[i].longitude - 0.00006)) && (lon <= (checkPointsReverse[i].longitude + 0.00006))){
+                result = true
+            }
+        }
         return result
     }
     // Check the progress on the trail
@@ -270,13 +330,13 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         if ((lat >= (checkPoints[0].latitude - 0.00006)) && (lat <= (checkPoints[0].latitude + 0.00006))) &&
             ((lon >= (checkPoints[0].longitude - 0.00006)) && (lon <= (checkPoints[0].longitude + 0.00006))){
             isReverse = false
-            i = 0;
+            i = 0
             startFound = true
         }
         else if((lat >= (checkPoints[checkPoints.count-1].latitude - 0.00006)) && (lat <= (checkPoints[checkPoints.count-1].latitude + 0.00006))) &&
             ((lon >= (checkPoints[checkPoints.count-1].longitude - 0.00006)) && (lon <= (checkPoints[checkPoints.count-1].longitude + 0.00006))){
             isReverse = true
-            i = checkPoints.count - 1;
+            i = 0
             startFound = true
         }
     }
@@ -300,11 +360,11 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             }
         }
         // User Starting point reverse, array count down.
-        else if i > 0 && isReverse!{
+        else if i < checkPointsReverse.count && isReverse!{
             if checkLatLon(lat, lon: lon){
                 updateProgress()
-                i -= 1;
-                if i < 1 {
+                i += 1;
+                if i >= checkPointsReverse.count {
                     manager.stopUpdatingLocation()
                     trailComplete()
                 }
@@ -320,7 +380,15 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         let trialCompleteAlert = UIAlertController(title: "Trail Completed", message: "Blah Blah Blah", preferredStyle: UIAlertControllerStyle.Alert)
         trialCompleteAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
         trialCompleteAlert.addAction(UIAlertAction(title: "Share", style: .Default, handler: { (action: UIAlertAction!) in
-            print("Handle share Logic here")
+            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+                var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                facebookSheet.setInitialText("Fished the beta test trail")
+                self.presentViewController(facebookSheet, animated: true, completion: nil)
+            } else {
+                var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
         }))
         self.startedTrail = false
         self.isReverse = false
@@ -338,8 +406,8 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             }
         }
         else if(isReverse!){
-            for (var index = checkPointIndex.count - 1; index >= 0; i -= 1) {
-                temp.append(trailProgress[index])
+            for index in 0 ... checkPointIndex[i]{
+                temp.append(trailProgressReverse[index])
             }
         }
         

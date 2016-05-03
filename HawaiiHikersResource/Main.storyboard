@@ -20,6 +20,27 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Y1q-gy-ldJ"/>
                                 </connections>
                             </mapView>
+                            <navigationBar opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="LEW-zo-39o">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem id="bv1-GF-svz">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="x0K-Z8-h6f">
+                                            <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <connections>
+                                                <action selector="listTrailsBtn:" destination="BYZ-38-t0r" id="weV-k3-FeY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Un2-Cs-fGL">
+                                            <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <connections>
+                                                <action selector="menuBtn:" destination="BYZ-38-t0r" id="3vv-NG-xMN"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -29,29 +50,32 @@
                         <segue destination="6V8-cc-a8f" kind="modal" identifier="weatherIdentifier" modalPresentationStyle="overFullScreen" id="RLB-d1-eRY"/>
                         <segue destination="KCR-m0-1A7" kind="modal" identifier="parkInfoIdentifier" modalPresentationStyle="overFullScreen" id="hBO-We-6bc"/>
                         <segue destination="nml-Ro-Xhe" kind="modal" identifier="trailInfoIdentifier" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="z9A-Gu-7g8"/>
-                        <segue destination="PM8-VZ-NEe" kind="modal" identifier="menuSwipeSegue" modalTransitionStyle="flipHorizontal" id="4t8-3Z-tgh"/>
                         <segue destination="98d-Mf-sVQ" kind="modal" identifier="previewIdentifier" id="hC3-T5-h7W"/>
+                        <segue destination="D0M-Gr-R3T" kind="modal" identifier="menuSwipeSegue" modalTransitionStyle="crossDissolve" id="1Ih-Z3-SVS"/>
+                        <segue destination="bXo-oH-Ef8" kind="modal" identifier="ctmIdentifier" modalTransitionStyle="crossDissolve" id="hbw-rd-TN0"/>
+                        <segue destination="OHV-ct-dtz" kind="modal" identifier="mapUserSegue" modalTransitionStyle="crossDissolve" id="U36-JW-h57"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="-764"/>
+            <point key="canvasLocation" x="1848" y="-770"/>
         </scene>
         <!--Weather View Controller-->
         <scene sceneID="Gcr-Eh-btg">
             <objects>
                 <viewController id="6V8-cc-a8f" customClass="WeatherViewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CC8-NN-Bln">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CC8-NN-Bln">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <color key="sectionIndexColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="gQc-vy-LiY">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gQc-vy-LiY" id="e6V-5q-Opi">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -135,7 +159,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6EK-fs-7ah" id="t0Q-tf-QGQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -245,7 +269,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R7w-Ur-aMj" id="wRe-R4-V37">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -270,89 +294,79 @@
             </objects>
             <point key="canvasLocation" x="1848.5333333333333" y="21.773333333333333"/>
         </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="hSa-GB-tO0">
+        <!--Menu Table View Controller-->
+        <scene sceneID="wHq-Qy-FEw">
             <objects>
-                <viewController id="P8Y-WS-fFC" userLabel="Settings View Controller" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="J00-Pr-2RP">
+                <tableViewController id="D0M-Gr-R3T" userLabel="Menu Table View Controller" customClass="MenuTableController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="50" sectionFooterHeight="28" id="SOk-k6-0ng">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SGE-3c-vst">
-                                <rect key="frame" x="129" y="269" width="63" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="User Info"/>
-                                <connections>
-                                    <segue destination="OHV-ct-dtz" kind="modal" identifier="userInfo" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="kcj-Zu-eRB"/>
-                                </connections>
-                            </button>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Nbf-y6-hCX">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <barButtonItem systemItem="action" id="ukJ-V2-qaQ">
-                                        <connections>
-                                            <segue destination="rUU-8o-cJX" kind="unwind" unwindAction="unwindToMenuTable:" id="H62-Du-6Cb"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jJU-o4-Z99">
-                                <rect key="frame" x="132" y="307" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ySu-Wc-489" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="rUU-8o-cJX" userLabel="Exit" sceneMemberID="exit"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="JzO-7Q-ykt">
+                            <rect key="frame" x="0.0" y="94" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                            <items>
+                                <barButtonItem systemItem="action" id="ZK0-X7-Lbi">
+                                    <connections>
+                                        <action selector="menuTable:" destination="D0M-Gr-R3T" id="PCd-D2-Dxx"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="mYG-49-zeP" userLabel="menuCell">
+                                <rect key="frame" x="0.0" y="50" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mYG-49-zeP" id="LlW-Z5-Gv3">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="D0M-Gr-R3T" id="YQO-aq-dFa"/>
+                            <outlet property="delegate" destination="D0M-Gr-R3T" id="z73-wy-cqQ"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="OHV-ct-dtz" kind="modal" identifier="userInfoSegue" modalTransitionStyle="crossDissolve" id="JpI-lm-bBc"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="mapSwipeSegue" modalTransitionStyle="crossDissolve" id="Ikt-YP-sQ7"/>
+                        <segue destination="nml-Ro-Xhe" kind="modal" identifier="menuTrailInfoSegue" modalTransitionStyle="crossDissolve" id="uCc-01-jjA"/>
+                        <segue destination="KCR-m0-1A7" kind="modal" identifier="menuParkInfoSegue" modalTransitionStyle="crossDissolve" id="GsV-tZ-Rng"/>
+                        <segue destination="98d-Mf-sVQ" kind="modal" identifier="menuVRSegue" modalTransitionStyle="crossDissolve" id="UzW-62-lB9"/>
+                        <segue destination="6V8-cc-a8f" kind="modal" identifier="menuWeatherSegue" modalTransitionStyle="crossDissolve" id="6sb-4y-QuR"/>
+                        <segue destination="bXo-oH-Ef8" kind="modal" identifier="ctmMenu" id="xaf-zi-zmP"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vop-eB-8Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="363.73333333333335" y="-728.93333333333328"/>
+            <point key="canvasLocation" x="-2" y="-770"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="pgE-Z2-gab">
             <objects>
-                <viewController id="OHV-ct-dtz" userLabel="User Info View Controller" sceneMemberID="viewController">
+                <viewController id="OHV-ct-dtz" userLabel="User Info View Controller" customClass="FacebookLogin" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="0jX-AB-LXu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="VLg-g9-ydx">
-                                <rect key="frame" x="-4" y="524" width="328" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uFJ-pX-uMJ">
+                                <rect key="frame" x="10" y="20" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <barButtonItem systemItem="action" id="E7v-uz-uXB">
-                                        <connections>
-                                            <segue destination="d3N-mN-Ku4" kind="unwind" unwindAction="unwindToMenuTable:" id="ZKE-b4-dQ5"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="cgo-O6-PNy">
-                                <rect key="frame" x="10" y="269" width="300" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Le-Rf-b7p">
-                                <rect key="frame" x="96" y="240" width="129" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="modal" identifier="backInfoSegue" modalTransitionStyle="crossDissolve" id="Scv-jv-sXR"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="drv-V4-Sva"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzk-Gw-wze" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="d3N-mN-Ku4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="363.73333333333335" y="-15.146666666666667"/>
+            <point key="canvasLocation" x="-2" y="21"/>
         </scene>
         <!--Preview Controller-->
         <scene sceneID="T9s-J8-Nh6">
@@ -438,9 +452,23 @@
                                 <rect key="frame" x="0.0" y="15" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Custom Trail" id="VCb-bN-GWO"/>
+                                    <navigationItem title="Custom Trail" id="VCb-bN-GWO">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="Y5K-Co-34G">
+                                            <color key="tintColor" red="0.73564299740000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="closeBtn:" destination="bXo-oH-Ef8" id="0sM-oM-UDa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsUserLocation="YES" id="UI2-Xe-AnN">
+                                <rect key="frame" x="0.0" y="59" width="320" height="465"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="bXo-oH-Ef8" id="5pP-hu-Ulp"/>
+                                </connections>
+                            </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" barStyle="black" id="492-ne-KXP">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -458,7 +486,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wnE-sW-u2e"/>
-                                    <barButtonItem systemItem="save" id="QXP-Ws-Igh">
+                                    <barButtonItem systemItem="action" id="QXP-Ws-Igh">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="saveTrail:" destination="bXo-oH-Ef8" id="YkS-Zk-o66"/>
@@ -466,23 +494,17 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsUserLocation="YES" id="UI2-Xe-AnN">
-                                <rect key="frame" x="0.0" y="59" width="320" height="465"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="bXo-oH-Ef8" id="5pP-hu-Ulp"/>
-                                </connections>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="iQy-gp-BAK"/>
                     <connections>
                         <outlet property="customMapView" destination="UI2-Xe-AnN" id="9yr-ZW-idH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thA-J4-pL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742" y="512"/>
+            <point key="canvasLocation" x="431" y="21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Oh6-c5-QB3">
@@ -567,7 +589,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PXh-hq-kf4"/>
-        <segue reference="4t8-3Z-tgh"/>
+        <segue reference="hBO-We-6bc"/>
+        <segue reference="Scv-jv-sXR"/>
+        <segue reference="U36-JW-h57"/>
+        <segue reference="RLB-d1-eRY"/>
+        <segue reference="hC3-T5-h7W"/>
+        <segue reference="hbw-rd-TN0"/>
+        <segue reference="z9A-Gu-7g8"/>
     </inferredMetricsTieBreakers>
 </document>

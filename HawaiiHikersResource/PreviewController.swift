@@ -1,5 +1,5 @@
-
-
+//HawaiiHikersResource
+//
 import UIKit
 import SceneKit
 import CoreMotion

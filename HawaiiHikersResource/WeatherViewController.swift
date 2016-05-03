@@ -5,7 +5,7 @@
 //  Created by Kenneth Nagata on 11/24/15.
 //  Copyright © 2015 Kenneth Nagata. All rights reserved.
 //
-
+//
 import UIKit
 
 class WeatherViewController: UITableViewController {
@@ -62,6 +62,7 @@ class WeatherViewController: UITableViewController {
         //specify url for weather api
         let weatherURL: NSURL = NSURL(string:"http://forecast.weather.gov/MapClick.php?lat=\(lat)&lon=\(lon)&FcstType=json")!
         let weatherData = NSData(contentsOfURL: weatherURL)!
+        var forecastTime: [String] = []
         
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(weatherData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
@@ -75,38 +76,28 @@ class WeatherViewController: UITableViewController {
                         tableData.addObject("Location: \(areaDescription)")
                     }
                 }
-                
+                if let weatherTime = json ["time"] as? NSDictionary {
+                    if let dayTime = weatherTime["startPeriodName"] as? NSArray{
+                        
+                        for index in 0 ... dayTime.count - 1{
+                            forecastTime.append(dayTime[index] as! String)
+                        }
+                    }
+                }
                 if let currentObservations = json["currentobservation"] as? NSDictionary {
                     if let Temp = currentObservations["Temp"] as? String{
                         tableData.addObject("Temperature: \(Temp) degrees F.")
                     }
-//                    if let Name = currentObservations["name"] as? String{
-//                        //locationLabel.text = Name
-//                        tableData.addObject("Location: \(Name)")
-//                    }
                     if let Date = currentObservations["Date"] as? String{
                         tableData.addObject("Date: \(Date)")
                     }
-                    if let DewPoint = currentObservations["Dewp"] as? String{
-                        tableData.addObject("Dew Point: \(DewPoint) degrees F.")
-                    }
-                    if let Gust = currentObservations["Gust"] as? String{
-                        tableData.addObject("Gust: \(Gust) kt.")
-                    }
-                    if let Visibility = currentObservations["Visibility"] as? String{
-                        tableData.addObject("Visibility: \(Visibility) mi.")
-                    }
-                    if let Winds = currentObservations["Winds"] as? String{
-                        //pressureLabel.text = Winds
-                        tableData.addObject("Winds: \(Winds) kt.")
-                    }
-                    if let Elevation = currentObservations["elev"] as? String{
-                        tableData.addObject("Elevation: \(Elevation) ft.")
-                    }
                 }
+                tableData.addObject("Forecast:")
                 if let currentForecast = json["data"] as? NSDictionary {
                     if let forecast = currentForecast["text"] as? NSArray{
-                        tableData.addObject("Forecast: \(forecast[0])")
+                        for index in 0 ... 5{
+                            tableData.addObject("\(forecastTime[index]): \(forecast[index])")
+                        }
                     }
                 }
             }
@@ -138,7 +129,7 @@ class WeatherViewController: UITableViewController {
         
         cell.textLabel?.text = tableData[indexPath.row] as? String
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.textAlignment = NSTextAlignment.Center
+        cell.textLabel?.textAlignment = NSTextAlignment.Natural
         
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
