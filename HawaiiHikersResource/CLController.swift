@@ -29,21 +29,21 @@ class CLController : NSObject, CLLocationManagerDelegate {
     }
     // Checks if user has authorized use of location services
     // These location services will run in the background
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         print("didChangeAuthorizationStatus")
         
         switch status {
-        case .NotDetermined:
+        case .notDetermined:
             print(".NotDetermined")
             break
             
-        case .Authorized:
+        case .authorizedAlways:
             print(".Authorized")
             self.locationManager.startUpdatingLocation()
             break
             
-        case .Denied:
+        case .denied:
             print(".Denied")
             break
             
@@ -54,7 +54,7 @@ class CLController : NSObject, CLLocationManagerDelegate {
     }
     
     // Reverse geocoding function
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last as CLLocation!
         
@@ -67,7 +67,7 @@ class CLController : NSObject, CLLocationManagerDelegate {
         // Reverse Geocoding will use gps location to lookup city, state
         // MUST have error case as geocoding requests are rate limited and may be denied (see documentation)
         // Ken
-        geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, e) -> Void in
+        geocoder.reverseGeocodeLocation(location!, completionHandler: { (placemarks, e) -> Void in
             if e != nil {
                 print("Error:  \(e!.localizedDescription)")
             } else {
@@ -82,7 +82,7 @@ class CLController : NSObject, CLLocationManagerDelegate {
                 //print("Location:  \(userInfo)")
                 
                 //Takes location from user info to look up weather data, alerts the observer
-                NSNotificationCenter.defaultCenter().postNotificationName("LOCATION_AVAILABLE", object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "LOCATION_AVAILABLE"), object: nil, userInfo: userInfo)
             }
             
         })

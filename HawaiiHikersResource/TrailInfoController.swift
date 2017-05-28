@@ -10,13 +10,16 @@
 class TrailInfoController: UITableViewController {
 
     
-    @IBAction func swipeClose(sender: AnyObject) {
+    @IBAction func swipeClose(_ sender: AnyObject) {
         closeSwipe()
     }
     // Declaration of variables
     var toPass: CLLocationCoordinate2D!
     var passedCoord: CLLocationCoordinate2D!
     var tableData: NSMutableArray = []
+    
+    let shareData = ShareData.sharedInstance
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,24 +28,23 @@ class TrailInfoController: UITableViewController {
         if !UIAccessibilityIsReduceTransparencyEnabled() {
             self.view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
             
-            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             //always fill the view
             blurEffectView.frame = self.view.bounds
-            blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             
             //set table backgound and color
             self.tableView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-            self.tableView.opaque = false
+            self.tableView.isOpaque = false
             self.tableView.backgroundView = blurEffectView
         }
         else {
-            self.view.backgroundColor = UIColor.blackColor()
+            self.view.backgroundColor = UIColor.black
         }
  
         // Variable being passed in
-        passedCoord = toPass
-        //print(passedCoord)
+        passedCoord = shareData.passedCoordinate
         
         // Selects correct trail info to display according to latitude
         if passedCoord.latitude == 19.865850 && passedCoord.longitude == -155.116115{loadTrailInfo("akaka001")}
@@ -60,11 +62,11 @@ class TrailInfoController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     // Override function to allow passing variables between scenes
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "trailMapViewIdentifier")
         {
             // Creates link from current ViewController to TrailMapViewController
-            let svc = segue.destinationViewController as! TrailMapViewController
+            let svc = segue.destination as! TrailMapViewController
             
             // Variable to be passed
             svc.toPass = passedCoord
@@ -79,41 +81,41 @@ class TrailInfoController: UITableViewController {
 //        
 //        self.dismissViewControllerAnimated(true, completion: {});
 //    }
-    func loadTrailInfo(trailId: String){
+    func loadTrailInfo(_ trailId: String){
         //select json file to retrieve data from
-        let parksURL: NSURL = [#FileReference(fileReferenceLiteral: "trailInfo.json")#]
-        let parkData = NSData(contentsOfURL: parksURL)!
+        let parksURL: URL = #fileLiteral(resourceName: "trailInfo.json")
+        let parkData = try! Data(contentsOf: parksURL)
         //load data into table
         do{
-            let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
+            let json = try JSONSerialization.jsonObject(with: parkData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? NSDictionary
             
-            if let trails = json?.objectForKey(trailId){
+            if let trails = json?.object(forKey: trailId){
                 
-                tableData.addObject(" ")
+                tableData.add(" ")
                 
-                if let trailName = trails.objectForKey("trailName") as? String{
-                    tableData.addObject("Trail Name: \(trailName)")
+                if let trailName = (trails as AnyObject).object(forKey: "trailName") as? String{
+                    tableData.add("Trail Name: \(trailName)")
                 }
-                if let difficulty = trails.objectForKey("difficulty") as? String{
-                    tableData.addObject("Difficulty: \(difficulty)")
+                if let difficulty = (trails as AnyObject).object(forKey: "difficulty") as? String{
+                    tableData.add("Difficulty: \(difficulty)")
                 }
-                if let distance = trails.objectForKey("length") as? String{
-                    tableData.addObject("Distance: \(distance)")
+                if let distance = (trails as AnyObject).object(forKey: "length") as? String{
+                    tableData.add("Distance: \(distance)")
                 }
-                if let activity = trails.objectForKey("activities") as? String{
-                    tableData.addObject("Activity: \(activity)")
+                if let activity = (trails as AnyObject).object(forKey: "activities") as? String{
+                    tableData.add("Activity: \(activity)")
                 }
-                if let regulations = trails.objectForKey("regulations") as? String{
-                    tableData.addObject("Regulations: \(regulations)")
+                if let regulations = (trails as AnyObject).object(forKey: "regulations") as? String{
+                    tableData.add("Regulations: \(regulations)")
                 }
-                if let other = trails.objectForKey("other") as? String{
-                    tableData.addObject("Other: \(other)")
+                if let other = (trails as AnyObject).object(forKey: "other") as? String{
+                    tableData.add("Other: \(other)")
                 }
-                if let terrain = trails.objectForKey("terrain") as? String{
-                    tableData.addObject("Terrain: \(terrain)")
+                if let terrain = (trails as AnyObject).object(forKey: "terrain") as? String{
+                    tableData.add("Terrain: \(terrain)")
                 }
-                if let type = trails.objectForKey("trailType") as? String{
-                    tableData.addObject("Trail Type: \(type)")
+                if let type = (trails as AnyObject).object(forKey: "trailType") as? String{
+                    tableData.add("Trail Type: \(type)")
                 }
             }
         } catch {
@@ -121,45 +123,45 @@ class TrailInfoController: UITableViewController {
         }
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
     //specify design of table cells(background and color)
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = tableData[indexPath.row] as? String
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.textAlignment = NSTextAlignment.Center
+        cell.textLabel?.textAlignment = NSTextAlignment.left
         
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         //always fill the view
         blurEffectView.frame = self.view.bounds
-        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear
         cell.backgroundView = blurEffectView
-        cell.opaque = false
+        cell.isOpaque = false
         cell.textLabel?.textColor = UIColor(white:0.8, alpha: 1.0)
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     //dismiss view controller when swiped//
     func closeSwipe() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

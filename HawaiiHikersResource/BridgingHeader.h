@@ -15,8 +15,8 @@
 #import <Parse/Parse.h>
 
 //Bridging header for facebook
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+//#import <FBSDKCoreKit/FBSDKCoreKit.h>
+//#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 
 //Header for Aeris weather API

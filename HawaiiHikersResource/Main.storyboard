@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ECQ-eu-4UZ">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="ECQ-eu-4UZ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Map View Controller-->
@@ -9,21 +14,21 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="N9k-lO-gvD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Y1q-gy-ldJ"/>
                                 </connections>
                             </mapView>
                             <navigationBar opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="LEW-zo-39o">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem id="bv1-GF-svz">
                                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="x0K-Z8-h6f">
@@ -42,79 +47,184 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Tqd-ur-3xg"/>
                     <connections>
                         <outlet property="mapView" destination="N9k-lO-gvD" id="G1W-K9-V5I"/>
-                        <segue destination="6V8-cc-a8f" kind="modal" identifier="weatherIdentifier" modalPresentationStyle="overFullScreen" id="RLB-d1-eRY"/>
-                        <segue destination="KCR-m0-1A7" kind="modal" identifier="parkInfoIdentifier" modalPresentationStyle="overFullScreen" id="hBO-We-6bc"/>
-                        <segue destination="nml-Ro-Xhe" kind="modal" identifier="trailInfoIdentifier" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="z9A-Gu-7g8"/>
                         <segue destination="98d-Mf-sVQ" kind="modal" identifier="previewIdentifier" id="hC3-T5-h7W"/>
                         <segue destination="D0M-Gr-R3T" kind="modal" identifier="menuSwipeSegue" modalTransitionStyle="crossDissolve" id="1Ih-Z3-SVS"/>
                         <segue destination="bXo-oH-Ef8" kind="modal" identifier="ctmIdentifier" modalTransitionStyle="crossDissolve" id="hbw-rd-TN0"/>
                         <segue destination="OHV-ct-dtz" kind="modal" identifier="mapUserSegue" modalTransitionStyle="crossDissolve" id="U36-JW-h57"/>
+                        <segue destination="1Ha-Pw-Jqd" kind="modal" identifier="parkInfoIdentifier" id="2O8-0V-zCj"/>
+                        <segue destination="1Ha-Pw-Jqd" kind="modal" identifier="trailInfoIdentifier" id="VfB-2t-LJt"/>
+                        <segue destination="1Ha-Pw-Jqd" kind="modal" identifier="weatherIdentifier" id="huw-Ec-wZe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="-770"/>
+            <point key="canvasLocation" x="2287" y="-756"/>
         </scene>
         <!--Weather View Controller-->
-        <scene sceneID="Gcr-Eh-btg">
+        <scene sceneID="TVm-Jx-Vjx">
             <objects>
-                <viewController id="6V8-cc-a8f" customClass="WeatherViewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CC8-NN-Bln">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <color key="sectionIndexColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                <tableViewController id="Yw7-eg-jv4" customClass="WeatherViewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="90" sectionHeaderHeight="1" sectionFooterHeight="1" id="gnK-04-6tA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="WGh-xg-OdR">
+                            <rect key="frame" x="0.0" y="267" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem systemItem="stop" id="tFe-gN-czC">
+                                    <color key="tintColor" red="1" green="0.0" blue="0.010267665139986448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="closeBtn:" destination="Yw7-eg-jv4" id="3gR-oS-lmJ"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                            <color key="barTintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </toolbar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="gQc-vy-LiY">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                            <tableViewCell opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="currentWeatherCell" rowHeight="90" id="gQc-vy-LiY" customClass="WVCurrentWeatherCell" customModule="HawaiiHikersResource" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="56" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gQc-vy-LiY" id="e6V-5q-Opi">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Ef3-hG-eNt">
+                                            <rect key="frame" x="0.0" y="-6" width="90" height="96"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="XfJ-zh-koV">
+                                            <rect key="frame" x="98" y="-6" width="90" height="96"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="80 f">
+                                                    <attributes>
+                                                        <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="40" name="BodoniSvtyTwoITCTT-Book"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="6Sd-Fk-2dz">
+                                            <rect key="frame" x="196" y="45" width="126" height="45"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Current Weather">
+                                                    <attributes>
+                                                        <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="15" name="BodoniSvtyTwoITCTT-Book"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="fBA-jl-nVM">
+                                            <rect key="frame" x="196" y="-6" width="124" height="51"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Current Location">
+                                                    <attributes>
+                                                        <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="15" name="BodoniSvtyTwoITCTT-Book"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="dhH-vs-quj" appends="YES" id="ViQ-qY-PSl"/>
+                                    <outlet property="currentLocationLabel" destination="fBA-jl-nVM" id="BBj-h4-Ohw"/>
+                                    <outlet property="currentWeatherImage" destination="Ef3-hG-eNt" id="uNN-dV-GWw"/>
+                                    <outlet property="currentWeatherLabel" destination="6Sd-Fk-2dz" id="nxQ-bL-mbV"/>
+                                    <outlet property="currentWeatherTempLabel" destination="XfJ-zh-koV" id="1ag-6D-Bon"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="forecastWeatherCell" rowHeight="120" id="Mvo-iZ-5T2" customClass="WVForecastWeatherCell" customModule="HawaiiHikersResource" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="146" width="375" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mvo-iZ-5T2" id="2VA-fO-MEJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1Xi-4F-tmo">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wio-f1-iDK">
+                                            <rect key="frame" x="0.0" y="89" width="90" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Forecast Date">
+                                                    <attributes>
+                                                        <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="14" name="BodoniSvtyTwoITCTT-Book"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m1T-jk-aAF">
+                                            <rect key="frame" x="89" y="-8" width="285" height="126"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Forecast">
+                                                    <attributes>
+                                                        <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="16" name="BodoniSvtyTwoITCTT-Book"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="forecastDateLabel" destination="wio-f1-iDK" id="lWQ-q7-nP5"/>
+                                    <outlet property="forecastImageView" destination="1Xi-4F-tmo" id="mXr-pE-swE"/>
+                                    <outlet property="forecastLabel" destination="m1T-jk-aAF" id="17T-j5-c5v"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="dhH-vs-quj" appends="YES" id="Y1R-GI-8u2"/>
+                            <outlet property="dataSource" destination="Yw7-eg-jv4" id="GNh-In-Hc5"/>
+                            <outlet property="delegate" destination="Yw7-eg-jv4" id="wgg-xr-eNe"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="weatherTable" destination="CC8-NN-Bln" id="ypb-sK-Y56"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NJW-vY-YdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="dhH-vs-quj">
-                    <connections>
-                        <action selector="swipeClose:" destination="6V8-cc-a8f" id="mzZ-Nz-gav"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WpI-Xv-ot1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2214.4000000000001" y="-763.01333333333332"/>
+            <point key="canvasLocation" x="3286" y="97"/>
         </scene>
         <!--Menu Table View Controller-->
         <scene sceneID="foQ-34-EHT">
             <objects>
                 <tableViewController modalPresentationStyle="overCurrentContext" id="PM8-VZ-NEe" userLabel="Menu Table View Controller" customClass="MenuTableViewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="CD1-Yg-7kj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="Rxq-8J-pSa">
-                                <rect key="frame" x="0.0" y="49.5" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rxq-8J-pSa" id="bdj-Ay-4ar">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -127,11 +237,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem systemItem="action" id="Hfs-Ii-cP6">
-                            <connections>
-                                <segue destination="P8Y-WS-fFC" kind="modal" modalTransitionStyle="coverVertical" id="vr8-UD-rAG"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem systemItem="action" id="Hfs-Ii-cP6"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="8Nn-hU-PmF"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -143,23 +249,23 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09a-8q-Ved" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10.133333333333333" y="-728.93333333333328"/>
+            <point key="canvasLocation" x="636" y="-756"/>
         </scene>
         <!--Park Info Controller-->
         <scene sceneID="ZrG-EZ-Ka8">
             <objects>
                 <viewController id="KCR-m0-1A7" customClass="ParkInfoController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="trt-nN-EFY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" id="trt-nN-EFY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="6EK-fs-7ah">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6EK-fs-7ah" id="t0Q-tf-QGQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -180,18 +286,18 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1483.2" y="21.773333333333333"/>
+            <point key="canvasLocation" x="2287" y="129"/>
         </scene>
         <!--Trail Map View Controller-->
         <scene sceneID="eG1-ra-Rcr">
             <objects>
                 <viewController id="zvs-Qq-kvD" customClass="TrailMapViewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n4j-KP-NA8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsUserLocation="YES" id="3NH-oP-sBB">
-                                <rect key="frame" x="-3" y="94" width="323" height="430"/>
+                                <rect key="frame" x="-3" y="94" width="378" height="529"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jP5-dW-gch">
@@ -203,9 +309,9 @@
                                 </connections>
                             </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="HAr-YH-WdN">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <barButtonItem title="Start" id="vaJ-UP-F0X">
                                         <connections>
@@ -220,9 +326,9 @@
                                 </items>
                             </toolbar>
                             <segmentedControl opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="2" id="syW-HU-bgp">
-                                <rect key="frame" x="0.0" y="66" width="320" height="29"/>
+                                <rect key="frame" x="0.0" y="66" width="375" height="29"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="Standard"/>
                                     <segment title="Hybrid"/>
@@ -233,7 +339,7 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
@@ -244,19 +350,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOt-mA-OXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="709"/>
+            <point key="canvasLocation" x="3359" y="1017"/>
         </scene>
         <!--Trail Info Controller-->
         <scene sceneID="uNT-8i-Eha">
             <objects>
                 <viewController id="nml-Ro-Xhe" customClass="TrailInfoController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aTW-Oq-BMA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" id="aTW-Oq-BMA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a4n-LS-YGH">
-                            <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="45" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <gestureRecognizers/>
                             <state key="normal" title="Trail Maps"/>
@@ -266,10 +372,10 @@
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="R7w-Ur-aMj">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="1" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R7w-Ur-aMj" id="wRe-R4-V37">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -292,18 +398,18 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1848.5333333333333" y="21.773333333333333"/>
+            <point key="canvasLocation" x="2787" y="985"/>
         </scene>
         <!--Menu Table View Controller-->
         <scene sceneID="wHq-Qy-FEw">
             <objects>
                 <tableViewController id="D0M-Gr-R3T" userLabel="Menu Table View Controller" customClass="MenuTableController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="50" sectionFooterHeight="28" id="SOk-k6-0ng">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="JzO-7Q-ykt">
-                            <rect key="frame" x="0.0" y="94" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="94" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                             <items>
                                 <barButtonItem systemItem="action" id="ZK0-X7-Lbi">
@@ -315,10 +421,10 @@
                         </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="mYG-49-zeP" userLabel="menuCell">
-                                <rect key="frame" x="0.0" y="50" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mYG-49-zeP" id="LlW-Z5-Gv3">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -336,20 +442,19 @@
                         <segue destination="nml-Ro-Xhe" kind="modal" identifier="menuTrailInfoSegue" modalTransitionStyle="crossDissolve" id="uCc-01-jjA"/>
                         <segue destination="KCR-m0-1A7" kind="modal" identifier="menuParkInfoSegue" modalTransitionStyle="crossDissolve" id="GsV-tZ-Rng"/>
                         <segue destination="98d-Mf-sVQ" kind="modal" identifier="menuVRSegue" modalTransitionStyle="crossDissolve" id="UzW-62-lB9"/>
-                        <segue destination="6V8-cc-a8f" kind="modal" identifier="menuWeatherSegue" modalTransitionStyle="crossDissolve" id="6sb-4y-QuR"/>
                         <segue destination="bXo-oH-Ef8" kind="modal" identifier="ctmMenu" id="xaf-zi-zmP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vop-eB-8Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2" y="-770"/>
+            <point key="canvasLocation" x="1332" y="-756"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="pgE-Z2-gab">
             <objects>
                 <viewController id="OHV-ct-dtz" userLabel="User Info View Controller" customClass="FacebookLogin" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="0jX-AB-LXu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uFJ-pX-uMJ">
@@ -361,46 +466,94 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzk-Gw-wze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2" y="21"/>
+            <point key="canvasLocation" x="1804" y="-757"/>
+        </scene>
+        <!--Info SceneVC-->
+        <scene sceneID="ExZ-Xo-FgP">
+            <objects>
+                <viewController id="1Ha-Pw-Jqd" customClass="InfoSceneVC" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MVk-Lx-hB5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="o94-jJ-lKW" customClass="ADVSegmentedControl" customModule="HawaiiHikersResource" customModuleProvider="target">
+                                <rect key="frame" x="41" y="20" width="294" height="41"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" id="rI4-Tg-ehb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <segue destination="nml-Ro-Xhe" kind="embed" id="073-6R-jRb"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" id="7vS-nX-mvs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <segue destination="KCR-m0-1A7" kind="embed" identifier="parkCVIdentifier" id="Y3u-iF-93l"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" id="KWk-dl-Diu">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <segue destination="Yw7-eg-jv4" kind="embed" id="3zv-Rh-aY1"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="parkCV" destination="7vS-nX-mvs" id="hwb-x7-bQ1"/>
+                        <outlet property="segmentControl" destination="o94-jJ-lKW" id="JDj-Se-X6d"/>
+                        <outlet property="trailCV" destination="rI4-Tg-ehb" id="2A0-AR-EzO"/>
+                        <outlet property="weatherCV" destination="KWk-dl-Diu" id="T2f-Od-l0N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qXh-xP-G70" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2776" y="129"/>
         </scene>
         <!--Preview Controller-->
         <scene sceneID="T9s-J8-Nh6">
             <objects>
                 <viewController id="98d-Mf-sVQ" customClass="PreviewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1mB-Kw-EPf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="aea-rf-6bb">
-                                <rect key="frame" x="0.0" y="39" width="320" height="485"/>
+                                <rect key="frame" x="0.0" y="39" width="375" height="584"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="98d-Mf-sVQ" id="Gel-ed-Rb6"/>
                                 </connections>
                             </sceneKitView>
                             <navigationBar clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" id="D95-xy-ui3">
-                                <rect key="frame" x="0.0" y="-5" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="-5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="VR Preview" id="rbr-8g-pFP"/>
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="tst-6o-2re">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <barButtonItem systemItem="play" id="MU0-jE-v6F">
-                                        <color key="tintColor" red="0.057249147049999997" green="1" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.057249147049999997" green="1" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="playPausePlayer" destination="98d-Mf-sVQ" id="fcC-Jc-FBd"/>
                                         </connections>
@@ -416,19 +569,19 @@
                                         </slider>
                                     </barButtonItem>
                                     <barButtonItem systemItem="stop" id="lhQ-so-Ppw">
-                                        <color key="tintColor" red="1" green="0.0" blue="0.01026766514" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.01026766514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="closePreview:" destination="98d-Mf-sVQ" id="HM2-aB-bII"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="98d-Mf-sVQ" id="zpJ-Mp-GRp"/>
                                 </connections>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="SceneView" destination="aea-rf-6bb" id="FTw-8M-Ck1"/>
@@ -438,23 +591,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZp-sF-cZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104" y="21"/>
+            <point key="canvasLocation" x="1804" y="129"/>
         </scene>
         <!--Custom Trail Map View Controller-->
         <scene sceneID="6uj-bf-KGj">
             <objects>
                 <viewController id="bXo-oH-Ef8" customClass="CustomTrailMapViewController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1F9-P3-ymu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar alpha="0.69999999999999996" contentMode="scaleToFill" barStyle="black" id="7YU-fa-V5v">
-                                <rect key="frame" x="0.0" y="15" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="15" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Custom Trail" id="VCb-bN-GWO">
                                         <barButtonItem key="leftBarButtonItem" title="Close" id="Y5K-Co-34G">
-                                            <color key="tintColor" red="0.73564299740000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.73564299740000005" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="closeBtn:" destination="bXo-oH-Ef8" id="0sM-oM-UDa"/>
                                             </connections>
@@ -463,31 +616,31 @@
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsUserLocation="YES" id="UI2-Xe-AnN">
-                                <rect key="frame" x="0.0" y="59" width="320" height="465"/>
+                                <rect key="frame" x="0.0" y="59" width="375" height="564"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="bXo-oH-Ef8" id="5pP-hu-Ulp"/>
                                 </connections>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" barStyle="black" id="492-ne-KXP">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem systemItem="play" id="5m9-OF-JHr">
-                                        <color key="tintColor" red="0.057249147048700211" green="1" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.057249147048700211" green="1" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="startMappingTrail:" destination="bXo-oH-Ef8" id="xmi-4y-bqN"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="stop" id="xFC-UV-MVU">
-                                        <color key="tintColor" red="0.73564299738219896" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.73564299738219896" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="stopMappingTrail:" destination="bXo-oH-Ef8" id="BwW-UI-1su"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wnE-sW-u2e"/>
                                     <barButtonItem systemItem="action" id="QXP-Ws-Igh">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="saveTrail:" destination="bXo-oH-Ef8" id="YkS-Zk-o66"/>
                                         </connections>
@@ -495,7 +648,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="iQy-gp-BAK"/>
                     <connections>
@@ -504,7 +657,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thA-J4-pL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="431" y="21"/>
+            <point key="canvasLocation" x="1332" y="129"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Oh6-c5-QB3">
@@ -522,7 +675,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWZ-JI-zHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1381" y="-764"/>
+            <point key="canvasLocation" x="2287" y="-1570"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qGo-6r-3OE">
@@ -540,29 +693,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="88N-Ew-pwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-354.66666666666669" y="-728.93333333333328"/>
+            <point key="canvasLocation" x="63" y="-755"/>
         </scene>
         <!--Menu Trail Info Controller-->
         <scene sceneID="JlT-V7-pdE">
             <objects>
                 <viewController id="cIw-6Y-BOp" userLabel="Menu Trail Info Controller" customClass="TrailInfoController" customModule="HawaiiHikersResource" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Frk-bw-m8z">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lYE-Tx-Zoe">
-                            <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <gestureRecognizers/>
                             <state key="normal" title="Trail Maps"/>
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="6XQ-d3-PuI">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6XQ-d3-PuI" id="zcV-1m-gpl">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
@@ -585,16 +738,21 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4" y="-16"/>
+            <point key="canvasLocation" x="636" y="129"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hBO-We-6bc"/>
-        <segue reference="Scv-jv-sXR"/>
+        <segue reference="z0U-jL-4O9"/>
+        <segue reference="huw-Ec-wZe"/>
         <segue reference="U36-JW-h57"/>
-        <segue reference="RLB-d1-eRY"/>
         <segue reference="hC3-T5-h7W"/>
         <segue reference="hbw-rd-TN0"/>
-        <segue reference="z9A-Gu-7g8"/>
+        <segue reference="Y3u-iF-93l"/>
+        <segue reference="073-6R-jRb"/>
     </inferredMetricsTieBreakers>
 </document>

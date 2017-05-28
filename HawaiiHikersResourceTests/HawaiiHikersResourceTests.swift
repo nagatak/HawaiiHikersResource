@@ -14,8 +14,8 @@ class HawaiiHikersResourceTests: XCTestCase {
     static let trailNameTest = "'Akaka Falls Loop Trail"
     static let parkNameTEst = "'Akaka Falls State Park"
     
-    var calendar: NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
-    var locale: NSLocale = NSLocale(localeIdentifier: "en_US")
+    var calendar: Calendar = Calendar(identifier: NSGregorianCalendar)!
+    var locale: Locale = Locale(identifier: "en_US")
     
     var locationManager:CLLocationManager = CLLocationManager()
     
@@ -42,7 +42,7 @@ class HawaiiHikersResourceTests: XCTestCase {
     
     func testPerformance() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
@@ -57,17 +57,17 @@ class HawaiiHikersResourceTests: XCTestCase {
     }
     
     func testAsynchronousURLConnection() {
-        let URL = NSURL(string: "http://www.weather.gov/")!
-        let expectation = expectationWithDescription("GET \(URL)")
+        let URL = Foundation.URL(string: "http://www.weather.gov/")!
+        let expectation = self.expectation(description: "GET \(URL)")
         
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(URL) { data, response, error in
+        let session = URLSession.shared
+        let task = session.dataTask(with: URL, completionHandler: { data, response, error in
             XCTAssertNotNil(data, "data should not be nil")
             XCTAssertNil(error, "error should be nil")
             
-            if let HTTPResponse = response as? NSHTTPURLResponse,
-                responseURL = HTTPResponse.URL,
-                MIMEType = HTTPResponse.MIMEType
+            if let HTTPResponse = response as? HTTPURLResponse,
+                let responseURL = HTTPResponse.url,
+                let MIMEType = HTTPResponse.mimeType
             {
                 XCTAssertEqual(responseURL.absoluteString, URL.absoluteString, "HTTP response URL should be equal to original URL")
                 XCTAssertEqual(HTTPResponse.statusCode, 200, "HTTP response status code should be 200")
@@ -77,11 +77,11 @@ class HawaiiHikersResourceTests: XCTestCase {
             }
             
             expectation.fulfill()
-        }
+        }) 
         
         task.resume()
         
-        waitForExpectationsWithTimeout(task.originalRequest!.timeoutInterval) { error in
+        waitForExpectations(timeout: task.originalRequest!.timeoutInterval) { error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
@@ -91,16 +91,16 @@ class HawaiiHikersResourceTests: XCTestCase {
     
     func testParkJsonSerialization(){
         //select json file to load data
-        let parksURL: NSURL = [#FileReference(fileReferenceLiteral: "parkInfo.json")#]
-        let parkData = NSData(contentsOfURL: parksURL)!
+        let parksURL: URL = #fileLiteral(resourceName: "parkInfo.json")
+        let parkData = try! Data(contentsOf: parksURL)
         
         //Add data from json to table
         do{
-            let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
+            let json = try JSONSerialization.jsonObject(with: parkData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? NSDictionary
             
-            if let parks = json?.objectForKey("001"){
+            if let parks = json?.object(forKey: "001"){
                 
-                if let parkName = parks.objectForKey("parkName") as? String{
+                if let parkName = (parks as AnyObject).object(forKey: "parkName") as? String{
                     XCTAssertEqual(parkName, "'Akaka Falls State Park", "test json read")
                 }
 
@@ -111,16 +111,16 @@ class HawaiiHikersResourceTests: XCTestCase {
     }
     
     func testTrailJsonSerialization(){
-        let parksURL: NSURL = [#FileReference(fileReferenceLiteral: "trailInfo.json")#]
-        let parkData = NSData(contentsOfURL: parksURL)!
+        let parksURL: URL = #fileLiteral(resourceName: "trailInfo.json")
+        let parkData = try! Data(contentsOf: parksURL)
         let trailId = "001"
         //load data into table
         do{
-            let json = try NSJSONSerialization.JSONObjectWithData(parkData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
+            let json = try JSONSerialization.jsonObject(with: parkData, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? NSDictionary
             
-            if let trails = json?.objectForKey(trailId){
+            if let trails = json?.object(forKey: trailId){
                 
-                if let trailName = trails.objectForKey("trailName") as? String{
+                if let trailName = (trails as AnyObject).object(forKey: "trailName") as? String{
                     XCTAssertEqual(trailName, "'Akaka Falls Loop Trail", "test json read")
                 }
                 

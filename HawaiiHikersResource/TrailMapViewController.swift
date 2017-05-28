@@ -12,11 +12,36 @@ import CoreLocation
 import CoreData
 import Social
 
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
+
 //enum used by map type selector to switch maps
 enum MapType: Int {
-    case Standard = 0
-    case Hybrid
-    case Satellite
+    case standard = 0
+    case hybrid
+    case satellite
 }
 
 class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
@@ -32,8 +57,8 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var currentLocation: [CLLocation] = []
     var trailProgress: [CLLocationCoordinate2D] = []
     var trailProgressReverse: [CLLocationCoordinate2D] = []
-    var checkPoints: [CLLocationCoordinate2D!] = []
-    var checkPointsReverse: [CLLocationCoordinate2D!] = []
+    var checkPoints: [CLLocationCoordinate2D?] = []
+    var checkPointsReverse: [CLLocationCoordinate2D?] = []
     var checkPointIndex: [Int] = []
     var toPass: CLLocationCoordinate2D!
     var passedCoord: CLLocationCoordinate2D!
@@ -68,7 +93,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         
         trailMapView.delegate = self
         // Sets default map type to hybrid
-        trailMapView.mapType = MKMapType.Satellite
+        trailMapView.mapType = MKMapType.satellite
         // Shows user location on map
         trailMapView.showsUserLocation = true
         
@@ -92,7 +117,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             pinLocation = CLLocation(latitude: 19.670625, longitude: -156.026178)
         }
         else {
-            addCustomTrailOverlay(passedCoord.latitude, lon: passedCoord.longitude)
+            //addCustomTrailOverlay(passedCoord.latitude, lon: passedCoord.longitude)
             pinLocation = CLLocation(latitude: passedCoord.latitude, longitude: passedCoord.longitude)
         }
         
@@ -105,46 +130,48 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     let regionRadius: CLLocationDistance = 1000
     
     // Function to start the trail on the trail map overlay
-    func centerMapOnPinLocation(location: CLLocation) {
+    func centerMapOnPinLocation(_ location: CLLocation) {
         // Rectangular region of map to be viewed
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         // Set the region to be viewed with animation
         trailMapView.setRegion(coordinateRegion, animated: true)
     }
-    
-    func addCustomTrailOverlay(lat: Double, lon: Double){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "CustomTrails")
-        
-        do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
-            customTrailMaps = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        if (customTrailMaps.count > 0){
-            
-            for (index,element) in customTrailMaps.enumerate(){
-                let tempName = element.valueForKey("trailName")
-                let tempOver = element.valueForKey("overlay")
-                var temp: [CLLocationCoordinate2D] = []
-                if tempOver?.count > 0{
-                    //cstmTrailArray.append(PinInfo(title: tempName! as! String, coordinate: tempOver![0].coordinate, subtitle: " "))
-                    if tempOver![0].coordinate.latitude == lat && tempOver![0].coordinate.longitude == lon{
-                        
-                        for num in 0 ... tempOver!.count - 1{
-                            temp.append(tempOver![num].coordinate)
-                        }
-                        trail = MKPolyline(coordinates: &temp, count: temp.count)
-                        // Draws the overlay
-                        trailMapView.addOverlay(trail!)
-                    }
-                }
-            }
-        }
-    }
+
+    // FIXME: tempOver ambiguous reference
+//    func addCustomTrailOverlay(_ lat: Double, lon: Double){
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CustomTrails")
+//        
+//        do {
+//            let results = try managedContext.fetch(fetchRequest)
+//            customTrailMaps = results as! [NSManagedObject]
+//        } catch let error as NSError {
+//            print("Could not fetch \(error), \(error.userInfo)")
+//        }
+//        
+//        if (customTrailMaps.count > 0) {
+//            
+//            for (index,element) in customTrailMaps.enumerated() {
+//                let tempName = element.value(forKey: "trailName")
+//                let tempOver = element.value(forKey: "overlay") as! [CLLocationManager: AnyObject]
+//                var temp: [CLLocationCoordinate2D] = []
+//                if (tempOver as AnyObject).count > 0 {
+//                    
+//                    //cstmTrailArray.append(PinInfo(title: tempName! as! String, coordinate: tempOver![0].coordinate, subtitle: " "))
+//                    if (tempOver[0].coordinate.latitude == lat && tempOver[0].coordinate.longitude == lon) {
+//                        
+//                        for num in 0 ... (tempOver as AnyObject).count - 1{
+//                            temp.append(tempOver[num].coordinate)
+//                        }
+//                        trail = MKPolyline(coordinates: &temp, count: temp.count)
+//                        // Draws the overlay
+//                        trailMapView.add(trail!)
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     // Map overlay for ch to parking lot//
     func mapUH(){
@@ -155,7 +182,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Declaration
         trail = MKPolyline(coordinates: &points, count: points.count)
         // Draws the overlay
-        trailMapView.addOverlay(trail!)
+        trailMapView.add(trail!)
         //create checkpoints
         checkPoints = [CLLocationCoordinate2DMake(19.703118, -155.079461),CLLocationCoordinate2DMake(19.702808, -155.079504), CLLocationCoordinate2DMake(19.702678, -155.079586)]
         // array used for updating progress
@@ -176,7 +203,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Declaration
         trail = MKPolyline(coordinates: &points, count: points.count)
         // Draws the overlay
-        trailMapView.addOverlay(trail!)
+        trailMapView.add(trail!)
         
         checkPoints = [CLLocationCoordinate2DMake(19.703118, -1),CLLocationCoordinate2DMake(19.702808, -1), CLLocationCoordinate2DMake(19.702678, -1)]
     }
@@ -189,9 +216,9 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Declaration
             trail = MKPolyline(coordinates: &points, count: points.count)
         // Draws the overlay
-            trailMapView.addOverlay(trail!)
+            trailMapView.add(trail!)
     }
-    func generateReverseCourse(forwardArray: [CLLocationCoordinate2D]){
+    func generateReverseCourse(_ forwardArray: [CLLocationCoordinate2D]){
         let count  = forwardArray.count - 1
         trailProgressReverse = forwardArray
         checkPointsReverse = checkPoints
@@ -204,20 +231,20 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         }
     }
     // Interface Builder action, switches map type according to segmented control selection
-    @IBAction func mapTypeControl(sender: AnyObject) {
+    @IBAction func mapTypeControl(_ sender: AnyObject) {
         let mapTypeC = MapType(rawValue: mapType.selectedSegmentIndex)
         switch (mapTypeC!) {
-        case .Satellite:
-            trailMapView.mapType = MKMapType.Satellite
-        case .Standard:
-            trailMapView.mapType = MKMapType.Standard
-        case .Hybrid:
-            trailMapView.mapType = MKMapType.Hybrid
+        case .satellite:
+            trailMapView.mapType = MKMapType.satellite
+        case .standard:
+            trailMapView.mapType = MKMapType.standard
+        case .hybrid:
+            trailMapView.mapType = MKMapType.hybrid
         }
     }
     
     // Draws the overlay, takes an array of gps coorditates and draws a line between each coordinate.
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay as? MKPolyline == trail{
             let polylineRenderer = MKPolylineRenderer(overlay: overlay)
             // Change stroke color
@@ -229,7 +256,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         else if overlay as? MKPolyline == progress {
             let polylineRenderer = MKPolylineRenderer(overlay: overlay)
             // Change stroke color
-            polylineRenderer.strokeColor = UIColor(red: 0.1, green: 0.1, blue: 0.5, alpha: 0.4)
+            polylineRenderer.strokeColor = UIColor(red: 0.1, green: 0.1, blue: 0.5, alpha: 0.8)
             // Change number to alter line width
             polylineRenderer.lineWidth = 7
             return polylineRenderer
@@ -238,13 +265,13 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     
-    @IBAction func closeBtn(sender: UIButton, forEvent event: UIEvent) {
+    @IBAction func closeBtn(_ sender: UIButton, forEvent event: UIEvent) {
         checkPoints = []
-        self.dismissViewControllerAnimated(true, completion: {})
+        self.dismiss(animated: true, completion: {})
     }
     
     // Start button starts updating users location and shows location
-    @IBAction func startBtn(sender: UIBarButtonItem) {
+    @IBAction func startBtn(_ sender: UIBarButtonItem) {
         
         startedTrail = true
         
@@ -257,26 +284,26 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     // Stop button stops updating users location and hides location
-    @IBAction func stopBtn(sender: UIBarButtonItem) {
+    @IBAction func stopBtn(_ sender: UIBarButtonItem) {
         manager.stopUpdatingLocation()
         trailMapView.showsUserLocation = false
         
         if (startedTrail == true) {
-            let trialInProgressAlert = UIAlertController(title: "Trail In Progress", message: "Press clear to reset progress, Cancel to return", preferredStyle: UIAlertControllerStyle.Alert)
-            trialInProgressAlert.addAction(UIAlertAction(title: "Clear", style: .Default, handler: { (action: UIAlertAction!) in
+            let trialInProgressAlert = UIAlertController(title: "Trail In Progress", message: "Press clear to reset progress, Cancel to return", preferredStyle: UIAlertControllerStyle.alert)
+            trialInProgressAlert.addAction(UIAlertAction(title: "Clear", style: .default, handler: { (action: UIAlertAction!) in
                 
                 self.startedTrail = false
                 self.isReverse = false
                 self.startFound = false
 
             }))
-            trialInProgressAlert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
-            self.presentViewController(trialInProgressAlert, animated: true, completion: nil)
+            trialInProgressAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+            self.present(trialInProgressAlert, animated: true, completion: nil)
         }
     }
     
     // Location manager keeps the view center on the user
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         myLocations.append(locations[0] as CLLocation)
         //var locValue:CLLocationCoordinate2D = manager.location!.coordinate
         //trailProgress.append(locValue)
@@ -303,38 +330,38 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     // Check latitude and longitude to update checkpoints
-    func checkLatLon(lat: Double, lon: Double) -> Bool {
+    func checkLatLon(_ lat: Double, lon: Double) -> Bool {
         
         var result  = false
         if(!isReverse!){
-            if ((lat >= (checkPoints[i].latitude - 0.00006)) && (lat <= (checkPoints[i].latitude + 0.00006))) &&
-            ((lon >= (checkPoints[i].longitude - 0.00006)) && (lon <= (checkPoints[i].longitude + 0.00006))){
+            if ((lat >= ((checkPoints[i]?.latitude)! - 0.00006)) && (lat <= ((checkPoints[i]?.latitude)! + 0.00006))) &&
+            ((lon >= ((checkPoints[i]?.longitude)! - 0.00006)) && (lon <= ((checkPoints[i]?.longitude)! + 0.00006))){
                 result = true
             }
         }
         else if(isReverse!){
-            if ((lat >= (checkPointsReverse[i].latitude - 0.00006)) && (lat <= (checkPointsReverse[i].latitude + 0.00006))) &&
-                ((lon >= (checkPointsReverse[i].longitude - 0.00006)) && (lon <= (checkPointsReverse[i].longitude + 0.00006))){
+            if ((lat >= ((checkPointsReverse[i]?.latitude)! - 0.00006)) && (lat <= ((checkPointsReverse[i]?.latitude)! + 0.00006))) &&
+                ((lon >= ((checkPointsReverse[i]?.longitude)! - 0.00006)) && (lon <= ((checkPointsReverse[i]?.longitude)! + 0.00006))){
                 result = true
             }
         }
         return result
     }
     // Check the progress on the trail
-    func checkTrailProgress(lat: Double, lon: Double){
+    func checkTrailProgress(_ lat: Double, lon: Double){
         standardTrail(lat, lon: lon)
     }
     
     // Check starting position of standard trail
-    func checkStartingPosition(lat: Double, lon: Double){
-        if ((lat >= (checkPoints[0].latitude - 0.00006)) && (lat <= (checkPoints[0].latitude + 0.00006))) &&
-            ((lon >= (checkPoints[0].longitude - 0.00006)) && (lon <= (checkPoints[0].longitude + 0.00006))){
+    func checkStartingPosition(_ lat: Double, lon: Double){
+        if ((lat >= ((checkPoints[0]?.latitude)! - 0.00006)) && (lat <= ((checkPoints[0]?.latitude)! + 0.00006))) &&
+            ((lon >= ((checkPoints[0]?.longitude)! - 0.00006)) && (lon <= ((checkPoints[0]?.longitude)! + 0.00006))){
             isReverse = false
             i = 0
             startFound = true
         }
-        else if((lat >= (checkPoints[checkPoints.count-1].latitude - 0.00006)) && (lat <= (checkPoints[checkPoints.count-1].latitude + 0.00006))) &&
-            ((lon >= (checkPoints[checkPoints.count-1].longitude - 0.00006)) && (lon <= (checkPoints[checkPoints.count-1].longitude + 0.00006))){
+        else if((lat >= ((checkPoints[checkPoints.count-1]?.latitude)! - 0.00006)) && (lat <= ((checkPoints[checkPoints.count-1]?.latitude)! + 0.00006))) &&
+            ((lon >= ((checkPoints[checkPoints.count-1]?.longitude)! - 0.00006)) && (lon <= ((checkPoints[checkPoints.count-1]?.longitude)! + 0.00006))){
             isReverse = true
             i = 0
             startFound = true
@@ -347,7 +374,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     //check progress of standard trail
-    func standardTrail(lat: Double, lon: Double){
+    func standardTrail(_ lat: Double, lon: Double){
         // User starting point normal, array index count up
         if i < checkPoints.count && !isReverse!{
             if checkLatLon(lat, lon: lon){
@@ -377,23 +404,23 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     // Display alert at trail completion
     func trailComplete(){
-        let trialCompleteAlert = UIAlertController(title: "Trail Completed", message: "Blah Blah Blah", preferredStyle: UIAlertControllerStyle.Alert)
-        trialCompleteAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
-        trialCompleteAlert.addAction(UIAlertAction(title: "Share", style: .Default, handler: { (action: UIAlertAction!) in
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
-                var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-                facebookSheet.setInitialText("Fished the beta test trail")
-                self.presentViewController(facebookSheet, animated: true, completion: nil)
+        let trialCompleteAlert = UIAlertController(title: "Trail Completed", message: "Blah Blah Blah", preferredStyle: UIAlertControllerStyle.alert)
+        trialCompleteAlert.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
+        trialCompleteAlert.addAction(UIAlertAction(title: "Share", style: .default, handler: { (action: UIAlertAction!) in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
+                let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                facebookSheet.setInitialText("Finished the test trail")
+                self.present(facebookSheet, animated: true, completion: nil)
             } else {
-                var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }))
         self.startedTrail = false
         self.isReverse = false
         self.startFound = false
-        self.presentViewController(trialCompleteAlert, animated: true, completion: nil)
+        self.present(trialCompleteAlert, animated: true, completion: nil)
         
     }
     // Updates the progress on the trail
@@ -414,7 +441,7 @@ class TrailMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Declaration
         progress = MKPolyline(coordinates: &temp, count: temp.count)
         // Draws the overlay
-        trailMapView.addOverlay(progress!)
+        trailMapView.add(progress!)
     }
 }
 

@@ -32,7 +32,6 @@
 		045409351BE04E68004B9577 /* HawaiiHikersResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045409341BE04E68004B9577 /* HawaiiHikersResourceTests.swift */; };
 		045409401BE04E68004B9577 /* HawaiiHikersResourceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454093F1BE04E68004B9577 /* HawaiiHikersResourceUITests.swift */; };
 		045409511BE04E9E004B9577 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409501BE04E9E004B9577 /* MapKit.framework */; };
-		045409531BE04EB4004B9577 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409521BE04EB4004B9577 /* StoreKit.framework */; };
 		045409551BE05000004B9577 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409541BE05000004B9577 /* QuartzCore.framework */; };
 		045409571BE05011004B9577 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409561BE05011004B9577 /* CoreData.framework */; };
 		045409591BE0502E004B9577 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 045409581BE0502E004B9577 /* libsqlite3.tbd */; };
@@ -70,8 +69,14 @@
 		A6B101981CB7342D00F6813A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B101971CB7342D00F6813A /* FBSDKShareKit.framework */; };
 		A6B1019B1CB7C12A00F6813A /* get.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A6B1019A1CB7C12A00F6813A /* get.mp4 */; };
 		A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BF26F71CAB72BF00486E73 /* Main.storyboard */; };
+		A6DFF9E31CD8C2A80085F3E9 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6DFF9E21CD8C2A80085F3E9 /* ApiKeys.plist */; };
+		A6DFF9E51CD8C3F00085F3E9 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF9E41CD8C3F00085F3E9 /* SegmentedControl.swift */; };
+		A6DFF9E71CD988520085F3E9 /* InfoSceneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF9E61CD988520085F3E9 /* InfoSceneVC.swift */; };
+		A6DFF9E91CD99F3B0085F3E9 /* ShareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF9E81CD99F3B0085F3E9 /* ShareData.swift */; };
+		A6DFF9EB1CD9C9A60085F3E9 /* WVCurrentWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF9EA1CD9C9A60085F3E9 /* WVCurrentWeatherCell.swift */; };
+		A6DFF9ED1CD9C9CB0085F3E9 /* WVForecastWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF9EC1CD9C9CB0085F3E9 /* WVForecastWeatherCell.swift */; };
+		A6DFF9EF1CD9C9D70085F3E9 /* WeatherDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF9EE1CD9C9D70085F3E9 /* WeatherDataController.swift */; };
 		E734EB481CB5A73C007D4CF2 /* MenuTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */; };
-		E738566F1CB74582000DF779 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E738566E1CB74582000DF779 /* ApiKeys.plist */; };
 		E73856711CB74C74000DF779 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E73856701CB74C74000DF779 /* AppIcon.png */; };
 		E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B882CB1C118B020003CA63 /* PinInfo.swift */; };
 /* End PBXBuildFile section */
@@ -150,8 +155,14 @@
 		A6B101991CB737A600F6813A /* HawaiiHikersResource2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HawaiiHikersResource2.xcdatamodel; sourceTree = "<group>"; };
 		A6B1019A1CB7C12A00F6813A /* get.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.mp4; sourceTree = "<group>"; };
 		A6BF26F71CAB72BF00486E73 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A6DFF9E21CD8C2A80085F3E9 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		A6DFF9E41CD8C3F00085F3E9 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
+		A6DFF9E61CD988520085F3E9 /* InfoSceneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoSceneVC.swift; sourceTree = "<group>"; };
+		A6DFF9E81CD99F3B0085F3E9 /* ShareData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareData.swift; sourceTree = "<group>"; };
+		A6DFF9EA1CD9C9A60085F3E9 /* WVCurrentWeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WVCurrentWeatherCell.swift; sourceTree = "<group>"; };
+		A6DFF9EC1CD9C9CB0085F3E9 /* WVForecastWeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WVForecastWeatherCell.swift; sourceTree = "<group>"; };
+		A6DFF9EE1CD9C9D70085F3E9 /* WeatherDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDataController.swift; sourceTree = "<group>"; };
 		E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableController.swift; sourceTree = "<group>"; };
-		E738566E1CB74582000DF779 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 		E73856701CB74C74000DF779 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		E7B882CB1C118B020003CA63 /* PinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,7 +182,6 @@
 				04FBFC6D1BE2EEF200923F9F /* Social.framework in Frameworks */,
 				04FBFC6B1BE2EEE600923F9F /* Accounts.framework in Frameworks */,
 				04FBFC691BE2EEDC00923F9F /* libz.tbd in Frameworks */,
-				045409531BE04EB4004B9577 /* StoreKit.framework in Frameworks */,
 				04FBFC671BE2EEB000923F9F /* SystemConfiguration.framework in Frameworks */,
 				A6B101981CB7342D00F6813A /* FBSDKShareKit.framework in Frameworks */,
 				04FBFC651BE2EE8F00923F9F /* Security.framework in Frameworks */,
@@ -225,6 +235,7 @@
 		045409101BE04E67004B9577 = {
 			isa = PBXGroup;
 			children = (
+				A6DFF9E21CD8C2A80085F3E9 /* ApiKeys.plist */,
 				0454091B1BE04E67004B9577 /* HawaiiHikersResource */,
 				048B25AE1C1A4A22009324FD /* Frameworks */,
 				045409331BE04E68004B9577 /* HawaiiHikersResourceTests */,
@@ -297,6 +308,7 @@
 				A6376DFB1CB3E92D00A7BCF3 /* PreviewController.swift */,
 				E734EB471CB5A73C007D4CF2 /* MenuTableController.swift */,
 				A63A82A21CB5E44B00A6C225 /* FacebookLogin.swift */,
+				A6DFF9E61CD988520085F3E9 /* InfoSceneVC.swift */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -304,9 +316,12 @@
 		048B25AD1C1A4993009324FD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				A6DFF9EA1CD9C9A60085F3E9 /* WVCurrentWeatherCell.swift */,
+				A6DFF9EC1CD9C9CB0085F3E9 /* WVForecastWeatherCell.swift */,
+				A6DFF9EE1CD9C9D70085F3E9 /* WeatherDataController.swift */,
+				A6DFF9E81CD99F3B0085F3E9 /* ShareData.swift */,
 				A6B1019A1CB7C12A00F6813A /* get.mp4 */,
 				E73856701CB74C74000DF779 /* AppIcon.png */,
-				E738566E1CB74582000DF779 /* ApiKeys.plist */,
 				043C70451C61D22F002598B1 /* trailInfo.json */,
 				04C31BF01C5BF49000C8964F /* parkInfo.json */,
 				04FBFC711BE2F99A00923F9F /* ApiKeys.swift */,
@@ -315,6 +330,7 @@
 				E7B882CB1C118B020003CA63 /* PinInfo.swift */,
 				04FBFC6F1BE2F7E800923F9F /* PushNotificationController.swift */,
 				A6376DC21CB0F60F00A7BCF3 /* UserInfo.swift */,
+				A6DFF9E41CD8C3F00085F3E9 /* SegmentedControl.swift */,
 			);
 			name = SupportFiles;
 			sourceTree = "<group>";
@@ -419,7 +435,9 @@
 				TargetAttributes = {
 					045409181BE04E67004B9577 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = A99GH4QSGP;
+						DevelopmentTeam = J3ZBL636E9;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -446,10 +464,12 @@
 					};
 					0454092F1BE04E68004B9577 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 045409181BE04E67004B9577;
 					};
 					0454093A1BE04E68004B9577 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 045409181BE04E67004B9577;
 					};
 				};
@@ -479,11 +499,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E738566F1CB74582000DF779 /* ApiKeys.plist in Resources */,
 				E73856711CB74C74000DF779 /* AppIcon.png in Resources */,
 				043C70461C61D22F002598B1 /* trailInfo.json in Resources */,
 				0454092A1BE04E68004B9577 /* LaunchScreen.storyboard in Resources */,
 				045409271BE04E68004B9577 /* Assets.xcassets in Resources */,
+				A6DFF9E31CD8C2A80085F3E9 /* ApiKeys.plist in Resources */,
 				A6BF26F81CAB72BF00486E73 /* Main.storyboard in Resources */,
 				A6B1019B1CB7C12A00F6813A /* get.mp4 in Resources */,
 				04C31BF11C5BF49000C8964F /* parkInfo.json in Resources */,
@@ -514,7 +534,9 @@
 				A6376DFC1CB3E92D00A7BCF3 /* PreviewController.swift in Sources */,
 				A63A82A31CB5E44B00A6C225 /* FacebookLogin.swift in Sources */,
 				04FBFC701BE2F7E800923F9F /* PushNotificationController.swift in Sources */,
+				A6DFF9E71CD988520085F3E9 /* InfoSceneVC.swift in Sources */,
 				04DFD1BC1C05B75C000AF371 /* WeatherViewController.swift in Sources */,
+				A6DFF9EB1CD9C9A60085F3E9 /* WVCurrentWeatherCell.swift in Sources */,
 				E7B882CC1C118B020003CA63 /* PinInfo.swift in Sources */,
 				E734EB481CB5A73C007D4CF2 /* MenuTableController.swift in Sources */,
 				045409251BE04E67004B9577 /* HawaiiHikersResource.xcdatamodeld in Sources */,
@@ -523,8 +545,12 @@
 				A6376DC51CB138ED00A7BCF3 /* CustomTrailMapViewController.swift in Sources */,
 				0454091D1BE04E67004B9577 /* AppDelegate.swift in Sources */,
 				04FBFC721BE2F99A00923F9F /* ApiKeys.swift in Sources */,
+				A6DFF9E51CD8C3F00085F3E9 /* SegmentedControl.swift in Sources */,
+				A6DFF9ED1CD9C9CB0085F3E9 /* WVForecastWeatherCell.swift in Sources */,
 				04D70B9D1C19705000F82B68 /* CLController.swift in Sources */,
 				04DFD1B41C05B4D8000AF371 /* ParkInfoController.swift in Sources */,
+				A6DFF9EF1CD9C9D70085F3E9 /* WeatherDataController.swift in Sources */,
+				A6DFF9E91CD99F3B0085F3E9 /* ShareData.swift in Sources */,
 				04DFD1B61C05B4FF000AF371 /* TrailInfoController.swift in Sources */,
 				04DFD1BA1C05B68D000AF371 /* TrailMapViewController.swift in Sources */,
 			);
@@ -613,7 +639,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "fbee8292-d783-4f6a-929a-336120a96e3a";
+				PROVISIONING_PROFILE = "iOS Team Provisioning Profile: com.nagatak.HawaiiHikersResource";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -652,7 +679,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "fbee8292-d783-4f6a-929a-336120a96e3a";
+				PROVISIONING_PROFILE = "iOS Team Provisioning Profile: com.nagatak.HawaiiHikersResource";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -665,6 +693,7 @@
 				CODE_SIGN_ENTITLEMENTS = HawaiiHikersResource/HawaiiHikersResource.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = J3ZBL636E9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -674,12 +703,14 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = HawaiiHikersResource/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResource;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -690,6 +721,7 @@
 				CODE_SIGN_ENTITLEMENTS = HawaiiHikersResource/HawaiiHikersResource.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = J3ZBL636E9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -699,12 +731,14 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = HawaiiHikersResource/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResource;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/BridgingHeader.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -721,6 +755,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResourceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HawaiiHikersResource.app/HawaiiHikersResource";
 			};
 			name = Debug;
@@ -738,6 +773,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResourceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HawaiiHikersResource.app/HawaiiHikersResource";
 			};
 			name = Release;
@@ -749,6 +785,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResourceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = HawaiiHikersResource;
 				USES_XCTRUNNER = YES;
 			};
@@ -761,6 +798,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.HawaiiHikersResourceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = HawaiiHikersResource;
 				USES_XCTRUNNER = YES;
 			};

@@ -10,7 +10,7 @@ import Darwin
 import CoreGraphics
 
 // utility functions
-func degreesToRadians(degrees: Float) -> Float {
+func degreesToRadians(_ degrees: Float) -> Float {
     return (degrees * Float(M_PI)) / 180.0
 }
 
@@ -25,8 +25,8 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
     @IBOutlet weak var playButton: UIBarButtonItem!
     @IBOutlet weak var playerSlideBar: UISlider!
    
-    @IBAction func closePreview(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closePreview(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     var scene : SCNScene?
@@ -53,7 +53,7 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SceneView?.backgroundColor = UIColor.blackColor()
+        SceneView?.backgroundColor = UIColor.black
         
         // Create Scene
         scene = SCNScene()
@@ -103,11 +103,11 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
         // Respond to user head movement. Refreshes the position of the camera 60 times per second.
         motionManager = CMMotionManager()
         motionManager?.deviceMotionUpdateInterval = 1.0 / 60.0
-        motionManager?.startDeviceMotionUpdatesUsingReferenceFrame(CMAttitudeReferenceFrame.XArbitraryZVertical)
+        motionManager?.startDeviceMotionUpdates(using: CMAttitudeReferenceFrame.xArbitraryZVertical)
         
         SceneView?.delegate = self
         
-        SceneView?.playing = true
+        SceneView?.isPlaying = true
         
         // Add gestures on screen
         recognizer = UITapGestureRecognizer(target: self, action:#selector(PreviewController.tapTheScreen))
@@ -124,7 +124,7 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
     
     
     //MARK: Camera Orientation methods
-    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         let camerasNodeAngles = getCamerasNodeAngle()
         camerasNode!.eulerAngles = SCNVector3Make(Float(camerasNodeAngles[0]), Float(camerasNodeAngles[1]), Float(camerasNodeAngles[2]))
     }
@@ -132,35 +132,35 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
     func getCamerasNodeAngle() -> [Double] {
         var camerasNodeAngle1: Double! = 0.0
         var camerasNodeAngle2: Double! = 0.0
-        let orientation = UIApplication.sharedApplication().statusBarOrientation.rawValue
+        let orientation = UIApplication.shared.statusBarOrientation.rawValue
         if orientation == 1 {
-            camerasNodeAngle1 = -M_PI_2
+            camerasNodeAngle1 = -.pi/2
         } else if orientation == 2 {
-            camerasNodeAngle1 = M_PI_2
+            camerasNodeAngle1 = .pi/2
         } else if orientation == 3 {
             camerasNodeAngle1 = 0.0
-            camerasNodeAngle2 = M_PI
+            camerasNodeAngle2 = .pi
         }
         
-        return [ -M_PI_2, camerasNodeAngle1, camerasNodeAngle2 ]
+        return [ -.pi/2, camerasNodeAngle1, camerasNodeAngle2 ]
     }
     
     
     //Mark: video player methods
     func play(){
 
-        let fileURL: NSURL? = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("get", ofType: "mp4")!)
+        let fileURL: URL? = URL(fileURLWithPath: Bundle.main.path(forResource: "get", ofType: "mp4")!)
         
         if (fileURL != nil){
             
-            player = AVPlayer(URL: fileURL!)
+            player = AVPlayer(url: fileURL!)
             
-            videoSpriteKitNode =  SKVideoNode(AVPlayer: player)
+            videoSpriteKitNode =  SKVideoNode(avPlayer: player)
             videoNode = SCNNode()
             videoNode!.geometry = SCNSphere(radius: 30)
             
             let spriteKitScene = SKScene(size: CGSize(width: 2500, height: 2500))
-            spriteKitScene.scaleMode = .AspectFit
+            spriteKitScene.scaleMode = .aspectFit
             
             videoSpriteKitNode!.position = CGPoint(x: spriteKitScene.size.width / 2.0, y: spriteKitScene.size.height / 2.0)
             videoSpriteKitNode!.size = spriteKitScene.size
@@ -168,7 +168,7 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
             spriteKitScene.addChild(videoSpriteKitNode!)
             
             videoNode!.geometry?.firstMaterial?.diffuse.contents = spriteKitScene
-            videoNode!.geometry?.firstMaterial?.doubleSided = true
+            videoNode!.geometry?.firstMaterial?.isDoubleSided = true
             
             // Flip video upside down, so that it's shown in the right position
             var transform = SCNMatrix4MakeRotation(Float(M_PI), 0.0, 0.0, 1.0)
@@ -180,11 +180,11 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
             
             scene!.rootNode.addChildNode(videoNode!)
             
-            progressObserver = player.addPeriodicTimeObserverForInterval(CMTimeMakeWithSeconds(0.1, Int32(NSEC_PER_SEC)),
+            progressObserver = player.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(0.1, Int32(NSEC_PER_SEC)),
                                                                          queue: nil,
-                                                                         usingBlock: { [unowned self] (time) -> Void in
+                                                                         using: { [unowned self] (time) -> Void in
                                                                             self.updateSliderProgression()
-                })
+                }) as AnyObject
             
             playPausePlayer()
         }
@@ -218,9 +218,9 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
         stopPlay()
     }
     
-    func panGesture(sender: UIPanGestureRecognizer){
+    func panGesture(_ sender: UIPanGestureRecognizer){
         //getting the CGpoint at the end of the pan
-        let translation = sender.translationInView(sender.view!)
+        let translation = sender.translation(in: sender.view!)
         
         var newAngleX = Float(translation.x)
         
@@ -229,22 +229,22 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
         videoNode!.eulerAngles.y = -newAngleX/100
         
         //getting the end angle of the swipe put into the instance variable
-        if(sender.state == UIGestureRecognizerState.Ended) {
+        if(sender.state == UIGestureRecognizerState.ended) {
             currentAngleX = newAngleX
         }
     }
     
     
     //Mark: Render the scenes
-    func renderer(aRenderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval){
+    func renderer(_ aRenderer: SCNSceneRenderer, updateAtTime time: TimeInterval){
         
         // Render the scene
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+        DispatchQueue.main.async { () -> Void in
             if let mm = self.motionManager, let motion = mm.deviceMotion {
                 let currentAttitude = motion.attitude
                 
                 var roll : Double = currentAttitude.roll
-                if(UIApplication.sharedApplication().statusBarOrientation == UIInterfaceOrientation.LandscapeRight){ roll = -1.0 * (-M_PI - roll)}
+                if(UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.landscapeRight){ roll = -1.0 * (-M_PI - roll)}
                 
                 self.cameraRollNode!.eulerAngles.x = Float(roll)
                 self.cameraPitchNode!.eulerAngles.z = Float(currentAttitude.pitch)
@@ -255,7 +255,7 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
     }
     
     // MARK: Slider method
-    private func updateSliderProgression() {
+    fileprivate func updateSliderProgression() {
         let playerDuration = self.playerItemDuration()
         if CMTIME_IS_INVALID(playerDuration) {
             playerSlideBar.minimumValue = 0.0
@@ -263,7 +263,8 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
         }
         
         let duration = Float(CMTimeGetSeconds(playerDuration))
-        if isfinite(duration) && (duration > 0) {
+        // isFinite(duration) &&
+        if (duration > 0) {
             let minValue            = playerSlideBar.minimumValue
             let maxValue            = playerSlideBar.maximumValue
             let time                = Float(CMTimeGetSeconds(player.currentTime()))
@@ -272,17 +273,17 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
         }
     }
     
-    private func playerItemDuration() -> CMTime {
+    fileprivate func playerItemDuration() -> CMTime {
         let thePlayerItem = player.currentItem
         
-        if AVPlayerItemStatus.ReadyToPlay == thePlayerItem?.status {
+        if AVPlayerItemStatus.readyToPlay == thePlayerItem?.status {
             return thePlayerItem?.duration ?? kCMTimeInvalid
         }
         
         return kCMTimeInvalid
     }
     
-    @IBAction func sliderChangeProgression(sender: UISlider) {
+    @IBAction func sliderChangeProgression(_ sender: UISlider) {
         let playerDuration = self.playerItemDuration()
         
         if CMTIME_IS_INVALID(playerDuration) {
@@ -290,14 +291,15 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
         }
         
         let duration = Float(CMTimeGetSeconds(playerDuration))
-        if isfinite(duration) && (duration > 0) {
+        // isFinite(duration) && 
+        if (duration > 0) {
             print(duration,Float64(duration) * Float64(playerSlideBar.value))
-            player.seekToTime(CMTimeMakeWithSeconds(Float64(duration) * Float64(playerSlideBar.value), 60000))
+            player.seek(to: CMTimeMakeWithSeconds(Float64(duration) * Float64(playerSlideBar.value), 60000))
             playPausePlayer()
         }
     }
     
-    @IBAction func sliderStartSliding(sender: AnyObject) {
+    @IBAction func sliderStartSliding(_ sender: AnyObject) {
         videoSpriteKitNode!.pause()
         playingVideo = false
 //        playButton.setImage(UIImage(named: (true == playingVideo) ? "pause@3x.png" : "play@3x.png"), forState: .Normal)
@@ -322,7 +324,7 @@ class PreviewController: UIViewController, SCNSceneRendererDelegate, UIGestureRe
         }
     }
     
-    func removeNode(node : SCNNode) {
+    func removeNode(_ node : SCNNode) {
         for node in node.childNodes {
             removeNode(node)
         }

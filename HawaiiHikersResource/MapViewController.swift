@@ -10,6 +10,30 @@ import UIKit
 import CoreLocation
 import MapKit
 import CoreData
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -21,6 +45,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var destination: MKMapItem!
     var customTrailMaps = [NSManagedObject]()
     var cstmTrailArray = [PinInfo]()
+    let shareData = ShareData.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +61,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locManager?.startUpdatingLocation()
         
         // Sets map type to hybrid
-        mapView.mapType = MKMapType.Hybrid
+        mapView.mapType = MKMapType.hybrid
         
         // Set initial location to The Big Island, Hawaii
         let initialLocation = CLLocation(latitude: 19.619305, longitude: -155.478945)
@@ -44,7 +69,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let regionRadius: CLLocationDistance = 80000
         
         // Function to start the initial screen on the center of The Big Island, Hawaii
-        func centerMapOnLocation(location: CLLocation) {
+        func centerMapOnLocation(_ location: CLLocation) {
             // Rectangular region of map to be viewed
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
             // Set the region to be viewed with animation
@@ -64,138 +89,138 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Adds the datasets into the map as pin annotations
         mapView.addAnnotations([akaka, lava, college, kilauea, kahakai])
         
-        addCustomTrails()
+        //addCustomTrails()
         
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(MapViewController.handleSwipes(_:)))
         
-        rightSwipe.direction = .Right
+        rightSwipe.direction = .right
         
         view.addGestureRecognizer(rightSwipe)
         
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-        addCustomTrails()
+        //addCustomTrails()
     }
     
-    @IBAction func listTrailsBtn(sender: UIBarButtonItem) {
+    @IBAction func listTrailsBtn(_ sender: UIBarButtonItem) {
         
         //print("pressed")
         
         let attributedStringTitle = NSAttributedString(string: "Select a Trail", attributes: [
-            NSFontAttributeName : UIFont.systemFontOfSize(22),
+            NSFontAttributeName : UIFont.systemFont(ofSize: 22),
             NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             ])
         
-        let trailListAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        let trailListAlert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         
         
         trailListAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
         
-        trailListAlert.view.tintColor = UIColor.whiteColor()
+        trailListAlert.view.tintColor = UIColor.white
         
-        trailListAlert.addAction(UIAlertAction(title: "'Akaka Falls Loop Trail", style: .Default, handler: { (action) -> Void in
+        trailListAlert.addAction(UIAlertAction(title: "'Akaka Falls Loop Trail", style: .default, handler: { (action) -> Void in
             self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.865850, longitude: -155.116115)
             self.alertMenu("'Akaka Falls Loop Trail")
         }))
-        trailListAlert.addAction(UIAlertAction(title: "Lava Trees Loop Trail", style: .Default, handler: { (action) -> Void in
+        trailListAlert.addAction(UIAlertAction(title: "Lava Trees Loop Trail", style: .default, handler: { (action) -> Void in
             self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.482842, longitude: -154.904300)
             self.alertMenu("Lava Trees Loop Trail")
         }))
-        trailListAlert.addAction(UIAlertAction(title: "College Hall Trail", style: .Default, handler: { (action) -> Void in
+        trailListAlert.addAction(UIAlertAction(title: "College Hall Trail", style: .default, handler: { (action) -> Void in
             self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.703202, longitude: -155.079654)
             self.alertMenu("College Hall Trail")
         }))
-        trailListAlert.addAction(UIAlertAction(title: "Kilauea Iki", style: .Default, handler: { (action) -> Void in
+        trailListAlert.addAction(UIAlertAction(title: "Kilauea Iki", style: .default, handler: { (action) -> Void in
             self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.416333, longitude: -155.242804)
             self.alertMenu("Kilauea Iki")
         }))    
-        trailListAlert.addAction(UIAlertAction(title: "Ala Kahakai Trail", style: .Default, handler: { (action) -> Void in
+        trailListAlert.addAction(UIAlertAction(title: "Ala Kahakai Trail", style: .default, handler: { (action) -> Void in
             self.pinCoordinate = CLLocationCoordinate2D(latitude: 19.670625, longitude: -156.026178)
             self.alertMenu("Ala Kahakai Trail")
         }))
-        trailListAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
+        trailListAlert.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
         
         
         let subview = trailListAlert.view.subviews.first! as UIView
         let alertContentView = subview.subviews.first! as UIView
         alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
         
-        self.presentViewController(trailListAlert, animated: true, completion: nil)
+        self.present(trailListAlert, animated: true, completion: nil)
         
         alertContentView.layer.cornerRadius = 12
     }
     
-    func handleSwipes(sender: UISwipeGestureRecognizer) {
-        if (sender.direction == .Right){
+    func handleSwipes(_ sender: UISwipeGestureRecognizer) {
+        if (sender.direction == .right){
             //performSegueWithIdentifier("menuSwipeSegue", sender: self)
         }
     }
     
-    @IBAction func menuBtn(sender: UIBarButtonItem) {
+    @IBAction func menuBtn(_ sender: UIBarButtonItem) {
         let attributedStringTitle = NSAttributedString(string: "Select an Option", attributes: [
-            NSFontAttributeName : UIFont.systemFontOfSize(22),
+            NSFontAttributeName : UIFont.systemFont(ofSize: 22),
             NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             ])
         
-        let menuAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        let menuAlert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         
         menuAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
         
-        menuAlert.view.tintColor = UIColor.whiteColor()
+        menuAlert.view.tintColor = UIColor.white
         
-        menuAlert.addAction(UIAlertAction(title: "User Info", style: .Default, handler: { (action) -> Void in
-            self.performSegueWithIdentifier("mapUserSegue", sender: nil)
+        menuAlert.addAction(UIAlertAction(title: "User Info", style: .default, handler: { (action) -> Void in
+            self.performSegue(withIdentifier: "mapUserSegue", sender: nil)
         }))
         
-        menuAlert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (action) -> Void in
+        menuAlert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { (action) -> Void in
         }))
         
-        menuAlert.addAction(UIAlertAction(title: "Edit Custom Trail", style: .Default, handler: { (action) -> Void in self.performSegueWithIdentifier("ctmIdentifier", sender: nil)
+        menuAlert.addAction(UIAlertAction(title: "Edit Custom Trail", style: .default, handler: { (action) -> Void in self.performSegue(withIdentifier: "ctmIdentifier", sender: nil)
         }))
         
-        menuAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
+        menuAlert.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
         
         let subview = menuAlert.view.subviews.first! as UIView
         let alertContentView = subview.subviews.first! as UIView
         alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.7)
         
-        self.presentViewController(menuAlert, animated: true, completion: nil)
+        self.present(menuAlert, animated: true, completion: nil)
         
         alertContentView.layer.cornerRadius = 12
     }
     
-    func addCustomTrails(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "CustomTrails")
-        
-        do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
-            customTrailMaps = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        if (customTrailMaps.count > 0){
-            
-            for (index,element) in customTrailMaps.enumerate(){
-                let tempName = element.valueForKey("trailName")
-                let tempOver = element.valueForKey("overlay")
-                if tempOver?.count > 0{
-                    cstmTrailArray.append(PinInfo(title: tempName! as! String, coordinate: tempOver![0].coordinate, subtitle: " "))
-                }
-            }
-            if(cstmTrailArray.count - 1 >= 0){
-                for num in 0 ... cstmTrailArray.count - 1{
-                    mapView.addAnnotations([cstmTrailArray[num]])
-                }
-            }
-        }
-       
-    }
+//    func addCustomTrails(){
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CustomTrails")
+//        
+//        do {
+//            let results = try managedContext.fetch(fetchRequest)
+//            customTrailMaps = results as! [NSManagedObject]
+//        } catch let error as NSError {
+//            print("Could not fetch \(error), \(error.userInfo)")
+//        }
+//        
+//        if (customTrailMaps.count > 0){
+//            
+//            for (index,element) in customTrailMaps.enumerated(){
+//                let tempName = element.value(forKey: "trailName")
+//                let tempOver = element.value(forKey: "overlay")
+//                if (tempOver as AnyObject).count > 0{
+//                    cstmTrailArray.append(PinInfo(title: tempName! as! String, coordinate: tempOver![0].coordinate, subtitle: " "))
+//                }
+//            }
+//            if(cstmTrailArray.count - 1 >= 0){
+//                for num in 0 ... cstmTrailArray.count - 1{
+//                    mapView.addAnnotations([cstmTrailArray[num]])
+//                }
+//            }
+//        }
+//       
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -203,14 +228,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // Overloaded function to place annotations on map
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
         let identifier = "PinInfo"
         
-        if annotation.isKindOfClass(PinInfo.self)
+        if annotation.isKind(of: PinInfo.self)
         {
             // Creates a reusable template for the PinInfo class
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
             
             // Creates a new annotation
             if annotationView == nil
@@ -219,7 +244,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 annotationView!.canShowCallout = false
                 // Creats info button in pin annotation
-                let btn = UIButton(type: .DetailDisclosure)
+                let btn = UIButton(type: .detailDisclosure)
                 // Set button as right callout accessory
                 annotationView!.rightCalloutAccessoryView = btn
             }
@@ -233,9 +258,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // Calls uialertmenu instead of annotation callout
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 
-        if !(view.annotation!.isKindOfClass(MKUserLocation)) {
+        if !(view.annotation!.isKind(of: MKUserLocation.self)) {
             pinCoordinate = view.annotation?.coordinate
             alertMenu(view.annotation!.title!!)
             mapView.deselectAnnotation(view.annotation, animated: false)
@@ -244,7 +269,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // Overloaded function to tell what to do when right callout accessory button is pressed
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl) {
             // Gets the current pin coordinates
             pinCoordinate = view.annotation?.coordinate
@@ -254,35 +279,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // 
-    func alertMenu(trailName: String){
+    func alertMenu(_ trailName: String){
         let attributedStringTitle = NSAttributedString(string: trailName, attributes: [
-            NSFontAttributeName : UIFont.systemFontOfSize(22),
+            NSFontAttributeName : UIFont.systemFont(ofSize: 22),
             NSForegroundColorAttributeName : UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
             ])
 //        let attributedStringMessage = NSAttributedString(string: "Enter the name of the trail.", attributes: [
 //            NSFontAttributeName : UIFont.systemFontOfSize(15),
 //            NSForegroundColorAttributeName : UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
 //            ])
-        let menuAlert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        let menuAlert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         
         menuAlert.setValue(attributedStringTitle, forKey: "attributedTitle")
         //menuAlert.setValue(attributedStringMessage, forKey: "attributedMessage")
         
         menuAlert.view.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1);
         
-        menuAlert.addAction(UIAlertAction(title: "Trail Info", style: .Default , handler: { (action) -> Void in
-            self.performSegueWithIdentifier("trailInfoIdentifier", sender: nil)
+        menuAlert.addAction(UIAlertAction(title: "Trail Info", style: .default , handler: { (action) -> Void in
+            self.performSegue(withIdentifier: "trailInfoIdentifier", sender: nil)
         }))
-        menuAlert.addAction(UIAlertAction(title: "Park Info", style: .Default , handler: { (action) -> Void in
-            self.performSegueWithIdentifier("parkInfoIdentifier", sender: nil)
+        menuAlert.addAction(UIAlertAction(title: "Park Info", style: .default , handler: { (action) -> Void in
+            self.performSegue(withIdentifier: "parkInfoIdentifier", sender: nil)
         }))
-        menuAlert.addAction(UIAlertAction(title: "Weather", style: .Default , handler: { (action) -> Void in
-            self.performSegueWithIdentifier("weatherIdentifier", sender: nil)
+        menuAlert.addAction(UIAlertAction(title: "Weather", style: .default , handler: { (action) -> Void in
+            self.performSegue(withIdentifier: "weatherIdentifier", sender: nil)
         }))
-        menuAlert.addAction(UIAlertAction(title: "VR Preview", style: .Default , handler: { (action) -> Void in
-            self.performSegueWithIdentifier("previewIdentifier", sender: nil)
+        menuAlert.addAction(UIAlertAction(title: "VR Preview", style: .default , handler: { (action) -> Void in
+            self.performSegue(withIdentifier: "previewIdentifier", sender: nil)
         }))
-        menuAlert.addAction(UIAlertAction(title: "Directions", style: .Default , handler: { (action) -> Void in
+        menuAlert.addAction(UIAlertAction(title: "Directions", style: .default , handler: { (action) -> Void in
             // Creates an instance of MKDirectionsRequest
             let request = MKDirectionsRequest()
             
@@ -295,22 +320,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             else {self.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.5667, longitude: -155), addressDictionary: nil))}
             
             // Defaults the transportation type as an automobile
-            request.transportType = MKDirectionsTransportType.Automobile
+            request.transportType = MKDirectionsTransportType.automobile
             
             // Sets the destination
             let mapItem = self.destination
             // Sets the launch options for the native navigation app
             let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
             // Launches the native navigation app
-            mapItem.openInMapsWithLaunchOptions(launchOptions)
+            mapItem?.openInMaps(launchOptions: launchOptions)
         }))
         
-        menuAlert.addAction(UIAlertAction(title: "Close", style: .Destructive, handler: nil))
+        menuAlert.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
         
         let subview = menuAlert.view.subviews.first! as UIView
         let alertContentView = subview.subviews.first! as UIView
         alertContentView.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.3)
-        self.presentViewController(menuAlert, animated: true, completion: nil)
+        self.present(menuAlert, animated: true, completion: nil)
         
         alertContentView.layer.cornerRadius = 12;
     }
@@ -321,7 +346,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         becomeFirstResponder()
         
         // Creating the menu
-        let menu = UIMenuController.sharedMenuController()
+        let menu = UIMenuController.shared
         // Declares 4 buttons
         let parkInfo = UIMenuItem(title: "Park Info", action: #selector(MapViewController.infoPark))
         let trailInfo = UIMenuItem(title: "Trail Info", action: #selector(MapViewController.infoTrail))
@@ -331,20 +356,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Adds the 4 buttons to the menu
         menu.menuItems = [parkInfo, trailInfo, weather, directions]
         // Menu size and location on screen
-        menu.setTargetRect(CGRectMake(100, 80, 50, 50), inView: mapView)
+        menu.setTargetRect(CGRect(x: 100, y: 80, width: 50, height: 50), in: mapView)
         // Sets the menu to be visible
         menu.setMenuVisible(true, animated: true)
     }
     
     // Functions to segue to respective scenes in storyboard
     func infoPark() {
-        performSegueWithIdentifier("parkInfoIdentifier", sender: nil)
+        performSegue(withIdentifier: "parkInfoIdentifier", sender: nil)
     }
     func infoTrail() {
-        performSegueWithIdentifier("trailInfoIdentifier", sender: nil)
+        performSegue(withIdentifier: "trailInfoIdentifier", sender: nil)
     }
     func weather() {
-        performSegueWithIdentifier("weatherIdentifier", sender: nil)
+        performSegue(withIdentifier: "weatherIdentifier", sender: nil)
     }
     func directions() {
         // Creates an instance of MKDirectionsRequest
@@ -359,23 +384,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         else {destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 19.5667, longitude: -155), addressDictionary: nil))}
         
         // Defaults the transportation type as an automobile
-        request.transportType = MKDirectionsTransportType.Automobile
+        request.transportType = MKDirectionsTransportType.automobile
         
         // Sets the destination
         let mapItem = destination
         // Sets the launch options for the native navigation app
         let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
         // Launches the native navigation app
-        mapItem.openInMapsWithLaunchOptions(launchOptions)
+        mapItem?.openInMaps(launchOptions: launchOptions)
     }
     
     // Overrides the function allows a new first responder to be designated
-    override func canBecomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder : Bool {
         return true
     }
     
     // Pin menu selection will choose correct function
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         // You need to only return true for the actions you want, otherwise you get the whole range of
         //  iOS actions. You can see this by just removing the if statement here.
         if action == #selector(MapViewController.infoPark) {
@@ -394,33 +419,39 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // Override function to allow passing variables between scenes
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Checks for trailInfoIdentifier segue
         if(segue.identifier == "trailInfoIdentifier")
         {
-            // Creates link from current ViewController to TrailInfoController
-            let svc = segue.destinationViewController as! TrailInfoController
+            // Creates link from current ViewController to
+            let svc = segue.destination as! InfoSceneVC
             
             // Variable to be passed
             svc.toPass = pinCoordinate
+            self.shareData.passedCoordinate = pinCoordinate
+            svc.initialScene = "trail"
+        
         }
         // Checks for parkInfoIdentifier segue
         if(segue.identifier == "parkInfoIdentifier")
         {
-            // Creates link from current ViewController to TrailInfoController
-            let svc = segue.destinationViewController as! ParkInfoController
+            let svc = segue.destination as! InfoSceneVC
             
             // Variable to be passed
             svc.toPass = pinCoordinate
+            self.shareData.passedCoordinate = pinCoordinate
+            svc.initialScene = "park"
         }
         // Checks for weatherIdentifier segue
         if(segue.identifier == "weatherIdentifier")
         {
             // Creates link from current ViewController to WeatherViewController
-            let svc = segue.destinationViewController as! WeatherViewController
+            let svc = segue.destination as! InfoSceneVC
             
             // Variable to be passed
             svc.toPass = pinCoordinate
+            self.shareData.passedCoordinate = pinCoordinate
+            svc.initialScene = "weather"
         }
     }
 }

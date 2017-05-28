@@ -10,10 +10,10 @@ import Foundation
 
 // function will retireve the requested api key and client id from property list
 // kn
-func valueForAPIKey(keyname keyname:String) -> String {
-    let filePath = NSBundle.mainBundle().pathForResource("ApiKeys", ofType:"plist")
+func valueForAPIKey(keyname:String) -> String {
+    let filePath = Bundle.main.path(forResource: "ApiKeys", ofType:"plist")
     let plist = NSDictionary(contentsOfFile:filePath!)
     
-    let value:String = plist?.objectForKey(keyname) as! String
+    let value:String = plist?.object(forKey: keyname) as! String
     return value
 }
